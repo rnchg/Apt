@@ -36,11 +36,11 @@ Integrates multiple AI models, enabling users to conduct ChatGPT conversations a
 Will continue to integrate and update more AI functional modules to meet diverse user needs.
 
 ### Download Links
-- | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [Google Drive](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [Baidu Drive](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) |
+- | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [OneDrive](https://1drv.ms/f/c/15624ff2496d1e5b/Es9JrjwhI-VAh_nr-bOZDa4BnDgox1S-huJFOmpS-nKC7g?e=MULiHJ) | [Google Drive](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [Baidu Drive](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) |
 - **Full version**: includes all functions.
 - **Lite version**: includes all functions except 【ChatGPT】.
 
-### User Interface
+### Run interface
 Home
 ![Home](.Assets/en-US.01.png)
 Settings
@@ -56,6 +56,8 @@ Image Cartoon Comic
 
 ### Technical Support
 - **Email**: [Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
+- **Github**: [Apt](https://github.com/rnchg/Apt)
+- **Gitee**: [Apt](https://gitee.com/rnchg/apt)
 - **YouTube**: [Light Cloud Wind](https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg)
 - **Bilibili**: [风轻云也净](https://space.bilibili.com/478375442)
 - **QQ Group**: 293126382

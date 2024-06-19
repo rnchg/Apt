@@ -36,11 +36,11 @@
 将继续集成和更新更多的AI功能模块，以满足用户的多样化需求。
 
 ### 下载地址
-- | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [谷歌云盘](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [百度云盘](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) |
+- | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [OneDrive](https://1drv.ms/f/c/15624ff2496d1e5b/Es9JrjwhI-VAh_nr-bOZDa4BnDgox1S-huJFOmpS-nKC7g?e=MULiHJ) | [谷歌云盘](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [百度云盘](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) |
 - **完整版（Full）**：包含所有功能。
 - **精简版（Lite）**：包含除【ChatGPT】之外的所有功能。
  
-### 部分截图
+### 运行界面
 主页
 ![Home](.Assets/zh-CN.01.png)
 设置
@@ -56,6 +56,8 @@ ChatGPT
 
 ### 技术支持
 - **Email**：[Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
+- **Github**: [Apt](https://github.com/rnchg/Apt)
+- **Gitee**: [Apt](https://gitee.com/rnchg/apt)
 - **Youtube**：[Light Cloud Wind](https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg)
 - **Bilibili**：[风轻云也净](https://space.bilibili.com/478375442)
 - **QQ群**：293126382
