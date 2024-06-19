@@ -36,7 +36,7 @@ Integrates multiple AI models, enabling users to conduct ChatGPT conversations a
 Will continue to integrate and update more AI functional modules to meet diverse user needs.
 
 ### Download Links
-- | [Github](./en-US.md) | [Gitee](./en-US.md) | [Google Drive](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [Baidu Drive](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) |
+- | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [Google Drive](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [Baidu Drive](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) |
 - **Full version**: includes all functions.
 - **Lite version**: includes all functions except 【ChatGPT】.
 
