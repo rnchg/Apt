@@ -61,7 +61,6 @@ Image Cartoon Comic
 - **YouTube**: [Light Cloud Wind](https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg)
 - **Bilibili**: [风轻云也净](https://space.bilibili.com/478375442)
 - **QQ Group**: 293126382
-- **WeChat Group**:
 
 ### Donation Support
 If you found this project useful, feel free to buy the author a cup of coffee.

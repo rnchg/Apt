@@ -63,14 +63,16 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Phi3
         {
             try
             {
+                //Lite
                 Placeholder = Language.GetString("ChatPhi3IndexPageLite");
                 return;
 
-                Placeholder = Language.GetString("ChatPhi3IndexPageModelInitWait");
-                _indexService = new IndexService();
-                NewEnabled = true;
-                SendEnabled = true;
-                Placeholder = Language.GetString("ChatPhi3IndexPageInputPrompt");
+                ////Full
+                //Placeholder = Language.GetString("ChatPhi3IndexPageModelInitWait");
+                //_indexService = new IndexService();
+                //NewEnabled = true;
+                //SendEnabled = true;
+                //Placeholder = Language.GetString("ChatPhi3IndexPageInputPrompt");
             }
             catch (Exception ex)
             {
