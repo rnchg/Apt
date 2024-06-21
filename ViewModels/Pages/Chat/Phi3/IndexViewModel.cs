@@ -64,15 +64,15 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Phi3
             try
             {
                 //Lite
-                Placeholder = Language.GetString("ChatPhi3IndexPageLite");
-                return;
+                //Placeholder = Language.GetString("ChatPhi3IndexPageLite");
+                //return;
 
                 ////Full
-                //Placeholder = Language.GetString("ChatPhi3IndexPageModelInitWait");
-                //_indexService = new IndexService();
-                //NewEnabled = true;
-                //SendEnabled = true;
-                //Placeholder = Language.GetString("ChatPhi3IndexPageInputPrompt");
+                Placeholder = Language.GetString("ChatPhi3IndexPageModelInitWait");
+                _indexService = new IndexService();
+                NewEnabled = true;
+                SendEnabled = true;
+                Placeholder = Language.GetString("ChatPhi3IndexPageInputPrompt");
             }
             catch (Exception ex)
             {
@@ -87,22 +87,36 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Phi3
 
         private void Send()
         {
+            Placeholder = Language.GetString("ChatPhi3IndexPageModelProcessWait");
             NewEnabled = false;
             SendEnabled = false;
             var userMessage = new ChatMessage() { Author = ChatConst.Phi3.UserAuthor, Text = UserMessage, IsOriginNative = true };
-            var chat = _indexService.ChatAsync(userMessage.Text, ChatHistory.TakeLast(8).ToList());
             ChatHistory.Add(userMessage);
-            UserMessage = string.Empty;
             var aiMessage = new ChatMessage() { Author = ChatConst.Phi3.AiAuthor, Text = string.Empty, IsOriginNative = false };
             ChatHistory.Add(aiMessage);
-            Task.Run(async () =>
+            Task.Run(() => RunModel(ChatHistory));
+            UserMessage = string.Empty;
+        }
+
+        private void RunModel(IList<ChatMessage> chatHistory)
+        {
+            try
             {
                 Placeholder = Language.GetString("ChatPhi3IndexPageModelProcessWait");
-                await foreach (var msg in chat) aiMessage.Text += msg;
+                _indexService.Start(chatHistory.ToArray());
                 NewEnabled = true;
                 SendEnabled = true;
                 Placeholder = Language.GetString("ChatPhi3IndexPageInputPrompt");
-            });
+            }
+            catch (Exception ex)
+            {
+                Placeholder = Language.GetString("ChatPhi3IndexPageModelInitFailed");
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Utility.Message.ShowSnackbarError(ex.Message);
+                });
+                Apt.App.App.Current.Logger.LogError(ex.ToString());
+            }
         }
     }
 }
