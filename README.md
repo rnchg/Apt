@@ -56,11 +56,11 @@ Image Cartoon Comic
 
 ### Technical Support
 - **Email**: [Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
-- **Github**: [Apt](https://github.com/rnchg/Apt)
-- **Gitee**: [Apt](https://gitee.com/rnchg/apt)
+- **Github**: [github.com/rnchg/Apt](https://github.com/rnchg/Apt)
+- **Gitee**: [gitee.com/rnchg/apt](https://gitee.com/rnchg/apt)
 - **YouTube**: [Light Cloud Wind](https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg)
 - **Bilibili**: [风轻云也净](https://space.bilibili.com/478375442)
-- **QQ Group**: 293126382
+- **QQ**: 6085398
 
 ### Donation Support
 If you found this project useful, feel free to buy the author a cup of coffee.

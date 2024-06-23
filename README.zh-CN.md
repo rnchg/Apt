@@ -56,11 +56,11 @@ ChatGPT
 
 ### 技术支持
 - **Email**：[Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
-- **Github**：[Apt](https://github.com/rnchg/Apt)
-- **Gitee**：[Apt](https://gitee.com/rnchg/apt)
+- **Github**：[github.com/rnchg/Apt](https://github.com/rnchg/Apt)
+- **Gitee**：[gitee.com/rnchg/apt](https://gitee.com/rnchg/apt)
 - **Youtube**：[Light Cloud Wind](https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg)
 - **Bilibili**：[风轻云也净](https://space.bilibili.com/478375442)
-- **QQ群**：293126382
+- **QQ**：6085398
 
 ### 捐赠支持
 如果您觉得这个项目有用，可以请作者喝一杯咖啡。

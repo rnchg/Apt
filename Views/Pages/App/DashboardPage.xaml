@@ -469,33 +469,33 @@
             <ui:HyperlinkButton
                 Margin="10,0,0,0"
                 Padding="4"
-                Content="Github: https://github.com/rnchg/apt"
-                NavigateUri="https://github.com/rnchg/apt/"
-                ToolTip="Github: https://github.com/rnchg/apt" />
+                Content="Github: github.com/rnchg/Apt"
+                NavigateUri="https://github.com/rnchg/Apt"
+                ToolTip="Github: github.com/rnchg/Apt" />
             <ui:HyperlinkButton
                 Margin="10,0,0,0"
                 Padding="4"
-                Content="Gitee: https://gitee.com/rnchg/apt"
-                NavigateUri="https://gitee.com/rnchg/apt/"
-                ToolTip="Gitee: https://gitee.com/rnchg/apt" />
+                Content="Gitee: gitee.com/rnchg/apt"
+                NavigateUri="https://gitee.com/rnchg/apt"
+                ToolTip="Gitee: gitee.com/rnchg/apt" />
             <ui:HyperlinkButton
                 Margin="10,0,0,0"
                 Padding="4"
                 Content="Youtube: Light Cloud Wind"
-                NavigateUri="https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg/"
+                NavigateUri="https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg"
                 ToolTip="Youtube: Light Cloud Wind" />
             <ui:HyperlinkButton
                 Margin="10,0,0,0"
                 Padding="4"
                 Content="Bilibili: 风轻云也净"
-                NavigateUri="https://space.bilibili.com/478375442/"
+                NavigateUri="https://space.bilibili.com/478375442"
                 ToolTip="Bilibili: 风轻云也净" />
             <ui:HyperlinkButton
                 Margin="10,0,0,0"
                 Padding="4"
-                Content="QQ群: 293126382"
+                Content="QQ: 6085398"
                 NavigateUri="#"
-                ToolTip="QQ群: 293126382" />
+                ToolTip="QQ: 6085398" />
         </StackPanel>
     </Grid>
 </Page>

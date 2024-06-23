@@ -156,13 +156,13 @@
                     Background="Transparent"
                     BorderThickness="0,1,0,1"
                     CornerRadius="0"
-                    NavigateUri="https://github.com/rnchg/apt/">
+                    NavigateUri="https://github.com/rnchg/apt">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Github: https://github.com/rnchg/apt" />
+                        <TextBlock Grid.Column="0" Text="Github: github.com/rnchg/Apt" />
                         <ui:SymbolIcon Grid.Column="1" Symbol="Link24" />
                     </Grid>
                 </ui:Anchor>
@@ -174,13 +174,13 @@
                     Background="Transparent"
                     BorderThickness="0,1,0,1"
                     CornerRadius="0"
-                    NavigateUri="https://gitee.com/rnchg/apt/">
+                    NavigateUri="https://gitee.com/rnchg/apt">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Gitee: https://gitee.com/rnchg/apt" />
+                        <TextBlock Grid.Column="0" Text="Gitee: gitee.com/rnchg/apt" />
                         <ui:SymbolIcon Grid.Column="1" Symbol="Link24" />
                     </Grid>
                 </ui:Anchor>
@@ -192,7 +192,7 @@
                     Background="Transparent"
                     BorderThickness="0,1,0,1"
                     CornerRadius="0"
-                    NavigateUri="https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg/">
+                    NavigateUri="https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -210,7 +210,7 @@
                     Background="Transparent"
                     BorderThickness="0,1,0,1"
                     CornerRadius="0"
-                    NavigateUri="https://space.bilibili.com/478375442/">
+                    NavigateUri="https://space.bilibili.com/478375442">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -234,7 +234,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="QQ群: 293126382" />
+                        <TextBlock Grid.Column="0" Text="QQ: 6085398" />
                         <ui:SymbolIcon Grid.Column="1" Symbol="Link24" />
                     </Grid>
                 </ui:Anchor>
