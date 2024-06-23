@@ -16,7 +16,7 @@ Free and open-source, aimed at improving user productivity while ensuring privac
 
 Integrates multiple AI models, enabling users to conduct ChatGPT conversations and efficiently batch process images and videos offline locally.
 
-### ChatGPT Conversation
+### ChatGPT
 - Supports local operation of ChatGPT models, allowing users to have intelligent conversations anytime.
 
 ### Image Processing

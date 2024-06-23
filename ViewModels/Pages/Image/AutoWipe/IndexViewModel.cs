@@ -48,13 +48,19 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
         {
             try
             {
-                if (!Directory.Exists(Input) || InputSortItem == null || SortRuleItem == null) return;
-                var file = _indexService.GetFileFirst(Input, InputSort, SortRule);
-                var image = new BitmapImage();
-                image.BeginInit();
-                image.UriSource = new Uri(file);
-                image.EndInit();
-                InputImageFirst = image;
+                if (!Directory.Exists(Input) || InputSortItem == null || SortRuleItem == null)
+                {
+                    InputImageFirst = null;
+                }
+                else
+                {
+                    var file = _indexService.GetFileFirst(Input, InputSort, SortRule);
+                    var image = new BitmapImage();
+                    image.BeginInit();
+                    image.UriSource = new Uri(file);
+                    image.EndInit();
+                    InputImageFirst = image;
+                }
             }
             catch (Exception ex)
             {

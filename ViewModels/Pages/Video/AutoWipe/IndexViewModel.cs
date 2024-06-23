@@ -50,15 +50,21 @@ namespace General.Apt.App.ViewModels.Pages.Video.AutoWipe
         {
             try
             {
-                if (!Directory.Exists(Input) || InputSortItem == null || SortRuleItem == null) return;
-                var file = _indexService.GetFileFirst(Input, InputSort, SortRule);
-                using var video = new VideoCapture();
-                var mat = new Mat();
-                video.Open(file);
-                while (video.Read(mat))
+                if (!Directory.Exists(Input) || InputSortItem == null || SortRuleItem == null)
                 {
-                    InputImageFirst = mat.ToBytes().ToImage() as BitmapImage;
-                    break;
+                    InputImageFirst = null;
+                }
+                else
+                {
+                    var file = _indexService.GetFileFirst(Input, InputSort, SortRule);
+                    using var video = new VideoCapture();
+                    var mat = new Mat();
+                    video.Open(file);
+                    while (video.Read(mat))
+                    {
+                        InputImageFirst = mat.ToBytes().ToImage() as BitmapImage;
+                        break;
+                    }
                 }
             }
             catch (Exception ex)
