@@ -40,6 +40,14 @@ Will continue to integrate and update more AI functional modules to meet diverse
 - **Full version**: includes all functions.
 - **Lite version**: includes all functions except \[ ChatGPT \].
 
+### Technical Support
+- **Email**: [Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
+- **Github**: [github.com/rnchg/Apt](https://github.com/rnchg/Apt)
+- **Gitee**: [gitee.com/rnchg/apt](https://gitee.com/rnchg/apt)
+- **YouTube**: [Light Cloud Wind](https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg)
+- **Bilibili**: [风轻云也净](https://space.bilibili.com/478375442)
+- **QQ**: 6085398
+
 ### Run interface
 Home
 ![主页](.Assets/en-US/Pages/App/DashboardPage.PNG)
@@ -63,14 +71,6 @@ Video Super Resolution
 ![Video Super Resolution](.Assets/en-US/Pages/Video/SuperResolution/IndexPage.PNG)
 Video Frame Interpolation
 ![Video Frame Interpolation](.Assets/en-US/Pages/Video/FrameInterpolation/IndexPage.PNG)
-
-### Technical Support
-- **Email**: [Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
-- **Github**: [github.com/rnchg/Apt](https://github.com/rnchg/Apt)
-- **Gitee**: [gitee.com/rnchg/apt](https://gitee.com/rnchg/apt)
-- **YouTube**: [Light Cloud Wind](https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg)
-- **Bilibili**: [风轻云也净](https://space.bilibili.com/478375442)
-- **QQ**: 6085398
 
 ### Donation Support
 If you found this project useful, feel free to buy the author a cup of coffee.

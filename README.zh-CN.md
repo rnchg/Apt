@@ -39,7 +39,15 @@
 - | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [OneDrive](https://1drv.ms/f/c/15624ff2496d1e5b/Es9JrjwhI-VAh_nr-bOZDa4BnDgox1S-huJFOmpS-nKC7g?e=MULiHJ) | [谷歌云盘](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [百度云盘](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) |
 - **完整版（Full）**：包含所有功能。
 - **精简版（Lite）**：包含除【ChatGPT】之外的所有功能。
- 
+
+### 技术支持
+- **Email**：[Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
+- **Github**：[github.com/rnchg/Apt](https://github.com/rnchg/Apt)
+- **Gitee**：[gitee.com/rnchg/apt](https://gitee.com/rnchg/apt)
+- **Youtube**：[Light Cloud Wind](https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg)
+- **Bilibili**：[风轻云也净](https://space.bilibili.com/478375442)
+- **QQ**：6085398
+
 ### 运行界面
 主页
 ![主页](.Assets/zh-CN/Pages/App/DashboardPage.PNG)
@@ -63,14 +71,6 @@ ChatGPT
 ![视频无损放大](.Assets/zh-CN/Pages/Video/SuperResolution/IndexPage.PNG)
 视频插值补帧
 ![视频插值补帧](.Assets/zh-CN/Pages/Video/FrameInterpolation/IndexPage.PNG)
-
-### 技术支持
-- **Email**：[Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
-- **Github**：[github.com/rnchg/Apt](https://github.com/rnchg/Apt)
-- **Gitee**：[gitee.com/rnchg/apt](https://gitee.com/rnchg/apt)
-- **Youtube**：[Light Cloud Wind](https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg)
-- **Bilibili**：[风轻云也净](https://space.bilibili.com/478375442)
-- **QQ**：6085398
 
 ### 捐赠支持
 如果您觉得这个项目有用，可以请作者喝一杯咖啡。
