@@ -36,7 +36,7 @@
 将继续集成和更新更多的AI功能模块，以满足用户的多样化需求。
 
 ### 开源及下载地址
-- | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [OneDrive](https://1drv.ms/f/c/15624ff2496d1e5b/Es9JrjwhI-VAh_nr-bOZDa4BnDgox1S-huJFOmpS-nKC7g?e=MULiHJ) | [谷歌云盘](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [百度云盘](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) |
+- | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [OneDrive](https://1drv.ms/f/c/15624ff2496d1e5b/Es9JrjwhI-VAh_nr-bOZDa4BnDgox1S-huJFOmpS-nKC7g?e=MULiHJ) | [谷歌云盘](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [百度云盘](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) | [腾讯微云](https://share.weiyun.com/vGiBjW8d) |
 - **完整版（Full）**：包含所有功能。
 - **精简版（Lite）**：包含除【ChatGPT】之外的所有功能。
 
