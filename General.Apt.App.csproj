@@ -12,19 +12,34 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include=".Assets\en-US.01.png" />
-		<None Include=".Assets\en-US.11.png" />
-		<None Include=".Assets\en-US.21.png" />
-		<None Include=".Assets\en-US.31.png" />
-		<None Include=".Assets\en-US.41.png" />
-		<None Include=".Assets\en-US.51.png" />
-		<None Include=".Assets\Pay.png" />
-		<None Include=".Assets\zh-CN.01.png" />
-		<None Include=".Assets\zh-CN.11.png" />
-		<None Include=".Assets\zh-CN.21.png" />
-		<None Include=".Assets\zh-CN.31.png" />
-		<None Include=".Assets\zh-CN.41.png" />
-		<None Include=".Assets\zh-CN.51.png" />
+	  <Content Include=".Assets\en-US\Pages\App\DashboardPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\App\SettingsPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Chat\Phi3\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Image\AutoWipe\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Image\CartoonComic\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Image\FaceRestoration\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Image\SuperResolution\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Video\CartoonComic\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Video\FrameInterpolation\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Video\Organization\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Video\SuperResolution\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Windows\MainWindow.PNG" />
+	  <Content Include=".Assets\Pay.png" />
+	  <Content Include=".Assets\zh-CN\Pages\App\DashboardPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\App\SettingsPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Chat\Phi3\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Image\AutoWipe\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Image\CartoonComic\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Image\FaceRestoration\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Image\SuperResolution\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Video\CartoonComic\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Video\FrameInterpolation\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Video\Organization\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Video\SuperResolution\IndexPage.PNG" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include=".Nuget\General.Apt.Service.2.0.0.nupkg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -33,12 +48,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="General.Apt.Service" Version="2.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
 		<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.10.0.20240616" />
 		<PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
 		<PackageReference Include="Serilog.Settings.Configuration" Version="8.0.1" />
-		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
 		<PackageReference Include="System.Management" Version="8.0.0" />
 		<PackageReference Include="WPF-UI" Version="3.0.4" />
 	</ItemGroup>

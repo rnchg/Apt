@@ -26,10 +26,10 @@
 - **图片人脸修复**：修复模糊或损坏的人脸图片，提升人脸细节。
 
 ### 视频处理
-- **视频整理合并**：将多个视频文件整理并合并为一个文件。
-- **视频插值补帧**：提升视频帧率，使视频播放更流畅。
-- **视频无损放大**：提高视频分辨率且不损失画质。
 - **视频卡通漫画**：将视频转换为卡通或漫画风格。
+- **视频整理合并**：将多个视频文件整理并合并为一个文件。
+- **视频无损放大**：提高视频分辨率且不损失画质。
+- **视频插值补帧**：提升视频帧率，使视频播放更流畅。
 - **视频擦除水印**：去除视频中的水印，恢复原始画面。
 
 ### 未来计划
@@ -42,17 +42,27 @@
  
 ### 运行界面
 主页
-![Home](.Assets/zh-CN.01.png)
+![主页](.Assets/zh-CN/Pages/App/DashboardPage.png)
 设置
-![Setting](.Assets/zh-CN.11.png)
+![设置](.Assets/zh-CN/Pages/App/SettingsPage.png)
 ChatGPT
-![ChatGPT](.Assets/zh-CN.21.png)
+![ChatGPT](.Assets/zh-CN/Pages/Chat/Phi3/IndexPage.png)
 图片无损放大
-![Image Super Resolution](.Assets/zh-CN.31.png)
-图片擦除水印
-![Image Auto Wipe](.Assets/zh-CN.41.png)
+![图片无损放大](.Assets/zh-CN/Pages/Image/SuperResolution/IndexPage.png)
 图片卡通漫画
-![Image Cartoon Comic](.Assets/zh-CN.51.png)
+![图片卡通漫画](.Assets/zh-CN/Pages/Image/CartoonComic/IndexPage.png)
+图片擦除水印
+![图片擦除水印](.Assets/zh-CN/Pages/Image/AutoWipe/IndexPage.png)
+图片人脸修复
+![图片人脸修复](.Assets/zh-CN/Pages/Image/FaceRestoration/IndexPage.png)
+视频卡通漫画
+![视频卡通漫画](.Assets/zh-CN/Pages/Video/CartoonComic/IndexPage.png)
+视频整理合并
+![视频整理合并](.Assets/zh-CN/Pages/Video/Organization/IndexPage.png)
+视频无损放大
+![视频无损放大](.Assets/zh-CN/Pages/Video/SuperResolution/IndexPage.png)
+视频插值补帧
+![视频插值补帧](.Assets/zh-CN/Pages/Video/FrameInterpolation/IndexPage.png)
 
 ### 技术支持
 - **Email**：[Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
