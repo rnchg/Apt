@@ -42,27 +42,27 @@
  
 ### 运行界面
 主页
-![主页](.Assets/zh-CN/Pages/App/DashboardPage.png)
+![主页](.Assets/zh-CN/Pages/App/DashboardPage.PNG)
 设置
-![设置](.Assets/zh-CN/Pages/App/SettingsPage.png)
+![设置](.Assets/zh-CN/Pages/App/SettingsPage.PNG)
 ChatGPT
-![ChatGPT](.Assets/zh-CN/Pages/Chat/Phi3/IndexPage.png)
+![ChatGPT](.Assets/zh-CN/Pages/Chat/Phi3/IndexPage.PNG)
 图片无损放大
-![图片无损放大](.Assets/zh-CN/Pages/Image/SuperResolution/IndexPage.png)
+![图片无损放大](.Assets/zh-CN/Pages/Image/SuperResolution/IndexPage.PNG)
 图片卡通漫画
-![图片卡通漫画](.Assets/zh-CN/Pages/Image/CartoonComic/IndexPage.png)
+![图片卡通漫画](.Assets/zh-CN/Pages/Image/CartoonComic/IndexPage.PNG)
 图片擦除水印
-![图片擦除水印](.Assets/zh-CN/Pages/Image/AutoWipe/IndexPage.png)
+![图片擦除水印](.Assets/zh-CN/Pages/Image/AutoWipe/IndexPage.PNG)
 图片人脸修复
-![图片人脸修复](.Assets/zh-CN/Pages/Image/FaceRestoration/IndexPage.png)
+![图片人脸修复](.Assets/zh-CN/Pages/Image/FaceRestoration/IndexPage.PNG)
 视频卡通漫画
-![视频卡通漫画](.Assets/zh-CN/Pages/Video/CartoonComic/IndexPage.png)
+![视频卡通漫画](.Assets/zh-CN/Pages/Video/CartoonComic/IndexPage.PNG)
 视频整理合并
-![视频整理合并](.Assets/zh-CN/Pages/Video/Organization/IndexPage.png)
+![视频整理合并](.Assets/zh-CN/Pages/Video/Organization/IndexPage.PNG)
 视频无损放大
-![视频无损放大](.Assets/zh-CN/Pages/Video/SuperResolution/IndexPage.png)
+![视频无损放大](.Assets/zh-CN/Pages/Video/SuperResolution/IndexPage.PNG)
 视频插值补帧
-![视频插值补帧](.Assets/zh-CN/Pages/Video/FrameInterpolation/IndexPage.png)
+![视频插值补帧](.Assets/zh-CN/Pages/Video/FrameInterpolation/IndexPage.PNG)
 
 ### 技术支持
 - **Email**：[Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)

@@ -42,27 +42,27 @@ Will continue to integrate and update more AI functional modules to meet diverse
 
 ### Run interface
 Home
-![主页](.Assets/en-US/Pages/App/DashboardPage.png)
+![主页](.Assets/en-US/Pages/App/DashboardPage.PNG)
 Settings
-![Settings](.Assets/en-US/Pages/App/SettingsPage.png)
+![Settings](.Assets/en-US/Pages/App/SettingsPage.PNG)
 ChatGPT
-![ChatGPT](.Assets/en-US/Pages/Chat/Phi3/IndexPage.png)
+![ChatGPT](.Assets/en-US/Pages/Chat/Phi3/IndexPage.PNG)
 Image Super Resolution
-![Image Super Resolution](.Assets/en-US/Pages/Image/SuperResolution/IndexPage.png)
+![Image Super Resolution](.Assets/en-US/Pages/Image/SuperResolution/IndexPage.PNG)
 Image Cartoon Comic
-![Image Cartoon Comic](.Assets/en-US/Pages/Image/CartoonComic/IndexPage.png)
+![Image Cartoon Comic](.Assets/en-US/Pages/Image/CartoonComic/IndexPage.PNG)
 Image Auto Wipe
-![Image Auto Wipe](.Assets/en-US/Pages/Image/AutoWipe/IndexPage.png)
+![Image Auto Wipe](.Assets/en-US/Pages/Image/AutoWipe/IndexPage.PNG)
 Video Face Restoration
-![Video Face Restoration](.Assets/en-US/Pages/Image/FaceRestoration/IndexPage.png)
+![Video Face Restoration](.Assets/en-US/Pages/Image/FaceRestoration/IndexPage.PNG)
 Video Cartoon Comic
-![Video Cartoon Comic](.Assets/en-US/Pages/Video/CartoonComic/IndexPage.png)
+![Video Cartoon Comic](.Assets/en-US/Pages/Video/CartoonComic/IndexPage.PNG)
 Video Organization
-![Video Organization](.Assets/en-US/Pages/Video/Organization/IndexPage.png)
+![Video Organization](.Assets/en-US/Pages/Video/Organization/IndexPage.PNG)
 Video Super Resolution
-![Video Super Resolution](.Assets/en-US/Pages/Video/SuperResolution/IndexPage.png)
+![Video Super Resolution](.Assets/en-US/Pages/Video/SuperResolution/IndexPage.PNG)
 Video Frame Interpolation
-![Video Frame Interpolation](.Assets/en-US/Pages/Video/FrameInterpolation/IndexPage.png)
+![Video Frame Interpolation](.Assets/en-US/Pages/Video/FrameInterpolation/IndexPage.PNG)
 
 ### Technical Support
 - **Email**: [Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
