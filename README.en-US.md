@@ -35,12 +35,12 @@ Integrates multiple AI models, enabling users to conduct ChatGPT conversations a
 ### Future Plans
 Will continue to integrate and update more AI functional modules to meet diverse user needs.
 
-### Download Links
+### Open Source and Download Links
 - | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [OneDrive](https://1drv.ms/f/c/15624ff2496d1e5b/Es9JrjwhI-VAh_nr-bOZDa4BnDgox1S-huJFOmpS-nKC7g?e=MULiHJ) | [Google Drive](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [Baidu Drive](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) |
 - **Full version**: includes all functions.
 - **Lite version**: includes all functions except \[ ChatGPT \].
 
-### Technical Support
+### Instructions and Technical Support
 - **Email**: [Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
 - **Github**: [github.com/rnchg/Apt](https://github.com/rnchg/Apt)
 - **Gitee**: [gitee.com/rnchg/apt](https://gitee.com/rnchg/apt)
