@@ -37,7 +37,7 @@ namespace General.Apt.App.ViewModels.Windows
                     Icon = new SymbolIcon { Symbol = SymbolRegular.Chat24 },
                     MenuItemsSource = new ObservableCollection<object>()
                     {
-                        new NavigationViewItem(Language.GetString("MainWindowChatChatGPT"), typeof(Views.Pages.Chat.Phi3.IndexPage))
+                        new NavigationViewItem(Language.GetString("MainWindowChatChatGPT"), typeof(Views.Pages.Chat.Gpt.IndexPage))
                     },
                     IsExpanded = true
                 },
@@ -48,8 +48,10 @@ namespace General.Apt.App.ViewModels.Windows
                     MenuItemsSource = new ObservableCollection<object>()
                     {
                         new NavigationViewItem(Language.GetString("MainWindowImageSuperResolution"), typeof(Views.Pages.Image.SuperResolution.IndexPage)),
-                        new NavigationViewItem(Language.GetString("MainWindowImageCartoonComic"), typeof(Views.Pages.Image.CartoonComic.IndexPage)),
                         new NavigationViewItem(Language.GetString("MainWindowImageAutoWipe"), typeof(Views.Pages.Image.AutoWipe.IndexPage)),
+                        new NavigationViewItem(Language.GetString("MainWindowImageCartoonComic"), typeof(Views.Pages.Image.CartoonComic.IndexPage)),
+                        new NavigationViewItem(Language.GetString("MainWindowImageConvert3d"), typeof(Views.Pages.Image.Convert3d.IndexPage)),
+                        new NavigationViewItem(Language.GetString("MainWindowImageColorRestoration"), typeof(Views.Pages.Image.ColorRestoration.IndexPage)),
                         new NavigationViewItem(Language.GetString("MainWindowImageFaceRestoration"), typeof(Views.Pages.Image.FaceRestoration.IndexPage))
                     },
                     IsExpanded = true
@@ -60,11 +62,13 @@ namespace General.Apt.App.ViewModels.Windows
                     Icon = new SymbolIcon { Symbol = SymbolRegular.Video24 },
                     MenuItemsSource = new ObservableCollection<object>()
                     {
-                        new NavigationViewItem(Language.GetString("MainWindowVideoOrganization"), typeof(Views.Pages.Video.Organization.IndexPage)),
-                        new NavigationViewItem(Language.GetString("MainWindowVideoFrameInterpolation"), typeof(Views.Pages.Video.FrameInterpolation.IndexPage)),
                         new NavigationViewItem(Language.GetString("MainWindowVideoSuperResolution"), typeof(Views.Pages.Video.SuperResolution.IndexPage)),
+                        //new NavigationViewItem(Language.GetString("MainWindowVideoAutoWipe"), typeof(Views.Pages.Video.AutoWipe.IndexPage)),
                         new NavigationViewItem(Language.GetString("MainWindowVideoCartoonComic"), typeof(Views.Pages.Video.CartoonComic.IndexPage)),
-                        //new NavigationViewItem(Language.GetString("MainWindowVideoAutoWipe"), typeof(Views.Pages.Video.AutoWipe.IndexPage))
+                        new NavigationViewItem(Language.GetString("MainWindowVideoConvert3d"), typeof(Views.Pages.Video.Convert3d.IndexPage)),
+                        new NavigationViewItem(Language.GetString("MainWindowVideoColorRestoration"), typeof(Views.Pages.Video.ColorRestoration.IndexPage)),
+                        new NavigationViewItem(Language.GetString("MainWindowVideoFrameInterpolation"), typeof(Views.Pages.Video.FrameInterpolation.IndexPage)),
+                        new NavigationViewItem(Language.GetString("MainWindowVideoOrganization"), typeof(Views.Pages.Video.Organization.IndexPage))
                     },
                     IsExpanded = true
                 },

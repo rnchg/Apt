@@ -79,20 +79,18 @@
                 Padding="0"
                 VerticalAlignment="Stretch"
                 Command="{Binding ViewModel.CardClickCommand}"
-                CommandParameter="Chat.Phi3.IndexPage"
+                CommandParameter="Chat.Gpt.IndexPage"
                 IsChevronVisible="False">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-
                     <ui:SymbolIcon
                         Width="60"
                         Margin="24,0,0,0"
                         FontSize="32"
                         Symbol="Chat24" />
-
                     <StackPanel
                         Grid.Column="1"
                         Margin="24"
@@ -162,42 +160,6 @@
                 Padding="0"
                 VerticalAlignment="Stretch"
                 Command="{Binding ViewModel.CardClickCommand}"
-                CommandParameter="Image.CartoonComic.IndexPage"
-                IsChevronVisible="False">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <ui:SymbolIcon
-                        Width="60"
-                        Margin="24,0,0,0"
-                        FontSize="32"
-                        Symbol="VideoPerson24" />
-                    <StackPanel
-                        Grid.Column="1"
-                        Margin="24"
-                        VerticalAlignment="Center">
-                        <ui:TextBlock
-                            Margin="0"
-                            FontTypography="BodyStrong"
-                            Text="{Binding [DashboardPageImageCartoonComic], Source={x:Static su:Language.Instance}}"
-                            TextWrapping="WrapWithOverflow" />
-                        <ui:TextBlock
-                            Appearance="Tertiary"
-                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                            Text="{Binding [DashboardPageImageCartoonComicDescription], Source={x:Static su:Language.Instance}}"
-                            TextWrapping="WrapWithOverflow" />
-                    </StackPanel>
-                </Grid>
-            </ui:CardAction>
-            <ui:CardAction
-                Grid.Row="0"
-                Grid.Column="2"
-                Margin="4,0,4,0"
-                Padding="0"
-                VerticalAlignment="Stretch"
-                Command="{Binding ViewModel.CardClickCommand}"
                 CommandParameter="Image.AutoWipe.IndexPage"
                 IsChevronVisible="False">
                 <Grid>
@@ -228,9 +190,117 @@
                 </Grid>
             </ui:CardAction>
             <ui:CardAction
+                Grid.Row="0"
+                Grid.Column="2"
+                Margin="4,0,4,0"
+                Padding="0"
+                VerticalAlignment="Stretch"
+                Command="{Binding ViewModel.CardClickCommand}"
+                CommandParameter="Image.CartoonComic.IndexPage"
+                IsChevronVisible="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ui:SymbolIcon
+                        Width="60"
+                        Margin="24,0,0,0"
+                        FontSize="32"
+                        Symbol="VideoPerson24" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="24"
+                        VerticalAlignment="Center">
+                        <ui:TextBlock
+                            Margin="0"
+                            FontTypography="BodyStrong"
+                            Text="{Binding [DashboardPageImageCartoonComic], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                        <ui:TextBlock
+                            Appearance="Tertiary"
+                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                            Text="{Binding [DashboardPageImageCartoonComicDescription], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                    </StackPanel>
+                </Grid>
+            </ui:CardAction>
+            <ui:CardAction
                 Grid.Row="1"
                 Grid.Column="0"
                 Margin="0,0,4,0"
+                Padding="0"
+                VerticalAlignment="Stretch"
+                Command="{Binding ViewModel.CardClickCommand}"
+                CommandParameter="Image.Convert3d.IndexPage"
+                IsChevronVisible="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ui:SymbolIcon
+                        Width="60"
+                        Margin="24,0,0,0"
+                        FontSize="32"
+                        Symbol="CommunicationPerson24" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="24"
+                        VerticalAlignment="Center">
+                        <ui:TextBlock
+                            Margin="0"
+                            FontTypography="BodyStrong"
+                            Text="{Binding [DashboardPageImageConvert3d], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                        <ui:TextBlock
+                            Appearance="Tertiary"
+                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                            Text="{Binding [DashboardPageImageConvert3dDescription], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                    </StackPanel>
+                </Grid>
+            </ui:CardAction>
+            <ui:CardAction
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="4,0,4,0"
+                Padding="0"
+                VerticalAlignment="Stretch"
+                Command="{Binding ViewModel.CardClickCommand}"
+                CommandParameter="Image.ColorRestoration.IndexPage"
+                IsChevronVisible="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ui:SymbolIcon
+                        Width="60"
+                        Margin="24,0,0,0"
+                        FontSize="32"
+                        Symbol="VideoPersonSparkle24" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="24"
+                        VerticalAlignment="Center">
+                        <ui:TextBlock
+                            Margin="0"
+                            FontTypography="BodyStrong"
+                            Text="{Binding [DashboardPageImageColorRestoration], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                        <ui:TextBlock
+                            Appearance="Tertiary"
+                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                            Text="{Binding [DashboardPageImageColorRestorationDescription], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                    </StackPanel>
+                </Grid>
+            </ui:CardAction>
+            <ui:CardAction
+                Grid.Row="1"
+                Grid.Column="2"
+                Margin="4,0,4,0"
                 Padding="0"
                 VerticalAlignment="Stretch"
                 Command="{Binding ViewModel.CardClickCommand}"
@@ -245,7 +315,7 @@
                         Width="60"
                         Margin="24,0,0,0"
                         FontSize="32"
-                        Symbol="VideoPersonSparkle24" />
+                        Symbol="PersonBoard24" />
                     <StackPanel
                         Grid.Column="1"
                         Margin="24"
@@ -281,7 +351,7 @@
                 Padding="0"
                 VerticalAlignment="Stretch"
                 Command="{Binding ViewModel.CardClickCommand}"
-                CommandParameter="Video.Organization.IndexPage"
+                CommandParameter="Video.SuperResolution.IndexPage"
                 IsChevronVisible="False">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -292,7 +362,7 @@
                         Width="60"
                         Margin="24,0,0,0"
                         FontSize="32"
-                        Symbol="VideoClip24" />
+                        Symbol="Video24" />
                     <StackPanel
                         Grid.Column="1"
                         Margin="24"
@@ -300,17 +370,162 @@
                         <ui:TextBlock
                             Margin="0"
                             FontTypography="BodyStrong"
-                            Text="{Binding [DashboardPageVideoOrganization], Source={x:Static su:Language.Instance}}"
+                            Text="{Binding [DashboardPageVideoSuperResolution], Source={x:Static su:Language.Instance}}"
                             TextWrapping="WrapWithOverflow" />
                         <ui:TextBlock
                             Appearance="Tertiary"
-                            Text="{Binding [DashboardPageVideoOrganizationDescription], Source={x:Static su:Language.Instance}}"
+                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                            Text="{Binding [DashboardPageVideoSuperResolutionDescription], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                    </StackPanel>
+                </Grid>
+            </ui:CardAction>
+            <!--<ui:CardAction
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="4,0,4,0"
+                Padding="0"
+                VerticalAlignment="Stretch"
+                Command="{Binding ViewModel.CardClickCommand}"
+                CommandParameter="Video.AutoWipe.IndexPage"
+                IsChevronVisible="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ui:SymbolIcon
+                        Width="60"
+                        Margin="24,0,0,0"
+                        FontSize="32"
+                        Symbol="Video36024" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="24"
+                        VerticalAlignment="Center">
+                        <ui:TextBlock
+                            Margin="0"
+                            FontTypography="BodyStrong"
+                            Text="{Binding [DashboardPageVideoAutoWipe], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                        <ui:TextBlock
+                            Appearance="Tertiary"
+                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                            Text="{Binding [DashboardPageVideoAutoWipeDescription], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                    </StackPanel>
+                </Grid>
+            </ui:CardAction>-->
+            <ui:CardAction
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="4,0,4,0"
+                Padding="0"
+                VerticalAlignment="Stretch"
+                Command="{Binding ViewModel.CardClickCommand}"
+                CommandParameter="Video.CartoonComic.IndexPage"
+                IsChevronVisible="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ui:SymbolIcon
+                        Width="60"
+                        Margin="24,0,0,0"
+                        FontSize="32"
+                        Symbol="VideoPerson24" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="24"
+                        VerticalAlignment="Center">
+                        <ui:TextBlock
+                            Margin="0"
+                            FontTypography="BodyStrong"
+                            Text="{Binding [DashboardPageVideoCartoonComic], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                        <ui:TextBlock
+                            Appearance="Tertiary"
+                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                            Text="{Binding [DashboardPageVideoCartoonComicDescription], Source={x:Static su:Language.Instance}}"
                             TextWrapping="WrapWithOverflow" />
                     </StackPanel>
                 </Grid>
             </ui:CardAction>
             <ui:CardAction
                 Grid.Row="0"
+                Grid.Column="2"
+                Margin="4,0,4,0"
+                Padding="0"
+                VerticalAlignment="Stretch"
+                Command="{Binding ViewModel.CardClickCommand}"
+                CommandParameter="Video.Convert3d.IndexPage"
+                IsChevronVisible="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ui:SymbolIcon
+                        Width="60"
+                        Margin="24,0,0,0"
+                        FontSize="32"
+                        Symbol="CommunicationPerson24" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="24"
+                        VerticalAlignment="Center">
+                        <ui:TextBlock
+                            Margin="0"
+                            FontTypography="BodyStrong"
+                            Text="{Binding [DashboardPageVideoConvert3d], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                        <ui:TextBlock
+                            Appearance="Tertiary"
+                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                            Text="{Binding [DashboardPageVideoConvert3dDescription], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                    </StackPanel>
+                </Grid>
+            </ui:CardAction>
+            <ui:CardAction
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="0,0,4,0"
+                Padding="0"
+                VerticalAlignment="Stretch"
+                Command="{Binding ViewModel.CardClickCommand}"
+                CommandParameter="Video.ColorRestoration.IndexPage"
+                IsChevronVisible="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ui:SymbolIcon
+                        Width="60"
+                        Margin="24,0,0,0"
+                        FontSize="32"
+                        Symbol="VideoPersonSparkle24" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Margin="24"
+                        VerticalAlignment="Center">
+                        <ui:TextBlock
+                            Margin="0"
+                            FontTypography="BodyStrong"
+                            Text="{Binding [DashboardPageVideoColorRestoration], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                        <ui:TextBlock
+                            Appearance="Tertiary"
+                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                            Text="{Binding [DashboardPageVideoColorRestorationDescription], Source={x:Static su:Language.Instance}}"
+                            TextWrapping="WrapWithOverflow" />
+                    </StackPanel>
+                </Grid>
+            </ui:CardAction>
+            <ui:CardAction
+                Grid.Row="1"
                 Grid.Column="1"
                 Margin="4,0,4,0"
                 Padding="0"
@@ -346,13 +561,13 @@
                 </Grid>
             </ui:CardAction>
             <ui:CardAction
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="2"
                 Margin="4,0,4,0"
                 Padding="0"
                 VerticalAlignment="Stretch"
                 Command="{Binding ViewModel.CardClickCommand}"
-                CommandParameter="Video.SuperResolution.IndexPage"
+                CommandParameter="Video.Organization.IndexPage"
                 IsChevronVisible="False">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -363,7 +578,7 @@
                         Width="60"
                         Margin="24,0,0,0"
                         FontSize="32"
-                        Symbol="Video24" />
+                        Symbol="VideoClip24" />
                     <StackPanel
                         Grid.Column="1"
                         Margin="24"
@@ -371,95 +586,22 @@
                         <ui:TextBlock
                             Margin="0"
                             FontTypography="BodyStrong"
-                            Text="{Binding [DashboardPageVideoSuperResolution], Source={x:Static su:Language.Instance}}"
+                            Text="{Binding [DashboardPageVideoOrganization], Source={x:Static su:Language.Instance}}"
                             TextWrapping="WrapWithOverflow" />
                         <ui:TextBlock
                             Appearance="Tertiary"
-                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                            Text="{Binding [DashboardPageVideoSuperResolutionDescription], Source={x:Static su:Language.Instance}}"
+                            Text="{Binding [DashboardPageVideoOrganizationDescription], Source={x:Static su:Language.Instance}}"
                             TextWrapping="WrapWithOverflow" />
                     </StackPanel>
                 </Grid>
             </ui:CardAction>
-            <ui:CardAction
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="0,0,4,0"
-                Padding="0"
-                VerticalAlignment="Stretch"
-                Command="{Binding ViewModel.CardClickCommand}"
-                CommandParameter="Video.CartoonComic.IndexPage"
-                IsChevronVisible="False">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <ui:SymbolIcon
-                        Width="60"
-                        Margin="24,0,0,0"
-                        FontSize="32"
-                        Symbol="VideoPerson24" />
-                    <StackPanel
-                        Grid.Column="1"
-                        Margin="24"
-                        VerticalAlignment="Center">
-                        <ui:TextBlock
-                            Margin="0"
-                            FontTypography="BodyStrong"
-                            Text="{Binding [DashboardPageVideoCartoonComic], Source={x:Static su:Language.Instance}}"
-                            TextWrapping="WrapWithOverflow" />
-                        <ui:TextBlock
-                            Appearance="Tertiary"
-                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                            Text="{Binding [DashboardPageVideoCartoonComicDescription], Source={x:Static su:Language.Instance}}"
-                            TextWrapping="WrapWithOverflow" />
-                    </StackPanel>
-                </Grid>
-            </ui:CardAction>
-            <!--<ui:CardAction
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="0,0,4,0"
-                Padding="0"
-                VerticalAlignment="Stretch"
-                Command="{Binding ViewModel.CardClickCommand}"
-                CommandParameter="Video.AutoWipe.IndexPage"
-                IsChevronVisible="False">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <ui:SymbolIcon
-                        Width="60"
-                        Margin="24,0,0,0"
-                        FontSize="32"
-                        Symbol="Video36024" />
-                    <StackPanel
-                        Grid.Column="1"
-                        Margin="24"
-                        VerticalAlignment="Center">
-                        <ui:TextBlock
-                            Margin="0"
-                            FontTypography="BodyStrong"
-                            Text="{Binding [DashboardPageVideoAutoWipe], Source={x:Static su:Language.Instance}}"
-                            TextWrapping="WrapWithOverflow" />
-                        <ui:TextBlock
-                            Appearance="Tertiary"
-                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                            Text="{Binding [DashboardPageVideoAutoWipeDescription], Source={x:Static su:Language.Instance}}"
-                            TextWrapping="WrapWithOverflow" />
-                    </StackPanel>
-                </Grid>
-            </ui:CardAction>-->
         </Grid>
         <StackPanel Grid.Row="4" Margin="0,10,0,0">
             <TextBlock
-                Margin="0,20"
+                Margin="0,10"
                 FontSize="20"
                 FontWeight="DemiBold"
-                Text="{Binding [ApplicationContactUs], Source={x:Static su:Language.Instance}}" />
+                Text="{Binding [ApplicationSupport], Source={x:Static su:Language.Instance}}" />
             <ui:HyperlinkButton
                 Margin="10,0,0,0"
                 Padding="4"

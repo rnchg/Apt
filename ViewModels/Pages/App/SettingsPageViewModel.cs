@@ -141,15 +141,19 @@ namespace General.Apt.App.ViewModels.Pages.App
             Service.Utility.Language.Instance.UpdateLanguage(Language);
             Apt.App.App.Current.GetRequiredService<MainWindowViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<SettingsPageViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.Organization.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.FrameInterpolation.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.SuperResolution.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.AutoWipe.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.CartoonComic.IndexViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Image.SuperResolution.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Image.FaceRestoration.IndexViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Image.AutoWipe.IndexViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Image.CartoonComic.IndexViewModel>().InitializeViewModel();
+            Apt.App.App.Current.GetRequiredService<Image.Convert3d.IndexViewModel>().InitializeViewModel();
+            Apt.App.App.Current.GetRequiredService<Image.ColorRestoration.IndexViewModel>().InitializeViewModel();
+            Apt.App.App.Current.GetRequiredService<Image.FaceRestoration.IndexViewModel>().InitializeViewModel();
+            Apt.App.App.Current.GetRequiredService<Video.SuperResolution.IndexViewModel>().InitializeViewModel();
+            //Apt.App.App.Current.GetRequiredService<Video.AutoWipe.IndexViewModel>().InitializeViewModel();
+            Apt.App.App.Current.GetRequiredService<Video.CartoonComic.IndexViewModel>().InitializeViewModel();
+            Apt.App.App.Current.GetRequiredService<Video.Convert3d.IndexViewModel>().InitializeViewModel();
+            Apt.App.App.Current.GetRequiredService<Video.ColorRestoration.IndexViewModel>().InitializeViewModel();
+            Apt.App.App.Current.GetRequiredService<Video.FrameInterpolation.IndexViewModel>().InitializeViewModel();
+            Apt.App.App.Current.GetRequiredService<Video.Organization.IndexViewModel>().InitializeViewModel();
             AppHostService.GetSetting();
         }
     }

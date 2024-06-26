@@ -1,11 +1,11 @@
 ﻿<Page
-    x:Class="General.Apt.App.Views.Pages.Chat.Phi3.IndexPage"
+    x:Class="General.Apt.App.Views.Pages.Chat.Gpt.IndexPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:General.Apt.App.Views.Pages.Chat.Phi3"
+    xmlns:local="clr-namespace:General.Apt.App.Views.Pages.Chat.Gpt"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="clr-namespace:General.Apt.App.ViewModels.Pages.Chat.Phi3"
+    xmlns:models="clr-namespace:General.Apt.App.ViewModels.Pages.Chat.Gpt"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:su="clr-namespace:General.Apt.Service.Utility;assembly=General.Apt.Service"
     Title="HomeView"
@@ -124,7 +124,7 @@
             Grid.Row="0"
             Padding="10"
             BorderThickness="0"
-            Header="{Binding [ChatPhi3IndexPageHistory], Source={x:Static su:Language.Instance}}">
+            Header="{Binding [ChatGptIndexPageHistory], Source={x:Static su:Language.Instance}}">
             <Grid>
                 <ItemsControl
                     x:Name="MessagesItemsCtrl"
@@ -149,7 +149,7 @@
             Grid.Row="1"
             Padding="10"
             BorderThickness="0"
-            Header="{Binding [ChatPhi3IndexPageMessage], Source={x:Static su:Language.Instance}}">
+            Header="{Binding [ChatGptIndexPageMessage], Source={x:Static su:Language.Instance}}">
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="80" />
@@ -163,7 +163,7 @@
                     VerticalAlignment="Center"
                     Appearance="Danger"
                     Command="{Binding ViewModel.SetNewCommand}"
-                    Content="{Binding [ChatPhi3IndexPageRestart], Source={x:Static su:Language.Instance}}"
+                    Content="{Binding [ChatGptIndexPageRestart], Source={x:Static su:Language.Instance}}"
                     IsEnabled="{Binding ViewModel.NewEnabled}" />
                 <ui:TextBox
                     Grid.Column="1"
@@ -177,7 +177,7 @@
                     VerticalAlignment="Center"
                     Appearance="Info"
                     Command="{Binding ViewModel.SetSendCommand}"
-                    Content="{Binding [ChatPhi3IndexPageSend], Source={x:Static su:Language.Instance}}"
+                    Content="{Binding [ChatGptIndexPageSend], Source={x:Static su:Language.Instance}}"
                     IsDefault="True"
                     IsEnabled="{Binding ViewModel.SendEnabled}" />
             </Grid>

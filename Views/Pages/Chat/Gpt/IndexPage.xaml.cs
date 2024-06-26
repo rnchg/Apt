@@ -1,10 +1,10 @@
-﻿using General.Apt.App.ViewModels.Pages.Chat.Phi3;
-using General.Apt.Service.Services.Pages.Chat.Phi3;
+﻿using General.Apt.App.ViewModels.Pages.Chat.Gpt;
+using General.Apt.Service.Services.Pages.Chat.Gpt;
 using System.Collections.Specialized;
 using System.Windows.Controls;
 using Wpf.Ui.Controls;
 
-namespace General.Apt.App.Views.Pages.Chat.Phi3
+namespace General.Apt.App.Views.Pages.Chat.Gpt
 {
     /// <summary>
     /// IndexPage.xaml 的交互逻辑
@@ -25,7 +25,7 @@ namespace General.Apt.App.Views.Pages.Chat.Phi3
 
         public void InitializeData()
         {
-            ViewModel.ChatHistory.Add(new ChatMessage() { Text = Service.Utility.Language.GetString("ChatPhi3Help"), IsOriginNative = false });
+            ViewModel.ChatHistory.Add(new ChatMessage() { Text = Service.Utility.Language.GetString("ChatGptHelp"), IsOriginNative = false });
 
             ViewModel.ChatHistory.CollectionChanged += ChatHistory_CollectionChanged;
         }

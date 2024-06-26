@@ -14,37 +14,36 @@
 	<ItemGroup>
 	  <Content Include=".Assets\en-US\Pages\App\DashboardPage.PNG" />
 	  <Content Include=".Assets\en-US\Pages\App\SettingsPage.PNG" />
-	  <Content Include=".Assets\en-US\Pages\Chat\Phi3\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Chat\Gpt\IndexPage.PNG" />
 	  <Content Include=".Assets\en-US\Pages\Image\AutoWipe\IndexPage.PNG" />
 	  <Content Include=".Assets\en-US\Pages\Image\CartoonComic\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Image\ColorRestoration\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Image\Convert3d\IndexPage.PNG" />
 	  <Content Include=".Assets\en-US\Pages\Image\FaceRestoration\IndexPage.PNG" />
 	  <Content Include=".Assets\en-US\Pages\Image\SuperResolution\IndexPage.PNG" />
 	  <Content Include=".Assets\en-US\Pages\Video\CartoonComic\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Video\ColorRestoration\IndexPage.PNG" />
+	  <Content Include=".Assets\en-US\Pages\Video\Convert3d\IndexPage.PNG" />
 	  <Content Include=".Assets\en-US\Pages\Video\FrameInterpolation\IndexPage.PNG" />
 	  <Content Include=".Assets\en-US\Pages\Video\Organization\IndexPage.PNG" />
 	  <Content Include=".Assets\en-US\Pages\Video\SuperResolution\IndexPage.PNG" />
-	  <Content Include=".Assets\en-US\Windows\MainWindow.PNG" />
 	  <Content Include=".Assets\Pay.png" />
 	  <Content Include=".Assets\zh-CN\Pages\App\DashboardPage.PNG" />
 	  <Content Include=".Assets\zh-CN\Pages\App\SettingsPage.PNG" />
-	  <Content Include=".Assets\zh-CN\Pages\Chat\Phi3\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Chat\Gpt\IndexPage.PNG" />
 	  <Content Include=".Assets\zh-CN\Pages\Image\AutoWipe\IndexPage.PNG" />
 	  <Content Include=".Assets\zh-CN\Pages\Image\CartoonComic\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Image\ColorRestoration\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Image\Convert3d\IndexPage.PNG" />
 	  <Content Include=".Assets\zh-CN\Pages\Image\FaceRestoration\IndexPage.PNG" />
 	  <Content Include=".Assets\zh-CN\Pages\Image\SuperResolution\IndexPage.PNG" />
 	  <Content Include=".Assets\zh-CN\Pages\Video\CartoonComic\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Video\ColorRestoration\IndexPage.PNG" />
+	  <Content Include=".Assets\zh-CN\Pages\Video\Convert3d\IndexPage.PNG" />
 	  <Content Include=".Assets\zh-CN\Pages\Video\FrameInterpolation\IndexPage.PNG" />
 	  <Content Include=".Assets\zh-CN\Pages\Video\Organization\IndexPage.PNG" />
 	  <Content Include=".Assets\zh-CN\Pages\Video\SuperResolution\IndexPage.PNG" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Include=".Nuget\General.Apt.Service.2.0.0.nupkg" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Resource Include="Resources\App.ico" />
-		<Resource Include="Resources\Dashboard.jpg" />
+	  <Content Include="Resources\App.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -87,6 +86,10 @@
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include=".Nuget\" />
 	</ItemGroup>
 
 </Project>

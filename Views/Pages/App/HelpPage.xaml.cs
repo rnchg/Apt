@@ -15,7 +15,6 @@ namespace General.Apt.App.Views.Pages.App
             DataContext = this;
 
             InitializeComponent();
-
             InitializeData();
         }
 

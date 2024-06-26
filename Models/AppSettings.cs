@@ -6,6 +6,6 @@
     }
     public class App
     {
-        public string ActivationCode { get; set; }
+        public string Pack { get; set; }
     }
 }

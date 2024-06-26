@@ -1,14 +1,17 @@
-﻿using General.Apt.Service.Consts;
-using General.Apt.Service.Services.Pages.Chat.Phi3;
+﻿using General.Apt.App.Models;
+using General.Apt.Service.Consts;
+using General.Apt.Service.Services.Pages.Chat.Gpt;
 using General.Apt.Service.Utility;
 using Microsoft.Extensions.Logging;
 using System.Windows.Documents;
 using Wpf.Ui.Controls;
 
-namespace General.Apt.App.ViewModels.Pages.Chat.Phi3
+namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
 {
     public partial class IndexViewModel : ObservableValidator, INavigationAware
     {
+        private readonly AppSettings _appSettings;
+
         private bool _isInitialized = false;
         private IndexService _indexService;
 
@@ -38,8 +41,9 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Phi3
         [RelayCommand]
         private void SetSend() => Send();
 
-        public IndexViewModel()
+        public IndexViewModel(AppSettings appSettings)
         {
+            _appSettings = appSettings;
             if (!_isInitialized) InitializeViewModel();
         }
 
@@ -63,20 +67,22 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Phi3
         {
             try
             {
-                //Lite
-                //Placeholder = Language.GetString("ChatPhi3IndexPageLite");
-                //return;
-
-                ////Full
-                Placeholder = Language.GetString("ChatPhi3IndexPageModelInitWait");
-                _indexService = new IndexService();
-                NewEnabled = true;
-                SendEnabled = true;
-                Placeholder = Language.GetString("ChatPhi3IndexPageInputPrompt");
+                if (_appSettings.App.Pack == "Full")
+                {
+                    Placeholder = Language.GetString("ChatGptIndexPageModelInitWait");
+                    _indexService = new IndexService();
+                    NewEnabled = true;
+                    SendEnabled = true;
+                    Placeholder = Language.GetString("ChatGptIndexPageInputPrompt");
+                }
+                else
+                {
+                    Placeholder = Language.GetString("ChatGptIndexPageLite");
+                }
             }
             catch (Exception ex)
             {
-                Placeholder = Language.GetString("ChatPhi3IndexPageModelInitFailed");
+                Placeholder = Language.GetString("ChatGptIndexPageModelInitFailed");
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Utility.Message.ShowSnackbarError(ex.Message);
@@ -87,12 +93,12 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Phi3
 
         private void Send()
         {
-            Placeholder = Language.GetString("ChatPhi3IndexPageModelProcessWait");
+            Placeholder = Language.GetString("ChatGptIndexPageModelProcessWait");
             NewEnabled = false;
             SendEnabled = false;
-            var userMessage = new ChatMessage() { Author = ChatConst.Phi3.UserAuthor, Text = UserMessage, IsOriginNative = true };
+            var userMessage = new ChatMessage() { Author = ChatConst.Gpt.UserAuthor, Text = UserMessage, IsOriginNative = true };
             ChatHistory.Add(userMessage);
-            var aiMessage = new ChatMessage() { Author = ChatConst.Phi3.AiAuthor, Text = string.Empty, IsOriginNative = false };
+            var aiMessage = new ChatMessage() { Author = ChatConst.Gpt.AiAuthor, Text = string.Empty, IsOriginNative = false };
             ChatHistory.Add(aiMessage);
             Task.Run(() => RunModel(ChatHistory));
             UserMessage = string.Empty;
@@ -102,15 +108,15 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Phi3
         {
             try
             {
-                Placeholder = Language.GetString("ChatPhi3IndexPageModelProcessWait");
+                Placeholder = Language.GetString("ChatGptIndexPageModelProcessWait");
                 _indexService.Start(chatHistory.ToArray());
                 NewEnabled = true;
                 SendEnabled = true;
-                Placeholder = Language.GetString("ChatPhi3IndexPageInputPrompt");
+                Placeholder = Language.GetString("ChatGptIndexPageInputPrompt");
             }
             catch (Exception ex)
             {
-                Placeholder = Language.GetString("ChatPhi3IndexPageModelInitFailed");
+                Placeholder = Language.GetString("ChatGptIndexPageModelInitFailed");
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Utility.Message.ShowSnackbarError(ex.Message);
