@@ -33,8 +33,6 @@ namespace General.Apt.App.Services
 
         public static void GetSetting()
         {
-            Language.Instance.UpdateLanguage(Current.Config.App.Language);
-
             var imageSuperResolutionViewModel = App.Current.GetService<ViewModels.Pages.Image.SuperResolution.IndexViewModel>();
             imageSuperResolutionViewModel.Input = Current.Config.ImageSuperResolution.Input;
             imageSuperResolutionViewModel.Output = Current.Config.ImageSuperResolution.Output;
@@ -289,7 +287,8 @@ namespace General.Apt.App.Services
             {
                 return;
             }
-            _serviceProvider.GetService<SettingsPageViewModel>().InitializeViewModel();
+            var settings = _serviceProvider.GetService<SettingsPageViewModel>();
+            settings.Language = Current.Config.App.CurrentLanguage;
             _ = mainWindow.NavigationView.Navigate(typeof(DashboardPage));
             _ = Validate.ValidateLicense();
         }

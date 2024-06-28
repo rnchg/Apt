@@ -71,7 +71,7 @@ namespace General.Apt.App.ViewModels.Pages.App
         partial void OnLanguageItemChanged(ComBoBoxItem<string, string> value)
         {
             if (value?.Item == null) return;
-            Current.Config.App.Language = Language;
+            Current.Config.App.CurrentLanguage = Language;
             UpdateLanguage();
         }
 
@@ -129,7 +129,6 @@ namespace General.Apt.App.ViewModels.Pages.App
 
             Theme = Current.Config.App.Theme;
             NavigationStyle = Current.Config.App.NavigationStyle;
-            Language = Current.Config.App.Language;
             IsAutoOpenOutput = Current.Config.App.IsAutoOpenOutput;
 
             _isInitialized = true;
@@ -137,8 +136,8 @@ namespace General.Apt.App.ViewModels.Pages.App
 
         private void UpdateLanguage()
         {
-            if (Language == Service.Utility.Language.Instance.Name) return;
-            Service.Utility.Language.Instance.UpdateLanguage(Language);
+            if (Current.Config.App.CurrentLanguage == Service.Utility.Language.Instance.Name) return;
+            Service.Utility.Language.Instance.UpdateLanguage(Current.Config.App.CurrentLanguage);
             Apt.App.App.Current.GetRequiredService<MainWindowViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<SettingsPageViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Image.SuperResolution.IndexViewModel>().InitializeViewModel();
@@ -154,6 +153,7 @@ namespace General.Apt.App.ViewModels.Pages.App
             Apt.App.App.Current.GetRequiredService<Video.ColorRestoration.IndexViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Video.FrameInterpolation.IndexViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Video.Organization.IndexViewModel>().InitializeViewModel();
+            Language = Service.Utility.Language.Instance.Name;
             AppHostService.GetSetting();
         }
     }

@@ -12,6 +12,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove=".Nuget\**" />
+	  <EmbeddedResource Remove=".Nuget\**" />
+	  <None Remove=".Nuget\**" />
+	  <Page Remove=".Nuget\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Include=".Assets\en-US\Pages\App\DashboardPage.PNG" />
 	  <Content Include=".Assets\en-US\Pages\App\SettingsPage.PNG" />
 	  <Content Include=".Assets\en-US\Pages\Chat\Gpt\IndexPage.PNG" />
@@ -86,10 +93,6 @@
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
 		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include=".Nuget\" />
 	</ItemGroup>
 
 </Project>
