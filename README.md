@@ -17,18 +17,18 @@ Integrates various latest AI models that can be used in a local offline environm
 - Provides a locally offline ChatGPT model for enjoying intelligent AI conversations anytime, anywhere.
 
 ### Image Processing
-- **Image Super-Resolution**: Enhances image resolution without compromising quality.
+- **Super-Resolution**: Enhances image resolution without compromising quality.
 - **Auto Wipe**: Removes watermarks, subtitles, and logos from images, restoring the original picture.
 - **Cartoon and Comic Conversion**: Converts images to vibrant cartoon or comic styles.
-- **3D Image Conversion**: Converts images to realistic 3D scenes.
+- **3D Conversion**: Converts images to realistic 3D scenes.
 - **Color Restoration**: Recolors old photos, giving them a new life.
 - **Face Restoration**: Repairs blurry or damaged face images, enhancing details.
 
 ### Video Processing
-- **Video Super-Resolution**: Enhances video resolution while maintaining clear quality.
+- **Super-Resolution**: Enhances video resolution while maintaining clear quality.
 - **Auto Wipe**: Removes watermarks, subtitles, and logos from videos, restoring the original footage.
 - **Cartoon and Comic Conversion**: Converts videos to fun cartoon or comic styles.
-- **3D Video Conversion**: Converts videos to immersive 3D effects.
+- **3D Conversion**: Converts videos to immersive 3D effects.
 - **Color Restoration**: Recolors old videos, providing a new visual experience.
 - **Frame Interpolation**: Increases video frame rate for smoother playback.
 - **Video Organization**: Decrypts, synthesizes, and organizes downloaded and cached video files.
