@@ -94,8 +94,8 @@
         <ui:CardExpander
             ContentPadding="0"
             Icon="{ui:ImageIcon '/Resources/App.ico',
-                                Width=36,
-                                Height=36}"
+                                Width=48,
+                                Height=48}"
             IsExpanded="True">
             <ui:CardExpander.Header>
                 <Grid>
@@ -126,7 +126,7 @@
                         Margin="0,0,16,0"
                         VerticalAlignment="Center"
                         Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                        Text="{Binding [ApplicationVersion], Source={x:Static su:Language.Instance}}" />
+                        Text="{Binding ViewModel.ApplicationVersion}" />
                 </Grid>
             </ui:CardExpander.Header>
             <StackPanel>

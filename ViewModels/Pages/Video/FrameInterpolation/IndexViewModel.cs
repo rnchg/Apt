@@ -1,7 +1,7 @@
 ﻿using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
-using General.Apt.Service.Services.Pages.Video.FrameInterpolation;
+using General.Apt.Service.Services.Pages.Video.FrameInterpolation2;
 using General.Apt.Service.Utility;
 using Microsoft.Win32;
 using System.Windows.Documents;
@@ -81,6 +81,18 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
         }
 
         [ObservableProperty]
+        private ObservableCollection<ComBoBoxItem<string>> _modeSource;
+
+        [ObservableProperty]
+        private ComBoBoxItem<string> _modeItem;
+
+        public string Mode
+        {
+            get => ModeItem.Value;
+            set => ModeItem = ModeSource.FirstOrDefault(e => e.Value == value);
+        }
+
+        [ObservableProperty]
         private ObservableCollection<ComBoBoxItem<string>> _scaleSource;
 
         [ObservableProperty]
@@ -152,6 +164,10 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
             ProviderSource = Searcher.GetProvider();
+            ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
+            {
+                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoFrameInterpolationIndexPageModeStandard"), Value = "Standard" }
+            };
             ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageScaleX2"), Value = "X2" },
@@ -185,7 +201,9 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Scale);
+                if (!Vulkan.IsSupport()) throw new Exception(Language.GetString("VideoFrameInterpolationIndexPageNotSupportVulkan"));
+
+                await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 
                 ProgressBarValue = ProgressBarMaximum;
 

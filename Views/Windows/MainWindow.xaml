@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:su="clr-namespace:General.Apt.Service.Utility;assembly=General.Apt.Service"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="{Binding [ApplicationFullTitle], Source={x:Static su:Language.Instance}}"
+    Title="{Binding ViewModel.ApplicationFullTitle}"
     Width="1280"
     Height="800"
     MinWidth="960"
@@ -73,7 +73,7 @@
         <ContentPresenter x:Name="RootContentDialog" Grid.Row="0" />
         <ui:TitleBar
             x:Name="TitleBar"
-            Title="{Binding [ApplicationFullTitle], Source={x:Static su:Language.Instance}}"
+            Title="{Binding ViewModel.ApplicationFullTitle}"
             Grid.Row="0">
             <ui:TitleBar.Icon>
                 <ui:ImageIcon Source="pack://application:,,,/Resources/App.ico" />

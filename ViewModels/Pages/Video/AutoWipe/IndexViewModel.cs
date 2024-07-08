@@ -72,6 +72,17 @@ namespace General.Apt.App.ViewModels.Pages.Video.AutoWipe
                 InputImageFirst = null;
                 await Message.AddMessageError(ex.Message, MessageAction);
             }
+            finally
+            {
+                if (InputImageFirst == null)
+                {
+                    MaskDrawingSize = 1;
+                }
+                else
+                {
+                    MaskDrawingSize = 30;
+                }
+            }
         }
 
         [ObservableProperty]
@@ -102,6 +113,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.AutoWipe
 
         partial void OnInputSortItemChanged(ComBoBoxItem<string> value)
         {
+            if (value?.Value == null) return;
             _ = SetMaskFirst();
         }
 
@@ -119,6 +131,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.AutoWipe
 
         partial void OnSortRuleItemChanged(ComBoBoxItem<string> value)
         {
+            if (value?.Value == null) return;
             _ = SetMaskFirst();
         }
 
@@ -212,8 +225,6 @@ namespace General.Apt.App.ViewModels.Pages.Video.AutoWipe
                 Color = Color.FromArgb(75, 0, 0, 255),
             };
 
-            MaskDrawingSize = 30;
-
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoAutoWipeIndexPageInputSortName"), Value = "Name" },
@@ -228,7 +239,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.AutoWipe
             ProviderSource = Searcher.GetProvider();
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoAutoWipeIndexPageModeNormal"), Value = "Normal" }
+                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoAutoWipeIndexPageModeStandard"), Value = "Standard" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;

@@ -54,7 +54,7 @@
                         <ui:TextBlock
                             FontTypography="Title"
                             Foreground="#FFFFFF"
-                            Text="{Binding [ApplicationFullTitle], Source={x:Static su:Language.Instance}}" />
+                            Text="{Binding ViewModel.ApplicationFullTitle}" />
                         <ui:TextBlock
                             FontTypography="BodyStrong"
                             Foreground="#B7FFFFFF"

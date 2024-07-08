@@ -271,7 +271,7 @@
                             <Image
                                 x:Name="maskImage"
                                 HorizontalAlignment="Center"
-                                Source="{Binding ViewModel.InputImageFirst}"
+                                Source="{Binding Path=ViewModel.InputImageFirst, Converter={StaticResource NullImageConverter}}"
                                 Stretch="Uniform" />
                             <InkCanvas
                                 Name="maskInkCanvas"

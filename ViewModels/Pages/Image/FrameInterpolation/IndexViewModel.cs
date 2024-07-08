@@ -1,16 +1,13 @@
 ﻿using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
-using General.Apt.Service.Services.Pages.Image.AutoWipe;
+using General.Apt.Service.Services.Pages.Image.FrameInterpolation2;
 using General.Apt.Service.Utility;
 using Microsoft.Win32;
-using System.IO;
 using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Media.Imaging;
 using Wpf.Ui.Controls;
 
-namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
+namespace General.Apt.App.ViewModels.Pages.Image.FrameInterpolation
 {
     public partial class IndexViewModel : ObservableValidator, INavigationAware
     {
@@ -20,18 +17,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
         public Action<Paragraph> MessageAction { get; set; }
 
         [ObservableProperty]
-        private Func<byte[]> _maskAction;
-
-        [ObservableProperty]
         private string _input;
-
-        partial void OnInputChanged(string value)
-        {
-            _ = SetMaskFirst();
-        }
-
-        [ObservableProperty]
-        private ImageSource _inputImageFirst;
 
         [RelayCommand]
         private void SetInput()
@@ -41,42 +27,6 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
             if (openFolderDialog.ShowDialog() is true)
             {
                 Input = openFolderDialog.FolderName;
-            }
-        }
-
-        public async Task SetMaskFirst()
-        {
-            try
-            {
-                if (!Directory.Exists(Input) || InputSortItem == null || SortRuleItem == null)
-                {
-                    InputImageFirst = null;
-                }
-                else
-                {
-                    var file = _indexService.GetFileFirst(Input, InputSort, SortRule);
-                    var image = new BitmapImage();
-                    image.BeginInit();
-                    image.UriSource = new Uri(file);
-                    image.EndInit();
-                    InputImageFirst = image;
-                }
-            }
-            catch (Exception ex)
-            {
-                InputImageFirst = null;
-                await Message.AddMessageError(ex.Message, MessageAction);
-            }
-            finally
-            {
-                if (InputImageFirst == null)
-                {
-                    MaskDrawingSize = 1;
-                }
-                else
-                {
-                    MaskDrawingSize = 30;
-                }
             }
         }
 
@@ -106,12 +56,6 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
             set => InputSortItem = InputSortSource.FirstOrDefault(e => e.Value == value);
         }
 
-        partial void OnInputSortItemChanged(ComBoBoxItem<string> value)
-        {
-            if (value?.Value == null) return;
-            _ = SetMaskFirst();
-        }
-
         [ObservableProperty]
         private ObservableCollection<ComBoBoxItem<string>> _sortRuleSource;
 
@@ -122,12 +66,6 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
         {
             get => SortRuleItem.Value;
             set => SortRuleItem = SortRuleSource.FirstOrDefault(e => e.Value == value);
-        }
-
-        partial void OnSortRuleItemChanged(ComBoBoxItem<string> value)
-        {
-            if (value?.Value == null) return;
-            _ = SetMaskFirst();
         }
 
         [ObservableProperty]
@@ -155,16 +93,16 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
         }
 
         [ObservableProperty]
-        private double _maskDrawingSize;
-
-        partial void OnMaskDrawingSizeChanged(double value)
-        {
-            MaskDrawingAttributes.Width = value;
-            MaskDrawingAttributes.Height = value;
-        }
+        private ObservableCollection<ComBoBoxItem<string>> _scaleSource;
 
         [ObservableProperty]
-        private DrawingAttributes _maskDrawingAttributes;
+        private ComBoBoxItem<string> _scaleItem;
+
+        public string Scale
+        {
+            get => ScaleItem.Value;
+            set => ScaleItem = ScaleSource.FirstOrDefault(e => e.Value == value);
+        }
 
         [ObservableProperty]
         private int _progressBarMaximum;
@@ -187,7 +125,6 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
 
         [RelayCommand]
         private async Task SetStart() => await Start();
-
 
         [ObservableProperty]
         private bool _stopEnabled;
@@ -215,26 +152,31 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
 
         public void InitializeViewModel()
         {
-            MaskDrawingAttributes = new DrawingAttributes()
-            {
-                Color = Color.FromArgb(75, 0, 0, 255),
-            };
-
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageAutoWipeIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageAutoWipeIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageAutoWipeIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortName"), Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortLength"), Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageAutoWipeIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageAutoWipeIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortRuleAsc"), Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
             ProviderSource = Searcher.GetProvider();
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageAutoWipeIndexPageModeStandard"), Value = "Standard" }
+                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageFrameInterpolationIndexPageModeStandard"), Value = "Standard" }
+            };
+            ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
+            {
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX2"), Value = "X2" },
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX3"), Value = "X3" },
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX4"), Value = "X4" },
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX5"), Value = "X5" },
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX6"), Value = "X6" },
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX7"), Value = "X7" },
+                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX8"), Value = "X8" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -259,13 +201,13 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                var mask = MaskAction?.Invoke();
+                if (!Vulkan.IsSupport()) throw new Exception(Language.GetString("ImageFrameInterpolationIndexPageNotSupportVulkan"));
 
-                await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, mask);
+                await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("ImageAutoWipeIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.GetString("ImageFrameInterpolationIndexPageOperationCompleted"));
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }
@@ -276,6 +218,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
             catch (Exception ex)
             {
                 Message.ShowSnackbarError(ex.Message);
+
                 await Message.AddMessageError(ex.Message, MessageAction);
             }
             finally

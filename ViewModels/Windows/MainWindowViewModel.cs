@@ -7,6 +7,8 @@ namespace General.Apt.App.ViewModels.Windows
     {
         private bool _isInitialized = false;
 
+        public string ApplicationFullTitle => $"{Language.GetString("ApplicationTitle")} V{Assembly.GetExecutingAssembly().GetName().Version}";
+
         [ObservableProperty]
         private ObservableCollection<object> _menuItems;
 
@@ -52,6 +54,7 @@ namespace General.Apt.App.ViewModels.Windows
                         new NavigationViewItem(Language.GetString("MainWindowImageCartoonComic"), typeof(Views.Pages.Image.CartoonComic.IndexPage)),
                         new NavigationViewItem(Language.GetString("MainWindowImageConvert3d"), typeof(Views.Pages.Image.Convert3d.IndexPage)),
                         new NavigationViewItem(Language.GetString("MainWindowImageColorRestoration"), typeof(Views.Pages.Image.ColorRestoration.IndexPage)),
+                        //new NavigationViewItem(Language.GetString("MainWindowImageFrameInterpolation"), typeof(Views.Pages.Image.FrameInterpolation.IndexPage)),
                         new NavigationViewItem(Language.GetString("MainWindowImageFaceRestoration"), typeof(Views.Pages.Image.FaceRestoration.IndexPage))
                     },
                     IsExpanded = true

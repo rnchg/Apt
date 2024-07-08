@@ -79,6 +79,15 @@ namespace General.Apt.App.Services
             imageColorRestorationViewModel.Mode = Current.Config.ImageColorRestoration.Mode;
             imageColorRestorationViewModel.Quality = Current.Config.ImageColorRestoration.Quality;
 
+            //var imageFrameInterpolationViewModel = App.Current.GetService<ViewModels.Pages.Image.FrameInterpolation.IndexViewModel>();
+            //imageFrameInterpolationViewModel.Input = Current.Config.ImageFrameInterpolation.Input;
+            //imageFrameInterpolationViewModel.Output = Current.Config.ImageFrameInterpolation.Output;
+            //imageFrameInterpolationViewModel.InputSort = Current.Config.ImageFrameInterpolation.InputSort;
+            //imageFrameInterpolationViewModel.SortRule = Current.Config.ImageFrameInterpolation.SortRule;
+            //imageFrameInterpolationViewModel.Provider = Current.Config.ImageFrameInterpolation.Provider;
+            //imageFrameInterpolationViewModel.Mode = Current.Config.ImageFrameInterpolation.Mode;
+            //imageFrameInterpolationViewModel.Scale = Current.Config.ImageFrameInterpolation.Scale;
+
             var imageFaceRestorationViewModel = App.Current.GetService<ViewModels.Pages.Image.FaceRestoration.IndexViewModel>();
             imageFaceRestorationViewModel.Input = Current.Config.ImageFaceRestoration.Input;
             imageFaceRestorationViewModel.Output = Current.Config.ImageFaceRestoration.Output;
@@ -133,20 +142,21 @@ namespace General.Apt.App.Services
             videoColorRestorationViewModel.Mode = Current.Config.VideoColorRestoration.Mode;
             videoColorRestorationViewModel.Quality = Current.Config.VideoColorRestoration.Quality;
 
-            var videoOrganizationIndexViewMode = App.Current.GetService<ViewModels.Pages.Video.Organization.IndexViewModel>();
-            videoOrganizationIndexViewMode.Input = Current.Config.VideoOrganization.Input;
-            videoOrganizationIndexViewMode.Output = Current.Config.VideoOrganization.Output;
-            videoOrganizationIndexViewMode.InputSort = Current.Config.VideoOrganization.InputSort;
-            videoOrganizationIndexViewMode.SortRule = Current.Config.VideoOrganization.SortRule;
-            videoOrganizationIndexViewMode.Client = Current.Config.VideoOrganization.Client;
-
             var videoFrameInterpolationViewModel = App.Current.GetService<ViewModels.Pages.Video.FrameInterpolation.IndexViewModel>();
             videoFrameInterpolationViewModel.Input = Current.Config.VideoFrameInterpolation.Input;
             videoFrameInterpolationViewModel.Output = Current.Config.VideoFrameInterpolation.Output;
             videoFrameInterpolationViewModel.InputSort = Current.Config.VideoFrameInterpolation.InputSort;
             videoFrameInterpolationViewModel.SortRule = Current.Config.VideoFrameInterpolation.SortRule;
             videoFrameInterpolationViewModel.Provider = Current.Config.VideoFrameInterpolation.Provider;
+            videoFrameInterpolationViewModel.Mode = Current.Config.VideoFrameInterpolation.Mode;
             videoFrameInterpolationViewModel.Scale = Current.Config.VideoFrameInterpolation.Scale;
+
+            var videoOrganizationIndexViewMode = App.Current.GetService<ViewModels.Pages.Video.Organization.IndexViewModel>();
+            videoOrganizationIndexViewMode.Input = Current.Config.VideoOrganization.Input;
+            videoOrganizationIndexViewMode.Output = Current.Config.VideoOrganization.Output;
+            videoOrganizationIndexViewMode.InputSort = Current.Config.VideoOrganization.InputSort;
+            videoOrganizationIndexViewMode.SortRule = Current.Config.VideoOrganization.SortRule;
+            videoOrganizationIndexViewMode.Client = Current.Config.VideoOrganization.Client;
         }
 
         public static void SetSetting()
@@ -196,6 +206,15 @@ namespace General.Apt.App.Services
             Current.Config.ImageColorRestoration.Provider = imageColorRestorationViewModel.Provider;
             Current.Config.ImageColorRestoration.Mode = imageColorRestorationViewModel.Mode;
             Current.Config.ImageColorRestoration.Quality = imageColorRestorationViewModel.Quality;
+
+            //var imageFrameInterpolationViewModel = App.Current.GetService<ViewModels.Pages.Image.FrameInterpolation.IndexViewModel>();
+            //Current.Config.ImageFrameInterpolation.Input = imageFrameInterpolationViewModel.Input;
+            //Current.Config.ImageFrameInterpolation.Output = imageFrameInterpolationViewModel.Output;
+            //Current.Config.ImageFrameInterpolation.InputSort = imageFrameInterpolationViewModel.InputSort;
+            //Current.Config.ImageFrameInterpolation.SortRule = imageFrameInterpolationViewModel.SortRule;
+            //Current.Config.ImageFrameInterpolation.Provider = imageFrameInterpolationViewModel.Provider;
+            //Current.Config.ImageFrameInterpolation.Mode = imageFrameInterpolationViewModel.Mode;
+            //Current.Config.ImageFrameInterpolation.Scale = imageFrameInterpolationViewModel.Scale;
 
             var imageFaceRestorationViewModel = App.Current.GetService<ViewModels.Pages.Image.FaceRestoration.IndexViewModel>();
             Current.Config.ImageFaceRestoration.Input = imageFaceRestorationViewModel.Input;
@@ -257,6 +276,7 @@ namespace General.Apt.App.Services
             Current.Config.VideoFrameInterpolation.InputSort = videoFrameInterpolationViewModel.InputSort;
             Current.Config.VideoFrameInterpolation.SortRule = videoFrameInterpolationViewModel.SortRule;
             Current.Config.VideoFrameInterpolation.Provider = videoFrameInterpolationViewModel.Provider;
+            Current.Config.VideoFrameInterpolation.Mode = videoFrameInterpolationViewModel.Mode;
             Current.Config.VideoFrameInterpolation.Scale = videoFrameInterpolationViewModel.Scale;
 
             var videoOrganizationIndexViewMode = App.Current.GetService<ViewModels.Pages.Video.Organization.IndexViewModel>();

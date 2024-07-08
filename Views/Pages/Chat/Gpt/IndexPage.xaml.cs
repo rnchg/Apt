@@ -25,7 +25,7 @@ namespace General.Apt.App.Views.Pages.Chat.Gpt
 
         public void InitializeData()
         {
-            ViewModel.ChatHistory.Add(new ChatMessage() { Text = Service.Utility.Language.GetString("ChatGptHelp"), IsOriginNative = false });
+            ViewModel.ChatHistory.Add(new ChatMessage() { Text = Service.Utility.Language.GetString("ChatGptHelp"), IsOwner = false });
 
             ViewModel.ChatHistory.CollectionChanged += ChatHistory_CollectionChanged;
         }

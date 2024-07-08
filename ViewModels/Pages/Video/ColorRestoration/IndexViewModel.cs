@@ -92,6 +92,31 @@ namespace General.Apt.App.ViewModels.Pages.Video.ColorRestoration
             set => ModeItem = ModeSource.FirstOrDefault(e => e.Value == value);
         }
 
+        partial void OnModeItemChanged(ComBoBoxItem<string> value)
+        {
+            if (value?.Value == null) return;
+            if (value.Value == "Standard")
+            {
+                QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
+                {
+                    new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageQualityHigh"), Value = "High" },
+                    new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageQualityMedium"), Value = "Medium" },
+                    new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageQualityLow"), Value = "Low" }
+                };
+                Quality = "Medium";
+                return;
+            }
+            //if (value.Value == "Lite")
+            //{
+            //    QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
+            //    {
+            //        new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageQualityLow"), Value = "Low" }
+            //    };
+            //    Quality = "Low";
+            //    return;
+            //}
+        }
+
         [ObservableProperty]
         private ObservableCollection<ComBoBoxItem<string>> _qualitySource;
 
@@ -167,13 +192,8 @@ namespace General.Apt.App.ViewModels.Pages.Video.ColorRestoration
             ProviderSource = Searcher.GetProvider();
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageModeNormal"), Value = "Normal" }
-            };
-            QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
-            {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageQualityHigh"), Value = "High" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageQualityMedium"), Value = "Medium" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageQualityLow"), Value = "Low" }
+                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageModeStandard"), Value = "Standard" },
+                //new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageModeLite"), Value = "Lite" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;

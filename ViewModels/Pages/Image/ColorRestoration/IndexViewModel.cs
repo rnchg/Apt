@@ -92,6 +92,31 @@ namespace General.Apt.App.ViewModels.Pages.Image.ColorRestoration
             set => ModeItem = ModeSource.FirstOrDefault(e => e.Value == value);
         }
 
+        partial void OnModeItemChanged(ComBoBoxItem<string> value)
+        {
+            if (value?.Value == null) return;
+            if (value.Value == "Standard")
+            {
+                QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
+                {
+                    new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageQualityHigh"), Value = "High" },
+                    new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageQualityMedium"), Value = "Medium" },
+                    new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageQualityLow"), Value = "Low" }
+                };
+                Quality = "Medium";
+                return;
+            }
+            //if (value.Value == "Lite")
+            //{
+            //    QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
+            //    {
+            //        new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageQualityLow"), Value = "Low" }
+            //    };
+            //    Quality = "Low";
+            //    return;
+            //}
+        }
+
         [ObservableProperty]
         private ObservableCollection<ComBoBoxItem<string>> _qualitySource;
 
@@ -167,13 +192,8 @@ namespace General.Apt.App.ViewModels.Pages.Image.ColorRestoration
             ProviderSource = Searcher.GetProvider();
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageModeNormal"), Value = "Normal" }
-            };
-            QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
-            {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageQualityHigh"), Value = "High" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageQualityMedium"), Value = "Medium" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageQualityLow"), Value = "Low" }
+                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageModeStandard"), Value = "Standard" },
+                //new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageModeLite"), Value = "Lite" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;

@@ -1,11 +1,11 @@
 ﻿<Page
-    x:Class="General.Apt.App.Views.Pages.Video.FrameInterpolation.IndexPage"
+    x:Class="General.Apt.App.Views.Pages.Image.FrameInterpolation.IndexPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:General.Apt.App.Views.Pages.Video.FrameInterpolation"
+    xmlns:local="clr-namespace:General.Apt.App.Views.Pages.Image.FrameInterpolation"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="clr-namespace:General.Apt.App.ViewModels.Pages.Video.FrameInterpolation"
+    xmlns:models="clr-namespace:General.Apt.App.ViewModels.Pages.Image.FrameInterpolation"
     xmlns:su="clr-namespace:General.Apt.Service.Utility;assembly=General.Apt.Service"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="HomeView"
@@ -27,7 +27,7 @@
             Grid.Row="0"
             Padding="10"
             BorderThickness="0"
-            Header="{Binding [VideoFrameInterpolationIndexPageSetting], Source={x:Static su:Language.Instance}}">
+            Header="{Binding [ImageFrameInterpolationIndexPageSetting], Source={x:Static su:Language.Instance}}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -48,7 +48,7 @@
                         Grid.Column="0"
                         Margin="6"
                         VerticalAlignment="Center"
-                        Content="{Binding [VideoFrameInterpolationIndexPageInputFolder], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [ImageFrameInterpolationIndexPageInputFolder], Source={x:Static su:Language.Instance}}" />
                     <TextBox
                         Grid.Column="1"
                         Margin="6"
@@ -59,7 +59,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Command="{Binding ViewModel.SetInputCommand}"
-                        Content="{Binding [VideoFrameInterpolationIndexPageInputSelect], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [ImageFrameInterpolationIndexPageInputSelect], Source={x:Static su:Language.Instance}}" />
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -71,7 +71,7 @@
                         Grid.Column="0"
                         Margin="6"
                         VerticalAlignment="Center"
-                        Content="{Binding [VideoFrameInterpolationIndexPageOutputFolder], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [ImageFrameInterpolationIndexPageOutputFolder], Source={x:Static su:Language.Instance}}" />
                     <TextBox
                         Grid.Column="1"
                         Margin="6"
@@ -82,7 +82,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Command="{Binding ViewModel.SetOutputCommand}"
-                        Content="{Binding [VideoFrameInterpolationIndexPageOutputSelect], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [ImageFrameInterpolationIndexPageOutputSelect], Source={x:Static su:Language.Instance}}" />
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
@@ -96,7 +96,7 @@
                         Grid.Column="0"
                         Margin="6"
                         VerticalAlignment="Center"
-                        Content="{Binding [VideoFrameInterpolationIndexPageInputSort], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [ImageFrameInterpolationIndexPageInputSort], Source={x:Static su:Language.Instance}}" />
                     <ComboBox
                         Grid.Column="1"
                         Margin="6"
@@ -107,7 +107,7 @@
                         Grid.Column="2"
                         Margin="6"
                         VerticalAlignment="Center"
-                        Content="{Binding [VideoFrameInterpolationIndexPageInputSortRule], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [ImageFrameInterpolationIndexPageInputSortRule], Source={x:Static su:Language.Instance}}" />
                     <ComboBox
                         Grid.Column="3"
                         Margin="6"
@@ -125,7 +125,7 @@
                         Grid.Column="0"
                         Margin="6"
                         VerticalAlignment="Center"
-                        Content="{Binding [VideoFrameInterpolationIndexPageProvider], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [ImageFrameInterpolationIndexPageProvider], Source={x:Static su:Language.Instance}}" />
                     <ComboBox
                         Grid.Column="1"
                         Margin="6"
@@ -143,7 +143,7 @@
                         Grid.Column="0"
                         Margin="6"
                         VerticalAlignment="Center"
-                        Content="{Binding [VideoFrameInterpolationIndexPageMode], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [ImageFrameInterpolationIndexPageMode], Source={x:Static su:Language.Instance}}" />
                     <ComboBox
                         Grid.Column="1"
                         Margin="6"
@@ -161,7 +161,7 @@
                         Grid.Column="0"
                         Margin="6"
                         VerticalAlignment="Center"
-                        Content="{Binding [VideoFrameInterpolationIndexPageScale], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [ImageFrameInterpolationIndexPageScale], Source={x:Static su:Language.Instance}}" />
                     <ComboBox
                         Grid.Column="1"
                         Margin="6"
@@ -181,7 +181,7 @@
                         Grid.Column="0"
                         Margin="6"
                         VerticalAlignment="Center"
-                        Content="{Binding [VideoFrameInterpolationIndexPageProgress], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [ImageFrameInterpolationIndexPageProgress], Source={x:Static su:Language.Instance}}" />
                     <Grid Grid.Column="1" Margin="6">
                         <ProgressBar Maximum="{Binding ViewModel.ProgressBarMaximum}" Value="{Binding ViewModel.ProgressBarValue}" />
                         <TextBlock
@@ -196,7 +196,7 @@
                         VerticalAlignment="Center"
                         Appearance="Info"
                         Command="{Binding ViewModel.SetStartCommand}"
-                        Content="{Binding [VideoFrameInterpolationIndexPageStart], Source={x:Static su:Language.Instance}}"
+                        Content="{Binding [ImageFrameInterpolationIndexPageStart], Source={x:Static su:Language.Instance}}"
                         IsEnabled="{Binding ViewModel.StartEnabled}" />
                     <ui:Button
                         Grid.Column="3"
@@ -205,7 +205,7 @@
                         VerticalAlignment="Center"
                         Appearance="Danger"
                         Command="{Binding ViewModel.SetStopCommand}"
-                        Content="{Binding [VideoFrameInterpolationIndexPageStop], Source={x:Static su:Language.Instance}}"
+                        Content="{Binding [ImageFrameInterpolationIndexPageStop], Source={x:Static su:Language.Instance}}"
                         IsEnabled="{Binding ViewModel.StopEnabled}" />
                     <ui:Button
                         Grid.Column="4"
@@ -214,7 +214,7 @@
                         VerticalAlignment="Center"
                         Appearance="Success"
                         Command="{Binding ViewModel.SetOpenCommand}"
-                        Content="{Binding [VideoFrameInterpolationIndexPageOpen], Source={x:Static su:Language.Instance}}"
+                        Content="{Binding [ImageFrameInterpolationIndexPageOpen], Source={x:Static su:Language.Instance}}"
                         IsEnabled="{Binding ViewModel.OpenEnabled}" />
                 </Grid>
             </Grid>
@@ -223,7 +223,7 @@
             Grid.Row="1"
             Padding="10"
             BorderThickness="0"
-            Header="{Binding [VideoFrameInterpolationIndexPageMessage], Source={x:Static su:Language.Instance}}">
+            Header="{Binding [ImageFrameInterpolationIndexPageMessage], Source={x:Static su:Language.Instance}}">
             <Grid>
                 <RichTextBox Name="Message" VerticalScrollBarVisibility="Visible" />
             </Grid>

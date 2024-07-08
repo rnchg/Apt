@@ -18,6 +18,8 @@ namespace General.Apt.App.ViewModels.Pages.App
         private INavigationService _navigationService;
         private WindowsProviderService _windowsService;
 
+        public string ApplicationVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
         [ObservableProperty]
         private ObservableCollection<ComBoBoxItem<string, ApplicationTheme>> _themeSource;
 
@@ -145,6 +147,7 @@ namespace General.Apt.App.ViewModels.Pages.App
             Apt.App.App.Current.GetRequiredService<Image.CartoonComic.IndexViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Image.Convert3d.IndexViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Image.ColorRestoration.IndexViewModel>().InitializeViewModel();
+            //Apt.App.App.Current.GetRequiredService<Image.FrameInterpolation.IndexViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Image.FaceRestoration.IndexViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Video.SuperResolution.IndexViewModel>().InitializeViewModel();
             //Apt.App.App.Current.GetRequiredService<Video.AutoWipe.IndexViewModel>().InitializeViewModel();

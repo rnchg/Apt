@@ -9,6 +9,8 @@ namespace General.Apt.App.ViewModels.Pages.App
         private bool _isInitialized = false;
         private INavigationService _navigationService;
 
+        public string ApplicationFullTitle => $"{Service.Utility.Language.GetString("ApplicationTitle")} V{Assembly.GetExecutingAssembly().GetName().Version}";
+
         [RelayCommand]
         private void OnCardClick(string parameter)
         {

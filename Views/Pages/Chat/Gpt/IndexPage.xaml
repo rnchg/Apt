@@ -6,8 +6,8 @@
     xmlns:local="clr-namespace:General.Apt.App.Views.Pages.Chat.Gpt"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:General.Apt.App.ViewModels.Pages.Chat.Gpt"
-    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:su="clr-namespace:General.Apt.Service.Utility;assembly=General.Apt.Service"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="HomeView"
     d:DataContext="{d:DesignInstance local:IndexPage,
                                      IsDesignTimeCreatable=False}"
@@ -47,7 +47,7 @@
                             CornerRadius="3" />
                         <Image
                             Cursor="Hand"
-                            Source="{Binding Image}"
+                            Source="{Binding Path=Image, Converter={StaticResource NullImageConverter}}"
                             Stretch="UniformToFill"
                             ToolTip="Click to open image in your default image viewer">
                             <!--<i:Interaction.Triggers>
@@ -88,7 +88,7 @@
                 </Grid>
             </Border>
             <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding IsOriginNative}" Value="True">
+                <DataTrigger Binding="{Binding IsOwner}" Value="True">
                     <Setter TargetName="MessageBorder" Property="HorizontalAlignment" Value="Right" />
                     <Setter TargetName="MessageBorder" Property="Margin" Value="60,0,10,10" />
                     <Setter TargetName="MessageBorder" Property="Background" Value="{DynamicResource AccentTextFillColorPrimaryBrush}" />
@@ -105,7 +105,7 @@
                 <MultiDataTrigger>
                     <MultiDataTrigger.Conditions>
                         <Condition Binding="{Binding Text}" Value="{x:Null}" />
-                        <Condition Binding="{Binding IsOriginNative}" Value="True" />
+                        <Condition Binding="{Binding IsOwner}" Value="True" />
                     </MultiDataTrigger.Conditions>
                     <MultiDataTrigger.Setters>
                         <Setter TargetName="MessageBorder" Property="Margin" Value="0,0,10,10" />
@@ -168,8 +168,9 @@
                 <ui:TextBox
                     Grid.Column="1"
                     Height="60"
+                    MaxLength="{Binding ViewModel.MaxLength}"
                     PlaceholderText="{Binding ViewModel.Placeholder}"
-                    Text="{Binding ViewModel.UserMessage, UpdateSourceTrigger=PropertyChanged}" />
+                    Text="{Binding ViewModel.Message, UpdateSourceTrigger=PropertyChanged}" />
                 <ui:Button
                     Grid.Column="2"
                     Margin="10"

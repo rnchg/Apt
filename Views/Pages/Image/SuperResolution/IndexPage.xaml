@@ -6,8 +6,8 @@
     xmlns:local="clr-namespace:General.Apt.App.Views.Pages.Image.SuperResolution"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:General.Apt.App.ViewModels.Pages.Image.SuperResolution"
-    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:su="clr-namespace:General.Apt.Service.Utility;assembly=General.Apt.Service"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="HomeView"
     d:DataContext="{d:DesignInstance local:IndexPage,
                                      IsDesignTimeCreatable=False}"
@@ -47,6 +47,7 @@
                     <Label
                         Grid.Column="0"
                         Margin="6"
+                        VerticalAlignment="Center"
                         Content="{Binding [ImageSuperResolutionIndexPageInputFolder], Source={x:Static su:Language.Instance}}" />
                     <TextBox
                         Grid.Column="1"

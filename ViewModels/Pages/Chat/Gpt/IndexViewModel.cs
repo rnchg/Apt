@@ -21,10 +21,10 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
         private string _placeholder;
 
         [ObservableProperty]
-        private string _userMessage;
+        private string _message;
 
         [ObservableProperty]
-        private string _aIMessage;
+        private int _maxLength;
 
         [ObservableProperty]
         private bool _newEnabled;
@@ -44,6 +44,7 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
         public IndexViewModel(AppSettings appSettings)
         {
             _appSettings = appSettings;
+            MaxLength = _appSettings.Chat.Gpt.PromptMaxLength;
             if (!_isInitialized) InitializeViewModel();
         }
 
@@ -93,15 +94,19 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
 
         private void Send()
         {
+            if (string.IsNullOrWhiteSpace(Message))
+            {
+                return;
+            }
             Placeholder = Language.GetString("ChatGptIndexPageModelProcessWait");
             NewEnabled = false;
             SendEnabled = false;
-            var userMessage = new ChatMessage() { Author = ChatConst.Gpt.UserAuthor, Text = UserMessage, IsOriginNative = true };
-            ChatHistory.Add(userMessage);
-            var aiMessage = new ChatMessage() { Author = ChatConst.Gpt.AiAuthor, Text = string.Empty, IsOriginNative = false };
-            ChatHistory.Add(aiMessage);
+            var messageUser = new ChatMessage() { Type = ChatConst.Gpt.TypeUser, Text = Message, IsOwner = true };
+            ChatHistory.Add(messageUser);
+            var messageAssistant = new ChatMessage() { Type = ChatConst.Gpt.TypeAssistant, Text = string.Empty, IsOwner = false };
+            ChatHistory.Add(messageAssistant);
             Task.Run(() => RunModel(ChatHistory));
-            UserMessage = string.Empty;
+            Message = string.Empty;
         }
 
         private void RunModel(IList<ChatMessage> chatHistory)
@@ -109,9 +114,7 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
             try
             {
                 Placeholder = Language.GetString("ChatGptIndexPageModelProcessWait");
-                _indexService.Start(chatHistory.ToArray());
-                NewEnabled = true;
-                SendEnabled = true;
+                _indexService.Start(chatHistory.ToArray(), _appSettings.Chat.Gpt.PromptSystem, _appSettings.Chat.Gpt.PromptMaxLength);
                 Placeholder = Language.GetString("ChatGptIndexPageInputPrompt");
             }
             catch (Exception ex)
@@ -122,6 +125,11 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
                     Utility.Message.ShowSnackbarError(ex.Message);
                 });
                 Apt.App.App.Current.Logger.LogError(ex.ToString());
+            }
+            finally
+            {
+                NewEnabled = true;
+                SendEnabled = true;
             }
         }
     }

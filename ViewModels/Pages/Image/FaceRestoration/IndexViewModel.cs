@@ -155,8 +155,8 @@ namespace General.Apt.App.ViewModels.Pages.Image.FaceRestoration
             ProviderSource = Searcher.GetProvider();
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageFaceRestorationIndexPageModeNormal"), Value = "Normal" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageFaceRestorationIndexPageModePower"), Value = "Power" }
+                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageFaceRestorationIndexPageModeStandard"), Value = "Standard" },
+                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageFaceRestorationIndexPageModePlus"), Value = "Plus" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;

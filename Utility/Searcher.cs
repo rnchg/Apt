@@ -7,16 +7,16 @@ namespace General.Apt.App.Utility
     {
         public static ObservableCollection<ComBoBoxItem<string>> GetProvider()
         {
-            var result = new ObservableCollection<ComBoBoxItem<string>>();
-            var managementObjectSearcher = new ManagementObjectSearcher("Select * from Win32_VideoController");
-            var count = 0;
-            foreach (var mo in managementObjectSearcher.Get())
+            var result = new ObservableCollection<ComBoBoxItem<string>>() { new ComBoBoxItem<string> { Text = "CPU", Value = "0:0" } };
+            using var managementObjectSearcher = new ManagementObjectSearcher("Select * from Win32_VideoController");
+            var index = 0;
+            foreach (var item in managementObjectSearcher.Get())
             {
-                result.Add(new ComBoBoxItem<string>() { Text = mo["Name"].ToString(), Value = $"1:{count}" });
-                count++;
+                var name = item["Name"];
+                var deviceId = index;
+                result.Add(new ComBoBoxItem<string>() { Text = name.ToString(), Value = $"1:{deviceId}" });
+                index++;
             }
-            managementObjectSearcher.Dispose();
-            result.Insert(0, new ComBoBoxItem<string> { Text = "CPU", Value = "0:0" });
             return result;
         }
     }
