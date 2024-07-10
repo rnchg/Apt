@@ -14,6 +14,7 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
 
         private bool _isInitialized = false;
         private IndexService _indexService;
+        private CancellationTokenSource _cancellationTokenSource;
 
         public Action<Paragraph> MessageAction { get; set; }
 
@@ -40,6 +41,9 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
 
         [RelayCommand]
         private void SetSend() => Send();
+
+        [RelayCommand]
+        private void SetCancel() => _cancellationTokenSource?.Cancel();
 
         public IndexViewModel(AppSettings appSettings)
         {
@@ -105,17 +109,28 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
             ChatHistory.Add(messageUser);
             var messageAssistant = new ChatMessage() { Type = ChatConst.Gpt.TypeAssistant, Text = string.Empty, IsOwner = false };
             ChatHistory.Add(messageAssistant);
-            Task.Run(() => RunModel(ChatHistory));
+            _cancellationTokenSource = new CancellationTokenSource();
+            Task.Run(() => RunModel(ChatHistory, messageUser, messageAssistant, _cancellationTokenSource.Token), _cancellationTokenSource.Token);
             Message = string.Empty;
         }
 
-        private void RunModel(IList<ChatMessage> chatHistory)
+        private void RunModel(IList<ChatMessage> chatHistory, ChatMessage messageUser, ChatMessage messageAssistant, CancellationToken cancellationToken)
         {
             try
             {
                 Placeholder = Language.GetString("ChatGptIndexPageModelProcessWait");
-                _indexService.Start(chatHistory.ToArray(), _appSettings.Chat.Gpt.PromptSystem, _appSettings.Chat.Gpt.PromptMaxLength);
+                _indexService.Start(chatHistory.ToArray(), _appSettings.Chat.Gpt.PromptSystem, _appSettings.Chat.Gpt.PromptMaxLength, cancellationToken);
                 Placeholder = Language.GetString("ChatGptIndexPageInputPrompt");
+            }
+            catch (OperationCanceledException ex)
+            {
+                Placeholder = Language.GetString("ChatGptIndexPageInputPrompt");
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    chatHistory.Remove(messageAssistant);
+                    chatHistory.Remove(messageUser);
+                });
+                Apt.App.App.Current.Logger.LogError(ex.ToString());
             }
             catch (Exception ex)
             {

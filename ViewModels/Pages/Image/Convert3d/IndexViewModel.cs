@@ -180,7 +180,8 @@ namespace General.Apt.App.ViewModels.Pages.Image.Convert3d
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("ImageConvert3dIndexPageFormatHalfSbs"), Value = "HalfSbs" },
                 new ComBoBoxItem<string>() {  Text = Language.GetString("ImageConvert3dIndexPageFormatSbs"), Value = "Sbs" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageConvert3dIndexPageFormatAnaglyph"), Value = "Anaglyph" }
+                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageConvert3dIndexPageFormatAnaglyph"), Value = "Anaglyph" },
+                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageConvert3dIndexPageFormatDepth"), Value = "Depth" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;

@@ -13,6 +13,7 @@
                 <ui:ThemesDictionary Theme="Dark" />
                 <ui:ControlsDictionary />
             </ResourceDictionary.MergedDictionaries>
+            <converters:VersionConverter x:Key="VersionConverter" />
             <converters:NullImageConverter x:Key="NullImageConverter" />
         </ResourceDictionary>
     </Application.Resources>

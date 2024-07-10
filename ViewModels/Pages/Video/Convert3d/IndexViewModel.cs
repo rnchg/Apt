@@ -180,7 +180,8 @@ namespace General.Apt.App.ViewModels.Pages.Video.Convert3d
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageFormatHalfSbs"), Value = "HalfSbs" },
                 new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageFormatSbs"), Value = "Sbs" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageFormatAnaglyph"), Value = "Anaglyph" }
+                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageFormatAnaglyph"), Value = "Anaglyph" },
+                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageFormatDepth"), Value = "Depth" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;

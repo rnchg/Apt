@@ -152,9 +152,10 @@
             Header="{Binding [ChatGptIndexPageMessage], Source={x:Static su:Language.Instance}}">
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
-                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <ui:Button
                     Grid.Column="0"
@@ -181,6 +182,15 @@
                     Content="{Binding [ChatGptIndexPageSend], Source={x:Static su:Language.Instance}}"
                     IsDefault="True"
                     IsEnabled="{Binding ViewModel.SendEnabled}" />
+                <ui:Button
+                    Grid.Column="3"
+                    Margin="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Appearance="Caution"
+                    Command="{Binding ViewModel.SetCancelCommand}"
+                    Content="{Binding [ChatGptIndexPageCancel], Source={x:Static su:Language.Instance}}"
+                    IsCancel="True" />
             </Grid>
         </GroupBox>
     </Grid>

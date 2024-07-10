@@ -7,8 +7,6 @@ namespace General.Apt.App.ViewModels.Windows
     {
         private bool _isInitialized = false;
 
-        public string ApplicationFullTitle => $"{Language.GetString("ApplicationTitle")} V{Assembly.GetExecutingAssembly().GetName().Version}";
-
         [ObservableProperty]
         private ObservableCollection<object> _menuItems;
 

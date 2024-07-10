@@ -259,9 +259,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                var mask = MaskAction?.Invoke();
-
-                await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, mask);
+                await _indexService.Start(Input, Output, InputSort, SortRule, MaskAction?.Invoke(), Provider, Mode);
 
                 ProgressBarValue = ProgressBarMaximum;
 

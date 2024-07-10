@@ -215,7 +215,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <Grid>
+                    <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
@@ -266,7 +266,10 @@
                                 Content="{Binding [VideoAutoWipeIndexPageMaskSelectMask], Source={x:Static su:Language.Instance}}" />
                         </Grid>
                     </Grid>
-                    <Grid Grid.Row="1">
+                    <Border
+                        Grid.Row="1"
+                        BorderBrush="{DynamicResource TextFillColorTertiaryBrush}"
+                        BorderThickness="1">
                         <Grid>
                             <Image
                                 x:Name="maskImage"
@@ -280,7 +283,7 @@
                                 Background="Transparent"
                                 DefaultDrawingAttributes="{Binding ViewModel.MaskDrawingAttributes}" />
                         </Grid>
-                    </Grid>
+                    </Border>
                 </Grid>
             </GroupBox>
             <GroupBox
