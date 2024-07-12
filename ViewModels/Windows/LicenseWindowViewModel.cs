@@ -60,13 +60,8 @@ namespace General.Apt.App.ViewModels.Windows
 
         private void InitializeViewModel()
         {
+            RequestCode = Current.Config.App.RequestCode;
             ActivationCode = Current.Config.App.ActivationCode;
-            if (!License.TryGetRequestCode(out var requestCode, out var message))
-            {
-                Message = message;
-                return;
-            }
-            RequestCode = requestCode;
             ValidateActivationCode();
 
             _isInitialized = true;

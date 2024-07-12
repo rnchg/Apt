@@ -105,6 +105,9 @@ namespace General.Apt.App.ViewModels.Pages.Video.Convert3d
         }
 
         [ObservableProperty]
+        private int _shift;
+
+        [ObservableProperty]
         private bool _popOut;
 
         [ObservableProperty]
@@ -170,7 +173,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.Convert3d
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoConvert3dIndexPageInputSortRuleAsc"), Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoConvert3dIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
-            ProviderSource = Searcher.GetProvider();
+            ProviderSource = Device.Provider;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageModeStandard"), Value = "Standard" },
@@ -206,7 +209,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.Convert3d
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Format, PopOut, CrossEye);
+                await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Format, Shift, PopOut, CrossEye);
 
                 ProgressBarValue = ProgressBarMaximum;
 

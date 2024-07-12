@@ -11,8 +11,8 @@
     Title="HomeView"
     d:DataContext="{d:DesignInstance local:IndexPage,
                                      IsDesignTimeCreatable=False}"
-    d:DesignHeight="900"
-    d:DesignWidth="1200"
+    d:DesignHeight="640"
+    d:DesignWidth="960"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
@@ -155,6 +155,8 @@
                         <ColumnDefinition Width="120" />
                         <ColumnDefinition />
                         <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="80" />
                         <ColumnDefinition Width="40" />
                         <ColumnDefinition Width="80" />
                         <ColumnDefinition Width="40" />
@@ -176,15 +178,29 @@
                         Margin="6"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
-                        Content="{Binding [ImageConvert3dIndexPagePopOut], Source={x:Static su:Language.Instance}}" />
-                    <ui:ToggleSwitch Grid.Column="3" IsChecked="{Binding ViewModel.PopOut}" />
+                        Content="{Binding [ImageConvert3dIndexPageShift], Source={x:Static su:Language.Instance}}" />
+                    <ui:NumberBox
+                        Grid.Column="3"
+                        Margin="6"
+                        MaxDecimalPlaces="0"
+                        Maximum="1000"
+                        Minimum="1"
+                        SpinButtonPlacementMode="Hidden"
+                        Value="{Binding ViewModel.Shift, UpdateSourceTrigger=PropertyChanged}" />
                     <Label
                         Grid.Column="4"
                         Margin="6"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
+                        Content="{Binding [ImageConvert3dIndexPagePopOut], Source={x:Static su:Language.Instance}}" />
+                    <ui:ToggleSwitch Grid.Column="5" IsChecked="{Binding ViewModel.PopOut}" />
+                    <Label
+                        Grid.Column="6"
+                        Margin="6"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
                         Content="{Binding [ImageConvert3dIndexPageCrossEye], Source={x:Static su:Language.Instance}}" />
-                    <ui:ToggleSwitch Grid.Column="5" IsChecked="{Binding ViewModel.CrossEye}" />
+                    <ui:ToggleSwitch Grid.Column="7" IsChecked="{Binding ViewModel.CrossEye}" />
                 </Grid>
                 <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>

@@ -163,7 +163,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageInputSortRuleAsc"), Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
-            ProviderSource = Searcher.GetProvider();
+            ProviderSource = Device.Provider2;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("VideoFrameInterpolationIndexPageModeStandard"), Value = "Standard" }
@@ -201,7 +201,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                if (!Vulkan.IsSupport()) throw new Exception(Language.GetString("VideoFrameInterpolationIndexPageNotSupportVulkan"));
+                if (!Device.VulkanEnable) throw new Exception(Language.GetString("VideoFrameInterpolationIndexPageNotSupportVulkan"));
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 

@@ -67,6 +67,7 @@ namespace General.Apt.App.Services
             imageConvert3dViewModel.Provider = Current.Config.ImageConvert3d.Provider;
             imageConvert3dViewModel.Mode = Current.Config.ImageConvert3d.Mode;
             imageConvert3dViewModel.Format = Current.Config.ImageConvert3d.Format;
+            imageConvert3dViewModel.Shift = Current.Config.ImageConvert3d.Shift;
             imageConvert3dViewModel.PopOut = Current.Config.ImageConvert3d.PopOut;
             imageConvert3dViewModel.CrossEye = Current.Config.ImageConvert3d.CrossEye;
 
@@ -130,6 +131,7 @@ namespace General.Apt.App.Services
             videoConvert3dViewModel.Provider = Current.Config.VideoConvert3d.Provider;
             videoConvert3dViewModel.Mode = Current.Config.VideoConvert3d.Mode;
             videoConvert3dViewModel.Format = Current.Config.VideoConvert3d.Format;
+            videoConvert3dViewModel.Shift = Current.Config.VideoConvert3d.Shift;
             videoConvert3dViewModel.PopOut = Current.Config.VideoConvert3d.PopOut;
             videoConvert3dViewModel.CrossEye = Current.Config.VideoConvert3d.CrossEye;
 
@@ -195,6 +197,7 @@ namespace General.Apt.App.Services
             Current.Config.ImageConvert3d.Provider = imageConvert3dViewModel.Provider;
             Current.Config.ImageConvert3d.Mode = imageConvert3dViewModel.Mode;
             Current.Config.ImageConvert3d.Format = imageConvert3dViewModel.Format;
+            Current.Config.ImageConvert3d.Shift = imageConvert3dViewModel.Shift;
             Current.Config.ImageConvert3d.PopOut = imageConvert3dViewModel.PopOut;
             Current.Config.ImageConvert3d.CrossEye = imageConvert3dViewModel.CrossEye;
 
@@ -258,6 +261,7 @@ namespace General.Apt.App.Services
             Current.Config.VideoConvert3d.Provider = videoConvert3dViewModel.Provider;
             Current.Config.VideoConvert3d.Mode = videoConvert3dViewModel.Mode;
             Current.Config.VideoConvert3d.Format = videoConvert3dViewModel.Format;
+            Current.Config.VideoConvert3d.Shift = videoConvert3dViewModel.Shift;
             Current.Config.VideoConvert3d.PopOut = videoConvert3dViewModel.PopOut;
             Current.Config.VideoConvert3d.CrossEye = videoConvert3dViewModel.CrossEye;
 

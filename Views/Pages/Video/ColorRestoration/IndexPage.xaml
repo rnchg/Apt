@@ -11,8 +11,8 @@
     Title="HomeView"
     d:DataContext="{d:DesignInstance local:IndexPage,
                                      IsDesignTimeCreatable=False}"
-    d:DesignHeight="900"
-    d:DesignWidth="1200"
+    d:DesignHeight="640"
+    d:DesignWidth="960"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"

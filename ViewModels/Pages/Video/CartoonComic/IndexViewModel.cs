@@ -164,7 +164,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.CartoonComic
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoCartoonComicIndexPageInputSortRuleAsc"), Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoCartoonComicIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
-            ProviderSource = Searcher.GetProvider();
+            ProviderSource = Device.Provider;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("VideoCartoonComicIndexPageModeHayao"), Value = "Hayao" },

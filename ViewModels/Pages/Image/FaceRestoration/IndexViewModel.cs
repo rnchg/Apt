@@ -152,7 +152,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.FaceRestoration
                 new ComBoBoxItem<string>() { Text = Language.GetString("ImageFaceRestorationIndexPageInputSortRuleAsc"), Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.GetString("ImageFaceRestorationIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
-            ProviderSource = Searcher.GetProvider();
+            ProviderSource = Device.Provider;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("ImageFaceRestorationIndexPageModeStandard"), Value = "Standard" },

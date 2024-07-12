@@ -8,12 +8,14 @@
     xmlns:su="clr-namespace:General.Apt.Service.Utility;assembly=General.Apt.Service"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="授权"
-    Width="960"
-    Height="640"
+    Width="1280"
+    Height="720"
+    MinWidth="960"
+    MinHeight="640"
     d:DataContext="{d:DesignInstance local:LicenseWindow,
                                      IsDesignTimeCreatable=False}"
-    d:DesignHeight="960"
-    d:DesignWidth="1200"
+    d:DesignHeight="640"
+    d:DesignWidth="960"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     ExtendsContentIntoTitleBar="True"
@@ -25,67 +27,59 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
-            <RowDefinition />
-            <RowDefinition Height="140" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <ui:TitleBar Title="{Binding [LicenseWindowLicense], Source={x:Static su:Language.Instance}}" Grid.Row="0" />
-        <GroupBox
-            Grid.Row="1"
-            Margin="10"
-            BorderThickness="0"
-            Header="{Binding [LicenseWindowRequestCode], Source={x:Static su:Language.Instance}}">
-            <TextBox
-                Margin="10"
-                AcceptsReturn="True"
-                IsReadOnly="True"
-                Text="{Binding ViewModel.RequestCode}"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Visible" />
-        </GroupBox>
-        <GroupBox
-            Grid.Row="2"
-            Margin="10"
-            BorderThickness="0"
-            Header="{Binding [LicenseWindowActivationCode], Source={x:Static su:Language.Instance}}">
-            <TextBox
-                Margin="10"
-                AcceptsReturn="True"
-                Text="{Binding ViewModel.ActivationCode, UpdateSourceTrigger=PropertyChanged}"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Visible" />
-        </GroupBox>
-        <GroupBox
-            Grid.Row="3"
-            Margin="10"
-            BorderThickness="0"
-            Header="{Binding [LicenseWindowOperation], Source={x:Static su:Language.Instance}}">
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80" />
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="80" />
-                </Grid.ColumnDefinitions>
-                <Label
-                    Grid.Column="0"
-                    Margin="10"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Content="{Binding [LicenseWindowVerifyMessage], Source={x:Static su:Language.Instance}}" />
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <GroupBox
+                Grid.Row="0"
+                Margin="4"
+                BorderThickness="0"
+                Header="{Binding [LicenseWindowRequestCode], Source={x:Static su:Language.Instance}}">
                 <TextBox
-                    Grid.Column="1"
-                    Margin="10"
+                    Margin="4"
+                    IsReadOnly="True"
+                    Text="{Binding ViewModel.RequestCode}"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Visible" />
+            </GroupBox>
+            <GroupBox
+                Grid.Row="1"
+                Margin="4"
+                BorderThickness="0"
+                Header="{Binding [LicenseWindowVerifyMessage], Source={x:Static su:Language.Instance}}">
+                <TextBox
+                    Margin="4"
                     Foreground="{Binding ViewModel.MessageForeground}"
                     IsReadOnly="True"
-                    Text="{Binding ViewModel.Message}" />
-                <ui:Button
-                    Grid.Column="2"
-                    Margin="10"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Appearance="Info"
-                    Command="{Binding ViewModel.SetSaveCommand}"
-                    Content="{Binding [LicenseWindowSave], Source={x:Static su:Language.Instance}}" />
-            </Grid>
-        </GroupBox>
+                    Text="{Binding ViewModel.Message}"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Visible" />
+            </GroupBox>
+            <GroupBox
+                Grid.Row="2"
+                Margin="4"
+                BorderThickness="0"
+                Header="{Binding [LicenseWindowActivationCode], Source={x:Static su:Language.Instance}}">
+                <TextBox
+                    Grid.Row="0"
+                    AcceptsReturn="True"
+                    Text="{Binding ViewModel.ActivationCode, UpdateSourceTrigger=PropertyChanged}"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Visible" />
+            </GroupBox>
+        </Grid>
+        <ui:Button
+            Grid.Row="2"
+            Margin="8"
+            HorizontalAlignment="Right"
+            Appearance="Info"
+            Command="{Binding ViewModel.SetSaveCommand}"
+            Content="{Binding [LicenseWindowSave], Source={x:Static su:Language.Instance}}" />
     </Grid>
 </ui:FluentWindow>
