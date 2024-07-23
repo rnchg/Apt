@@ -5,9 +5,9 @@ namespace General.Apt.App.Utility
 {
     public static partial class Device
     {
-        public static ObservableCollection<ComBoBoxItem<string>> Provider { get; } = Adapter.GetAdapters(true);
+        public static ObservableCollection<ComBoBoxItem<string>> Provider { get; } = Adapter.GetAdapters(false);
 
-        public static ObservableCollection<ComBoBoxItem<string>> Provider2 { get; } = Adapter.GetAdapters(false);
+        public static ObservableCollection<ComBoBoxItem<string>> Provider2 { get; } = Adapter.GetAdapters(true);
 
         public static bool VulkanEnable { get; } = Adapter.GetVulkanEnable();
     }
