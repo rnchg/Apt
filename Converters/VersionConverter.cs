@@ -11,7 +11,7 @@ namespace General.Apt.App.Converters
             {
                 return DependencyProperty.UnsetValue;
             }
-            return $"{value} V{Assembly.GetExecutingAssembly().GetName().Version}";
+            return $"{value} V {Assembly.GetExecutingAssembly().GetName().Version}";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

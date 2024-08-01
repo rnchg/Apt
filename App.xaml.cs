@@ -28,6 +28,7 @@ namespace General.Apt.App
         {
             var builder = Microsoft.Extensions.Hosting.Host.CreateApplicationBuilder();
             var appSettings = builder.Configuration.Get<AppSettings>();
+            appSettings.App.Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             builder.Services.AddSingleton(appSettings);
             builder.Services.AddSerilog((services, logger) => logger.ReadFrom.Configuration(builder.Configuration));
             builder.Services.AddSingleton<IWindow, MainWindow>();
@@ -45,7 +46,6 @@ namespace General.Apt.App
             builder.Services.AddHostedService<AppHostService>();
             Host = builder.Build();
             Logger = GetRequiredService<ILogger<App>>();
-            Logger.LogInformation("--------Init--------");
         }
 
         private async void OnStartup(object sender, StartupEventArgs e)
@@ -61,12 +61,10 @@ namespace General.Apt.App
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
             await Host.StartAsync();
-            Logger.LogInformation("--------Startup--------");
         }
 
         private async void OnExit(object sender, ExitEventArgs e)
         {
-            Logger.LogInformation("--------Exit--------");
             await Host.StopAsync();
             Host.Dispose();
             Environment.Exit(0);

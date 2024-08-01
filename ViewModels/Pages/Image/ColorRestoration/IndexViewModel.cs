@@ -189,7 +189,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.ColorRestoration
                 new ComBoBoxItem<string>() { Text = Language.GetString("ImageColorRestorationIndexPageInputSortRuleAsc"), Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.GetString("ImageColorRestorationIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
-            ProviderSource = Device.Provider;
+            ProviderSource = Device.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageModeStandard"), Value = "Standard" },

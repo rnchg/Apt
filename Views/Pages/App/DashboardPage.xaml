@@ -624,7 +624,7 @@
                 Margin="10,0,0,0"
                 Padding="4"
                 Content="Youtube: Light Cloud Wind"
-                NavigateUri="https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg"
+                NavigateUri="https://www.youtube.com/channel/UCHKH3bLpd8giPyr6x5sKGfw"
                 ToolTip="Youtube: Light Cloud Wind" />
             <ui:HyperlinkButton
                 Margin="10,0,0,0"

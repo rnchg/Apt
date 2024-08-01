@@ -189,7 +189,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.ColorRestoration
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoColorRestorationIndexPageInputSortRuleAsc"), Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoColorRestorationIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
-            ProviderSource = Device.Provider;
+            ProviderSource = Device.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageModeStandard"), Value = "Standard" },

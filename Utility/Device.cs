@@ -5,9 +5,9 @@ namespace General.Apt.App.Utility
 {
     public static partial class Device
     {
-        public static ObservableCollection<ComBoBoxItem<string>> Provider { get; } = Adapter.GetAdapters(false);
+        public static ObservableCollection<ComBoBoxItem<string>> CpuAndDirectML { get; } = Adapter.GetCpuAndDirectML();
 
-        public static ObservableCollection<ComBoBoxItem<string>> Provider2 { get; } = Adapter.GetAdapters(true);
+        public static ObservableCollection<ComBoBoxItem<string>> CpuAndGpu { get; } = Adapter.GetCpuAndGpu();
 
         public static bool VulkanEnable { get; } = Adapter.GetVulkanEnable();
     }

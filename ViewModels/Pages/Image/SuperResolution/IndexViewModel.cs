@@ -164,7 +164,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.SuperResolution
                 new ComBoBoxItem<string>() { Text = Language.GetString("ImageSuperResolutionIndexPageInputSortRuleAsc"), Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.GetString("ImageSuperResolutionIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
-            ProviderSource = Device.Provider2;
+            ProviderSource = Device.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("ImageSuperResolutionIndexPageModeStandard"), Value = "Standard" },

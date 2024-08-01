@@ -164,7 +164,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.SuperResolution
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoSuperResolutionIndexPageInputSortRuleAsc"), Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoSuperResolutionIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
-            ProviderSource = Device.Provider2;
+            ProviderSource = Device.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("VideoSuperResolutionIndexPageModeStandard"), Value = "Standard" },

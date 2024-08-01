@@ -74,12 +74,25 @@
                     VerticalScrollBarVisibility="Visible" />
             </GroupBox>
         </Grid>
-        <ui:Button
+        <StackPanel
             Grid.Row="2"
-            Margin="8"
             HorizontalAlignment="Right"
-            Appearance="Info"
-            Command="{Binding ViewModel.SetSaveCommand}"
-            Content="{Binding [LicenseWindowSave], Source={x:Static su:Language.Instance}}" />
+            Orientation="Horizontal">
+            <ui:Button
+                Margin="8"
+                Appearance="Caution"
+                Command="{Binding ViewModel.GetRequestCodeCommand}"
+                Content="{Binding [LicenseWindowGetRequestCode], Source={x:Static su:Language.Instance}}" />
+            <ui:Button
+                Margin="8"
+                Appearance="Success"
+                Command="{Binding ViewModel.SetSaveCommand}"
+                Content="{Binding [LicenseWindowSetSave], Source={x:Static su:Language.Instance}}" />
+            <ui:Button
+                Margin="8"
+                Appearance="Info"
+                Command="{Binding ViewModel.SetCloseCommand}"
+                Content="{Binding [LicenseWindowSetClose], Source={x:Static su:Language.Instance}}" />
+        </StackPanel>
     </Grid>
 </ui:FluentWindow>

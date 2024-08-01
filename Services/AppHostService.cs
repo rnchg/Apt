@@ -1,26 +1,38 @@
-﻿using General.Apt.App.Services.Contracts;
+﻿using General.Apt.App.Models;
+using General.Apt.App.Services.Contracts;
 using General.Apt.App.Utility;
 using General.Apt.App.ViewModels.Pages.App;
 using General.Apt.App.Views.Pages.App;
 using General.Apt.App.Views.Windows;
 using General.Apt.Service.Helpers;
 using General.Apt.Service.Utility;
+using Microsoft.Extensions.Logging;
 
 namespace General.Apt.App.Services
 {
     public class AppHostService : IHostedService
     {
+        private readonly ILogger<AppHostService> _logger;
+        private readonly AppSettings _appSettings;
         private readonly IServiceProvider _serviceProvider;
 
-        public AppHostService(IServiceProvider serviceProvider)
+        public AppHostService(
+            ILogger<AppHostService> logger,
+            AppSettings appSettings,
+            IServiceProvider serviceProvider)
         {
+            _logger = logger;
+            _appSettings = appSettings;
             _serviceProvider = serviceProvider;
+            _logger.LogInformation($"[{_appSettings.App.Name} V{_appSettings.App.Version}]");
+            _logger.LogInformation($"--------Init--------");
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
             Setting.GetSetting();
             GetSetting();
+            _logger.LogInformation($"--------Start--------");
             return HandleActivationAsync();
         }
 
@@ -28,6 +40,7 @@ namespace General.Apt.App.Services
         {
             SetSetting();
             Setting.SetSetting();
+            _logger.LogInformation($"--------Stop--------");
             return Task.CompletedTask;
         }
 

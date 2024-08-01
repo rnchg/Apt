@@ -36,21 +36,43 @@ namespace General.Apt.App.ViewModels.Windows
         }
 
         [RelayCommand]
+        private async Task GetRequestCode()
+        {
+            if (License.TryGetRequestCode(out var requestCode, out var message))
+            {
+                RequestCode = requestCode;
+
+                await Utility.Message.ShowMessageInfo(string.Format(Language.GetString("LicenseWindowGetRequestCodeSuccess"), message));
+            }
+            else
+            {
+                await Utility.Message.ShowMessageError(string.Format(Language.GetString("LicenseWindowGetRequestCodeError"), message));
+            }
+            Message = message;
+        }
+
+        [RelayCommand]
         private async Task SetSave()
         {
             if (License.Validate(App.Current.Logger, ActivationCode, out var requestCode, out var message))
             {
                 Current.Config.App.ActivationCode = ActivationCode;
 
-                await Utility.Message.ShowMessageInfo(string.Format(Language.GetString("LicenseWindowSaveSuccess"), message));
+                await Utility.Message.ShowMessageInfo(string.Format(Language.GetString("LicenseWindowSetSaveSuccess"), message));
 
                 CloseAction?.Invoke();
             }
             else
             {
-                await Utility.Message.ShowMessageError(string.Format(Language.GetString("LicenseWindowSaveError"), message));
+                await Utility.Message.ShowMessageError(string.Format(Language.GetString("LicenseWindowSetSaveError"), message));
             }
             Message = message;
+        }
+
+        [RelayCommand]
+        private void SetClose()
+        {
+            CloseAction?.Invoke();
         }
 
         public LicenseWindowViewModel()

@@ -45,7 +45,7 @@
 - **Email**：[Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
 - **Github**：[github.com/rnchg/Apt](https://github.com/rnchg/Apt)
 - **Gitee**：[gitee.com/rnchg/apt](https://gitee.com/rnchg/apt)
-- **Youtube**：[Light Cloud Wind](https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg)
+- **Youtube**：[Light Cloud Wind](https://www.youtube.com/channel/UCHKH3bLpd8giPyr6x5sKGfw)
 - **Bilibili**：[风轻云也净](https://space.bilibili.com/478375442)
 - **QQ**：6085398
 

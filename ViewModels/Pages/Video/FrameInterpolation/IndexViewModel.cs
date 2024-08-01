@@ -163,7 +163,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageInputSortRuleAsc"), Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
-            ProviderSource = Device.Provider2;
+            ProviderSource = Device.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("VideoFrameInterpolationIndexPageModeStandard"), Value = "Standard" }

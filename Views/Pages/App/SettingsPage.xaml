@@ -192,7 +192,7 @@
                     Background="Transparent"
                     BorderThickness="0,1,0,1"
                     CornerRadius="0"
-                    NavigateUri="https://www.youtube.com/channel/UC1kFNUUyXzN2TJ2L1oS0amg">
+                    NavigateUri="https://www.youtube.com/channel/UCHKH3bLpd8giPyr6x5sKGfw">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />

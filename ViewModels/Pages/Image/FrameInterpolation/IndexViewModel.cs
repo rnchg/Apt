@@ -163,7 +163,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.FrameInterpolation
                 new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortRuleAsc"), Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortRuleDesc"), Value = "Desc" }
             };
-            ProviderSource = Device.Provider2;
+            ProviderSource = Device.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.GetString("ImageFrameInterpolationIndexPageModeStandard"), Value = "Standard" }
