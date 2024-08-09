@@ -133,19 +133,19 @@ namespace General.Apt.App.ViewModels.Pages.Video.Organization
         {
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoOrganizationIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoOrganizationIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoOrganizationIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoOrganizationIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoOrganizationIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ClientSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoOrganizationIndexPageClientBilibiliWindows"), Value = "Windows" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoOrganizationIndexPageClientBilibiliAndroid"), Value = "Android" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageClientBilibiliWindows"], Value = "Windows" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageClientBilibiliAndroid"], Value = "Android" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -172,7 +172,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.Organization
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Client);
 
-                Message.ShowSnackbarSuccess(Language.GetString("VideoOrganizationIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["VideoOrganizationIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

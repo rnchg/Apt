@@ -2,6 +2,7 @@
 using General.Apt.Service.Services.Pages.Chat.Gpt;
 using System.Collections.Specialized;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Wpf.Ui.Controls;
 
 namespace General.Apt.App.Views.Pages.Chat.Gpt
@@ -25,7 +26,7 @@ namespace General.Apt.App.Views.Pages.Chat.Gpt
 
         public void InitializeData()
         {
-            ViewModel.ChatHistory.Add(new ChatMessage() { Text = Service.Utility.Language.GetString("ChatGptHelp"), IsOwner = false });
+            ViewModel.ChatHistory.Add(new ChatMessage() { Text = Service.Utility.Language.Instance["ChatGptHelp"], IsOwner = false });
 
             ViewModel.ChatHistory.CollectionChanged += ChatHistory_CollectionChanged;
         }
@@ -35,9 +36,17 @@ namespace General.Apt.App.Views.Pages.Chat.Gpt
             if (e.Action == NotifyCollectionChangedAction.Add && MessagesItemsCtrl.Template != null)
             {
                 var scrollViewer = (ScrollViewer)MessagesItemsCtrl.Template.FindName("scrollViewer", MessagesItemsCtrl);
-                if (scrollViewer != null)
+                scrollViewer?.ScrollToEnd();
+            }
+        }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
                 {
-                    scrollViewer.ScrollToEnd();
+                    ViewModel.SetSendCommand.Execute(null);
                 }
             }
         }

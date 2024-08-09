@@ -4,17 +4,17 @@ using General.Apt.App.Views.Pages.App;
 using Wpf.Ui;
 using Wpf.Ui.Controls;
 
-namespace General.Apt.App.Views.Windows
+namespace General.Apt.App.Views.Windows.App
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
     public partial class MainWindow : IWindow
     {
-        public ViewModels.Windows.MainWindowViewModel ViewModel { get; }
+        public ViewModels.Windows.App.MainWindowViewModel ViewModel { get; }
 
         public MainWindow(
-            ViewModels.Windows.MainWindowViewModel viewModel,
+            ViewModels.Windows.App.MainWindowViewModel viewModel,
             INavigationService navigationService,
             IServiceProvider serviceProvider,
             ISnackbarService snackbarService,
@@ -87,7 +87,7 @@ namespace General.Apt.App.Views.Windows
 
         private async void FluentWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            await Message.ShowMessageConfirm(Service.Utility.Language.GetString("MainWindowExitConfirm"), cancel: () => e.Cancel = true);
+            await Message.ShowMessageConfirm(Service.Utility.Language.Instance["MainWindowExitConfirm"], cancel: () => e.Cancel = true);
         }
     }
 }

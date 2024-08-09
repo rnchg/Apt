@@ -99,9 +99,9 @@ namespace General.Apt.App.ViewModels.Pages.Video.ColorRestoration
             {
                 QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
                 {
-                    new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageQualityHigh"), Value = "High" },
-                    new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageQualityMedium"), Value = "Medium" },
-                    new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageQualityLow"), Value = "Low" }
+                    new ComBoBoxItem<string>() {  Text = Language.Instance["VideoColorRestorationIndexPageQualityHigh"], Value = "High" },
+                    new ComBoBoxItem<string>() {  Text = Language.Instance["VideoColorRestorationIndexPageQualityMedium"], Value = "Medium" },
+                    new ComBoBoxItem<string>() {  Text = Language.Instance["VideoColorRestorationIndexPageQualityLow"], Value = "Low" }
                 };
                 Quality = "Medium";
                 return;
@@ -110,7 +110,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.ColorRestoration
             //{
             //    QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
             //    {
-            //        new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageQualityLow"), Value = "Low" }
+            //        new ComBoBoxItem<string>() {  Text = Language.Instance["VideoColorRestorationIndexPageQualityLow"], Value = "Low" }
             //    };
             //    Quality = "Low";
             //    return;
@@ -180,20 +180,20 @@ namespace General.Apt.App.ViewModels.Pages.Video.ColorRestoration
         {
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoColorRestorationIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoColorRestorationIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoColorRestorationIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoColorRestorationIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoColorRestorationIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoColorRestorationIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoColorRestorationIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoColorRestorationIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoColorRestorationIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoColorRestorationIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ProviderSource = Device.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageModeStandard"), Value = "Standard" },
-                //new ComBoBoxItem<string>() {  Text = Language.GetString("VideoColorRestorationIndexPageModeLite"), Value = "Lite" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoColorRestorationIndexPageModeStandard"], Value = "Standard" },
+                //new ComBoBoxItem<string>() {  Text = Language.Instance["VideoColorRestorationIndexPageModeLite"], Value = "Lite" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -222,7 +222,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.ColorRestoration
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("VideoColorRestorationIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["VideoColorRestorationIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

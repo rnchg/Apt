@@ -99,9 +99,9 @@ namespace General.Apt.App.ViewModels.Pages.Image.ColorRestoration
             {
                 QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
                 {
-                    new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageQualityHigh"), Value = "High" },
-                    new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageQualityMedium"), Value = "Medium" },
-                    new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageQualityLow"), Value = "Low" }
+                    new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageQualityHigh"], Value = "High" },
+                    new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageQualityMedium"], Value = "Medium" },
+                    new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageQualityLow"], Value = "Low" }
                 };
                 Quality = "Medium";
                 return;
@@ -110,7 +110,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.ColorRestoration
             //{
             //    QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
             //    {
-            //        new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageQualityLow"), Value = "Low" }
+            //        new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageQualityLow"], Value = "Low" }
             //    };
             //    Quality = "Low";
             //    return;
@@ -180,20 +180,20 @@ namespace General.Apt.App.ViewModels.Pages.Image.ColorRestoration
         {
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageColorRestorationIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageColorRestorationIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageColorRestorationIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageColorRestorationIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageColorRestorationIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageColorRestorationIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageColorRestorationIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageColorRestorationIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageColorRestorationIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageColorRestorationIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ProviderSource = Device.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageModeStandard"), Value = "Standard" },
-                //new ComBoBoxItem<string>() {  Text = Language.GetString("ImageColorRestorationIndexPageModeLite"), Value = "Lite" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageModeStandard"], Value = "Standard" },
+                //new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageModeLite"], Value = "Lite" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -222,7 +222,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.ColorRestoration
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("ImageColorRestorationIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["ImageColorRestorationIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

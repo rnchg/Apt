@@ -1,5 +1,5 @@
 ﻿using General.Apt.App.Services;
-using General.Apt.App.Views.Windows;
+using General.Apt.App.Views.Windows.App;
 using General.Apt.Service.Utility;
 
 namespace General.Apt.App.Utility
@@ -8,7 +8,7 @@ namespace General.Apt.App.Utility
     {
         public static async Task ShowLicense(string message)
         {
-            var text = string.Format(Language.GetString("LicenseValidateFail"), message);
+            var text = string.Format(Language.Instance["LicenseValidateFail"], message);
 
             await Message.ShowMessageConfirm(text, () =>
             {

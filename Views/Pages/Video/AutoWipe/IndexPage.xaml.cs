@@ -39,7 +39,7 @@ namespace General.Apt.App.Views.Pages.Video.AutoWipe
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("VideoAutoWipeHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["VideoAutoWipeHelp"], ViewModel.MessageAction);
         }
 
         public async Task InitializeMask()
@@ -52,7 +52,7 @@ namespace General.Apt.App.Views.Pages.Video.AutoWipe
 
                 if (maskImage.Source == null)
                 {
-                    throw new Exception(Service.Utility.Language.GetString("VideoAutoWipeIndexPageMaskEmpty"));
+                    throw new Exception(Service.Utility.Language.Instance["VideoAutoWipeIndexPageMaskEmpty"]);
 
                 }
 
@@ -83,7 +83,7 @@ namespace General.Apt.App.Views.Pages.Video.AutoWipe
         private void MaskSelect_Click(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = Service.Utility.Language.GetString("VideoAutoWipeIndexPageMaskFileFilter");
+            openFileDialog.Filter = Service.Utility.Language.Instance["VideoAutoWipeIndexPageMaskFileFilter"];
             if (openFileDialog.ShowDialog() is true)
             {
                 var image = new BitmapImage();

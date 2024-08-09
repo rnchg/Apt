@@ -1,6 +1,7 @@
 ﻿using General.Apt.App.Services;
-using General.Apt.App.ViewModels.Windows;
-using General.Apt.App.Views.Windows;
+using General.Apt.App.ViewModels.Windows.App;
+using General.Apt.App.Views.Windows.App;
+using General.Apt.App.Views.Windows.Chat.Gpt;
 using General.Apt.Service.Consts;
 using General.Apt.Service.Models;
 using General.Apt.Service.Utility;
@@ -84,6 +85,12 @@ namespace General.Apt.App.ViewModels.Pages.App
         }
 
         [RelayCommand]
+        private void SetChatGptConfig()
+        {
+            _windowsService.ShowDialog<ConfigWindow>();
+        }
+
+        [RelayCommand]
         private void SetLicense()
         {
             _windowsService.ShowDialog<LicenseWindow>();
@@ -108,15 +115,15 @@ namespace General.Apt.App.ViewModels.Pages.App
 
             ThemeSource = new ObservableCollection<ComBoBoxItem<string, ApplicationTheme>>()
             {
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Service.Utility.Language.GetString("SettingsPageThemeDark"), Value="Dark",  Item = ApplicationTheme.Dark },
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Service.Utility.Language.GetString("SettingsPageThemeLight"), Value="Light", Item = ApplicationTheme.Light },
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Service.Utility.Language.GetString("SettingsPageThemeHighContrast"), Value="HighContrast",  Item = ApplicationTheme.HighContrast }
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Service.Utility.Language.Instance["SettingsPageThemeDark"], Value="Dark",  Item = ApplicationTheme.Dark },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Service.Utility.Language.Instance["SettingsPageThemeLight"], Value="Light", Item = ApplicationTheme.Light },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Service.Utility.Language.Instance["SettingsPageThemeHighContrast"], Value="HighContrast",  Item = ApplicationTheme.HighContrast }
             };
             NavigationStyleSource = new ObservableCollection<ComBoBoxItem<string, NavigationViewPaneDisplayMode>>()
             {
-                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Service.Utility.Language.GetString("SettingsPageNavigationLeft"), Value ="Left", Item = NavigationViewPaneDisplayMode.Left },
-                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Service.Utility.Language.GetString("SettingsPageNavigationLeftMinimal"), Value = "LeftMinimal",  Item = NavigationViewPaneDisplayMode.LeftMinimal },
-                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Service.Utility.Language.GetString("SettingsPageNavigationLeftFluent"), Value = "LeftFluent",  Item = NavigationViewPaneDisplayMode.LeftFluent }
+                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Service.Utility.Language.Instance["SettingsPageNavigationLeft"], Value ="Left", Item = NavigationViewPaneDisplayMode.Left },
+                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Service.Utility.Language.Instance["SettingsPageNavigationLeftMinimal"], Value = "LeftMinimal",  Item = NavigationViewPaneDisplayMode.LeftMinimal },
+                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Service.Utility.Language.Instance["SettingsPageNavigationLeftFluent"], Value = "LeftFluent",  Item = NavigationViewPaneDisplayMode.LeftFluent }
             };
             LanguageSource = new ObservableCollection<ComBoBoxItem<string, string>>(Directory.GetFiles(AppConst.LanguagePath, "*.json").Select(x =>
             {
@@ -139,7 +146,7 @@ namespace General.Apt.App.ViewModels.Pages.App
         private void UpdateLanguage()
         {
             if (Current.Config.App.CurrentLanguage == Service.Utility.Language.Instance.Name) return;
-            Service.Utility.Language.Instance.UpdateLanguage(Current.Config.App.CurrentLanguage);
+            Service.Utility.Language.Instance.Update(Current.Config.App.CurrentLanguage);
             Apt.App.App.Current.GetRequiredService<MainWindowViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<SettingsPageViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Image.SuperResolution.IndexViewModel>().InitializeViewModel();
@@ -157,7 +164,7 @@ namespace General.Apt.App.ViewModels.Pages.App
             Apt.App.App.Current.GetRequiredService<Video.FrameInterpolation.IndexViewModel>().InitializeViewModel();
             Apt.App.App.Current.GetRequiredService<Video.Organization.IndexViewModel>().InitializeViewModel();
             Language = Service.Utility.Language.Instance.Name;
-            AppHostService.GetSetting();
+            AppHostService.GetConfig();
         }
     }
 }

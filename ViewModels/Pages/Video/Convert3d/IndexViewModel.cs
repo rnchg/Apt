@@ -164,27 +164,27 @@ namespace General.Apt.App.ViewModels.Pages.Video.Convert3d
         {
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoConvert3dIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoConvert3dIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoConvert3dIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoConvert3dIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoConvert3dIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoConvert3dIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoConvert3dIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoConvert3dIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoConvert3dIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoConvert3dIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ProviderSource = Device.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageModeStandard"), Value = "Standard" },
-                //new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageModeLite"), Value = "Lite" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageModeStandard"], Value = "Standard" },
+                //new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageModeLite"], Value = "Lite" }
             };
             FormatSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageFormatHalfSbs"), Value = "HalfSbs" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageFormatSbs"), Value = "Sbs" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageFormatAnaglyph"), Value = "Anaglyph" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoConvert3dIndexPageFormatDepth"), Value = "Depth" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageFormatHalfSbs"], Value = "HalfSbs" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageFormatSbs"], Value = "Sbs" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageFormatAnaglyph"], Value = "Anaglyph" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageFormatDepth"], Value = "Depth" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -213,7 +213,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.Convert3d
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("VideoConvert3dIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["VideoConvert3dIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

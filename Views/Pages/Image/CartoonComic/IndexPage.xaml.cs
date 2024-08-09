@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Image.CartoonComic
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("ImageCartoonComicHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["ImageCartoonComicHelp"], ViewModel.MessageAction);
         }
     }
 }

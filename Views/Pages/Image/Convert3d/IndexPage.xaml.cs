@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Image.Convert3d
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("ImageConvert3dHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["ImageConvert3dHelp"], ViewModel.MessageAction);
         }
     }
 }

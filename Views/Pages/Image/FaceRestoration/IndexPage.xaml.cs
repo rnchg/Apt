@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Image.FaceRestoration
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("ImageFaceRestorationHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["ImageFaceRestorationHelp"], ViewModel.MessageAction);
         }
     }
 }

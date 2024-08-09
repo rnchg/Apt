@@ -227,19 +227,19 @@ namespace General.Apt.App.ViewModels.Pages.Video.AutoWipe
 
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoAutoWipeIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoAutoWipeIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoAutoWipeIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoAutoWipeIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoAutoWipeIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoAutoWipeIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoAutoWipeIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoAutoWipeIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoAutoWipeIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoAutoWipeIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ProviderSource = Device.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoAutoWipeIndexPageModeStandard"), Value = "Standard" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoAutoWipeIndexPageModeStandard"], Value = "Standard" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -268,7 +268,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.AutoWipe
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("VideoAutoWipeIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["VideoAutoWipeIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

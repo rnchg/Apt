@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Image.SuperResolution
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("ImageSuperResolutionHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["ImageSuperResolutionHelp"], ViewModel.MessageAction);
         }
     }
 }

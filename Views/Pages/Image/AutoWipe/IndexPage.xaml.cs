@@ -39,7 +39,7 @@ namespace General.Apt.App.Views.Pages.Image.AutoWipe
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("ImageAutoWipeHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["ImageAutoWipeHelp"], ViewModel.MessageAction);
         }
 
         public async Task InitializeMask()
@@ -52,7 +52,7 @@ namespace General.Apt.App.Views.Pages.Image.AutoWipe
 
                 if (maskImage.Source == null)
                 {
-                    throw new Exception(Service.Utility.Language.GetString("ImageAutoWipeIndexPageMaskEmpty"));
+                    throw new Exception(Service.Utility.Language.Instance["ImageAutoWipeIndexPageMaskEmpty"]);
 
                 }
 
@@ -83,7 +83,7 @@ namespace General.Apt.App.Views.Pages.Image.AutoWipe
         private void MaskSelect_Click(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = Service.Utility.Language.GetString("ImageAutoWipeIndexPageMaskFileFilter");
+            openFileDialog.Filter = Service.Utility.Language.Instance["ImageAutoWipeIndexPageMaskFileFilter"];
             if (openFileDialog.ShowDialog() is true)
             {
                 var image = new BitmapImage();

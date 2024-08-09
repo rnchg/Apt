@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Image.ColorRestoration
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("ImageColorRestorationHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["ImageColorRestorationHelp"], ViewModel.MessageAction);
         }
     }
 }

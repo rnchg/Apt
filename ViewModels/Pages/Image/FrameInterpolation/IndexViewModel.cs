@@ -154,29 +154,29 @@ namespace General.Apt.App.ViewModels.Pages.Image.FrameInterpolation
         {
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ProviderSource = Device.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageFrameInterpolationIndexPageModeStandard"), Value = "Standard" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageFrameInterpolationIndexPageModeStandard"], Value = "Standard" }
             };
             ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX2"), Value = "X2" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX3"), Value = "X3" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX4"), Value = "X4" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX5"), Value = "X5" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX6"), Value = "X6" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX7"), Value = "X7" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFrameInterpolationIndexPageScaleX8"), Value = "X8" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX2"], Value = "X2" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX3"], Value = "X3" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX4"], Value = "X4" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX5"], Value = "X5" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX6"], Value = "X6" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX7"], Value = "X7" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX8"], Value = "X8" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -201,13 +201,13 @@ namespace General.Apt.App.ViewModels.Pages.Image.FrameInterpolation
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                if (!Device.VulkanEnable) throw new Exception(Language.GetString("ImageFrameInterpolationIndexPageNotSupportVulkan"));
+                if (!Device.VulkanEnable) throw new Exception(Language.Instance["ImageFrameInterpolationIndexPageNotSupportVulkan"]);
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("ImageFrameInterpolationIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["ImageFrameInterpolationIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

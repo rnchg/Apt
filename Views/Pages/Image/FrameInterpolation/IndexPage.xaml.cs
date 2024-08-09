@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Image.FrameInterpolation
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("ImageFrameInterpolationHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["ImageFrameInterpolationHelp"], ViewModel.MessageAction);
         }
     }
 }

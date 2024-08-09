@@ -155,26 +155,26 @@ namespace General.Apt.App.ViewModels.Pages.Video.SuperResolution
         {
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoSuperResolutionIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoSuperResolutionIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoSuperResolutionIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoSuperResolutionIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoSuperResolutionIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ProviderSource = Device.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoSuperResolutionIndexPageModeStandard"), Value = "Standard" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoSuperResolutionIndexPageModeAnimation"), Value = "Animation" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoSuperResolutionIndexPageModeStandard"], Value = "Standard" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoSuperResolutionIndexPageModeAnimation"], Value = "Animation" }
             };
             ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoSuperResolutionIndexPageScaleX2"), Value = "X2" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoSuperResolutionIndexPageScaleX3"), Value = "X3" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoSuperResolutionIndexPageScaleX4"), Value = "X4" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageScaleX2"], Value = "X2" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageScaleX3"], Value = "X3" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageScaleX4"], Value = "X4" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -199,13 +199,13 @@ namespace General.Apt.App.ViewModels.Pages.Video.SuperResolution
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                if (!Device.VulkanEnable) throw new Exception(Language.GetString("VideoSuperResolutionIndexPageNotSupportVulkan"));
+                if (!Device.VulkanEnable) throw new Exception(Language.Instance["VideoSuperResolutionIndexPageNotSupportVulkan"]);
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("VideoSuperResolutionIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["VideoSuperResolutionIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

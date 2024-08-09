@@ -222,19 +222,19 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
 
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageAutoWipeIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageAutoWipeIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageAutoWipeIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageAutoWipeIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageAutoWipeIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageAutoWipeIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageAutoWipeIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageAutoWipeIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageAutoWipeIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageAutoWipeIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ProviderSource = Device.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageAutoWipeIndexPageModeStandard"), Value = "Standard" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageAutoWipeIndexPageModeStandard"], Value = "Standard" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -263,7 +263,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("ImageAutoWipeIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["ImageAutoWipeIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

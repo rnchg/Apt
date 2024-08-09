@@ -154,29 +154,29 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
         {
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ProviderSource = Device.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoFrameInterpolationIndexPageModeStandard"), Value = "Standard" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoFrameInterpolationIndexPageModeStandard"], Value = "Standard" }
             };
             ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageScaleX2"), Value = "X2" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageScaleX3"), Value = "X3" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageScaleX4"), Value = "X4" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageScaleX5"), Value = "X5" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageScaleX6"), Value = "X6" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageScaleX7"), Value = "X7" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoFrameInterpolationIndexPageScaleX8"), Value = "X8" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX2"], Value = "X2" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX3"], Value = "X3" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX4"], Value = "X4" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX5"], Value = "X5" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX6"], Value = "X6" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX7"], Value = "X7" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX8"], Value = "X8" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -201,13 +201,13 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                if (!Device.VulkanEnable) throw new Exception(Language.GetString("VideoFrameInterpolationIndexPageNotSupportVulkan"));
+                if (!Device.VulkanEnable) throw new Exception(Language.Instance["VideoFrameInterpolationIndexPageNotSupportVulkan"]);
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("VideoFrameInterpolationIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["VideoFrameInterpolationIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

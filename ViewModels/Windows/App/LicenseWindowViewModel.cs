@@ -1,6 +1,6 @@
 ﻿using General.Apt.Service.Utility;
 
-namespace General.Apt.App.ViewModels.Windows
+namespace General.Apt.App.ViewModels.Windows.App
 {
     public partial class LicenseWindowViewModel : ObservableObject
     {
@@ -42,11 +42,11 @@ namespace General.Apt.App.ViewModels.Windows
             {
                 RequestCode = requestCode;
 
-                await Utility.Message.ShowMessageInfo(string.Format(Language.GetString("LicenseWindowGetRequestCodeSuccess"), message));
+                await Utility.Message.ShowMessageInfo(string.Format(Language.Instance["LicenseWindowGetRequestCodeSuccess"], message));
             }
             else
             {
-                await Utility.Message.ShowMessageError(string.Format(Language.GetString("LicenseWindowGetRequestCodeError"), message));
+                await Utility.Message.ShowMessageError(string.Format(Language.Instance["LicenseWindowGetRequestCodeError"], message));
             }
             Message = message;
         }
@@ -54,17 +54,17 @@ namespace General.Apt.App.ViewModels.Windows
         [RelayCommand]
         private async Task SetSave()
         {
-            if (License.Validate(App.Current.Logger, ActivationCode, out var requestCode, out var message))
+            if (License.Validate(Apt.App.App.Current.Logger, ActivationCode, out var requestCode, out var message))
             {
                 Current.Config.App.ActivationCode = ActivationCode;
 
-                await Utility.Message.ShowMessageInfo(string.Format(Language.GetString("LicenseWindowSetSaveSuccess"), message));
+                await Utility.Message.ShowMessageInfo(string.Format(Language.Instance["LicenseWindowSetSaveSuccess"], message));
 
                 CloseAction?.Invoke();
             }
             else
             {
-                await Utility.Message.ShowMessageError(string.Format(Language.GetString("LicenseWindowSetSaveError"), message));
+                await Utility.Message.ShowMessageError(string.Format(Language.Instance["LicenseWindowSetSaveError"], message));
             }
             Message = message;
         }
@@ -82,10 +82,6 @@ namespace General.Apt.App.ViewModels.Windows
 
         private void InitializeViewModel()
         {
-            RequestCode = Current.Config.App.RequestCode;
-            ActivationCode = Current.Config.App.ActivationCode;
-            ValidateActivationCode();
-
             _isInitialized = true;
         }
 

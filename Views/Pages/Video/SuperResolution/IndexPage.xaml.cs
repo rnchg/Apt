@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Video.SuperResolution
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("VideoSuperResolutionHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["VideoSuperResolutionHelp"], ViewModel.MessageAction);
         }
     }
 }

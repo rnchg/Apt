@@ -155,30 +155,30 @@ namespace General.Apt.App.ViewModels.Pages.Video.CartoonComic
         {
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoCartoonComicIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoCartoonComicIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoCartoonComicIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoCartoonComicIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoCartoonComicIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoCartoonComicIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoCartoonComicIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("VideoCartoonComicIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoCartoonComicIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoCartoonComicIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ProviderSource = Device.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoCartoonComicIndexPageModeHayao"), Value = "Hayao" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoCartoonComicIndexPageModeCute"), Value = "Cute" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoCartoonComicIndexPageModeJPFace"), Value = "JPFace" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoCartoonComicIndexPageModeShinkai"), Value = "Shinkai" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoCartoonComicIndexPageModeSketch"), Value = "Sketch" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoCartoonComicIndexPageModeHayao"], Value = "Hayao" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoCartoonComicIndexPageModeCute"], Value = "Cute" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoCartoonComicIndexPageModeJPFace"], Value = "JPFace" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoCartoonComicIndexPageModeShinkai"], Value = "Shinkai" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoCartoonComicIndexPageModeSketch"], Value = "Sketch" }
             };
             QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoCartoonComicIndexPageQualityAuto"), Value = "Auto" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoCartoonComicIndexPageQualityHigh"), Value = "High" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoCartoonComicIndexPageQualityMedium"), Value = "Medium" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("VideoCartoonComicIndexPageQualityLow"), Value = "Low" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoCartoonComicIndexPageQualityAuto"], Value = "Auto" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoCartoonComicIndexPageQualityHigh"], Value = "High" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoCartoonComicIndexPageQualityMedium"], Value = "Medium" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoCartoonComicIndexPageQualityLow"], Value = "Low" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -207,7 +207,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.CartoonComic
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("VideoCartoonComicIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["VideoCartoonComicIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

@@ -3,7 +3,7 @@ using General.Apt.App.Services.Contracts;
 using General.Apt.App.Utility;
 using General.Apt.App.ViewModels.Pages.App;
 using General.Apt.App.Views.Pages.App;
-using General.Apt.App.Views.Windows;
+using General.Apt.App.Views.Windows.App;
 using General.Apt.Service.Helpers;
 using General.Apt.Service.Utility;
 using Microsoft.Extensions.Logging;
@@ -30,21 +30,21 @@ namespace General.Apt.App.Services
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            Setting.GetSetting();
-            GetSetting();
+            Current.GetConfig();
+            GetConfig();
             _logger.LogInformation($"--------Start--------");
             return HandleActivationAsync();
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            SetSetting();
-            Setting.SetSetting();
+            SetConfig();
+            Current.SetConfig();
             _logger.LogInformation($"--------Stop--------");
             return Task.CompletedTask;
         }
 
-        public static void GetSetting()
+        public static void GetConfig()
         {
             var imageSuperResolutionViewModel = App.Current.GetService<ViewModels.Pages.Image.SuperResolution.IndexViewModel>();
             imageSuperResolutionViewModel.Input = Current.Config.ImageSuperResolution.Input;
@@ -174,7 +174,7 @@ namespace General.Apt.App.Services
             videoOrganizationIndexViewMode.Client = Current.Config.VideoOrganization.Client;
         }
 
-        public static void SetSetting()
+        public static void SetConfig()
         {
             var imageSuperResolutionViewModel = App.Current.GetService<ViewModels.Pages.Image.SuperResolution.IndexViewModel>();
             Current.Config.ImageSuperResolution.Input = imageSuperResolutionViewModel.Input;
@@ -324,8 +324,8 @@ namespace General.Apt.App.Services
             {
                 return;
             }
-            var settings = _serviceProvider.GetService<SettingsPageViewModel>();
-            settings.Language = Current.Config.App.CurrentLanguage;
+            var settingsPageViewModel = _serviceProvider.GetService<SettingsPageViewModel>();
+            settingsPageViewModel.Language = Current.Config.App.CurrentLanguage;
             _ = mainWindow.NavigationView.Navigate(typeof(DashboardPage));
             _ = Validate.ValidateLicense();
         }

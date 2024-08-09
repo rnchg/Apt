@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Video.FrameInterpolation
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("VideoFrameInterpolationHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["VideoFrameInterpolationHelp"], ViewModel.MessageAction);
         }
     }
 }

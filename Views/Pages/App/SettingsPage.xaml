@@ -76,6 +76,17 @@
                 OffContent="{Binding [SettingsPageAutoOpenOutputOff], Source={x:Static su:Language.Instance}}"
                 OnContent="{Binding [SettingsPageAutoOpenOutputOn], Source={x:Static su:Language.Instance}}" />
         </ui:CardControl>
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Chat24}">
+            <ui:CardControl.Header>
+                <Grid>
+                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingsPageChatGptConfig], Source={x:Static su:Language.Instance}}" />
+                </Grid>
+            </ui:CardControl.Header>
+            <Button
+                MinWidth="200"
+                Command="{Binding ViewModel.SetChatGptConfigCommand}"
+                Content="{Binding [SettingsPageChatGptConfigSetting], Source={x:Static su:Language.Instance}}" />
+        </ui:CardControl>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Emoji24}">
             <ui:CardControl.Header>
                 <Grid>

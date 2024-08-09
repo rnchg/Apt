@@ -33,6 +33,15 @@ Integrates various latest AI models that can be used in a local offline environm
 - **Frame Interpolation**: Increases video frame rate for smoother playback.
 - **Video Organization**: Decrypts, synthesizes, and organizes downloaded and cached video files.
 
+### Supported Platforms
+|Operating System|Status|Notes|
+|---|---|---|
+|Windows|Completed|Windows 10 x64 1709+|
+|Android|Planning||
+|iOS|Planning||
+|Mac|Planning||
+|Linux|Planning||
+
 ### Future Plans
 Continue to integrate and optimize more AI models to meet diverse user needs.
 

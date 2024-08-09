@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Video.Organization
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("VideoOrganizationHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["VideoOrganizationHelp"], ViewModel.MessageAction);
         }
     }
 }

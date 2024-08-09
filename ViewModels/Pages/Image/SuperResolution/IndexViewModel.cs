@@ -155,26 +155,26 @@ namespace General.Apt.App.ViewModels.Pages.Image.SuperResolution
         {
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageSuperResolutionIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageSuperResolutionIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageSuperResolutionIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageSuperResolutionIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageSuperResolutionIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageSuperResolutionIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageSuperResolutionIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageSuperResolutionIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageSuperResolutionIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageSuperResolutionIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ProviderSource = Device.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageSuperResolutionIndexPageModeStandard"), Value = "Standard" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageSuperResolutionIndexPageModeAnimation"), Value = "Animation" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageSuperResolutionIndexPageModeStandard"], Value = "Standard" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageSuperResolutionIndexPageModeAnimation"], Value = "Animation" }
             };
             ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageSuperResolutionIndexPageScaleX2"), Value = "X2" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageSuperResolutionIndexPageScaleX3"), Value = "X3" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageSuperResolutionIndexPageScaleX4"), Value = "X4" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageSuperResolutionIndexPageScaleX2"], Value = "X2" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageSuperResolutionIndexPageScaleX3"], Value = "X3" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageSuperResolutionIndexPageScaleX4"], Value = "X4" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -199,13 +199,13 @@ namespace General.Apt.App.ViewModels.Pages.Image.SuperResolution
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                if (!Device.VulkanEnable) throw new Exception(Language.GetString("ImageSuperResolutionIndexPageNotSupportVulkan"));
+                if (!Device.VulkanEnable) throw new Exception(Language.Instance["ImageSuperResolutionIndexPageNotSupportVulkan"]);
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("ImageSuperResolutionIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["ImageSuperResolutionIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

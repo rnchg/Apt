@@ -1,4 +1,6 @@
 ﻿using General.Apt.App.Models;
+using General.Apt.App.Services;
+using General.Apt.App.Views.Windows.Chat.Gpt;
 using General.Apt.Service.Consts;
 using General.Apt.Service.Services.Pages.Chat.Gpt;
 using General.Apt.Service.Utility;
@@ -14,6 +16,7 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
 
         private bool _isInitialized = false;
         private IndexService _indexService;
+        private WindowsProviderService _windowsService;
         private CancellationTokenSource _cancellationTokenSource;
 
         public Action<Paragraph> MessageAction { get; set; }
@@ -25,30 +28,43 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
         private string _message;
 
         [ObservableProperty]
-        private int _maxLength;
+        private bool _messageEnabled = false;
 
         [ObservableProperty]
-        private bool _newEnabled;
-
-        [ObservableProperty]
-        private bool _sendEnabled;
+        private bool _sendEnabled = true;
 
         [ObservableProperty]
         private ObservableCollection<ChatMessage> _chatHistory;
 
         [RelayCommand]
-        private void SetNew() => ChatHistory.Clear();
+        private void SetSend()
+        {
+            Send();
+        }
 
         [RelayCommand]
-        private void SetSend() => Send();
+        private void SetCancel()
+        {
+            _cancellationTokenSource?.Cancel();
+            Message = string.Empty;
+        }
 
         [RelayCommand]
-        private void SetCancel() => _cancellationTokenSource?.Cancel();
+        private void SetReset()
+        {
+            ChatHistory.Clear();
+            SetCancel();
+        }
+
+        [RelayCommand]
+        private void SetConfig()
+        {
+            _windowsService.ShowDialog<ConfigWindow>();
+        }
 
         public IndexViewModel(AppSettings appSettings)
         {
             _appSettings = appSettings;
-            MaxLength = _appSettings.Chat.Gpt.PromptMaxLength;
             if (!_isInitialized) InitializeViewModel();
         }
 
@@ -61,6 +77,7 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
 
         private void InitializeViewModel()
         {
+            _windowsService = Apt.App.App.Current.GetRequiredService<WindowsProviderService>();
             ChatHistory = new ObservableCollection<ChatMessage>();
 
             Task.Run(InitModel);
@@ -74,20 +91,19 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
             {
                 if (_appSettings.App.Pack == "Full")
                 {
-                    Placeholder = Language.GetString("ChatGptIndexPageModelInitWait");
+                    Placeholder = Language.Instance["ChatGptIndexPageModelInitWait"];
                     _indexService = new IndexService();
-                    NewEnabled = true;
-                    SendEnabled = true;
-                    Placeholder = Language.GetString("ChatGptIndexPageInputPrompt");
+                    MessageEnabled = true;
+                    Placeholder = Language.Instance["ChatGptIndexPageInputPrompt"];
                 }
                 else
                 {
-                    Placeholder = Language.GetString("ChatGptIndexPageLite");
+                    Placeholder = Language.Instance["ChatGptIndexPageLite"];
                 }
             }
             catch (Exception ex)
             {
-                Placeholder = Language.GetString("ChatGptIndexPageModelInitFailed");
+                Placeholder = Language.Instance["ChatGptIndexPageModelInitFailed"];
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Utility.Message.ShowSnackbarError(ex.Message);
@@ -102,8 +118,7 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
             {
                 return;
             }
-            Placeholder = Language.GetString("ChatGptIndexPageModelProcessWait");
-            NewEnabled = false;
+            Placeholder = Language.Instance["ChatGptIndexPageModelProcessWait"];
             SendEnabled = false;
             var messageUser = new ChatMessage() { Type = ChatConst.Gpt.TypeUser, Text = Message, IsOwner = true };
             ChatHistory.Add(messageUser);
@@ -118,13 +133,13 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
         {
             try
             {
-                Placeholder = Language.GetString("ChatGptIndexPageModelProcessWait");
-                _indexService.Start(chatHistory.ToArray(), _appSettings.Chat.Gpt.PromptSystem, _appSettings.Chat.Gpt.PromptMaxLength, cancellationToken);
-                Placeholder = Language.GetString("ChatGptIndexPageInputPrompt");
+                Placeholder = Language.Instance["ChatGptIndexPageModelProcessWait"];
+                _indexService.Start(chatHistory.ToArray(), cancellationToken);
+                Placeholder = Language.Instance["ChatGptIndexPageInputPrompt"];
             }
             catch (OperationCanceledException ex)
             {
-                Placeholder = Language.GetString("ChatGptIndexPageInputPrompt");
+                Placeholder = Language.Instance["ChatGptIndexPageInputPrompt"];
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     chatHistory.Remove(messageAssistant);
@@ -134,7 +149,7 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
             }
             catch (Exception ex)
             {
-                Placeholder = Language.GetString("ChatGptIndexPageModelInitFailed");
+                Placeholder = Language.Instance["ChatGptIndexPageModelInitFailed"];
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Utility.Message.ShowSnackbarError(ex.Message);
@@ -143,7 +158,6 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
             }
             finally
             {
-                NewEnabled = true;
                 SendEnabled = true;
             }
         }

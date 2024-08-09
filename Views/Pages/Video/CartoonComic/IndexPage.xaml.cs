@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Video.CartoonComic
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("VideoCartoonComicHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["VideoCartoonComicHelp"], ViewModel.MessageAction);
         }
     }
 }

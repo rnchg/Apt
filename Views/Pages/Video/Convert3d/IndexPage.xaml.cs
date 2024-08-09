@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Video.Convert3d
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("VideoConvert3dHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["VideoConvert3dHelp"], ViewModel.MessageAction);
         }
     }
 }

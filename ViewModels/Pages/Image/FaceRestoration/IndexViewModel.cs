@@ -143,20 +143,20 @@ namespace General.Apt.App.ViewModels.Pages.Image.FaceRestoration
         {
             InputSortSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFaceRestorationIndexPageInputSortName"), Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFaceRestorationIndexPageInputSortLastWriteTime"), Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFaceRestorationIndexPageInputSortLength"), Value = "Length" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFaceRestorationIndexPageInputSortName"], Value = "Name" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFaceRestorationIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFaceRestorationIndexPageInputSortLength"], Value = "Length" }
             };
             SortRuleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFaceRestorationIndexPageInputSortRuleAsc"), Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.GetString("ImageFaceRestorationIndexPageInputSortRuleDesc"), Value = "Desc" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFaceRestorationIndexPageInputSortRuleAsc"], Value = "Asc" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFaceRestorationIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
             ProviderSource = Device.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageFaceRestorationIndexPageModeStandard"), Value = "Standard" },
-                new ComBoBoxItem<string>() {  Text = Language.GetString("ImageFaceRestorationIndexPageModePlus"), Value = "Plus" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageFaceRestorationIndexPageModeStandard"], Value = "Standard" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageFaceRestorationIndexPageModePlus"], Value = "Plus" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -185,7 +185,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.FaceRestoration
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                Message.ShowSnackbarSuccess(Language.GetString("ImageFaceRestorationIndexPageOperationCompleted"));
+                Message.ShowSnackbarSuccess(Language.Instance["ImageFaceRestorationIndexPageOperationCompleted"]);
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }

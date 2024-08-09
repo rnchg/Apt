@@ -34,7 +34,7 @@ namespace General.Apt.App.Views.Pages.Video.ColorRestoration
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.GetString("VideoColorRestorationHelp"), ViewModel.MessageAction);
+            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["VideoColorRestorationHelp"], ViewModel.MessageAction);
         }
     }
 }

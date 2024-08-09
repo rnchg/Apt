@@ -1,6 +1,7 @@
-﻿using General.Apt.App.ViewModels.Windows;
+﻿using General.Apt.App.ViewModels.Windows.App;
+using General.Apt.Service.Utility;
 
-namespace General.Apt.App.Views.Windows
+namespace General.Apt.App.Views.Windows.App
 {
     /// <summary>
     /// LicenseWindow.xaml 的交互逻辑
@@ -22,6 +23,14 @@ namespace General.Apt.App.Views.Windows
         public void InitializeData()
         {
             ViewModel.CloseAction = Close;
+
+            IsVisibleChanged += (s, e) =>
+            {
+                if (!IsVisible) return;
+                ViewModel.RequestCode = Current.Config.App.RequestCode;
+                ViewModel.ActivationCode = Current.Config.App.ActivationCode;
+                ViewModel.ValidateActivationCode();
+            };
         }
     }
 }
