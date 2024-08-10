@@ -6,8 +6,6 @@
     }
     public class App
     {
-        public string Name { get; set; }
-        public string Version { get; set; }
         public string Pack { get; set; }
     }
 }

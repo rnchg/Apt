@@ -137,7 +137,7 @@
                         Margin="0,0,16,0"
                         VerticalAlignment="Center"
                         Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                        Text="{Binding ViewModel.ApplicationVersion}" />
+                        Text="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}}" />
                 </Grid>
             </ui:CardExpander.Header>
             <StackPanel>

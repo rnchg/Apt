@@ -23,12 +23,12 @@ namespace General.Apt.App
         public Microsoft.Extensions.Logging.ILogger Logger { get; }
         public T GetService<T>() where T : class => Host.Services.GetService<T>();
         public T GetRequiredService<T>() where T : class => Host.Services.GetRequiredService<T>();
+        public static AssemblyName EntryAssembly { get; } = Assembly.GetEntryAssembly().GetName();
 
         public App()
         {
             var builder = Microsoft.Extensions.Hosting.Host.CreateApplicationBuilder();
             var appSettings = builder.Configuration.Get<AppSettings>();
-            appSettings.App.Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             builder.Services.AddSingleton(appSettings);
             builder.Services.AddSerilog((services, logger) => logger.ReadFrom.Configuration(builder.Configuration));
             builder.Services.AddSingleton<IWindow, MainWindow>();

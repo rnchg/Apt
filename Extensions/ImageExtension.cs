@@ -5,10 +5,7 @@ namespace General.Apt.App.Extensions
 {
     public static class ImageExtension
     {
-        public static BitmapSource ToImage(this string path)
-        {
-            return new BitmapImage(new Uri(path));
-        }
+        public static BitmapSource ToImage(this string path) => new BitmapImage(new Uri(path));
 
         public static BitmapSource ToImage(this Stream stream)
         {
@@ -30,10 +27,8 @@ namespace General.Apt.App.Extensions
         {
             var encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(image));
-            using (var fileStream = new FileStream(path, FileMode.Create))
-            {
-                encoder.Save(fileStream);
-            }
+            using var fileStream = new FileStream(path, FileMode.Create);
+            encoder.Save(fileStream);
         }
     }
 }

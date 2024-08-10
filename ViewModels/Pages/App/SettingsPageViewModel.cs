@@ -19,8 +19,6 @@ namespace General.Apt.App.ViewModels.Pages.App
         private INavigationService _navigationService;
         private WindowsProviderService _windowsService;
 
-        public string ApplicationVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
         [ObservableProperty]
         private ObservableCollection<ComBoBoxItem<string, ApplicationTheme>> _themeSource;
 

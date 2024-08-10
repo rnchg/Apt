@@ -60,7 +60,6 @@
                     MaxDecimalPlaces="0"
                     Maximum="65535"
                     Minimum="1"
-                    SpinButtonPlacementMode="Hidden"
                     Value="{Binding ViewModel.PromptMaxLength, UpdateSourceTrigger=PropertyChanged}" />
             </GroupBox>
             <GroupBox
@@ -74,7 +73,6 @@
                     MaxDecimalPlaces="0"
                     Maximum="256"
                     Minimum="1"
-                    SpinButtonPlacementMode="Hidden"
                     Value="{Binding ViewModel.ContextMaxLength, UpdateSourceTrigger=PropertyChanged}" />
             </GroupBox>
         </Grid>

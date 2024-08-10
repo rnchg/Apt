@@ -1,5 +1,4 @@
-﻿using General.Apt.App.Models;
-using General.Apt.App.Services.Contracts;
+﻿using General.Apt.App.Services.Contracts;
 using General.Apt.App.Utility;
 using General.Apt.App.ViewModels.Pages.App;
 using General.Apt.App.Views.Pages.App;
@@ -13,18 +12,15 @@ namespace General.Apt.App.Services
     public class AppHostService : IHostedService
     {
         private readonly ILogger<AppHostService> _logger;
-        private readonly AppSettings _appSettings;
         private readonly IServiceProvider _serviceProvider;
 
         public AppHostService(
             ILogger<AppHostService> logger,
-            AppSettings appSettings,
             IServiceProvider serviceProvider)
         {
             _logger = logger;
-            _appSettings = appSettings;
             _serviceProvider = serviceProvider;
-            _logger.LogInformation($"[{_appSettings.App.Name} V{_appSettings.App.Version}]");
+            _logger.LogInformation($"[{App.EntryAssembly.Name} V {App.EntryAssembly.Version}]");
             _logger.LogInformation($"--------Init--------");
         }
 

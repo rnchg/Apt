@@ -23,9 +23,7 @@ namespace General.Apt.App.ViewModels.Windows.Chat.Gpt
             Current.Config.ChatGpt.PromptSystem = PromptSystem;
             Current.Config.ChatGpt.PromptMaxLength = PromptMaxLength;
             Current.Config.ChatGpt.ContextMaxLength = ContextMaxLength;
-
-            await Utility.Message.ShowMessageInfo(string.Format(Language.Instance["ChatGptConfigWindowSetSaveSuccess"]));
-
+            await Utility.Message.ShowMessageInfo(Language.Instance["ChatGptConfigWindowSetSaveSuccess"]);
             CloseAction?.Invoke();
         }
 

@@ -79,9 +79,7 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
         {
             _windowsService = Apt.App.App.Current.GetRequiredService<WindowsProviderService>();
             ChatHistory = new ObservableCollection<ChatMessage>();
-
             Task.Run(InitModel);
-
             _isInitialized = true;
         }
 
