@@ -1,4 +1,5 @@
-﻿using General.Apt.App.Utility;
+﻿using General.Apt.App.Adapters.Windows;
+using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
 using General.Apt.Service.Services.Pages.Video.SuperResolution2;
@@ -164,7 +165,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.SuperResolution
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Device.CpuAndGpu;
+            ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["VideoSuperResolutionIndexPageModeStandard"], Value = "Standard" },
@@ -199,7 +200,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.SuperResolution
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                if (!Device.VulkanEnable) throw new Exception(Language.Instance["VideoSuperResolutionIndexPageNotSupportVulkan"]);
+                if (!Adapter.VulkanEnable) throw new Exception(Language.Instance["VideoSuperResolutionIndexPageNotSupportVulkan"]);
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 

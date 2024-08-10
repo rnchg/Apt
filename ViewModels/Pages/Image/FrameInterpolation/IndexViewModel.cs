@@ -1,4 +1,5 @@
-﻿using General.Apt.App.Utility;
+﻿using General.Apt.App.Adapters.Windows;
+using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
 using General.Apt.Service.Services.Pages.Image.FrameInterpolation2;
@@ -163,7 +164,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.FrameInterpolation
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Device.CpuAndGpu;
+            ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["ImageFrameInterpolationIndexPageModeStandard"], Value = "Standard" }
@@ -201,7 +202,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.FrameInterpolation
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                if (!Device.VulkanEnable) throw new Exception(Language.Instance["ImageFrameInterpolationIndexPageNotSupportVulkan"]);
+                if (!Adapter.VulkanEnable) throw new Exception(Language.Instance["ImageFrameInterpolationIndexPageNotSupportVulkan"]);
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 

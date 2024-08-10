@@ -36,9 +36,9 @@ Integrates various latest AI models that can be used in a local offline environm
 ### Supported Platforms
 |Operating System|Status|Notes|
 |---|---|---|
-|Windows|Completed|Windows 10 x64 1709+|
-|Android|Planning||
-|iOS|Planning||
+|Windows|Released|Windows 10 x64 1709+|
+|Android|Developing||
+|iOS|Developing||
 |Mac|Planning||
 |Linux|Planning||
 

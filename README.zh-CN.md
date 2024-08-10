@@ -36,9 +36,9 @@
 ### 支持平台
 |操作系统|状态|备注|
 |---|---|---|
-|Windows|已完成|Windows 10 x64 1709+|
-|Android|计划中||
-|iOS|计划中||
+|Windows|已发布|Windows 10 x64 1709+|
+|Android|开发中||
+|iOS|开发中||
 |Mac|计划中||
 |Linux|计划中||
 

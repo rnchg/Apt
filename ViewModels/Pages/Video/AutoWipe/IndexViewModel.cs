@@ -1,4 +1,5 @@
-﻿using General.Apt.App.Extensions;
+﻿using General.Apt.App.Adapters.Windows;
+using General.Apt.App.Extensions;
 using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
@@ -236,7 +237,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.AutoWipe
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoAutoWipeIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoAutoWipeIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Device.CpuAndDirectML;
+            ProviderSource = Adapter.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["VideoAutoWipeIndexPageModeStandard"], Value = "Standard" }

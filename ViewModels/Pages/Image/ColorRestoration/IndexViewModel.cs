@@ -1,4 +1,5 @@
-﻿using General.Apt.App.Utility;
+﻿using General.Apt.App.Adapters.Windows;
+using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
 using General.Apt.Service.Services.Pages.Image.ColorRestoration;
@@ -189,7 +190,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.ColorRestoration
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageColorRestorationIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageColorRestorationIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Device.CpuAndDirectML;
+            ProviderSource = Adapter.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageModeStandard"], Value = "Standard" },

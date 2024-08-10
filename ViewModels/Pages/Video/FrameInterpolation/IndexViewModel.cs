@@ -1,4 +1,5 @@
-﻿using General.Apt.App.Utility;
+﻿using General.Apt.App.Adapters.Windows;
+using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
 using General.Apt.Service.Services.Pages.Video.FrameInterpolation2;
@@ -163,7 +164,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Device.CpuAndGpu;
+            ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["VideoFrameInterpolationIndexPageModeStandard"], Value = "Standard" }
@@ -201,7 +202,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                if (!Device.VulkanEnable) throw new Exception(Language.Instance["VideoFrameInterpolationIndexPageNotSupportVulkan"]);
+                if (!Adapter.VulkanEnable) throw new Exception(Language.Instance["VideoFrameInterpolationIndexPageNotSupportVulkan"]);
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 

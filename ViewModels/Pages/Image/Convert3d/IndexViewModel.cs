@@ -1,4 +1,5 @@
-﻿using General.Apt.App.Utility;
+﻿using General.Apt.App.Adapters.Windows;
+using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
 using General.Apt.Service.Services.Pages.Image.Convert3d;
@@ -173,7 +174,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.Convert3d
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageConvert3dIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageConvert3dIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Device.CpuAndDirectML;
+            ProviderSource = Adapter.CpuAndDirectML;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["ImageConvert3dIndexPageModeStandard"], Value = "Standard" },

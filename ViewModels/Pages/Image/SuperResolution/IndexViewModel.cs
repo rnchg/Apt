@@ -1,4 +1,5 @@
-﻿using General.Apt.App.Utility;
+﻿using General.Apt.App.Adapters.Windows;
+using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
 using General.Apt.Service.Services.Pages.Image.SuperResolution2;
@@ -164,7 +165,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.SuperResolution
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageSuperResolutionIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageSuperResolutionIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Device.CpuAndGpu;
+            ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["ImageSuperResolutionIndexPageModeStandard"], Value = "Standard" },
@@ -199,7 +200,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.SuperResolution
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                if (!Device.VulkanEnable) throw new Exception(Language.Instance["ImageSuperResolutionIndexPageNotSupportVulkan"]);
+                if (!Adapter.VulkanEnable) throw new Exception(Language.Instance["ImageSuperResolutionIndexPageNotSupportVulkan"]);
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 
