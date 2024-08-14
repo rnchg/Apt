@@ -174,7 +174,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.Convert3d
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoConvert3dIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoConvert3dIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Adapter.CpuAndDirectML;
+            ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageModeStandard"], Value = "Standard" },

@@ -12,6 +12,9 @@ namespace General.Apt.App.ViewModels.Windows.Chat.Gpt
         private string _promptSystem;
 
         [ObservableProperty]
+        private bool _pastPresentShareBuffer = Current.Config.ChatGpt.PastPresentShareBuffer;
+
+        [ObservableProperty]
         private int _promptMaxLength;
 
         [ObservableProperty]
@@ -21,6 +24,7 @@ namespace General.Apt.App.ViewModels.Windows.Chat.Gpt
         private async Task SetSave()
         {
             Current.Config.ChatGpt.PromptSystem = PromptSystem;
+            Current.Config.ChatGpt.PastPresentShareBuffer = PastPresentShareBuffer;
             Current.Config.ChatGpt.PromptMaxLength = PromptMaxLength;
             Current.Config.ChatGpt.ContextMaxLength = ContextMaxLength;
             await Utility.Message.ShowMessageInfo(Language.Instance["ChatGptConfigWindowSetSaveSuccess"]);
@@ -40,6 +44,8 @@ namespace General.Apt.App.ViewModels.Windows.Chat.Gpt
 
         private void InitializeViewModel()
         {
+            PastPresentShareBuffer = Current.Config.ChatGpt.PastPresentShareBuffer;
+
             _isInitialized = true;
         }
     }

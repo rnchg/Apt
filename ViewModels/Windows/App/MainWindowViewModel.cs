@@ -52,7 +52,7 @@ namespace General.Apt.App.ViewModels.Windows.App
                         new NavigationViewItem(Language.Instance["MainWindowImageCartoonComic"], typeof(Views.Pages.Image.CartoonComic.IndexPage)),
                         new NavigationViewItem(Language.Instance["MainWindowImageConvert3d"], typeof(Views.Pages.Image.Convert3d.IndexPage)),
                         new NavigationViewItem(Language.Instance["MainWindowImageColorRestoration"], typeof(Views.Pages.Image.ColorRestoration.IndexPage)),
-                        //new NavigationViewItem(Language.Instance["MainWindowImageFrameInterpolation"], typeof(Views.Pages.Image.FrameInterpolation.IndexPage)),
+                        new NavigationViewItem(Language.Instance["MainWindowImageFrameInterpolation"], typeof(Views.Pages.Image.FrameInterpolation.IndexPage)),
                         new NavigationViewItem(Language.Instance["MainWindowImageFaceRestoration"], typeof(Views.Pages.Image.FaceRestoration.IndexPage))
                     },
                     IsExpanded = true

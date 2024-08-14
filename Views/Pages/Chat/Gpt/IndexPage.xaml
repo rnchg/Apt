@@ -150,18 +150,20 @@
             Grid.Row="1"
             Padding="10"
             BorderThickness="0"
-            Header="{Binding [ChatGptIndexPageMessage], Source={x:Static su:Language.Instance}}">
-            <Grid Grid.Row="0" IsEnabled="{Binding ViewModel.MessageEnabled}">
+            Header="{Binding ViewModel.MessageHeader}">
+            <Grid
+                Grid.Row="0"
+                MaxHeight="480"
+                IsEnabled="{Binding ViewModel.MessageEnabled}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <ui:TextBox
-                    x:Name="message"
                     Grid.Column="0"
                     AcceptsReturn="True"
                     KeyDown="TextBox_KeyDown"
-                    MaxLength="{Binding ViewModel.MaxLength}"
+                    MaxLength="{Binding ViewModel.PromptMaxLength}"
                     PlaceholderText="{Binding ViewModel.Placeholder}"
                     Text="{Binding ViewModel.Message, UpdateSourceTrigger=PropertyChanged}"
                     TextWrapping="Wrap"

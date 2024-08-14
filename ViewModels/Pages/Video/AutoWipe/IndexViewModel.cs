@@ -237,7 +237,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.AutoWipe
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoAutoWipeIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoAutoWipeIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Adapter.CpuAndDirectML;
+            ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["VideoAutoWipeIndexPageModeStandard"], Value = "Standard" }

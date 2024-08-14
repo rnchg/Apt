@@ -190,7 +190,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.ColorRestoration
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageColorRestorationIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageColorRestorationIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Adapter.CpuAndDirectML;
+            ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageModeStandard"], Value = "Standard" },

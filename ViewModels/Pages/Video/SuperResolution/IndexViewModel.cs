@@ -2,7 +2,7 @@
 using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
-using General.Apt.Service.Services.Pages.Video.SuperResolution2;
+using General.Apt.Service.Services.Pages.Video.SuperResolution;
 using General.Apt.Service.Utility;
 using Microsoft.Win32;
 using System.Windows.Documents;
@@ -169,13 +169,13 @@ namespace General.Apt.App.ViewModels.Pages.Video.SuperResolution
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["VideoSuperResolutionIndexPageModeStandard"], Value = "Standard" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoSuperResolutionIndexPageModeAnimation"], Value = "Animation" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoSuperResolutionIndexPageModeLite"], Value = "Lite" }
             };
             ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageScaleX2"], Value = "X2" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageScaleX3"], Value = "X3" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageScaleX4"], Value = "X4" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageScaleX4"], Value = "X4" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageScaleX8"], Value = "X8" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;
@@ -199,8 +199,6 @@ namespace General.Apt.App.ViewModels.Pages.Video.SuperResolution
                 StartEnabled = false;
                 StopEnabled = true;
                 OpenEnabled = true;
-
-                if (!Adapter.VulkanEnable) throw new Exception(Language.Instance["VideoSuperResolutionIndexPageNotSupportVulkan"]);
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 

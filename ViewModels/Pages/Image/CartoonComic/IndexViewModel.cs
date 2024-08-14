@@ -165,7 +165,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.CartoonComic
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageCartoonComicIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageCartoonComicIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Adapter.CpuAndDirectML;
+            ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["ImageCartoonComicIndexPageModeHayao"], Value = "Hayao" },

@@ -174,7 +174,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.Convert3d
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageConvert3dIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageConvert3dIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Adapter.CpuAndDirectML;
+            ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["ImageConvert3dIndexPageModeStandard"], Value = "Standard" },

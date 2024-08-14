@@ -2,7 +2,7 @@
 using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
-using General.Apt.Service.Services.Pages.Image.FrameInterpolation2;
+using General.Apt.Service.Services.Pages.Image.FrameInterpolation;
 using General.Apt.Service.Utility;
 using Microsoft.Win32;
 using System.Windows.Documents;
@@ -167,16 +167,13 @@ namespace General.Apt.App.ViewModels.Pages.Image.FrameInterpolation
             ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageFrameInterpolationIndexPageModeStandard"], Value = "Standard" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageModeStandard"], Value = "Standard" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageModeLite"], Value = "Lite" }
             };
             ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX2"], Value = "X2" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX3"], Value = "X3" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX4"], Value = "X4" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX5"], Value = "X5" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX6"], Value = "X6" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX7"], Value = "X7" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX8"], Value = "X8" }
             };
             ProgressBarMaximum = 1000000;
@@ -201,8 +198,6 @@ namespace General.Apt.App.ViewModels.Pages.Image.FrameInterpolation
                 StartEnabled = false;
                 StopEnabled = true;
                 OpenEnabled = true;
-
-                if (!Adapter.VulkanEnable) throw new Exception(Language.Instance["ImageFrameInterpolationIndexPageNotSupportVulkan"]);
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 

@@ -232,7 +232,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.AutoWipe
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageAutoWipeIndexPageInputSortRuleAsc"], Value = "Asc" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageAutoWipeIndexPageInputSortRuleDesc"], Value = "Desc" }
             };
-            ProviderSource = Adapter.CpuAndDirectML;
+            ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() {  Text = Language.Instance["ImageAutoWipeIndexPageModeStandard"], Value = "Standard" }

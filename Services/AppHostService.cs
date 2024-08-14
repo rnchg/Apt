@@ -89,14 +89,14 @@ namespace General.Apt.App.Services
             imageColorRestorationViewModel.Mode = Current.Config.ImageColorRestoration.Mode;
             imageColorRestorationViewModel.Quality = Current.Config.ImageColorRestoration.Quality;
 
-            //var imageFrameInterpolationViewModel = App.Current.GetService<ViewModels.Pages.Image.FrameInterpolation.IndexViewModel>();
-            //imageFrameInterpolationViewModel.Input = Current.Config.ImageFrameInterpolation.Input;
-            //imageFrameInterpolationViewModel.Output = Current.Config.ImageFrameInterpolation.Output;
-            //imageFrameInterpolationViewModel.InputSort = Current.Config.ImageFrameInterpolation.InputSort;
-            //imageFrameInterpolationViewModel.SortRule = Current.Config.ImageFrameInterpolation.SortRule;
-            //imageFrameInterpolationViewModel.Provider = Current.Config.ImageFrameInterpolation.Provider;
-            //imageFrameInterpolationViewModel.Mode = Current.Config.ImageFrameInterpolation.Mode;
-            //imageFrameInterpolationViewModel.Scale = Current.Config.ImageFrameInterpolation.Scale;
+            var imageFrameInterpolationViewModel = App.Current.GetService<ViewModels.Pages.Image.FrameInterpolation.IndexViewModel>();
+            imageFrameInterpolationViewModel.Input = Current.Config.ImageFrameInterpolation.Input;
+            imageFrameInterpolationViewModel.Output = Current.Config.ImageFrameInterpolation.Output;
+            imageFrameInterpolationViewModel.InputSort = Current.Config.ImageFrameInterpolation.InputSort;
+            imageFrameInterpolationViewModel.SortRule = Current.Config.ImageFrameInterpolation.SortRule;
+            imageFrameInterpolationViewModel.Provider = Current.Config.ImageFrameInterpolation.Provider;
+            imageFrameInterpolationViewModel.Mode = Current.Config.ImageFrameInterpolation.Mode;
+            imageFrameInterpolationViewModel.Scale = Current.Config.ImageFrameInterpolation.Scale;
 
             var imageFaceRestorationViewModel = App.Current.GetService<ViewModels.Pages.Image.FaceRestoration.IndexViewModel>();
             imageFaceRestorationViewModel.Input = Current.Config.ImageFaceRestoration.Input;
@@ -219,14 +219,14 @@ namespace General.Apt.App.Services
             Current.Config.ImageColorRestoration.Mode = imageColorRestorationViewModel.Mode;
             Current.Config.ImageColorRestoration.Quality = imageColorRestorationViewModel.Quality;
 
-            //var imageFrameInterpolationViewModel = App.Current.GetService<ViewModels.Pages.Image.FrameInterpolation.IndexViewModel>();
-            //Current.Config.ImageFrameInterpolation.Input = imageFrameInterpolationViewModel.Input;
-            //Current.Config.ImageFrameInterpolation.Output = imageFrameInterpolationViewModel.Output;
-            //Current.Config.ImageFrameInterpolation.InputSort = imageFrameInterpolationViewModel.InputSort;
-            //Current.Config.ImageFrameInterpolation.SortRule = imageFrameInterpolationViewModel.SortRule;
-            //Current.Config.ImageFrameInterpolation.Provider = imageFrameInterpolationViewModel.Provider;
-            //Current.Config.ImageFrameInterpolation.Mode = imageFrameInterpolationViewModel.Mode;
-            //Current.Config.ImageFrameInterpolation.Scale = imageFrameInterpolationViewModel.Scale;
+            var imageFrameInterpolationViewModel = App.Current.GetService<ViewModels.Pages.Image.FrameInterpolation.IndexViewModel>();
+            Current.Config.ImageFrameInterpolation.Input = imageFrameInterpolationViewModel.Input;
+            Current.Config.ImageFrameInterpolation.Output = imageFrameInterpolationViewModel.Output;
+            Current.Config.ImageFrameInterpolation.InputSort = imageFrameInterpolationViewModel.InputSort;
+            Current.Config.ImageFrameInterpolation.SortRule = imageFrameInterpolationViewModel.SortRule;
+            Current.Config.ImageFrameInterpolation.Provider = imageFrameInterpolationViewModel.Provider;
+            Current.Config.ImageFrameInterpolation.Mode = imageFrameInterpolationViewModel.Mode;
+            Current.Config.ImageFrameInterpolation.Scale = imageFrameInterpolationViewModel.Scale;
 
             var imageFaceRestorationViewModel = App.Current.GetService<ViewModels.Pages.Image.FaceRestoration.IndexViewModel>();
             Current.Config.ImageFaceRestoration.Input = imageFaceRestorationViewModel.Input;

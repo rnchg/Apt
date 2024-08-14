@@ -21,11 +21,21 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
 
         public Action<Paragraph> MessageAction { get; set; }
 
+        public int PromptMaxLength => Current.Config.ChatGpt.PromptMaxLength;
+
+        [ObservableProperty]
+        private string _messageHeader = $"{Language.Instance["ChatGptIndexPageMessage"]} [ 0 ]";
+
         [ObservableProperty]
         private string _placeholder;
 
         [ObservableProperty]
         private string _message;
+
+        partial void OnMessageChanged(string value)
+        {
+            MessageHeader = $"{Language.Instance["ChatGptIndexPageMessage"]} [ {value.Length} ]";
+        }
 
         [ObservableProperty]
         private bool _messageEnabled = false;

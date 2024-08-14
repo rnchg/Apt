@@ -2,7 +2,7 @@
 using General.Apt.App.Utility;
 using General.Apt.Service.Exceptions;
 using General.Apt.Service.Models;
-using General.Apt.Service.Services.Pages.Video.FrameInterpolation2;
+using General.Apt.Service.Services.Pages.Video.FrameInterpolation;
 using General.Apt.Service.Utility;
 using Microsoft.Win32;
 using System.Windows.Documents;
@@ -167,16 +167,13 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
             ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoFrameInterpolationIndexPageModeStandard"], Value = "Standard" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageModeStandard"], Value = "Standard" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageModeLite"], Value = "Lite" }
             };
             ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX2"], Value = "X2" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX3"], Value = "X3" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX4"], Value = "X4" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX5"], Value = "X5" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX6"], Value = "X6" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX7"], Value = "X7" },
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX8"], Value = "X8" }
             };
             ProgressBarMaximum = 1000000;
@@ -201,8 +198,6 @@ namespace General.Apt.App.ViewModels.Pages.Video.FrameInterpolation
                 StartEnabled = false;
                 StopEnabled = true;
                 OpenEnabled = true;
-
-                if (!Adapter.VulkanEnable) throw new Exception(Language.Instance["VideoFrameInterpolationIndexPageNotSupportVulkan"]);
 
                 await _indexService.Start(Input, Output, InputSort, SortRule, Provider, Mode, Scale);
 
