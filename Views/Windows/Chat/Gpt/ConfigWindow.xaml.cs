@@ -28,9 +28,9 @@ namespace General.Apt.App.Views.Windows.Chat.Gpt
             {
                 if (!IsVisible) return;
                 ViewModel.PromptSystem = Current.Config.ChatGpt.PromptSystem;
+                ViewModel.PastPresentShareBuffer = Current.Config.ChatGpt.PastPresentShareBuffer;
                 ViewModel.PromptMaxLength = Current.Config.ChatGpt.PromptMaxLength;
                 ViewModel.ContextMaxLength = Current.Config.ChatGpt.ContextMaxLength;
-
             };
         }
     }

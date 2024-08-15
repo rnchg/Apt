@@ -7,7 +7,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
 		<ApplicationIcon>Resources\App.ico</ApplicationIcon>
-		<Version>2.5.0</Version>
+		<Version>2.5.1</Version>
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Microsoft.Extensions.Configuration.Binder.SourceGeneration</InterceptorsPreviewNamespaces>
 		<PlatformTarget>x64</PlatformTarget>
 	</PropertyGroup>
@@ -52,7 +52,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="General.Apt.Service" Version="2.5.0" />
+		<PackageReference Include="General.Apt.Service" Version="2.5.1" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
 		<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.10.0.20240616" />

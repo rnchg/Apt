@@ -21,10 +21,15 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
 
         public Action<Paragraph> MessageAction { get; set; }
 
-        public int PromptMaxLength => Current.Config.ChatGpt.PromptMaxLength;
+        [ObservableProperty]
+        private int _promptMaxLength;
+        partial void OnPromptMaxLengthChanged(int value)
+        {
+            MessageHeader = $"{Language.Instance["ChatGptIndexPageMessage"]} [ {Message.Length}/{value} ]";
+        }
 
         [ObservableProperty]
-        private string _messageHeader = $"{Language.Instance["ChatGptIndexPageMessage"]} [ 0 ]";
+        private string _messageHeader;
 
         [ObservableProperty]
         private string _placeholder;
@@ -34,7 +39,7 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
 
         partial void OnMessageChanged(string value)
         {
-            MessageHeader = $"{Language.Instance["ChatGptIndexPageMessage"]} [ {value.Length} ]";
+            MessageHeader = $"{Language.Instance["ChatGptIndexPageMessage"]} [ {value.Length}/{PromptMaxLength} ]";
         }
 
         [ObservableProperty]
@@ -88,6 +93,8 @@ namespace General.Apt.App.ViewModels.Pages.Chat.Gpt
         private void InitializeViewModel()
         {
             _windowsService = Apt.App.App.Current.GetRequiredService<WindowsProviderService>();
+            Message = string.Empty;
+            PromptMaxLength = Current.Config.ChatGpt.PromptMaxLength;
             ChatHistory = new ObservableCollection<ChatMessage>();
             Task.Run(InitModel);
             _isInitialized = true;
