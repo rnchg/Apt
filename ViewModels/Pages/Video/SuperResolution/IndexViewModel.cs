@@ -168,8 +168,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.SuperResolution
             ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoSuperResolutionIndexPageModeStandard"], Value = "Standard" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoSuperResolutionIndexPageModeLite"], Value = "Lite" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoSuperResolutionIndexPageModeStandard"], Value = "Standard" }
             };
             ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {

@@ -35,7 +35,6 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <GroupBox
                 Grid.Row="0"
@@ -55,18 +54,6 @@
                 Margin="4"
                 Padding="0,10"
                 BorderThickness="0"
-                Header="{Binding [ChatGptConfigWindowPastPresentShareBuffer], Source={x:Static su:Language.Instance}}">
-                <ui:ToggleSwitch
-                    MinWidth="200"
-                    IsChecked="{Binding ViewModel.PastPresentShareBuffer}"
-                    OffContent="{Binding [ChatGptConfigWindowPastPresentShareBufferOff], Source={x:Static su:Language.Instance}}"
-                    OnContent="{Binding [ChatGptConfigWindowPastPresentShareBufferOn], Source={x:Static su:Language.Instance}}" />
-            </GroupBox>
-            <GroupBox
-                Grid.Row="2"
-                Margin="4"
-                Padding="0,10"
-                BorderThickness="0"
                 Header="{Binding [ChatGptConfigWindowPromptMaxLength], Source={x:Static su:Language.Instance}}">
                 <ui:NumberBox
                     Grid.Row="0"
@@ -76,7 +63,7 @@
                     Value="{Binding ViewModel.PromptMaxLength, UpdateSourceTrigger=PropertyChanged}" />
             </GroupBox>
             <GroupBox
-                Grid.Row="3"
+                Grid.Row="2"
                 Margin="4"
                 Padding="0,10"
                 BorderThickness="0"

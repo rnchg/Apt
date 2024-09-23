@@ -13,6 +13,7 @@ namespace General.Apt.App.Services
     {
         private readonly ILogger<AppHostService> _logger;
         private readonly IServiceProvider _serviceProvider;
+        public static AssemblyName EntryAssembly { get; } = Assembly.GetEntryAssembly().GetName();
 
         public AppHostService(
             ILogger<AppHostService> logger,
@@ -20,7 +21,7 @@ namespace General.Apt.App.Services
         {
             _logger = logger;
             _serviceProvider = serviceProvider;
-            _logger.LogInformation($"[{App.EntryAssembly.Name} V {App.EntryAssembly.Version}]");
+            _logger.LogInformation($"[{EntryAssembly.Name} V {EntryAssembly.Version}]");
             _logger.LogInformation($"--------Init--------");
         }
 

@@ -177,8 +177,7 @@ namespace General.Apt.App.ViewModels.Pages.Video.Convert3d
             ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageModeStandard"], Value = "Standard" },
-                //new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageModeLite"], Value = "Lite" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageModeStandard"], Value = "Standard" }
             };
             FormatSource = new ObservableCollection<ComBoBoxItem<string>>()
             {

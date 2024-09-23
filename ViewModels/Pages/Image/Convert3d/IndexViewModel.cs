@@ -177,8 +177,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.Convert3d
             ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageConvert3dIndexPageModeStandard"], Value = "Standard" },
-                //new ComBoBoxItem<string>() {  Text = Language.Instance["ImageConvert3dIndexPageModeLite"], Value = "Lite" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageConvert3dIndexPageModeStandard"], Value = "Standard" }
             };
             FormatSource = new ObservableCollection<ComBoBoxItem<string>>()
             {

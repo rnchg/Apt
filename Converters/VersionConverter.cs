@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using General.Apt.App.Services;
+using System.Globalization;
 using System.Windows.Data;
 
 namespace General.Apt.App.Converters
@@ -11,7 +12,7 @@ namespace General.Apt.App.Converters
             {
                 return DependencyProperty.UnsetValue;
             }
-            return $"{value} V {App.EntryAssembly.Version}";
+            return $"{value} V {AppHostService.EntryAssembly.Version}";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -1,4 +1,5 @@
-﻿using General.Apt.Service.Models;
+﻿using General.Apt.Service.Extensions;
+using General.Apt.Service.Models;
 using System.Management;
 using Vortice.DXGI;
 
@@ -15,8 +16,8 @@ namespace General.Apt.App.Adapters.Windows
 
         private static ObservableCollection<ComBoBoxItem<string>> GetCpuAndGpu()
         {
-            var cpus = CpuAdapters.Select((x, i) => new ComBoBoxItem<string>() { Text = x.Name, Value = $"0:{i}" });
-            var gpus = GpuAdapters.Select((x, i) => new ComBoBoxItem<string>() { Text = x.Name, Value = $"1:{i}" });
+            var cpus = CpuAdapters.Select((x, i) => new ComBoBoxItem<string>() { Text = x.Name, Value = new Provider() { Type = nameof(Cpu), Value = i }.ToJson() });
+            var gpus = GpuAdapters.Select((x, i) => new ComBoBoxItem<string>() { Text = x.Name, Value = new Provider() { Type = nameof(Gpu), Value = i }.ToJson() });
             return new ObservableCollection<ComBoBoxItem<string>>(cpus.Concat(gpus));
         }
 

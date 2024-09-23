@@ -107,15 +107,6 @@ namespace General.Apt.App.ViewModels.Pages.Image.ColorRestoration
                 Quality = "Medium";
                 return;
             }
-            //if (value.Value == "Lite")
-            //{
-            //    QualitySource = new ObservableCollection<ComBoBoxItem<string>>()
-            //    {
-            //        new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageQualityLow"], Value = "Low" }
-            //    };
-            //    Quality = "Low";
-            //    return;
-            //}
         }
 
         [ObservableProperty]
@@ -193,8 +184,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.ColorRestoration
             ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageModeStandard"], Value = "Standard" },
-                //new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageModeLite"], Value = "Lite" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageColorRestorationIndexPageModeStandard"], Value = "Standard" }
             };
             ProgressBarMaximum = 1000000;
             ProgressBarValue = 0;

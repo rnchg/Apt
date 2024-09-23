@@ -168,8 +168,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.SuperResolution
             ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageSuperResolutionIndexPageModeStandard"], Value = "Standard" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageSuperResolutionIndexPageModeLite"], Value = "Lite" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageSuperResolutionIndexPageModeStandard"], Value = "Standard" }
             };
             ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {

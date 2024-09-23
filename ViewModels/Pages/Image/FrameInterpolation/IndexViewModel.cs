@@ -167,8 +167,7 @@ namespace General.Apt.App.ViewModels.Pages.Image.FrameInterpolation
             ProviderSource = Adapter.CpuAndGpu;
             ModeSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
-                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageModeStandard"], Value = "Standard" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageModeLite"], Value = "Lite" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageModeStandard"], Value = "Standard" }
             };
             ScaleSource = new ObservableCollection<ComBoBoxItem<string>>()
             {
