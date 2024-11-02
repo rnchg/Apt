@@ -17,20 +17,23 @@ Integrates various latest AI models that can be used in a local offline environm
 - Provides a locally offline ChatGPT model for enjoying intelligent AI conversations anytime, anywhere.
 
 ### Image Processing
-- **Super-Resolution**: Enhances image resolution without compromising quality.
-- **Auto Wipe**: Removes watermarks, subtitles, and logos from images, restoring the original picture.
-- **Cartoon and Comic Conversion**: Converts images to vibrant cartoon or comic styles.
-- **3D Conversion**: Converts images to realistic 3D scenes.
-- **Color Restoration**: Recolors old photos, giving them a new life.
-- **Face Restoration**: Repairs blurry or damaged face images, enhancing details.
+- **Image Super-Resolution**: Enhances image resolution without compromising quality.
+- **Image Auto Wipe**: Removes watermarks, subtitles, and logos from images, restoring the original picture.
+- **Image Cartoon Comic**: Converts images to vibrant cartoon or comic styles.
+- **Image Convert 3d**: Converts images to realistic 3D scenes.
+- **Image Color Restoration**: Recolors old photos, giving them a new life.
+- **Image Frame Interpolation**: Automatically generate interpolated images for images.
+- **Image Matting**: Easily remove the image background and export transparent background images.
+- **Image Face Restoration**: Repairs blurry or damaged face images, enhancing details.
 
 ### Video Processing
-- **Super-Resolution**: Enhances video resolution while maintaining clear quality.
-- **Auto Wipe**: Removes watermarks, subtitles, and logos from videos, restoring the original footage.
-- **Cartoon and Comic Conversion**: Converts videos to fun cartoon or comic styles.
-- **3D Conversion**: Converts videos to immersive 3D effects.
-- **Color Restoration**: Recolors old videos, providing a new visual experience.
-- **Frame Interpolation**: Increases video frame rate for smoother playback.
+- **Video Super-Resolution**: Enhances video resolution while maintaining clear quality.
+- **Video Auto Wipe**: Removes watermarks, subtitles, and logos from videos, restoring the original footage.
+- **Video Cartoon Comic**: Converts videos to fun cartoon or comic styles.
+- **Video Convert 3d**: Converts videos to immersive 3D effects.
+- **Video Color Restoration**: Recolors old videos, providing a new visual experience.
+- **Video Frame Interpolation**: Increases video frame rate for smoother playback.
+- **Video Matting**: Easily remove the video background and replace the background conveniently.
 - **Video Organization**: Decrypts, synthesizes, and organizes downloaded and cached video files.
 
 ### Supported Platforms
@@ -60,36 +63,18 @@ Continue to integrate and optimize more AI models to meet diverse user needs.
 
 ### User Interface
 Home
-![Homepage](.Assets/en-US/Pages/App/DashboardPage.PNG)
+![Homepage](.assets/en-US/dashboard.png)
 Settings
-![Settings](.Assets/en-US/Pages/App/SettingsPage.PNG)
+![Settings](.assets/en-US/settings.png)
 ChatGPT
-![ChatGPT](.Assets/en-US/Pages/Chat/Gpt/IndexPage.PNG)
+![ChatGPT](.assets/en-US/chat_gpt.png)
 Image Super Resolution
-![Image Super Resolution](.Assets/en-US/Pages/Image/SuperResolution/IndexPage.PNG)
+![Image Super Resolution](.assets/en-US/image_super_resolution.png)
 Image Auto Wipe
-![Image Auto Wipe](.Assets/en-US/Pages/Image/AutoWipe/IndexPage.PNG)
-Image Cartoon Comic
-![Image Cartoon Comic](.Assets/en-US/Pages/Image/CartoonComic/IndexPage.PNG)
-Image 3D Conversion
-![Image 3D Conversion](.Assets/en-US/Pages/Image/Convert3d/IndexPage.PNG)
-Image Color Restoration
-![Image Color Restoration](.Assets/en-US/Pages/Image/ColorRestoration/IndexPage.PNG)
-Image Face Restoration
-![Image Face Restoration](.Assets/en-US/Pages/Image/FaceRestoration/IndexPage.PNG)
-Video Super Resolution
-![Video Super Resolution](.Assets/en-US/Pages/Video/SuperResolution/IndexPage.PNG)
-Video Cartoon Comic
-![Video Cartoon Comic](.Assets/en-US/Pages/Video/CartoonComic/IndexPage.PNG)
+![Image Auto Wipe](.assets/en-US/image_auto_wipe.png)
 Video 3D Conversion
-![Video 3D Conversion](.Assets/en-US/Pages/Video/Convert3d/IndexPage.PNG)
-Video Color Restoration
-![Video Color Restoration](.Assets/en-US/Pages/Video/ColorRestoration/IndexPage.PNG)
-Video Frame Interpolation
-![Video Frame Interpolation](.Assets/en-US/Pages/Video/FrameInterpolation/IndexPage.PNG)
-Video Organization
-![Video Organization](.Assets/en-US/Pages/Video/Organization/IndexPage.PNG)
+![Video 3D Conversion](.assets/en-US/video_convert_3d.png)
 
 ### Donation Support
 If you find this project useful, you can buy the author a cup of coffee.
-![Donation Support](.Assets/Pay.png)
+![Donation Support](.assets/donate.png)

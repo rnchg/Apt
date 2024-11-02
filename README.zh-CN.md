@@ -22,6 +22,8 @@
 - **图片卡通漫画**：将图片转换为生动的卡通或漫画风格。
 - **图片转制3D**：将图片转换为逼真的3D场景。
 - **图片上色修复**：为老旧照片重新着色，焕发新生。
+- **图片插值补帧**：为图片自动生成补帧图片。
+- **图片背景抠除**：轻松抠除图片背景，导出透明背景图片。
 - **图片人脸修复**：修复模糊或受损的人脸图片，增强细节。
 
 ### 视频处理
@@ -31,6 +33,7 @@
 - **视频转制3D**：将视频转换为身临其境的3D效果。
 - **视频上色修复**：为老旧视频重新着色，体验全新视觉效果。
 - **视频插值补帧**：提高视频帧率，播放更流畅。
+- **视频背景抠除**：轻松抠除视频背景，便捷替换背景。
 - **视频合成整理**：将下载缓存的视频文件解密、合成、整理。
 
 ### 支持平台
@@ -60,36 +63,18 @@
 
 ### 运行界面
 主页
-![主页](.Assets/zh-CN/Pages/App/DashboardPage.PNG)
+![主页](.assets/zh-CN/dashboard.png)
 设置
-![设置](.Assets/zh-CN/Pages/App/SettingsPage.PNG)
+![设置](.assets/zh-CN/settings.png)
 ChatGPT
-![ChatGPT](.Assets/zh-CN/Pages/Chat/Gpt/IndexPage.PNG)
+![ChatGPT](.assets/zh-CN/chat_gpt.png)
 图片无损放大
-![图片无损放大](.Assets/zh-CN/Pages/Image/SuperResolution/IndexPage.PNG)
+![图片无损放大](.assets/zh-CN/image_super_resolution.png)
 图片擦除水印
-![图片擦除水印](.Assets/zh-CN/Pages/Image/AutoWipe/IndexPage.PNG)
-图片卡通漫画
-![图片卡通漫画](.Assets/zh-CN/Pages/Image/CartoonComic/IndexPage.PNG)
-图片转制3D
-![图片转制3D](.Assets/zh-CN/Pages/Image/Convert3d/IndexPage.PNG)
-图片上色修复
-![图片上色修复](.Assets/zh-CN/Pages/Image/ColorRestoration/IndexPage.PNG)
-图片人脸修复
-![图片人脸修复](.Assets/zh-CN/Pages/Image/FaceRestoration/IndexPage.PNG)
-视频无损放大
-![视频无损放大](.Assets/zh-CN/Pages/Video/SuperResolution/IndexPage.PNG)
-视频卡通漫画
-![视频卡通漫画](.Assets/zh-CN/Pages/Video/CartoonComic/IndexPage.PNG)
+![图片擦除水印](.assets/zh-CN/image_auto_wipe.png)
 视频转制3D
-![视频转制3D](.Assets/zh-CN/Pages/Video/Convert3d/IndexPage.PNG)
-视频上色修复
-![视频上色修复](.Assets/zh-CN/Pages/Video/ColorRestoration/IndexPage.PNG)
-视频插值补帧
-![视频插值补帧](.Assets/zh-CN/Pages/Video/FrameInterpolation/IndexPage.PNG)
-视频合成整理
-![视频合成整理](.Assets/zh-CN/Pages/Video/Organization/IndexPage.PNG)
+![视频转制3D](.assets/zh-CN/video_convert_3d.png)
 
 ### 捐赠支持
 如果您觉得这个项目有用，可以请作者喝一杯咖啡。
-![Donation Support](.Assets/Pay.png)
+![Donation Support](.assets/donate.png)

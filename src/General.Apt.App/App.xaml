@@ -1,0 +1,20 @@
+﻿<Application
+    x:Class="General.Apt.App.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:General.Apt.App.Converters"
+    xmlns:local="clr-namespace:General.Apt.App"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Exit="OnExit"
+    Startup="OnStartup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemesDictionary Theme="Dark" />
+                <ui:ControlsDictionary />
+            </ResourceDictionary.MergedDictionaries>
+            <converters:VersionConverter x:Key="VersionConverter" />
+            <converters:NullImageConverter x:Key="NullImageConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
