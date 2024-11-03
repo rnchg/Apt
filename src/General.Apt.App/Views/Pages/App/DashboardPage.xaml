@@ -209,7 +209,7 @@
                         Width="60"
                         Margin="24,0,0,0"
                         FontSize="32"
-                        Symbol="VideoPerson24" />
+                        Symbol="CommunicationPerson24" />
                     <StackPanel
                         Grid.Column="1"
                         Margin="24"
@@ -245,7 +245,7 @@
                         Width="60"
                         Margin="24,0,0,0"
                         FontSize="32"
-                        Symbol="CommunicationPerson24" />
+                        Symbol="VideoSwitch24" />
                     <StackPanel
                         Grid.Column="1"
                         Margin="24"
@@ -353,7 +353,7 @@
                         Width="60"
                         Margin="24,0,0,0"
                         FontSize="32"
-                        Symbol="VideoClipMultiple24" />
+                        Symbol="ImageMultiple24" />
                     <StackPanel
                         Grid.Column="1"
                         Margin="24"
@@ -389,7 +389,7 @@
                         Width="60"
                         Margin="24,0,0,0"
                         FontSize="32"
-                        Symbol="PersonBoard24" />
+                        Symbol="VideoPersonStar24" />
                     <StackPanel
                         Grid.Column="1"
                         Margin="24"
@@ -509,7 +509,7 @@
                         Width="60"
                         Margin="24,0,0,0"
                         FontSize="32"
-                        Symbol="VideoPerson24" />
+                        Symbol="CommunicationPerson24" />
                     <StackPanel
                         Grid.Column="1"
                         Margin="24"
@@ -545,7 +545,7 @@
                         Width="60"
                         Margin="24,0,0,0"
                         FontSize="32"
-                        Symbol="CommunicationPerson24" />
+                        Symbol="VideoSwitch24" />
                     <StackPanel
                         Grid.Column="1"
                         Margin="24"
@@ -653,7 +653,7 @@
                         Width="60"
                         Margin="24,0,0,0"
                         FontSize="32"
-                        Symbol="VideoClipMultiple24" />
+                        Symbol="ImageMultiple24" />
                     <StackPanel
                         Grid.Column="1"
                         Margin="24"
