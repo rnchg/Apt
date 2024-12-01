@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "General.Apt.App", "General.Apt.App\General.Apt.App.csproj", "{ECCE2964-6F04-4946-9B1B-8231DF5E7F4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apt.App", "Apt.App\Apt.App.csproj", "{5823DF86-9937-4EA3-B2FE-E14BFDA262DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ECCE2964-6F04-4946-9B1B-8231DF5E7F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECCE2964-6F04-4946-9B1B-8231DF5E7F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECCE2964-6F04-4946-9B1B-8231DF5E7F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ECCE2964-6F04-4946-9B1B-8231DF5E7F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5823DF86-9937-4EA3-B2FE-E14BFDA262DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5823DF86-9937-4EA3-B2FE-E14BFDA262DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5823DF86-9937-4EA3-B2FE-E14BFDA262DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5823DF86-9937-4EA3-B2FE-E14BFDA262DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
