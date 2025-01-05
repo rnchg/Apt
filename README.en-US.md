@@ -1,4 +1,4 @@
-| [English](README.en-US.md) | 中文 |
+| English | [中文](README.zh-CN.md) |
 
 # AI Productivity Tool
 Free and open-source, enhancing user productivity while ensuring privacy and data security. Offers efficient and convenient AI solutions, including but not limited to: built-in dedicated ChatGPT, one-click batch intelligent processing for images, videos, and audio.
