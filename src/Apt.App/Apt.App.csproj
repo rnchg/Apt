@@ -6,13 +6,13 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
-		<AssemblyName>Apt</AssemblyName>
-		<Version>2.7.1</Version>
+		<AssemblyName>Apt.App</AssemblyName>
+		<Version>2.8.0</Version>
+		<PlatformTarget>x64</PlatformTarget>
+		<CETCompat>false</CETCompat>
 		<ApplicationIcon>Assets\App.ico</ApplicationIcon>
 		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Microsoft.Extensions.Configuration.Binder.SourceGeneration</InterceptorsPreviewNamespaces>
-		<PlatformTarget>x64</PlatformTarget>
-		<CETCompat>false</CETCompat>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -21,21 +21,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Apt.Service" Version="2.7.1" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
-		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
-		<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.10.0.20241108" />
-		<PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
-		<PackageReference Include="Serilog.Settings.Configuration" Version="8.0.4" />
+		<PackageReference Include="Apt.Service" Version="2.8.0" />
+		<PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
-		<PackageReference Include="System.Management" Version="9.0.0" />
-		<PackageReference Include="Vortice.DXGI" Version="3.6.2" />
-		<PackageReference Include="WPF-UI" Version="4.0.0-rc.2" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Languages\en-US.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Languages\ja-JP.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Languages\ko-KR.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Languages\zh-CN.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Languages\zh-TW.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 

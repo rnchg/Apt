@@ -1,4 +1,5 @@
-﻿using Apt.App.ViewModels.Base;
+﻿using Apt.Service.ViewModels.Base;
+using Wpf.Ui;
 
 namespace Apt.App.ViewModels.Pages.App
 {
@@ -6,7 +7,10 @@ namespace Apt.App.ViewModels.Pages.App
     {
         private bool _isInitialized = false;
 
-        public InfoPageViewModel()
+        public InfoPageViewModel(
+            IServiceProvider serviceProvider,
+            ISnackbarService snackbarService) :
+            base(serviceProvider, snackbarService)
         {
             if (!_isInitialized) InitializeViewModel();
         }

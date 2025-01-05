@@ -4,12 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Ink="clr-namespace:System.Windows.Ink;assembly=PresentationCore"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iv="clr-namespace:Apt.Service.Controls.ImageView;assembly=Apt.Service"
     xmlns:local="clr-namespace:Apt.App.Views.Pages.Image.AutoWipe"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:Apt.App.ViewModels.Pages.Image.AutoWipe"
-    xmlns:su="clr-namespace:Apt.Service.Utility;assembly=Apt.Service"
+    xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="HomeView"
     d:DataContext="{d:DesignInstance local:IndexPage,
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="640"
@@ -26,12 +26,12 @@
         </Grid.RowDefinitions>
         <GroupBox
             Grid.Row="0"
-            Padding="10"
+            Margin="0,0,0,8"
+            Padding="0,8,0,0"
             BorderThickness="0"
             Header="{Binding [ImageAutoWipeIndexPageSetting], Source={x:Static su:Language.Instance}}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
@@ -87,37 +87,6 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120" />
                         <ColumnDefinition />
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Margin="6"
-                        VerticalAlignment="Center"
-                        Content="{Binding [ImageAutoWipeIndexPageInputSort], Source={x:Static su:Language.Instance}}" />
-                    <ComboBox
-                        Grid.Column="1"
-                        Margin="6"
-                        DisplayMemberPath="Text"
-                        ItemsSource="{Binding ViewModel.InputSortSource}"
-                        SelectedItem="{Binding ViewModel.InputSortItem}" />
-                    <Label
-                        Grid.Column="2"
-                        Margin="6"
-                        VerticalAlignment="Center"
-                        Content="{Binding [ImageAutoWipeIndexPageInputSortRule], Source={x:Static su:Language.Instance}}" />
-                    <ComboBox
-                        Grid.Column="3"
-                        Margin="6"
-                        DisplayMemberPath="Text"
-                        ItemsSource="{Binding ViewModel.SortRuleSource}"
-                        SelectedItem="{Binding ViewModel.SortRuleItem}" />
-                </Grid>
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition />
                         <ColumnDefinition Width="80" />
                     </Grid.ColumnDefinitions>
                     <Label
@@ -132,7 +101,7 @@
                         ItemsSource="{Binding ViewModel.ProviderSource}"
                         SelectedItem="{Binding ViewModel.ProviderItem}" />
                 </Grid>
-                <Grid Grid.Row="4">
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120" />
                         <ColumnDefinition />
@@ -150,7 +119,7 @@
                         ItemsSource="{Binding ViewModel.ModeSource}"
                         SelectedItem="{Binding ViewModel.ModeItem}" />
                 </Grid>
-                <Grid Grid.Row="5">
+                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120" />
                         <ColumnDefinition />
@@ -202,99 +171,61 @@
         </GroupBox>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <GroupBox
                 Grid.Column="0"
-                Padding="10"
-                BorderThickness="0"
-                Header="{Binding [ImageAutoWipeIndexPageMask], Source={x:Static su:Language.Instance}}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Label
-                                Grid.Column="0"
-                                Margin="6"
-                                VerticalAlignment="Center"
-                                Content="{Binding [ImageAutoWipeIndexPageMaskBrushSize], Source={x:Static su:Language.Instance}}" />
-                            <Slider
-                                x:Name="drawingSize"
-                                Grid.Column="1"
-                                Width="200"
-                                Margin="0"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Maximum="100"
-                                Minimum="0"
-                                Value="{Binding ViewModel.MaskDrawingSize}" />
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <ui:Button
-                                x:Name="maskClear"
-                                Grid.Column="0"
-                                Margin="6"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Appearance="Danger"
-                                Click="MaskClear_Click"
-                                Content="{Binding [ImageAutoWipeIndexPageMaskClearStroke], Source={x:Static su:Language.Instance}}" />
-                            <ui:Button
-                                x:Name="maskCustom"
-                                Grid.Column="1"
-                                Margin="6"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Appearance="Info"
-                                Click="MaskSelect_Click"
-                                Content="{Binding [ImageAutoWipeIndexPageMaskSelectMask], Source={x:Static su:Language.Instance}}" />
-                        </Grid>
-                    </Grid>
-                    <Border
-                        Grid.Row="1"
-                        BorderBrush="{DynamicResource TextFillColorTertiaryBrush}"
-                        BorderThickness="1">
-                        <Grid>
-                            <Image
-                                x:Name="maskImage"
-                                HorizontalAlignment="Center"
-                                Source="{Binding Path=ViewModel.InputImageFirst, Converter={StaticResource NullImageConverter}}"
-                                Stretch="Uniform" />
-                            <InkCanvas
-                                Name="maskInkCanvas"
-                                Width="{Binding ActualWidth, ElementName=maskImage}"
-                                Height="{Binding ActualHeight, ElementName=maskImage}"
-                                Background="Transparent"
-                                DefaultDrawingAttributes="{Binding ViewModel.MaskDrawingAttributes}" />
-                        </Grid>
-                    </Border>
-                </Grid>
+                Padding="0,8,0,0"
+                BorderThickness="0">
+                <GroupBox.Header>
+                    <ui:ToggleSwitch
+                        IsChecked="{Binding ViewModel.GridFileSwitch}"
+                        OffContent="{Binding [ImageAutoWipeIndexPageGridFileOff], Source={x:Static su:Language.Instance}}"
+                        OnContent="{Binding [ImageAutoWipeIndexPageGridFileOn], Source={x:Static su:Language.Instance}}" />
+                </GroupBox.Header>
+                <DataGrid
+                    AutoGenerateColumns="False"
+                    HorizontalScrollBarVisibility="Visible"
+                    IsReadOnly="True"
+                    ItemsSource="{Binding ViewModel.GridFileSource}"
+                    SelectedItem="{Binding ViewModel.GridFileItem}"
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Visible">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#104E8B" />
+                                </Trigger>
+                            </Style.Triggers>
+                            <Setter Property="Height" Value="24" />
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding FileInfo.Name}" Header="{Binding [ImageAutoWipeIndexPageGridFileName], Source={x:Static su:Language.Instance}}" />
+                        <DataGridTextColumn Binding="{Binding FileInfo.Length}" Header="{Binding [ImageAutoWipeIndexPageGridFileLength], Source={x:Static su:Language.Instance}}" />
+                        <DataGridTextColumn Binding="{Binding FileInfo.LastWriteTime}" Header="{Binding [ImageAutoWipeIndexPageGridFileLastWriteTime], Source={x:Static su:Language.Instance}}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </GroupBox>
             <GroupBox
                 Grid.Column="1"
-                Padding="10"
+                Padding="0,8,0,0"
                 BorderThickness="0"
-                Header="{Binding [ImageAutoWipeIndexPageMessage], Source={x:Static su:Language.Instance}}">
-                <RichTextBox
-                    Name="Message"
-                    Grid.Column="1"
-                    VerticalScrollBarVisibility="Visible" />
+                Header="{Binding [ImageAutoWipeIndexPageViewFile], Source={x:Static su:Language.Instance}}">
+                <iv:ImageView
+                    x:Name="ViewFileImage"
+                    MaskVisibility="Visible"
+                    ViewFileSource="{Binding ViewModel.GridFileView}" />
+            </GroupBox>
+            <GroupBox
+                Grid.Column="2"
+                Padding="0,8,0,0"
+                BorderThickness="0"
+                Header="{Binding [ImageAutoWipeIndexPageRunMessage], Source={x:Static su:Language.Instance}}">
+                <RichTextBox Name="Message" VerticalScrollBarVisibility="Visible" />
             </GroupBox>
         </Grid>
     </Grid>

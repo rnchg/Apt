@@ -3,11 +3,11 @@ using Wpf.Ui.Abstractions.Controls;
 
 namespace Apt.App.Views.Pages.Image.FrameInterpolation
 {
-    public partial class IndexPage : INavigableView<IndexViewModel>
+    public partial class IndexPage : INavigableView<IndexPageViewModel>
     {
-        public IndexViewModel ViewModel { get; }
+        public IndexPageViewModel ViewModel { get; }
 
-        public IndexPage(IndexViewModel viewModel)
+        public IndexPage(IndexPageViewModel viewModel)
         {
             ViewModel = viewModel;
             DataContext = this;
@@ -19,8 +19,6 @@ namespace Apt.App.Views.Pages.Image.FrameInterpolation
 
         public async Task InitializeData()
         {
-            Message.Document.Blocks.Clear();
-
             ViewModel.MessageAction += (message) =>
             {
                 Message.Document.Blocks.Add(message);
@@ -31,7 +29,7 @@ namespace Apt.App.Views.Pages.Image.FrameInterpolation
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["ImageFrameInterpolationHelp"], ViewModel.MessageAction);
+            await Service.Utility.Message.AddTextInfo(Core.Utility.Language.Instance["ImageFrameInterpolationHelp"], ViewModel.MessageAction);
         }
     }
 }

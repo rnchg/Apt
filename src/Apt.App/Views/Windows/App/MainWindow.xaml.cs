@@ -1,6 +1,6 @@
-﻿using Apt.App.Utility;
+﻿using Apt.App.Interfaces;
 using Apt.App.Views.Pages.App;
-using Apt.Service.Interfaces;
+using Apt.Service.Utility;
 using Wpf.Ui;
 using Wpf.Ui.Controls;
 
@@ -78,7 +78,7 @@ namespace Apt.App.Views.Windows.App
 
         private async void FluentWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            await Message.ShowMessageConfirm(Service.Utility.Language.Instance["MainWindowExitConfirm"], cancel: () => e.Cancel = true);
+            await Message.ShowMessageConfirm(Core.Utility.Language.Instance["MainWindowExitConfirm"], cancel: () => e.Cancel = true);
         }
     }
 }

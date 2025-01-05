@@ -1,11 +1,12 @@
-﻿using Apt.App.Services;
-using Apt.App.ViewModels.Base;
+﻿using Apt.App.Extensions;
 using Apt.App.ViewModels.Windows.App;
-using Apt.App.Views.Windows.App;
-using Apt.App.Views.Windows.Chat.Gpt;
-using Apt.Service.Consts;
-using Apt.Service.Models;
-using Apt.Service.Utility;
+using Apt.App.Views.Windows.Gen.Chat;
+using Apt.Core.Consts;
+using Apt.Core.Models;
+using Apt.Core.Utility;
+using Apt.Service.Services;
+using Apt.Service.ViewModels.Base;
+using Apt.Service.Views.Windows.License;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui;
@@ -54,7 +55,7 @@ namespace Apt.App.ViewModels.Pages.App
         {
             if (value?.Item is null) return;
             Current.Config.App.NavigationStyle = NavigationStyle;
-            Apt.App.App.Current.GetRequiredService<INavigationService>().SetPaneDisplayMode(value.Item);
+            ServiceProvider.GetRequiredService<INavigationService>().SetPaneDisplayMode(value.Item);
         }
 
         [ObservableProperty]
@@ -87,18 +88,27 @@ namespace Apt.App.ViewModels.Pages.App
         }
 
         [RelayCommand]
-        private void SetChatGptConfig()
+        private void SetGenChatConfig()
         {
-            Apt.App.App.Current.GetRequiredService<WindowsProviderService>().ShowDialog<ConfigWindow>();
+            ServiceProvider.GetRequiredService<WindowsProviderService>().ShowDialog<ConfigWindow>();
         }
 
         [RelayCommand]
-        private void SetLicense()
+        private void SetLicenseInfo()
         {
-            Apt.App.App.Current.GetRequiredService<WindowsProviderService>().ShowDialog<LicenseWindow>();
+            ServiceProvider.GetRequiredService<WindowsProviderService>().ShowDialog<InfoWindow>();
         }
 
-        public SettingsPageViewModel()
+        [RelayCommand]
+        private void SetLicenseOrder()
+        {
+            ServiceProvider.GetRequiredService<WindowsProviderService>().ShowDialog<OrderWindow>();
+        }
+
+        public SettingsPageViewModel(
+            IServiceProvider serviceProvider,
+            ISnackbarService snackbarService) :
+            base(serviceProvider, snackbarService)
         {
             if (!_isInitialized) InitializeViewModel();
         }
@@ -112,15 +122,15 @@ namespace Apt.App.ViewModels.Pages.App
         {
             ThemeSource =
             [
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Service.Utility.Language.Instance["SettingsPageThemeDark"], Value="Dark",  Item = ApplicationTheme.Dark },
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Service.Utility.Language.Instance["SettingsPageThemeLight"], Value="Light", Item = ApplicationTheme.Light },
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Service.Utility.Language.Instance["SettingsPageThemeHighContrast"], Value="HighContrast",  Item = ApplicationTheme.HighContrast }
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingsPageThemeDark"], Value="Dark",  Item = ApplicationTheme.Dark },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingsPageThemeLight"], Value="Light", Item = ApplicationTheme.Light },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingsPageThemeHighContrast"], Value="HighContrast",  Item = ApplicationTheme.HighContrast }
             ];
             NavigationStyleSource =
             [
-                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Service.Utility.Language.Instance["SettingsPageNavigationLeft"], Value ="Left", Item = NavigationViewPaneDisplayMode.Left },
-                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Service.Utility.Language.Instance["SettingsPageNavigationLeftMinimal"], Value = "LeftMinimal",  Item = NavigationViewPaneDisplayMode.LeftMinimal },
-                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Service.Utility.Language.Instance["SettingsPageNavigationLeftFluent"], Value = "LeftFluent",  Item = NavigationViewPaneDisplayMode.LeftFluent }
+                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Core.Utility.Language.Instance["SettingsPageNavigationLeft"], Value ="Left", Item = NavigationViewPaneDisplayMode.Left },
+                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Core.Utility.Language.Instance["SettingsPageNavigationLeftMinimal"], Value = "LeftMinimal",  Item = NavigationViewPaneDisplayMode.LeftMinimal },
+                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Core.Utility.Language.Instance["SettingsPageNavigationLeftFluent"], Value = "LeftFluent",  Item = NavigationViewPaneDisplayMode.LeftFluent }
             ];
 
             Theme = Current.Config.App.Theme;
@@ -132,28 +142,30 @@ namespace Apt.App.ViewModels.Pages.App
 
         private void UpdateLanguage()
         {
-            if (Current.Config.App.CurrentLanguage == Service.Utility.Language.Instance.Name) return;
-            Service.Utility.Language.Instance.Update(Current.Config.App.CurrentLanguage);
-            Apt.App.App.Current.GetRequiredService<MainWindowViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<SettingsPageViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Image.SuperResolution.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Image.AutoWipe.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Image.CartoonComic.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Image.Convert3d.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Image.ColorRestoration.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Image.FrameInterpolation.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Image.Matting.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Image.FaceRestoration.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.SuperResolution.IndexViewModel>().InitializeViewModel();
-            //Apt.App.App.Current.GetRequiredService<Video.AutoWipe.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.CartoonComic.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.Convert3d.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.ColorRestoration.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.FrameInterpolation.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.Matting.IndexViewModel>().InitializeViewModel();
-            Apt.App.App.Current.GetRequiredService<Video.Organization.IndexViewModel>().InitializeViewModel();
-            Language = Service.Utility.Language.Instance.Name;
-            AppHostService.GetConfig();
+            if (Current.Config.App.CurrentLanguage == Core.Utility.Language.Instance.Name) return;
+            Core.Utility.Language.Instance.Update(Current.Config.App.CurrentLanguage);
+            ServiceProvider.GetRequiredService<MainWindowViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<SettingsPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Image.SuperResolution.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Image.AutoWipe.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Image.CartoonComic.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Image.Convert3d.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Image.ColorRestoration.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Image.FrameInterpolation.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Image.Matting.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Image.FaceRestoration.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Video.SuperResolution.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Video.AutoWipe.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Video.CartoonComic.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Video.Convert3d.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Video.ColorRestoration.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Video.FrameInterpolation.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Video.Matting.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Video.Organization.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Audio.Denoise.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Audio.VocalSplit.IndexPageViewModel>().InitializeViewModel();
+            Language = Core.Utility.Language.Instance.Name;
+            ServiceProvider.GetConfig();
         }
     }
 }

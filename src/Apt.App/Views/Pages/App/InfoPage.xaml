@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Apt.App.Views.Pages.App"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:su="clr-namespace:Apt.Service.Utility;assembly=Apt.Service"
+    xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="InfoPage"
     d:DataContext="{d:DesignInstance local:InfoPage,

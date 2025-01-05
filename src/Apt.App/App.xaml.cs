@@ -1,9 +1,10 @@
 ﻿using Apt.App.Extensions;
 using Apt.App.Models;
+using Apt.Core.Utility;
 using Apt.Service.Helpers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using Utility;
 
 namespace Apt.App
 {
@@ -21,7 +22,7 @@ namespace Apt.App
             var appSettings = builder.Configuration.Get<AppSettings>();
             builder.Services.AddSingleton(Guard.NotNull(appSettings));
             builder.Services.AddSerilog((services, logger) => logger.ReadFrom.Configuration(builder.Configuration));
-            builder.Services.AddBootService();
+            builder.Services.AddService();
             Host = builder.Build();
             Logger = GetRequiredService<ILogger<App>>();
         }

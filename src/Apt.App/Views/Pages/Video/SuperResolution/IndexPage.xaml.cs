@@ -3,11 +3,11 @@ using Wpf.Ui.Abstractions.Controls;
 
 namespace Apt.App.Views.Pages.Video.SuperResolution
 {
-    public partial class IndexPage : INavigableView<IndexViewModel>
+    public partial class IndexPage : INavigableView<IndexPageViewModel>
     {
-        public IndexViewModel ViewModel { get; }
+        public IndexPageViewModel ViewModel { get; }
 
-        public IndexPage(IndexViewModel viewModel)
+        public IndexPage(IndexPageViewModel viewModel)
         {
             ViewModel = viewModel;
             DataContext = this;
@@ -19,8 +19,6 @@ namespace Apt.App.Views.Pages.Video.SuperResolution
 
         public async Task InitializeData()
         {
-            Message.Document.Blocks.Clear();
-
             ViewModel.MessageAction += (message) =>
             {
                 Message.Document.Blocks.Add(message);
@@ -31,7 +29,12 @@ namespace Apt.App.Views.Pages.Video.SuperResolution
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["VideoSuperResolutionHelp"], ViewModel.MessageAction);
+            IsVisibleChanged += (s, e) =>
+            {
+                if (!IsVisible) ViewFileVideo.Pause();
+            };
+
+            await Service.Utility.Message.AddTextInfo(Core.Utility.Language.Instance["VideoSuperResolutionHelp"], ViewModel.MessageAction);
         }
     }
 }

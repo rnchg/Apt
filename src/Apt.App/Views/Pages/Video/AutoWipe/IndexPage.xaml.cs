@@ -1,14 +1,13 @@
 ﻿using Apt.App.ViewModels.Pages.Video.AutoWipe;
-using System.Windows.Media.Imaging;
 using Wpf.Ui.Abstractions.Controls;
 
 namespace Apt.App.Views.Pages.Video.AutoWipe
 {
-    public partial class IndexPage : INavigableView<IndexViewModel>
+    public partial class IndexPage : INavigableView<IndexPageViewModel>
     {
-        public IndexViewModel ViewModel { get; }
+        public IndexPageViewModel ViewModel { get; }
 
-        public IndexPage(IndexViewModel viewModel)
+        public IndexPage(IndexPageViewModel viewModel)
         {
             ViewModel = viewModel;
             DataContext = this;
@@ -16,14 +15,10 @@ namespace Apt.App.Views.Pages.Video.AutoWipe
             InitializeComponent();
 
             _ = InitializeData();
-
-            _ = InitializeMask();
         }
 
         public async Task InitializeData()
         {
-            Message.Document.Blocks.Clear();
-
             ViewModel.MessageAction += (message) =>
             {
                 Message.Document.Blocks.Add(message);
@@ -34,54 +29,16 @@ namespace Apt.App.Views.Pages.Video.AutoWipe
                 }
             };
 
-            await Utility.Message.AddTextInfo(Service.Utility.Language.Instance["VideoAutoWipeHelp"], ViewModel.MessageAction);
-        }
+            ViewModel.GetMaskAction += ViewFileVideo.GetMask;
 
-        public async Task InitializeMask()
-        {
-            await ViewModel.SetMaskFirst();
+            ViewModel.ClearMaskAction += ViewFileVideo.ClearMash;
 
-            ViewModel.MaskAction += () =>
+            IsVisibleChanged += (s, e) =>
             {
-                var maskSource = maskImage.Source as BitmapImage;
-                if (maskSource is null)
-                {
-                    throw new Exception(Service.Utility.Language.Instance["VideoAutoWipeIndexPageMaskEmpty"]);
-
-                }
-                var render = new RenderTargetBitmap(maskSource.PixelWidth, maskSource.PixelHeight, maskSource.DpiX, maskSource.DpiY, PixelFormats.Pbgra32);
-                var visual = new DrawingVisual();
-                using (var context = visual.RenderOpen())
-                {
-                    var brush = new VisualBrush(maskInkCanvas);
-                    context.DrawRectangle(brush, null, new Rect(new Point(), new Size(maskSource.Width, maskSource.Height)));
-                }
-                render.Render(visual);
-                var encoder = new PngBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(render));
-                using var stream = new MemoryStream();
-                encoder.Save(stream);
-                return stream.ToArray();
+                if (!IsVisible) ViewFileVideo.Pause();
             };
-        }
 
-        private void MaskClear_Click(object sender, RoutedEventArgs e)
-        {
-            maskInkCanvas.Strokes.Clear();
-        }
-
-        private void MaskSelect_Click(object sender, RoutedEventArgs e)
-        {
-            var openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = Service.Utility.Language.Instance["VideoAutoWipeIndexPageMaskFileFilter"];
-            if (openFileDialog.ShowDialog() is true)
-            {
-                var image = new BitmapImage();
-                image.BeginInit();
-                image.UriSource = new Uri(openFileDialog.FileName);
-                image.EndInit();
-                ViewModel.InputImageFirst = image;
-            }
+            await Service.Utility.Message.AddTextInfo(Core.Utility.Language.Instance["VideoAutoWipeHelp"], ViewModel.MessageAction);
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿using Apt.App.ViewModels.Base;
-using Apt.Service.Utility;
+﻿using Apt.Core.Utility;
+using Apt.Service.ViewModels.Base;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Wpf.Ui;
 using Wpf.Ui.Controls;
 
 namespace Apt.App.ViewModels.Windows.App
@@ -13,7 +14,10 @@ namespace Apt.App.ViewModels.Windows.App
         [ObservableProperty]
         private ObservableCollection<object> _footerMenuItems = [];
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(
+            IServiceProvider serviceProvider,
+            ISnackbarService snackbarService) :
+            base(serviceProvider, snackbarService)
         {
             InitializeViewModel();
         }
@@ -26,15 +30,15 @@ namespace Apt.App.ViewModels.Windows.App
                 {
                     Content = Language.Instance["MainWindowHome"],
                     Icon = new SymbolIcon { Symbol = SymbolRegular.Home20 },
-                    TargetPageType = typeof(Views.Pages.App.DashboardPage)
+                    TargetPageType = typeof(Views.Pages.App.DashboardPage),
                 },
                 new NavigationViewItem()
                 {
-                    Content = Language.Instance["MainWindowChat"],
+                    Content = Language.Instance["MainWindowGen"],
                     Icon = new SymbolIcon { Symbol = SymbolRegular.Chat20 },
                     MenuItemsSource = new ObservableCollection<object>()
                     {
-                        new NavigationViewItem(Language.Instance["MainWindowChatChatGPT"], typeof(Views.Pages.Chat.Gpt.IndexPage))
+                        new NavigationViewItem(Language.Instance["MainWindowGenChat"], typeof(Views.Pages.Gen.Chat.IndexPage))
                     },
                     IsExpanded = true
                 },
@@ -71,7 +75,19 @@ namespace Apt.App.ViewModels.Windows.App
                         new NavigationViewItem(Language.Instance["MainWindowVideoOrganization"], typeof(Views.Pages.Video.Organization.IndexPage))
                     },
                     IsExpanded = true
-                }
+                },
+                //new NavigationViewItem()
+                //{
+                //    Content = Language.Instance["MainWindowAudio"],
+                //    Icon = new SymbolIcon { Symbol = SymbolRegular.Video20 },
+                //    MenuItemsSource = new ObservableCollection<object>()
+                //    {
+                //        new NavigationViewItem(Language.Instance["MainWindowAudioDenoise"], typeof(Views.Pages.Audio.Denoise.IndexPage)),
+                //        new NavigationViewItem(Language.Instance["MainWindowAudioVocalSplit"], typeof(Views.Pages.Audio.VocalSplit.IndexPage)),
+                //        new NavigationViewItem(Language.Instance["MainWindowAudioCloneSingle"], typeof(Views.Pages.App.DashboardPage))
+                //    },
+                //    IsExpanded = true
+                //}
             ];
             FooterMenuItems =
             [

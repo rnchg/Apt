@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Apt.App.Views.Pages.App"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:su="clr-namespace:Apt.Service.Utility;assembly=Apt.Service"
+    xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="SettingsPage"
     d:DataContext="{d:DesignInstance local:SettingsPage,
@@ -79,13 +79,13 @@
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Chat24}">
             <ui:CardControl.Header>
                 <Grid>
-                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingsPageChatGptConfig], Source={x:Static su:Language.Instance}}" />
+                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingsPageGenChatConfig], Source={x:Static su:Language.Instance}}" />
                 </Grid>
             </ui:CardControl.Header>
             <Button
                 MinWidth="200"
-                Command="{Binding ViewModel.SetChatGptConfigCommand}"
-                Content="{Binding [SettingsPageChatGptConfigSetting], Source={x:Static su:Language.Instance}}" />
+                Command="{Binding ViewModel.SetGenChatConfigCommand}"
+                Content="{Binding [SettingsPageGenChatConfigSetting], Source={x:Static su:Language.Instance}}" />
         </ui:CardControl>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Emoji24}">
             <ui:CardControl.Header>
@@ -93,10 +93,24 @@
                     <ui:TextBlock FontTypography="Body" Text="{Binding [SettingsPageLicense], Source={x:Static su:Language.Instance}}" />
                 </Grid>
             </ui:CardControl.Header>
-            <Button
-                MinWidth="200"
-                Command="{Binding ViewModel.SetLicenseCommand}"
-                Content="{Binding [SettingsPageLicenseSetting], Source={x:Static su:Language.Instance}}" />
+            <Grid MinWidth="200">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    Margin="0,0,4,0"
+                    HorizontalAlignment="Stretch"
+                    Command="{Binding ViewModel.SetLicenseInfoCommand}"
+                    Content="{Binding [SettingsPageLicenseInfo], Source={x:Static su:Language.Instance}}" />
+                <Button
+                    Grid.Column="1"
+                    Margin="4,0,0,0"
+                    HorizontalAlignment="Stretch"
+                    Command="{Binding ViewModel.SetLicenseOrderCommand}"
+                    Content="{Binding [SettingsPageLicenseOrder], Source={x:Static su:Language.Instance}}" />
+            </Grid>
         </ui:CardControl>
         <ui:TextBlock
             Margin="0,24,0,8"
@@ -104,7 +118,7 @@
             Text="{Binding [SettingsPageAbout], Source={x:Static su:Language.Instance}}" />
         <ui:CardExpander
             ContentPadding="0"
-            Icon="{ui:ImageIcon '/Assets/App.ico',
+            Icon="{ui:ImageIcon '/Apt.App;component/Assets/App.ico',
                                 Width=48,
                                 Height=48}"
             IsExpanded="True">

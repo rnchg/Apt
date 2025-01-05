@@ -1,57 +1,62 @@
-| English | [中文](README.zh-CN.md) |
+| [English](README.en-US.md) | 中文 |
 
 # AI Productivity Tool
-Free and open-source, enhancing user productivity while ensuring privacy and data security. It provides efficient and convenient AI solutions, including but not limited to: built-in exclusive ChatGPT, one-click batch intelligent processing of images and videos, and more.
+Free and open-source, enhancing user productivity while ensuring privacy and data security. Offers efficient and convenient AI solutions, including but not limited to: built-in dedicated ChatGPT, one-click batch intelligent processing for images, videos, and audio.
 
 ## Key Features
-- **Free and Open-Source**: Free to use, with open-source code that users can review and modify themselves.
-- **Privacy Protection**: Local deployment ensures all data is processed locally, guaranteeing user privacy and data security.
-- **Offline Use**: Can operate offline, eliminating the need for internet access and avoiding network limitations.
-- **No Installation Needed**: No installation or configuration required, just extract and run with a single click, making it quick and convenient.
-- **Multi-language Support**: Supports multiple languages to meet the needs of users worldwide.
+- **Free and Open-Source**: Free to use with open-source code for review and modification.
+- **Privacy Protection**: Local deployment ensures all data is processed locally, safeguarding privacy and data security.
+- **Offline Use**: Operates without an internet connection, avoiding network restrictions.
+- **No Installation Required**: Ready to run with a single click after extraction—quick and convenient.
+- **Multi-Language Support**: Supports multilingual localization to meet global user needs.
 
 ## Integrated AI Models
-Integrates various latest AI models that can be used in a local offline environment, including built-in exclusive ChatGPT, one-click batch intelligent processing of images and videos, and more.
+Integrates various state-of-the-art AI models for offline use, featuring a built-in dedicated ChatGPT and one-click batch intelligent processing for images and videos.
 
 ### ChatGPT
-- Provides a locally offline ChatGPT model for enjoying intelligent AI conversations anytime, anywhere.
+- Provides a locally run ChatGPT model for intelligent AI conversations anytime, anywhere.
 
 ### Image Processing
-- **Image Super-Resolution**: Enhances image resolution without compromising quality.
-- **Image Auto Wipe**: Removes watermarks, subtitles, and logos from images, restoring the original picture.
-- **Image Cartoon Comic**: Converts images to vibrant cartoon or comic styles.
-- **Image Convert 3d**: Converts images to realistic 3D scenes.
-- **Image Color Restoration**: Recolors old photos, giving them a new life.
-- **Image Frame Interpolation**: Automatically generate interpolated images for images.
-- **Image Matting**: Easily remove the image background and export transparent background images.
-- **Image Face Restoration**: Repairs blurry or damaged face images, enhancing details.
+- **Image Upscaling**: Enhance resolution while preserving image quality.
+- **Watermark Removal**: Remove watermarks, subtitles, and logos from images, restoring original visuals.
+- **Cartoon/Comic Style**: Transform images into vivid cartoon or comic styles.
+- **Image to 3D**: Convert images into realistic 3D scenes.
+- **Image Colorization & Restoration**: Breathe new life into old photos with colorization and restoration.
+- **Image Interpolation**: Automatically generate interpolated frames for images.
+- **Background Removal**: Easily remove image backgrounds, exporting transparent-background images.
+- **Face Restoration**: Enhance blurry or damaged face images with greater detail.
 
 ### Video Processing
-- **Video Super-Resolution**: Enhances video resolution while maintaining clear quality.
-- **Video Auto Wipe**: Removes watermarks, subtitles, and logos from videos, restoring the original footage.
-- **Video Cartoon Comic**: Converts videos to fun cartoon or comic styles.
-- **Video Convert 3d**: Converts videos to immersive 3D effects.
-- **Video Color Restoration**: Recolors old videos, providing a new visual experience.
-- **Video Frame Interpolation**: Increases video frame rate for smoother playback.
-- **Video Matting**: Easily remove the video background and replace the background conveniently.
-- **Video Organization**: Decrypts, synthesizes, and organizes downloaded and cached video files.
+- **Video Upscaling**: Improve resolution while maintaining clear quality.
+- **Watermark Removal (Test)**: Remove watermarks, subtitles, and logos from videos, restoring the original visuals.
+- **Cartoon/Comic Style**: Transform videos into engaging cartoon or comic styles.
+- **Video to 3D**: Convert videos into immersive 3D effects.
+- **Colorization & Restoration**: Recolor old videos for a fresh visual experience.
+- **Frame Interpolation**: Increase video frame rates for smoother playback.
+- **Background Removal**: Easily remove video backgrounds for convenient replacements.
+- **Video Synthesis & Organization**: Decrypt, merge, and organize cached video files.
+
+### Audio Processing
+- **Noise Reduction (Test)**: Intelligently identify and remove noise from audio, restoring clear original sound.
+- **Vocal Separation (Test)**: Accurately separate vocals and accompaniments in audio files.
+- **Audio Cloning (Test)**: Generate cloned voices based on text, faithfully reproducing tone, emotion, and speed.
 
 ### Supported Platforms
-|Operating System|Status|Notes|
-|---|---|---|
-|Windows|Released|Windows 10 x64 1709+|
-|Android|Developing||
-|iOS|Developing||
-|Mac|Planning||
-|Linux|Planning||
+| Operating System | Status      | Notes                  |
+|------------------|-------------|------------------------|
+| Windows          | Released    | Windows 10 x64 1709+  |
+| Android          | In Development |                     |
+| iOS              | In Development |                     |
+| Mac              | Planned     |                        |
+| Linux            | Planned     |                        |
 
 ### Future Plans
-Continue to integrate and optimize more AI models to meet diverse user needs.
+Continued integration and optimization of more AI models to meet diverse user needs.
 
 ### Open-Source and Download Links
 - | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [Google Drive](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [Baidu Cloud](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) | [Tencent Weiyun](https://share.weiyun.com/vGiBjW8d) |
 - **Full Version**: Includes all features.
-- **Lite Version**: Includes all features except ChatGPT.
+- **Lite Version**: Includes all features except for ChatGPT.
 
 ### User Guide and Technical Support
 - **Email**: [Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
@@ -61,20 +66,20 @@ Continue to integrate and optimize more AI models to meet diverse user needs.
 - **Bilibili**: [风轻云也净](https://space.bilibili.com/478375442)
 - **QQ**: 6085398
 
-### User Interface
-Home
-![Homepage](.assets/en-US/dashboard.png)
-Settings
-![Settings](.assets/en-US/settings.png)
-ChatGPT
-![ChatGPT](.assets/en-US/chat_gpt.png)
-Image Super Resolution
-![Image Super Resolution](.assets/en-US/image_super_resolution.png)
-Image Auto Wipe
-![Image Auto Wipe](.assets/en-US/image_auto_wipe.png)
-Video 3D Conversion
-![Video 3D Conversion](.assets/en-US/video_convert_3d.png)
+### Interface
+Homepage  
+![Homepage](.assets/en-US/dashboard.png)  
+ChatGPT  
+![ChatGPT](.assets/en-US/gen_chat.png)  
+Image Processing  
+![Image Processing](.assets/en-US/image_auto_wipe.png)  
+Video Processing  
+![Video Processing](.assets/en-US/video_cartoon_comic.png)  
+Video Processing  
+![Video Processing](.assets/en-US/video_super_resolution.png)  
+Settings  
+![Settings](.assets/en-US/settings.png)  
 
 ### Donation Support
-If you find this project useful, you can buy the author a cup of coffee.
+If you find this project useful, consider buying the author a coffee.  
 ![Donation Support](.assets/donate.png)

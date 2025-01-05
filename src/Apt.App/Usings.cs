@@ -1,9 +1,6 @@
-﻿global using Microsoft.Extensions.Configuration;
-global using Microsoft.Extensions.DependencyInjection;
+﻿global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Hosting;
-global using Microsoft.Win32;
 global using System;
-global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
 global using System.Globalization;
 global using System.IO;

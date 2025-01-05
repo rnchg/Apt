@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Apt.App.Views.Windows.App"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:su="clr-namespace:Apt.Service.Utility;assembly=Apt.Service"
+    xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}}"
     Width="1280"
@@ -35,26 +35,26 @@
     <Grid>
         <ui:NavigationView
             x:Name="NavigationView"
-            Padding="42,0,42,0"
+            Padding="20,10,20,10"
             BreadcrumbBar="{Binding ElementName=BreadcrumbBar}"
-            EnableDebugMessages="True"
-            FooterMenuItemsSource="{Binding ViewModel.FooterMenuItems, Mode=OneWay}"
+            EnableDebugMessages="False"
+            FooterMenuItemsSource="{Binding ViewModel.FooterMenuItems}"
             FrameMargin="0"
             IsBackButtonVisible="Visible"
             IsPaneToggleVisible="True"
-            MenuItemsSource="{Binding ViewModel.MenuItems, Mode=OneWay}"
+            MenuItemsSource="{Binding ViewModel.MenuItems}"
             OpenPaneLength="240"
             PaneClosed="NavigationView_OnPaneClosed"
             PaneDisplayMode="Left"
             PaneOpened="NavigationView_OnPaneOpened"
             SelectionChanged="OnNavigationSelectionChanged"
-            TitleBar="{Binding ElementName=TitleBar, Mode=OneWay}"
+            TitleBar="{Binding ElementName=TitleBar}"
             Transition="FadeInWithSlide">
-            <ui:NavigationView.Header>
+            <!--<ui:NavigationView.Header>
                 <StackPanel Margin="42,32,42,20">
                     <ui:BreadcrumbBar x:Name="BreadcrumbBar" />
                 </StackPanel>
-            </ui:NavigationView.Header>
+            </ui:NavigationView.Header>-->
             <ui:NavigationView.AutoSuggestBox>
                 <ui:AutoSuggestBox x:Name="AutoSuggestBox" PlaceholderText="{Binding [MainWindowSearch], Source={x:Static su:Language.Instance}}">
                     <ui:AutoSuggestBox.Icon>
@@ -76,7 +76,7 @@
             Title="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}}"
             Grid.Row="0">
             <ui:TitleBar.Icon>
-                <ui:ImageIcon Source="pack://application:,,,/Assets/App.ico" />
+                <ui:ImageIcon Source="/Apt.App;component/Assets/App.ico" />
             </ui:TitleBar.Icon>
         </ui:TitleBar>
     </Grid>
