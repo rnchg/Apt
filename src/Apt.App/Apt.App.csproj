@@ -7,7 +7,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Apt.App</AssemblyName>
-		<Version>2.8.0</Version>
+		<Version>2.8.1</Version>
 		<PlatformTarget>x64</PlatformTarget>
 		<CETCompat>false</CETCompat>
 		<ApplicationIcon>Assets\App.ico</ApplicationIcon>
@@ -16,36 +16,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Resource Include="Assets\App.ico" />
-		<Resource Include="Assets\Dashboard.jpg" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Apt.Service" Version="2.8.0" />
 		<PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
 		<PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Update="appsettings.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="Languages\en-US.json">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="Languages\ja-JP.json">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="Languages\ko-KR.json">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="Languages\zh-CN.json">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="Languages\zh-TW.json">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
 	</ItemGroup>
 
 </Project>

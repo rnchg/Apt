@@ -14,27 +14,10 @@ namespace Apt.App.Views.Pages.Video.FrameInterpolation
 
             InitializeComponent();
 
-            _ = InitializeData();
-        }
-
-        public async Task InitializeData()
-        {
-            ViewModel.MessageAction += (message) =>
-            {
-                Message.Document.Blocks.Add(message);
-                Message.ScrollToEnd();
-                while (Message.Document.Blocks.Count > 100)
-                {
-                    Message.Document.Blocks.Remove(Message.Document.Blocks.FirstBlock);
-                }
-            };
-
             IsVisibleChanged += (s, e) =>
             {
-                if (!IsVisible) ViewFileVideo.Pause();
+                if (!IsVisible) FileView.Pause();
             };
-
-            await Service.Utility.Message.AddTextInfo(Core.Utility.Language.Instance["VideoFrameInterpolationHelp"], ViewModel.MessageAction);
         }
     }
 }

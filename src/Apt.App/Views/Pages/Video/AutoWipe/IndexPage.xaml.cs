@@ -14,31 +14,14 @@ namespace Apt.App.Views.Pages.Video.AutoWipe
 
             InitializeComponent();
 
-            _ = InitializeData();
-        }
-
-        public async Task InitializeData()
-        {
-            ViewModel.MessageAction += (message) =>
-            {
-                Message.Document.Blocks.Add(message);
-                Message.ScrollToEnd();
-                while (Message.Document.Blocks.Count > 100)
-                {
-                    Message.Document.Blocks.Remove(Message.Document.Blocks.FirstBlock);
-                }
-            };
-
-            ViewModel.GetMaskAction += ViewFileVideo.GetMask;
-
-            ViewModel.ClearMaskAction += ViewFileVideo.ClearMash;
-
             IsVisibleChanged += (s, e) =>
             {
-                if (!IsVisible) ViewFileVideo.Pause();
+                if (!IsVisible) FileView.Pause();
             };
 
-            await Service.Utility.Message.AddTextInfo(Core.Utility.Language.Instance["VideoAutoWipeHelp"], ViewModel.MessageAction);
+            ViewModel.GetMaskAction += FileView.GetMask;
+
+            ViewModel.ClearMaskAction += FileView.ClearMask;
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using Apt.Core.Consts;
+using Apt.Core.Enums;
 using Apt.Core.Exceptions;
 using Apt.Core.Models;
 using Apt.Core.Services.Pages.Image.Convert3d;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
 using Apt.Service.Controls.FileGrid;
+using Apt.Service.Controls.RunMessage;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -69,16 +71,16 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
         [ObservableProperty]
         private bool _crossEye;
 
-        public override void OnInputChangedAction(string value) => GetGridFiles(AppConst.ImageExts);
+        public override void OnInputChangedAction(string value) => GetFileGrids(AppConst.ImageExts);
 
-        public override void OnOutputChangedAction(string value) => GetGridFiles(AppConst.ImageExts);
+        public override void OnOutputChangedAction(string value) => GetFileGrids(AppConst.ImageExts);
 
-        public override void OnGridFileSwitchChangedAction(bool value) => GetGridFiles(AppConst.ImageExts);
+        public override void OnFileGridSwitchChangedAction(bool value) => GetFileGrids(AppConst.ImageExts);
 
         [ObservableProperty]
-        private ImageSource? _gridFileView = null!;
+        private Uri? _fileViewSource = null!;
 
-        public override void OnGridFileItemChangedAction(FileModel? value) => GridFileView = Source.ImageToBitmapImage(value?.FileInfo.FullName);
+        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FileInfo.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -91,6 +93,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
         public override void InitializeViewModel()
         {
             ProviderSource = Adapter.CpuAndGpu;
+
             ModeSource =
             [
                 new ComBoBoxItem<string>() {  Text = Language.Instance["ImageConvert3dIndexPageModeStandard"], Value = "Standard" }
@@ -115,10 +118,12 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
                 new ComBoBoxItem<int>() {  Text = Language.Instance["ImageConvert3dIndexPageShift1000"], Value = 1000 }
             ];
 
+            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["ImageConvert3dHelp"]);
+
             _indexService = new IndexService
             {
                 ProgressMax = ProgressBarMaximum,
-                Message = async (type, message) => await Message.AddMessage(type, message, MessageAction),
+                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
                 Progress = async (process) => await AddProcess(process),
                 IsStop = () => !StopEnabled
             };
@@ -134,13 +139,13 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                GridFileSwitch = false;
+                FileGridSwitch = false;
 
                 if (!Directory.Exists(Input))
                 {
                     throw new Exception(Language.Instance["ImageConvert3dIndexPageInputEmpty"]);
                 }
-                var inputFiles = GridFileSource.Select(e => e.FileInfo.FullName).ToArray();
+                var inputFiles = FileGridSource.Select(e => e.FileInfo.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["ImageConvert3dIndexPageInputFilesEmpty"]);
@@ -156,7 +161,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                GridFileSwitch = true;
+                FileGridSwitch = true;
 
                 if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }
@@ -167,7 +172,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                await Message.AddMessageError(ex.Message, MessageAction);
+                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
             }
             finally
             {

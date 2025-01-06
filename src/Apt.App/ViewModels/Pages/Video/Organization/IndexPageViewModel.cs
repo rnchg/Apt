@@ -1,9 +1,11 @@
 ﻿using Apt.Core.Consts;
+using Apt.Core.Enums;
 using Apt.Core.Exceptions;
 using Apt.Core.Models;
 using Apt.Core.Services.Pages.Video.Organization;
 using Apt.Core.Utility;
 using Apt.Service.Controls.FileGrid;
+using Apt.Service.Controls.RunMessage;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -60,16 +62,16 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
             set => ClientItem = ClientSource.First(e => e.Value == value);
         }
 
-        public override void OnInputChangedAction(string value) => GetGridFiles(AppConst.VideoExts);
+        public override void OnInputChangedAction(string value) => GetFileGrids(AppConst.VideoExts);
 
-        public override void OnOutputChangedAction(string value) => GetGridFiles(AppConst.VideoExts);
+        public override void OnOutputChangedAction(string value) => GetFileGrids(AppConst.VideoExts);
 
-        public override void OnGridFileSwitchChangedAction(bool value) => GetGridFiles(AppConst.VideoExts);
+        public override void OnFileGridSwitchChangedAction(bool value) => GetFileGrids(AppConst.VideoExts);
 
         [ObservableProperty]
-        private Uri? _gridFileView = null!;
+        private Uri? _fileViewSource = null!;
 
-        public override void OnGridFileItemChangedAction(FileModel? value) => GridFileView = Source.VideoToUri(value?.FileInfo.FullName);
+        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FileInfo.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -98,10 +100,12 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageClientBilibiliAndroid"], Value = "Android" }
             ];
 
+            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["VideoOrganizationHelp"]);
+
             _indexService = new IndexService
             {
                 ProgressMax = ProgressBarMaximum,
-                Message = async (type, message) => await Message.AddMessage(type, message, MessageAction),
+                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
                 Progress = async (process) => await AddProcess(process),
                 IsStop = () => !StopEnabled
             };
@@ -117,7 +121,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
                 StopEnabled = true;
                 OpenEnabled = true;
 
-                //GridFileSwitch = false;
+                //FileGridSwitch = false;
 
                 if (!Directory.Exists(Input))
                 {
@@ -137,7 +141,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
 
                 ProgressBarValue = ProgressBarMaximum;
 
-                GridFileSwitch = true;
+                FileGridSwitch = true;
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoOrganizationIndexPageOperationCompleted"]);
 
@@ -150,7 +154,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                await Message.AddMessageError(ex.Message, MessageAction);
+                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
             }
             finally
             {

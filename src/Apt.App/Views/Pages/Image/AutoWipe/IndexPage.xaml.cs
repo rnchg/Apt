@@ -14,26 +14,8 @@ namespace Apt.App.Views.Pages.Image.AutoWipe
 
             InitializeComponent();
 
-            _ = InitializeData();
-        }
-
-        public async Task InitializeData()
-        {
-            ViewModel.MessageAction += (message) =>
-            {
-                Message.Document.Blocks.Add(message);
-                Message.ScrollToEnd();
-                while (Message.Document.Blocks.Count > 100)
-                {
-                    Message.Document.Blocks.Remove(Message.Document.Blocks.FirstBlock);
-                }
-            };
-
-            ViewModel.GetMaskAction += ViewFileImage.GetMask;
-
-            ViewModel.ClearMaskAction += ViewFileImage.ClearMash;
-
-            await Service.Utility.Message.AddTextInfo(Core.Utility.Language.Instance["ImageAutoWipeHelp"], ViewModel.MessageAction);
+            ViewModel.GetMaskAction += FileView.GetMask;
+            ViewModel.ClearMaskAction += FileView.ClearMask;
         }
     }
 }

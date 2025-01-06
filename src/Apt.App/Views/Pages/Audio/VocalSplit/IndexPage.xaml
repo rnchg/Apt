@@ -2,11 +2,13 @@
     x:Class="Apt.App.Views.Pages.Audio.VocalSplit.IndexPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:av="clr-namespace:Apt.Service.Controls.AudioView;assembly=Apt.Service"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fg="clr-namespace:Apt.Service.Controls.FileGrid;assembly=Apt.Service"
     xmlns:local="clr-namespace:Apt.App.Views.Pages.Audio.VocalSplit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:Apt.App.ViewModels.Pages.Audio.VocalSplit"
+    xmlns:mv="clr-namespace:Apt.Service.Controls.FileView;assembly=Apt.Service"
+    xmlns:rm="clr-namespace:Apt.Service.Controls.RunMessage;assembly=Apt.Service"
     xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     d:DataContext="{d:DesignInstance local:IndexPage,
@@ -180,48 +182,31 @@
                 BorderThickness="0">
                 <GroupBox.Header>
                     <ui:ToggleSwitch
-                        IsChecked="{Binding ViewModel.GridFileSwitch}"
-                        OffContent="{Binding [AudioVocalSplitIndexPageGridFileOff], Source={x:Static su:Language.Instance}}"
-                        OnContent="{Binding [AudioVocalSplitIndexPageGridFileOn], Source={x:Static su:Language.Instance}}" />
+                        IsChecked="{Binding ViewModel.FileGridSwitch}"
+                        OffContent="{Binding [FileGridInput], Source={x:Static su:Language.Instance}}"
+                        OnContent="{Binding [FileGridOutput], Source={x:Static su:Language.Instance}}" />
                 </GroupBox.Header>
-                <DataGrid
-                    AutoGenerateColumns="False"
-                    HorizontalScrollBarVisibility="Visible"
-                    IsReadOnly="True"
-                    ItemsSource="{Binding ViewModel.GridFileSource}"
-                    SelectedItem="{Binding ViewModel.GridFileItem}"
-                    SelectionMode="Single"
-                    VerticalScrollBarVisibility="Visible">
-                    <DataGrid.RowStyle>
-                        <Style TargetType="DataGridRow">
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="#104E8B" />
-                                </Trigger>
-                            </Style.Triggers>
-                            <Setter Property="Height" Value="24" />
-                        </Style>
-                    </DataGrid.RowStyle>
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding FileInfo.Name}" Header="{Binding [AudioVocalSplitIndexPageGridFileName], Source={x:Static su:Language.Instance}}" />
-                        <DataGridTextColumn Binding="{Binding FileInfo.Length}" Header="{Binding [AudioVocalSplitIndexPageGridFileLength], Source={x:Static su:Language.Instance}}" />
-                        <DataGridTextColumn Binding="{Binding FileInfo.LastWriteTime}" Header="{Binding [AudioVocalSplitIndexPageGridFileLastWriteTime], Source={x:Static su:Language.Instance}}" />
-                    </DataGrid.Columns>
-                </DataGrid>
+                <fg:FileGrid
+                    x:Name="FileGrid"
+                    FileGridItem="{Binding ViewModel.FileGridItem}"
+                    FileGridSource="{Binding ViewModel.FileGridSource}" />
             </GroupBox>
             <GroupBox
                 Grid.Column="1"
                 Padding="0,8,0,0"
                 BorderThickness="0"
-                Header="{Binding [AudioVocalSplitIndexPageViewFile], Source={x:Static su:Language.Instance}}">
-                <av:AudioView x:Name="ViewFileAudio" ViewFileSource="{Binding ViewModel.GridFileView}" />
+                Header="{Binding [FileView], Source={x:Static su:Language.Instance}}">
+                <mv:MediaView
+                    x:Name="FileView"
+                    MaskVisibility="Collapsed"
+                    MediaSource="{Binding ViewModel.FileViewSource}" />
             </GroupBox>
             <GroupBox
                 Grid.Column="2"
                 Padding="0,8,0,0"
                 BorderThickness="0"
-                Header="{Binding [AudioVocalSplitIndexPageRunMessage], Source={x:Static su:Language.Instance}}">
-                <RichTextBox Name="Message" VerticalScrollBarVisibility="Visible" />
+                Header="{Binding [RunMessage], Source={x:Static su:Language.Instance}}">
+                <rm:RunMessage x:Name="RunMessage" CurrentMessage="{Binding ViewModel.CurrentMessage}" />
             </GroupBox>
         </Grid>
     </Grid>
