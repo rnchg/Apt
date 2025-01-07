@@ -1,6 +1,4 @@
 ﻿using Apt.App.ViewModels.Pages.Gen.Chat;
-using System.Collections.Specialized;
-using System.Windows.Controls;
 using Wpf.Ui.Abstractions.Controls;
 
 namespace Apt.App.Views.Pages.Gen.Chat
@@ -16,34 +14,26 @@ namespace Apt.App.Views.Pages.Gen.Chat
 
             InitializeComponent();
 
-            InitializeData();
-        }
+            ViewModel.AddChat += ChatFrame.AddChat;
 
-        public void InitializeData()
-        {
-            ViewModel.ChatHistory.Add(new ChatMessage() { Text = Core.Utility.Language.Instance["GenChatHelp"], IsOwner = false });
+            ViewModel.SendChat += ChatFrame.SendChat;
 
-            ViewModel.ChatHistory.CollectionChanged += ChatHistory_CollectionChanged;
-        }
+            ViewModel.SendAndBuildChat += ChatFrame.SendAndBuildChat;
 
-        private void ChatHistory_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.Action == NotifyCollectionChangedAction.Add && MessagesItemsCtrl.Template is not null)
+            ViewModel.CancelChat += ChatFrame.CancelChat;
+
+            ViewModel.ClearChat += ChatFrame.ClearChat;
+
+            Prompt.KeyDown += (s, e) =>
             {
-                var scrollViewer = (ScrollViewer)MessagesItemsCtrl.Template.FindName("scrollViewer", MessagesItemsCtrl);
-                scrollViewer?.ScrollToEnd();
-            }
-        }
-
-        private void TextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+                if (e.Key == Key.Enter)
                 {
-                    ViewModel.SetSendCommand.Execute(null);
+                    if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+                    {
+                        ViewModel.SetSendCommand.Execute(null);
+                    }
                 }
-            }
+            };
         }
     }
 }

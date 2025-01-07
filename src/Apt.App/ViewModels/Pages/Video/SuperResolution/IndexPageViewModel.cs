@@ -64,7 +64,7 @@ namespace Apt.App.ViewModels.Pages.Video.SuperResolution
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
 
-        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FileInfo.FullName);
+        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -115,7 +115,7 @@ namespace Apt.App.ViewModels.Pages.Video.SuperResolution
                 {
                     throw new Exception(Language.Instance["VideoSuperResolutionIndexPageInputEmpty"]);
                 }
-                var inputFiles = FileGridSource.Select(e => e.FileInfo.FullName).ToArray();
+                var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["VideoSuperResolutionIndexPageInputFilesEmpty"]);

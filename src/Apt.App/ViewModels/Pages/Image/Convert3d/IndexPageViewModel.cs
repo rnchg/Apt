@@ -80,7 +80,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
 
-        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FileInfo.FullName);
+        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -145,7 +145,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
                 {
                     throw new Exception(Language.Instance["ImageConvert3dIndexPageInputEmpty"]);
                 }
-                var inputFiles = FileGridSource.Select(e => e.FileInfo.FullName).ToArray();
+                var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["ImageConvert3dIndexPageInputFilesEmpty"]);

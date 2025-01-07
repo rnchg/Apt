@@ -168,9 +168,9 @@
   "GenChatIndexPageModelEmpty": "Model does not exist [{0}]",
   "GenChatIndexPageModelInitFailed": "Failed to load model",
   "GenChatIndexPageLite": "This function module cannot be used in the Lite version",
-  "GenChatIndexPageChatHistoryLast1NotAi": "The last entry in the conversation history is not AI",
-  "GenChatIndexPageChatHistoryLast2NotUser": "The second to last entry in the conversation history is not a user",
-  "GenChatIndexPageChatHistoryUserEmpty": "The conversation history User is empty",
+  "GenChatIndexPageChatListLast1NotAi": "The last entry in the conversation history is not AI",
+  "GenChatIndexPageChatListLast2NotUser": "The second to last entry in the conversation history is not a user",
+  "GenChatIndexPageChatListUserEmpty": "The conversation history User is empty",
 
   "GenChatConfigWindowConfig": "GenChat",
   "GenChatConfigWindowPromptSystem": "System prompt words",

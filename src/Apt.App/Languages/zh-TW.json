@@ -168,9 +168,9 @@
   "GenChatIndexPageModelEmpty": "模型不存在[{0}]",
   "GenChatIndexPageModelInitFailed": "載入模型失敗",
   "GenChatIndexPageLite": "精簡版無法使用本功能模組",
-  "GenChatIndexPageChatHistoryLast1NotAi": "對話歷史記錄倒數第一條不是AI",
-  "GenChatIndexPageChatHistoryLast2NotUser": "對話式記錄倒數第二個不是User",
-  "GenChatIndexPageChatHistoryUserEmpty": "對話歷史User是空",
+  "GenChatIndexPageChatListLast1NotAi": "對話歷史記錄倒數第一條不是AI",
+  "GenChatIndexPageChatListLast2NotUser": "對話式記錄倒數第二個不是User",
+  "GenChatIndexPageChatListUserEmpty": "對話歷史User是空",
 
   "GenChatConfigWindowConfig": "GenChat",
   "GenChatConfigWindowPromptSystem": "系統提示詞",

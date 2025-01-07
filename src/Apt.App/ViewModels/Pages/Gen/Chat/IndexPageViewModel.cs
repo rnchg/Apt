@@ -4,6 +4,7 @@ using Apt.Core.Consts;
 using Apt.Core.Exceptions;
 using Apt.Core.Services.Pages.Gen.Chat;
 using Apt.Core.Utility;
+using Apt.Service.Controls.ChatFrame;
 using Apt.Service.Extensions;
 using Apt.Service.Services;
 using Apt.Service.ViewModels.Base;
@@ -21,10 +22,22 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
         private bool _isInitialized = false;
 
-        private WindowsProviderService _windowsService = null!;
-        private CancellationTokenSource _cancellationTokenSource = null!;
+        [ObservableProperty]
+        private Func<ChatModel, bool> _addChat = null!;
 
-        public Action<Paragraph> MessageAction { get; set; } = null!;
+        [ObservableProperty]
+        private Func<ChatModel, bool> _sendChat = null!;
+
+        [ObservableProperty]
+        private Func<ChatModel, (string, ChatModel)> _sendAndBuildChat = null!;
+
+        [ObservableProperty]
+        private Action _cancelChat = null!;
+
+        [ObservableProperty]
+        private Action _clearChat = null!;
+
+        private CancellationTokenSource _cancellationTokenSource = null!;
 
         [ObservableProperty]
         private int _promptMaxLength = Current.Config.GenChat.PromptMaxLength;
@@ -54,13 +67,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         private bool _sendEnabled = true;
 
         [ObservableProperty]
-        private ObservableCollection<ChatMessage> _chatHistory = [];
-
-        [ObservableProperty]
-        private ChatMessage _chatUser = null!;
-
-        [ObservableProperty]
-        private ChatMessage _chatAssistant = null!;
+        private ObservableCollection<ChatModel> _chatList = [];
 
         [RelayCommand]
         private void SetSend() => _ = Send();
@@ -76,13 +83,13 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         private void SetReset()
         {
             SetCancel();
-            ChatHistory.Clear();
+            ClearChat.Invoke();
         }
 
         [RelayCommand]
         private void SetConfig()
         {
-            _windowsService.ShowDialog<ConfigWindow>();
+            ServiceProvider.GetRequiredService<WindowsProviderService>().ShowDialog<ConfigWindow>();
         }
 
         public IndexPageViewModel(
@@ -103,7 +110,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
         private void InitializeViewModel()
         {
-            _windowsService = ServiceProvider.GetRequiredService<WindowsProviderService>();
+            ChatList.Add(new ChatModel() { Text = Language.Instance["GenChatHelp"], IsOwner = false });
 
             _ = Start();
 
@@ -140,11 +147,14 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
                 if (string.IsNullOrWhiteSpace(Message)) return;
 
                 SendEnabled = false;
+
                 Placeholder = Language.Instance["GenChatIndexPageModelProcessWait"];
 
-                _cancellationTokenSource = new CancellationTokenSource();
+                var (prompt, assistant) = SendAndBuildChat.Invoke(new ChatModel() { Type = GenConst.Chat.TypeUser, Text = Message, IsOwner = true });
 
-                var (prompt, assistant) = Build();
+                Message = string.Empty;
+
+                _cancellationTokenSource = new CancellationTokenSource();
 
                 var message = _indexService.Start(prompt, _cancellationTokenSource.Token);
 
@@ -153,19 +163,16 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
             }
             catch (ActivationException ex)
             {
-                ChatHistory.Remove(ChatAssistant);
-                ChatHistory.Remove(ChatUser);
+                CancelChat.Invoke();
                 ServiceProvider.ShowLicense(ex.Message);
             }
             catch (OperationCanceledException)
             {
-                ChatHistory.Remove(ChatAssistant);
-                ChatHistory.Remove(ChatUser);
+                CancelChat.Invoke();
             }
             catch (Exception ex)
             {
-                ChatHistory.Remove(ChatAssistant);
-                ChatHistory.Remove(ChatUser);
+                CancelChat.Invoke();
                 SnackbarService.ShowSnackbarError(ex.Message);
             }
             finally
@@ -173,73 +180,6 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
                 SendEnabled = true;
                 Placeholder = Language.Instance["GenChatIndexPageInputPrompt"];
             }
-        }
-
-        private (string, ChatMessage) Build()
-        {
-            ChatUser = new ChatMessage() { Type = GenConst.Chat.TypeUser, Text = Message, IsOwner = true };
-
-            ChatHistory.Add(ChatUser);
-
-            ChatAssistant = new ChatMessage() { Type = GenConst.Chat.TypeAssistant, Text = string.Empty, IsOwner = false };
-
-            ChatHistory.Add(ChatAssistant);
-
-            Message = string.Empty;
-
-            var promptHistory = ChatHistory.Where(e => e.Type == GenConst.Chat.TypeUser || e.Type == GenConst.Chat.TypeAssistant).Reverse().ToArray();
-
-            var promptAssistant = promptHistory[0];
-
-            if (promptAssistant.Type != GenConst.Chat.TypeAssistant)
-            {
-                throw new Exception(Language.Instance["GenChatIndexPageChatHistoryLast1NotAi"]);
-            }
-
-            var promptUser = promptHistory[1];
-
-            if (promptUser.Type != GenConst.Chat.TypeUser)
-            {
-                throw new Exception(Language.Instance["GenChatIndexPageChatHistoryLast2NotUser"]);
-            }
-            if (string.IsNullOrEmpty(promptUser.Text))
-            {
-                throw new Exception(Language.Instance["GenChatIndexPageChatHistoryUserEmpty"]);
-            }
-
-            var promptStart = string.IsNullOrWhiteSpace(Current.Config?.GenChat.PromptSystem) ? string.Empty : $"<|system|>{Current.Config.GenChat.PromptSystem}<|end|>";
-
-            var promptContent = string.Empty;
-
-            var promptEnd = "<|assistant|>";
-
-            for (var i = 1; i < promptHistory.Length; i++)
-            {
-                var prompt = promptHistory[i];
-
-                if (string.IsNullOrWhiteSpace(prompt.Text))
-                {
-                    continue;
-                }
-
-                var promptChat = $"<|{prompt.Type.ToLower()}|>{prompt.Text}<|end|>{promptContent}";
-
-                if (promptStart.Length + promptChat.Length + promptEnd.Length > Current.Config?.GenChat.PromptMaxLength)
-                {
-                    break;
-                }
-
-                if (i > Current.Config?.GenChat.ContextMaxLength)
-                {
-                    break;
-                }
-
-                promptContent = promptChat;
-            }
-
-            var promptFull = $"{promptStart}{promptContent}{promptEnd}";
-
-            return (promptFull, promptAssistant);
         }
     }
 }

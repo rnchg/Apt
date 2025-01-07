@@ -71,7 +71,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
 
-        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FileInfo.FullName);
+        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -127,7 +127,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
                 {
                     throw new Exception(Language.Instance["VideoOrganizationIndexPageInputEmpty"]);
                 }
-                var inputFiles = GetInputFiles(Input).Select(e => e.FileInfo.FullName).ToArray();
+                var inputFiles = GetInputFiles(Input).Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["VideoOrganizationIndexPageInputFilesEmpty"]);
@@ -171,33 +171,33 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
             {
                 if (SortRule == "Asc")
                 {
-                    files = files.OrderBy(f => f.FileInfo.Name);
+                    files = files.OrderBy(f => f.Name);
                 }
                 if (SortRule == "Desc")
                 {
-                    files = files.OrderByDescending(f => f.FileInfo.Name);
+                    files = files.OrderByDescending(f => f.Name);
                 }
             }
             if (InputSort == "LastWriteTime")
             {
                 if (SortRule == "Asc")
                 {
-                    files = files.OrderBy(f => f.FileInfo.LastWriteTime);
+                    files = files.OrderBy(f => f.LastWriteTime);
                 }
                 if (SortRule == "Desc")
                 {
-                    files = files.OrderByDescending(f => f.FileInfo.LastWriteTime);
+                    files = files.OrderByDescending(f => f.LastWriteTime);
                 }
             }
             if (InputSort == "Length")
             {
                 if (SortRule == "Asc")
                 {
-                    files = files.OrderBy(f => f.FileInfo.Length);
+                    files = files.OrderBy(f => f.Length);
                 }
                 if (SortRule == "Desc")
                 {
-                    files = files.OrderByDescending(f => f.FileInfo.Length);
+                    files = files.OrderByDescending(f => f.Length);
                 }
             }
             return new ObservableCollection<FileModel>(files);

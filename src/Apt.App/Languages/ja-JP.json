@@ -168,9 +168,9 @@
   "GenChatIndexPageModelEmpty": "モデルが存在しません [{0}]",
   "GenChatIndexPageModelInitFailed": "モデルの読み込みに失敗しました",
   "GenChatIndexPageLite": "この機能モジュールはLite版では使用できません",
-  "GenChatIndexPageChatHistoryLast1NotAi": "会話履歴の最後の項目は AI ではありません",
-  "GenChatIndexPageChatHistoryLast2NotUser": "会話履歴の最後から 2 番目のエントリはユーザーではありません",
-  "GenChatIndexPageChatHistoryUserEmpty": "会話履歴ユーザーが空です",
+  "GenChatIndexPageChatListLast1NotAi": "会話履歴の最後の項目は AI ではありません",
+  "GenChatIndexPageChatListLast2NotUser": "会話履歴の最後から 2 番目のエントリはユーザーではありません",
+  "GenChatIndexPageChatListUserEmpty": "会話履歴ユーザーが空です",
 
   "GenChatConfigWindowConfig": "GenChat",
   "GenChatConfigWindowPromptSystem": "システム プロンプトの単語",

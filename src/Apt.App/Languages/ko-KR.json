@@ -168,9 +168,9 @@
   "GenChatIndexPageModelEmpty": "모델이 존재하지 않습니다 [{0}]",
   "GenChatIndexPageModelInitFailed": "모델 로드 실패",
   "GenChatIndexPageLite": "이 기능 모듈은 Lite 버전에서 사용할 수 없습니다",
-  "GenChatIndexPageChatHistoryLast1NotAi": "대화 기록의 마지막 항목은 AI가 아닙니다.",
-  "GenChatIndexPageChatHistoryLast2NotUser": "대화 기록의 마지막에서 두 번째 항목이 사용자가 아닙니다.",
-  "GenChatIndexPageChatHistoryUserEmpty": "대화 기록 사용자가 비어 있습니다.",
+  "GenChatIndexPageChatListLast1NotAi": "대화 기록의 마지막 항목은 AI가 아닙니다.",
+  "GenChatIndexPageChatListLast2NotUser": "대화 기록의 마지막에서 두 번째 항목이 사용자가 아닙니다.",
+  "GenChatIndexPageChatListUserEmpty": "대화 기록 사용자가 비어 있습니다.",
 
   "GenChatConfigWindowConfig": "GenChat",
   "GenChatConfigWindowPromptSystem": "시스템 프롬프트 단어",
