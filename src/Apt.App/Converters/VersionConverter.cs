@@ -1,4 +1,4 @@
-﻿using Apt.App.Services;
+﻿using Apt.Core.Utility;
 
 namespace Apt.App.Converters
 {
@@ -10,7 +10,7 @@ namespace Apt.App.Converters
             {
                 return DependencyProperty.UnsetValue;
             }
-            return $"{value} V {AppHostService.EntryAssembly.Version}";
+            return $"{value} V {Current.AssemblyInfo.Version}";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
