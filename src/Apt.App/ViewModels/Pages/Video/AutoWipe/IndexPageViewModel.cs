@@ -77,14 +77,13 @@ namespace Apt.App.ViewModels.Pages.Video.AutoWipe
                 new ComBoBoxItem<string>() {  Text = Language.Instance["VideoAutoWipeIndexPageModeStandard"], Value = "Standard" }
             ];
 
-            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["VideoAutoWipeHelp"]);
+            AddMessage(MessageType.Success, Language.Instance["VideoAutoWipeHelp"]);
 
             _indexService = new IndexService
             {
-                ProgressMax = ProgressBarMaximum,
-                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
-                Progress = async (process) => await AddProcess(process),
-                IsStop = () => !StopEnabled
+                GetStop = () => !StopEnabled,
+                SetProgress = SetProcess,
+                AddMessage = AddMessage
             };
 
             IsInitialized = true;
@@ -104,14 +103,14 @@ namespace Apt.App.ViewModels.Pages.Video.AutoWipe
                 {
                     throw new Exception(Language.Instance["VideoAutoWipeIndexPageInputEmpty"]);
                 }
+                if (!Directory.Exists(Output))
+                {
+                    throw new Exception(Language.Instance["VideoAutoWipeIndexPageOutputEmpty"]);
+                }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["VideoAutoWipeIndexPageInputFilesEmpty"]);
-                }
-                if (!Directory.Exists(Output))
-                {
-                    throw new Exception(Language.Instance["VideoAutoWipeIndexPageOutputEmpty"]);
                 }
                 var maskData = GetMaskAction?.Invoke();
                 if (maskData is null)
@@ -119,15 +118,13 @@ namespace Apt.App.ViewModels.Pages.Video.AutoWipe
                     throw new Exception(Language.Instance["VideoAutoWipeIndexPageInputMaskEmpty"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, maskData, Provider, Mode);
+                await _indexService.Start(Input, Output, inputFiles, Provider, Mode, maskData);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoAutoWipeIndexPageOperationCompleted"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoAutoWipeIndexPageProcessEnd"]);
 
                 ProgressBarValue = ProgressBarMaximum;
 
                 FileGridSwitch = true;
-
-                if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }
             catch (ActivationException ex)
             {
@@ -136,7 +133,7 @@ namespace Apt.App.ViewModels.Pages.Video.AutoWipe
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
+                AddMessage(MessageType.Error, ex.Message);
             }
             finally
             {

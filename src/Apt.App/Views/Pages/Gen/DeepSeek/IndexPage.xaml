@@ -1,13 +1,13 @@
 ﻿<Page
-    x:Class="Apt.App.Views.Pages.Gen.Chat.IndexPage"
+    x:Class="Apt.App.Views.Pages.Gen.DeepSeek.IndexPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:cf="clr-namespace:Apt.Service.Controls.ChatFrame;assembly=Apt.Service"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:gv="clr-namespace:Apt.Service.Controls.GenView.DeepSeek;assembly=Apt.Service"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:local="clr-namespace:Apt.App.Views.Pages.Gen.Chat"
+    xmlns:local="clr-namespace:Apt.App.Views.Pages.Gen.DeepSeek"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="clr-namespace:Apt.App.ViewModels.Pages.Gen.Chat"
+    xmlns:models="clr-namespace:Apt.App.ViewModels.Pages.Gen.DeepSeek"
     xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     d:DataContext="{d:DesignInstance local:IndexPage,
@@ -28,11 +28,11 @@
             Grid.Row="0"
             Padding="10"
             BorderThickness="0"
-            Header="{Binding [GenChatIndexPageHistory], Source={x:Static su:Language.Instance}}">
-            <cf:ChatFrame
-                x:Name="ChatFrame"
-                Margin="0,5,0,0"
-                ChatSource="{Binding ViewModel.ChatList}" />
+            Header="{Binding [GenDeepSeekIndexPageHistory], Source={x:Static su:Language.Instance}}">
+            <gv:View
+                x:Name="GenView"
+                Margin="0,8,0,0"
+                Items="{Binding ViewModel.GenViewModels}" />
         </GroupBox>
         <GroupBox
             Grid.Row="1"
@@ -71,7 +71,7 @@
                         Margin="6"
                         Appearance="Info"
                         Command="{Binding ViewModel.SetSendCommand}"
-                        Content="{Binding [GenChatIndexPageSend], Source={x:Static su:Language.Instance}}"
+                        Content="{Binding [GenDeepSeekIndexPageSend], Source={x:Static su:Language.Instance}}"
                         IsEnabled="{Binding ViewModel.SendEnabled}" />
                     <ui:Button
                         Grid.Row="0"
@@ -79,21 +79,21 @@
                         Margin="6"
                         Appearance="Caution"
                         Command="{Binding ViewModel.SetCancelCommand}"
-                        Content="{Binding [GenChatIndexPageCancel], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [GenDeepSeekIndexPageCancel], Source={x:Static su:Language.Instance}}" />
                     <ui:Button
                         Grid.Row="1"
                         Grid.Column="0"
                         Margin="6"
                         Appearance="Success"
                         Command="{Binding ViewModel.SetResetCommand}"
-                        Content="{Binding [GenChatIndexPageReset], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [GenDeepSeekIndexPageReset], Source={x:Static su:Language.Instance}}" />
                     <ui:Button
                         Grid.Row="1"
                         Grid.Column="1"
                         Margin="6"
                         Appearance="Danger"
                         Command="{Binding ViewModel.SetConfigCommand}"
-                        Content="{Binding [GenChatIndexPageConfig], Source={x:Static su:Language.Instance}}" />
+                        Content="{Binding [GenDeepSeekIndexPageConfig], Source={x:Static su:Language.Instance}}" />
                 </Grid>
             </Grid>
         </GroupBox>

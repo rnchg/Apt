@@ -71,14 +71,13 @@ namespace Apt.App.ViewModels.Pages.Audio.VocalSplit
                 new ComBoBoxItem<string>() {  Text = Language.Instance["AudioVocalSplitIndexPageModeStandard"], Value = "Standard" }
             ];
 
-            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["AudioVocalSplitHelp"]);
+            AddMessage(MessageType.Success, Language.Instance["AudioVocalSplitHelp"]);
 
             _indexService = new IndexService
             {
-                ProgressMax = ProgressBarMaximum,
-                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
-                Progress = async (process) => await AddProcess(process),
-                IsStop = () => !StopEnabled
+                GetStop = () => !StopEnabled,
+                SetProgress = SetProcess,
+                AddMessage = AddMessage
             };
 
             IsInitialized = true;
@@ -98,25 +97,23 @@ namespace Apt.App.ViewModels.Pages.Audio.VocalSplit
                 {
                     throw new Exception(Language.Instance["AudioVocalSplitIndexPageInputEmpty"]);
                 }
+                if (!Directory.Exists(Output))
+                {
+                    throw new Exception(Language.Instance["AudioVocalSplitIndexPageOutputEmpty"]);
+                }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["AudioVocalSplitIndexPageInputFilesEmpty"]);
                 }
-                if (!Directory.Exists(Output))
-                {
-                    throw new Exception(Language.Instance["AudioVocalSplitIndexPageOutputEmpty"]);
-                }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["AudioVocalSplitIndexPageOperationCompleted"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["AudioVocalSplitIndexPageProcessEnd"]);
 
                 ProgressBarValue = ProgressBarMaximum;
 
                 FileGridSwitch = true;
-
-                if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }
             catch (ActivationException ex)
             {
@@ -125,7 +122,7 @@ namespace Apt.App.ViewModels.Pages.Audio.VocalSplit
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
+                AddMessage(MessageType.Error, ex.Message);
             }
             finally
             {

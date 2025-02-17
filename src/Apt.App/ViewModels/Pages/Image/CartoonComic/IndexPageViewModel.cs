@@ -6,7 +6,6 @@ using Apt.Core.Services.Pages.Image.CartoonComic;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
 using Apt.Service.Controls.FileGrid;
-using Apt.Service.Controls.RunMessage;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -94,14 +93,13 @@ namespace Apt.App.ViewModels.Pages.Image.CartoonComic
                 new ComBoBoxItem<string>() {  Text = Language.Instance["ImageCartoonComicIndexPageQualityLow"], Value = "Low" }
             ];
 
-            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["ImageCartoonComicHelp"]);
+            AddMessage(MessageType.Success, Language.Instance["ImageCartoonComicHelp"]);
 
             _indexService = new IndexService
             {
-                ProgressMax = ProgressBarMaximum,
-                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
-                Progress = async (process) => await AddProcess(process),
-                IsStop = () => !StopEnabled
+                GetStop = () => !StopEnabled,
+                SetProgress = SetProcess,
+                AddMessage = AddMessage
             };
 
             IsInitialized = true;
@@ -121,25 +119,23 @@ namespace Apt.App.ViewModels.Pages.Image.CartoonComic
                 {
                     throw new Exception(Language.Instance["ImageCartoonComicIndexPageInputEmpty"]);
                 }
+                if (!Directory.Exists(Output))
+                {
+                    throw new Exception(Language.Instance["ImageCartoonComicIndexPageOutputEmpty"]);
+                }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["ImageCartoonComicIndexPageInputFilesEmpty"]);
                 }
-                if (!Directory.Exists(Output))
-                {
-                    throw new Exception(Language.Instance["ImageCartoonComicIndexPageOutputEmpty"]);
-                }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Quality);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageCartoonComicIndexPageOperationCompleted"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageCartoonComicIndexPageProcessEnd"]);
 
                 ProgressBarValue = ProgressBarMaximum;
 
                 FileGridSwitch = true;
-
-                if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }
             catch (ActivationException ex)
             {
@@ -148,7 +144,7 @@ namespace Apt.App.ViewModels.Pages.Image.CartoonComic
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
+                AddMessage(MessageType.Error, ex.Message);
             }
             finally
             {

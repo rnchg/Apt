@@ -100,14 +100,13 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageClientBilibiliAndroid"], Value = "Android" }
             ];
 
-            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["VideoOrganizationHelp"]);
+            AddMessage(MessageType.Success, Language.Instance["VideoOrganizationHelp"]);
 
             _indexService = new IndexService
             {
-                ProgressMax = ProgressBarMaximum,
-                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
-                Progress = async (process) => await AddProcess(process),
-                IsStop = () => !StopEnabled
+                GetStop = () => !StopEnabled,
+                SetProgress = SetProcess,
+                AddMessage = AddMessage
             };
 
             IsInitialized = true;
@@ -127,14 +126,14 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
                 {
                     throw new Exception(Language.Instance["VideoOrganizationIndexPageInputEmpty"]);
                 }
+                if (!Directory.Exists(Output))
+                {
+                    throw new Exception(Language.Instance["VideoOrganizationIndexPageOutputEmpty"]);
+                }
                 var inputFiles = GetInputFiles(Input).Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["VideoOrganizationIndexPageInputFilesEmpty"]);
-                }
-                if (!Directory.Exists(Output))
-                {
-                    throw new Exception(Language.Instance["VideoOrganizationIndexPageOutputEmpty"]);
                 }
 
                 await _indexService.Start(Input, Output, inputFiles, Client);
@@ -143,9 +142,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
 
                 FileGridSwitch = true;
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoOrganizationIndexPageOperationCompleted"]);
-
-                if (Current.Config.App.IsAutoOpenOutput) SetOpen();
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoOrganizationIndexPageProcessEnd"]);
             }
             catch (ActivationException ex)
             {
@@ -154,7 +151,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
+                AddMessage(MessageType.Error, ex.Message);
             }
             finally
             {

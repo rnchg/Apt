@@ -88,14 +88,13 @@ namespace Apt.App.ViewModels.Pages.Image.SuperResolution
                 new ComBoBoxItem<string>() { Text = Language.Instance["ImageSuperResolutionIndexPageScaleX4"], Value = "X4" },
             ];
 
-            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["ImageSuperResolutionHelp"]);
+            AddMessage(MessageType.Success, Language.Instance["ImageSuperResolutionHelp"]);
 
             _indexService = new IndexService
             {
-                ProgressMax = ProgressBarMaximum,
-                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
-                Progress = async (process) => await AddProcess(process),
-                IsStop = () => !StopEnabled
+                GetStop = () => !StopEnabled,
+                SetProgress = SetProcess,
+                AddMessage = AddMessage
             };
 
             IsInitialized = true;
@@ -115,25 +114,23 @@ namespace Apt.App.ViewModels.Pages.Image.SuperResolution
                 {
                     throw new Exception(Language.Instance["ImageSuperResolutionIndexPageInputEmpty"]);
                 }
+                if (!Directory.Exists(Output))
+                {
+                    throw new Exception(Language.Instance["ImageSuperResolutionIndexPageOutputEmpty"]);
+                }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["ImageSuperResolutionIndexPageInputFilesEmpty"]);
                 }
-                if (!Directory.Exists(Output))
-                {
-                    throw new Exception(Language.Instance["ImageSuperResolutionIndexPageOutputEmpty"]);
-                }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Scale);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageSuperResolutionIndexPageOperationCompleted"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageSuperResolutionIndexPageProcessEnd"]);
 
                 ProgressBarValue = ProgressBarMaximum;
 
                 FileGridSwitch = true;
-
-                if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }
             catch (ActivationException ex)
             {
@@ -142,7 +139,7 @@ namespace Apt.App.ViewModels.Pages.Image.SuperResolution
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
+                AddMessage(MessageType.Error, ex.Message);
             }
             finally
             {

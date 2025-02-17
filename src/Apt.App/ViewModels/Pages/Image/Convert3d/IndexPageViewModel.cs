@@ -118,14 +118,13 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
                 new ComBoBoxItem<int>() {  Text = Language.Instance["ImageConvert3dIndexPageShift1000"], Value = 1000 }
             ];
 
-            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["ImageConvert3dHelp"]);
+            AddMessage(MessageType.Success, Language.Instance["ImageConvert3dHelp"]);
 
             _indexService = new IndexService
             {
-                ProgressMax = ProgressBarMaximum,
-                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
-                Progress = async (process) => await AddProcess(process),
-                IsStop = () => !StopEnabled
+                GetStop = () => !StopEnabled,
+                SetProgress = SetProcess,
+                AddMessage = AddMessage
             };
 
             IsInitialized = true;
@@ -145,25 +144,23 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
                 {
                     throw new Exception(Language.Instance["ImageConvert3dIndexPageInputEmpty"]);
                 }
+                if (!Directory.Exists(Output))
+                {
+                    throw new Exception(Language.Instance["ImageConvert3dIndexPageOutputEmpty"]);
+                }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["ImageConvert3dIndexPageInputFilesEmpty"]);
                 }
-                if (!Directory.Exists(Output))
-                {
-                    throw new Exception(Language.Instance["ImageConvert3dIndexPageOutputEmpty"]);
-                }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Format, Shift, PopOut, CrossEye);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageConvert3dIndexPageOperationCompleted"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageConvert3dIndexPageProcessEnd"]);
 
                 ProgressBarValue = ProgressBarMaximum;
 
                 FileGridSwitch = true;
-
-                if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }
             catch (ActivationException ex)
             {
@@ -172,7 +169,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
+                AddMessage(MessageType.Error, ex.Message);
             }
             finally
             {

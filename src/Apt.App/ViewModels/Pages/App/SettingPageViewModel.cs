@@ -1,6 +1,5 @@
 ﻿using Apt.App.Extensions;
 using Apt.App.ViewModels.Windows.App;
-using Apt.App.Views.Windows.Gen.Chat;
 using Apt.Core.Consts;
 using Apt.Core.Models;
 using Apt.Core.Utility;
@@ -16,7 +15,7 @@ using Wpf.Ui.Extensions;
 
 namespace Apt.App.ViewModels.Pages.App
 {
-    public partial class SettingsPageViewModel : BaseViewModel
+    public partial class SettingPageViewModel : BaseViewModel
     {
         private bool _isInitialized = false;
 
@@ -35,38 +34,19 @@ namespace Apt.App.ViewModels.Pages.App
         partial void OnThemeItemChanged(ComBoBoxItem<string, ApplicationTheme> value)
         {
             if (value?.Item is null) return;
-            Current.Config.App.Theme = Theme;
+            Current.Config.Setting.Theme = Theme;
             ApplicationThemeManager.Apply(value.Item);
         }
 
         [ObservableProperty]
-        private ObservableCollection<ComBoBoxItem<string, NavigationViewPaneDisplayMode>> _navigationStyleSource = [];
-
-        [ObservableProperty]
-        private ComBoBoxItem<string, NavigationViewPaneDisplayMode> _navigationStyleItem = null!;
-
-        public string NavigationStyle
-        {
-            get => NavigationStyleItem.Value;
-            set => NavigationStyleItem = NavigationStyleSource.First(e => e.Value == value);
-        }
-
-        partial void OnNavigationStyleItemChanged(ComBoBoxItem<string, NavigationViewPaneDisplayMode> value)
-        {
-            if (value?.Item is null) return;
-            Current.Config.App.NavigationStyle = NavigationStyle;
-            ServiceProvider.GetRequiredService<INavigationService>().SetPaneDisplayMode(value.Item);
-        }
-
-        [ObservableProperty]
-        private ObservableCollection<ComBoBoxItem<string, string>> _languageSource = new(Directory.GetFiles(AppConst.LanguagePath, "*.json").Select(x =>
+        private ObservableCollection<ComBoBoxItem<string>> _languageSource = new(Directory.GetFiles(AppConst.LanguagePath, "*.json").Select(x =>
         {
             var name = Path.GetFileNameWithoutExtension(x);
-            return new ComBoBoxItem<string, string>() { Text = name, Value = name, Item = name };
+            return new ComBoBoxItem<string>() { Text = name, Value = name };
         }));
 
         [ObservableProperty]
-        private ComBoBoxItem<string, string> _languageItem = null!;
+        private ComBoBoxItem<string> _languageItem = null!;
 
         public string Language
         {
@@ -74,23 +54,41 @@ namespace Apt.App.ViewModels.Pages.App
             set => LanguageItem = LanguageSource.First(e => e.Value.ToString() == value);
         }
 
-        partial void OnLanguageItemChanged(ComBoBoxItem<string, string> value)
+        partial void OnLanguageItemChanged(ComBoBoxItem<string> value)
         {
-            if (value?.Item is null) return;
-            Current.Config.App.CurrentLanguage = Language;
+            if (value?.Value is null) return;
+            Current.Config.Setting.Language = Language;
             UpdateLanguage();
         }
 
-        public bool IsAutoOpenOutput
+        [ObservableProperty]
+        private ObservableCollection<ComBoBoxItem<string>> _modeSource = [];
+
+        [ObservableProperty]
+        private ComBoBoxItem<string> _modeItem = null!;
+
+        public string Mode
         {
-            get => Current.Config.App.IsAutoOpenOutput;
-            set => Current.Config.App.IsAutoOpenOutput = value;
+            get => ModeItem.Value.ToString();
+            set => ModeItem = ModeSource.First(e => e.Value.ToString() == value);
+        }
+
+        partial void OnModeItemChanged(ComBoBoxItem<string> value)
+        {
+            if (value?.Value is null) return;
+            Current.Config.Setting.Mode = Mode;
         }
 
         [RelayCommand]
-        private void SetGenChatConfig()
+        private void SetGenPhiConfig()
         {
-            ServiceProvider.GetRequiredService<WindowsProviderService>().ShowDialog<ConfigWindow>();
+            ServiceProvider.GetRequiredService<WindowsProviderService>().ShowDialog<Views.Windows.Gen.Phi.ConfigWindow>();
+        }
+
+        [RelayCommand]
+        private void SetGenDeepSeekConfig()
+        {
+            ServiceProvider.GetRequiredService<WindowsProviderService>().ShowDialog<Views.Windows.Gen.DeepSeek.ConfigWindow>();
         }
 
         [RelayCommand]
@@ -105,7 +103,7 @@ namespace Apt.App.ViewModels.Pages.App
             ServiceProvider.GetRequiredService<WindowsProviderService>().ShowDialog<OrderWindow>();
         }
 
-        public SettingsPageViewModel(
+        public SettingPageViewModel(
             IServiceProvider serviceProvider,
             ISnackbarService snackbarService) :
             base(serviceProvider, snackbarService)
@@ -122,30 +120,32 @@ namespace Apt.App.ViewModels.Pages.App
         {
             ThemeSource =
             [
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingsPageThemeDark"], Value="Dark",  Item = ApplicationTheme.Dark },
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingsPageThemeLight"], Value="Light", Item = ApplicationTheme.Light },
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingsPageThemeHighContrast"], Value="HighContrast",  Item = ApplicationTheme.HighContrast }
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeDark"], Value="Dark",  Item = ApplicationTheme.Dark },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeLight"], Value="Light", Item = ApplicationTheme.Light },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeHighContrast"], Value="HighContrast",  Item = ApplicationTheme.HighContrast }
             ];
-            NavigationStyleSource =
+            ModeSource =
             [
-                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Core.Utility.Language.Instance["SettingsPageNavigationLeft"], Value ="Left", Item = NavigationViewPaneDisplayMode.Left },
-                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Core.Utility.Language.Instance["SettingsPageNavigationLeftMinimal"], Value = "LeftMinimal",  Item = NavigationViewPaneDisplayMode.LeftMinimal },
-                new ComBoBoxItem<string, NavigationViewPaneDisplayMode>() { Text = Core.Utility.Language.Instance["SettingsPageNavigationLeftFluent"], Value = "LeftFluent",  Item = NavigationViewPaneDisplayMode.LeftFluent }
+                new ComBoBoxItem<string>() { Text = Core.Utility.Language.Instance["SettingPageModeBalanced"], Value ="Balanced" },
+                new ComBoBoxItem<string>() { Text = Core.Utility.Language.Instance["SettingPageModePerformance"], Value = "Performance" }
             ];
 
-            Theme = Current.Config.App.Theme;
-            NavigationStyle = Current.Config.App.NavigationStyle;
-            IsAutoOpenOutput = Current.Config.App.IsAutoOpenOutput;
+            Theme = Current.Config.Setting.Theme;
+            Mode = Current.Config.Setting.Mode;
+            Language = Current.Config.Setting.Language;
 
             _isInitialized = true;
         }
 
         private void UpdateLanguage()
         {
-            if (Current.Config.App.CurrentLanguage == Core.Utility.Language.Instance.Name) return;
-            Core.Utility.Language.Instance.Update(Current.Config.App.CurrentLanguage);
+            if (Core.Utility.Language.Instance.Name == Current.Config.Setting.Language)
+            {
+                return;
+            }
+            Core.Utility.Language.Instance.Update(Current.Config.Setting.Language);
             ServiceProvider.GetRequiredService<MainWindowViewModel>().InitializeViewModel();
-            ServiceProvider.GetRequiredService<SettingsPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<SettingPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Image.SuperResolution.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Image.AutoWipe.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Image.CartoonComic.IndexPageViewModel>().InitializeViewModel();
@@ -164,7 +164,6 @@ namespace Apt.App.ViewModels.Pages.App
             ServiceProvider.GetRequiredService<Video.Organization.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Audio.Denoise.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Audio.VocalSplit.IndexPageViewModel>().InitializeViewModel();
-            Language = Core.Utility.Language.Instance.Name;
             ServiceProvider.GetConfig();
         }
     }

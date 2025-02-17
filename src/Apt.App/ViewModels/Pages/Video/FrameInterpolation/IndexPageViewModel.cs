@@ -89,14 +89,13 @@ namespace Apt.App.ViewModels.Pages.Video.FrameInterpolation
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoFrameInterpolationIndexPageScaleX8"], Value = "X8" }
             ];
 
-            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["VideoFrameInterpolationHelp"]);
+            AddMessage(MessageType.Success, Language.Instance["VideoFrameInterpolationHelp"]);
 
             _indexService = new IndexService
             {
-                ProgressMax = ProgressBarMaximum,
-                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
-                Progress = async (process) => await AddProcess(process),
-                IsStop = () => !StopEnabled
+                GetStop = () => !StopEnabled,
+                SetProgress = SetProcess,
+                AddMessage = AddMessage
             };
 
             IsInitialized = true;
@@ -116,25 +115,23 @@ namespace Apt.App.ViewModels.Pages.Video.FrameInterpolation
                 {
                     throw new Exception(Language.Instance["VideoFrameInterpolationIndexPageInputEmpty"]);
                 }
+                if (!Directory.Exists(Output))
+                {
+                    throw new Exception(Language.Instance["VideoFrameInterpolationPageOutputEmpty"]);
+                }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["VideoFrameInterpolationPageInputFilesEmpty"]);
                 }
-                if (!Directory.Exists(Output))
-                {
-                    throw new Exception(Language.Instance["VideoFrameInterpolationPageOutputEmpty"]);
-                }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Scale);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoFrameInterpolationIndexPageOperationCompleted"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoFrameInterpolationIndexPageProcessEnd"]);
 
                 ProgressBarValue = ProgressBarMaximum;
 
                 FileGridSwitch = true;
-
-                if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }
             catch (ActivationException ex)
             {
@@ -143,7 +140,7 @@ namespace Apt.App.ViewModels.Pages.Video.FrameInterpolation
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
+                AddMessage(MessageType.Error, ex.Message);
             }
             finally
             {

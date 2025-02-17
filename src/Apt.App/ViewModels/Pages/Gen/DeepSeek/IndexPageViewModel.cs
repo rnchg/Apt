@@ -1,10 +1,10 @@
 ﻿using Apt.App.Models;
-using Apt.App.Views.Windows.Gen.Chat;
+using Apt.App.Views.Windows.Gen.DeepSeek;
 using Apt.Core.Consts;
 using Apt.Core.Exceptions;
-using Apt.Core.Services.Pages.Gen.Chat;
+using Apt.Core.Services.Pages.Gen.DeepSeek;
 using Apt.Core.Utility;
-using Apt.Service.Controls.ChatFrame;
+using Apt.Service.Controls.GenView.DeepSeek;
 using Apt.Service.Extensions;
 using Apt.Service.Services;
 using Apt.Service.ViewModels.Base;
@@ -12,7 +12,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui;
 
-namespace Apt.App.ViewModels.Pages.Gen.Chat
+namespace Apt.App.ViewModels.Pages.Gen.DeepSeek
 {
     public partial class IndexPageViewModel : BaseViewModel
     {
@@ -22,28 +22,30 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
         private bool _isInitialized = false;
 
-        [ObservableProperty]
-        private Func<ChatModel, bool> _addChat = null!;
+        private Model _assistant = null!;
 
         [ObservableProperty]
-        private Func<ChatModel, bool> _sendChat = null!;
+        private Func<Model, bool> _addModel = null!;
 
         [ObservableProperty]
-        private Func<ChatModel, (string, ChatModel)> _sendAndBuildChat = null!;
+        private Func<Model, bool> _sendModel = null!;
 
         [ObservableProperty]
-        private Action _cancelChat = null!;
+        private Func<Model, (string, Model)> _sendAndBuildModel = null!;
 
         [ObservableProperty]
-        private Action _clearChat = null!;
+        private Action _setGenViewCancel = null!;
+
+        [ObservableProperty]
+        private Action _setGenViewClear = null!;
 
         private CancellationTokenSource _cancellationTokenSource = null!;
 
         [ObservableProperty]
-        private int _promptMaxLength = Current.Config.GenChat.PromptMaxLength;
+        private int _promptMaxLength = Current.Config.GenDeepSeek.PromptMaxLength;
         partial void OnPromptMaxLengthChanged(int value)
         {
-            MessageHeader = $"{Language.Instance["GenChatIndexPageMessage"]} [ {Message.Length}/{value} ]";
+            MessageHeader = $"{Language.Instance["GenDeepSeekIndexPageMessage"]} [ {Message.Length}/{value} ]";
         }
 
         [ObservableProperty]
@@ -57,7 +59,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
         partial void OnMessageChanged(string value)
         {
-            MessageHeader = $"{Language.Instance["GenChatIndexPageMessage"]} [ {value.Length}/{PromptMaxLength} ]";
+            MessageHeader = $"{Language.Instance["GenDeepSeekIndexPageMessage"]} [ {value.Length}/{PromptMaxLength} ]";
         }
 
         [ObservableProperty]
@@ -67,7 +69,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         private bool _sendEnabled = true;
 
         [ObservableProperty]
-        private ObservableCollection<ChatModel> _chatList = [];
+        private ObservableCollection<Model> _genViewModels = [];
 
         [RelayCommand]
         private void SetSend() => _ = Send();
@@ -83,7 +85,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         private void SetReset()
         {
             SetCancel();
-            ClearChat.Invoke();
+            SetGenViewClear.Invoke();
         }
 
         [RelayCommand]
@@ -110,32 +112,37 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
         private void InitializeViewModel()
         {
-            ChatList.Add(new ChatModel() { Text = Language.Instance["GenChatHelp"], IsOwner = false });
+            GenViewModels.Add(new Model() { Type = GenConst.DeepSeek.TypeSystem, Text = Language.Instance["GenDeepSeekHelp"] });
 
-            _ = Start();
+            _indexService = new IndexService()
+            {
+                SetSequence = (sequence) => _assistant.Text += sequence
+            };
+
+            _ = Init();
 
             _isInitialized = true;
         }
 
-        private async Task Start()
+        private async Task Init()
         {
             try
             {
                 if (_appSettings.App.Pack == "Full")
                 {
-                    Placeholder = Language.Instance["GenChatIndexPageModelInitWait"];
-                    await Task.Run(() => _indexService = new IndexService());
+                    Placeholder = Language.Instance["GenDeepSeekIndexPageModelInitWait"];
+                    await Task.Run(_indexService.Init);
                     MessageEnabled = true;
-                    Placeholder = Language.Instance["GenChatIndexPageInputPrompt"];
+                    Placeholder = Language.Instance["GenDeepSeekIndexPageInputPrompt"];
                 }
                 else
                 {
-                    Placeholder = Language.Instance["GenChatIndexPageLite"];
+                    Placeholder = Language.Instance["GenDeepSeekIndexPageLite"];
                 }
             }
             catch (Exception ex)
             {
-                Placeholder = Language.Instance["GenChatIndexPageModelInitFailed"];
+                Placeholder = Language.Instance["GenDeepSeekIndexPageModelInitFailed"];
                 SnackbarService.ShowSnackbarError(ex.Message);
             }
         }
@@ -144,41 +151,42 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         {
             try
             {
+                if (!SendEnabled) return;
+
                 if (string.IsNullOrWhiteSpace(Message)) return;
 
                 SendEnabled = false;
 
-                Placeholder = Language.Instance["GenChatIndexPageModelProcessWait"];
+                Placeholder = Language.Instance["GenDeepSeekIndexPageModelProcessWait"];
 
-                var (prompt, assistant) = SendAndBuildChat.Invoke(new ChatModel() { Type = GenConst.Chat.TypeUser, Text = Message, IsOwner = true });
+                var prompt = string.Empty;
+
+                (prompt, _assistant) = SendAndBuildModel.Invoke(new Model() { Type = GenConst.DeepSeek.TypeUser, Text = Message });
 
                 Message = string.Empty;
 
                 _cancellationTokenSource = new CancellationTokenSource();
 
-                var message = _indexService.Start(prompt, _cancellationTokenSource.Token);
-
-                await Task.Run(async () => { await foreach (var m in message) assistant.Text += m; });
-
+                await Task.Run(() => _indexService.Start(prompt, _cancellationTokenSource.Token));
             }
             catch (ActivationException ex)
             {
-                CancelChat.Invoke();
+                SetGenViewCancel.Invoke();
                 ServiceProvider.ShowLicense(ex.Message);
             }
             catch (OperationCanceledException)
             {
-                CancelChat.Invoke();
+                SetGenViewCancel.Invoke();
             }
             catch (Exception ex)
             {
-                CancelChat.Invoke();
+                SetGenViewCancel.Invoke();
                 SnackbarService.ShowSnackbarError(ex.Message);
             }
             finally
             {
                 SendEnabled = true;
-                Placeholder = Language.Instance["GenChatIndexPageInputPrompt"];
+                Placeholder = Language.Instance["GenDeepSeekIndexPageInputPrompt"];
             }
         }
     }

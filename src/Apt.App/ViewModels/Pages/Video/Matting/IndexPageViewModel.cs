@@ -71,14 +71,13 @@ namespace Apt.App.ViewModels.Pages.Video.Matting
                 new ComBoBoxItem<string>() {  Text = Language.Instance["VideoMattingIndexPageModeStandard"], Value = "Standard" }
             ];
 
-            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["VideoMattingHelp"]);
+            AddMessage(MessageType.Success, Language.Instance["VideoMattingHelp"]);
 
             _indexService = new IndexService
             {
-                ProgressMax = ProgressBarMaximum,
-                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
-                Progress = async (process) => await AddProcess(process),
-                IsStop = () => !StopEnabled
+                GetStop = () => !StopEnabled,
+                SetProgress = SetProcess,
+                AddMessage = AddMessage
             };
 
             IsInitialized = true;
@@ -98,25 +97,23 @@ namespace Apt.App.ViewModels.Pages.Video.Matting
                 {
                     throw new Exception(Language.Instance["VideoMattingIndexPageInputEmpty"]);
                 }
+                if (!Directory.Exists(Output))
+                {
+                    throw new Exception(Language.Instance["VideoMattingIndexPageOutputEmpty"]);
+                }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["VideoMattingIndexPageInputFilesEmpty"]);
                 }
-                if (!Directory.Exists(Output))
-                {
-                    throw new Exception(Language.Instance["VideoMattingIndexPageOutputEmpty"]);
-                }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoMattingIndexPageOperationCompleted"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoMattingIndexPageProcessEnd"]);
 
                 ProgressBarValue = ProgressBarMaximum;
 
                 FileGridSwitch = true;
-
-                if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }
             catch (ActivationException ex)
             {
@@ -125,7 +122,7 @@ namespace Apt.App.ViewModels.Pages.Video.Matting
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
+                AddMessage(MessageType.Error, ex.Message);
             }
             finally
             {

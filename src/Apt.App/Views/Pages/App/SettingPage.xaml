@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Apt.App.Views.Pages.App.SettingsPage"
+    x:Class="Apt.App.Views.Pages.App.SettingPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="SettingsPage"
-    d:DataContext="{d:DesignInstance local:SettingsPage,
+    Title="SettingPage"
+    d:DataContext="{d:DesignInstance local:SettingPage,
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="640"
     d:DesignWidth="960"
@@ -22,7 +22,7 @@
         <ui:TextBlock
             Margin="0,0,0,8"
             FontTypography="BodyStrong"
-            Text="{Binding [SettingsPageOptions], Source={x:Static su:Language.Instance}}" />
+            Text="{Binding [SettingPageOptions], Source={x:Static su:Language.Instance}}" />
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Color24}">
             <ui:CardControl.Header>
                 <Grid>
@@ -33,11 +33,7 @@
                     <ui:TextBlock
                         Grid.Row="0"
                         FontTypography="Body"
-                        Text="{Binding [SettingsPageTheme], Source={x:Static su:Language.Instance}}" />
-                    <!--<ui:TextBlock
-                        Grid.Row="1"
-                        Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                        Text="选择要显示的主题" />-->
+                        Text="{Binding [SettingPageTheme], Source={x:Static su:Language.Instance}}" />
                 </Grid>
             </ui:CardControl.Header>
             <ComboBox
@@ -46,19 +42,19 @@
                 ItemsSource="{Binding ViewModel.ThemeSource}"
                 SelectedItem="{Binding ViewModel.ThemeItem}" />
         </ui:CardControl>
-        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon AlignSpaceEvenlyVertical20}">
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon AppsList24}">
             <ui:CardControl.Header>
-                <ui:TextBlock FontTypography="Body" Text="{Binding [SettingsPageNavigation], Source={x:Static su:Language.Instance}}" />
+                <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageMode], Source={x:Static su:Language.Instance}}" />
             </ui:CardControl.Header>
             <ComboBox
                 MinWidth="200"
                 DisplayMemberPath="Text"
-                ItemsSource="{Binding ViewModel.NavigationStyleSource}"
-                SelectedItem="{Binding ViewModel.NavigationStyleItem}" />
+                ItemsSource="{Binding ViewModel.ModeSource}"
+                SelectedItem="{Binding ViewModel.ModeItem}" />
         </ui:CardControl>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon LocalLanguage24}">
             <ui:CardControl.Header>
-                <ui:TextBlock FontTypography="Body" Text="{Binding [SettingsPageLanguage], Source={x:Static su:Language.Instance}}" />
+                <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageLanguage], Source={x:Static su:Language.Instance}}" />
             </ui:CardControl.Header>
             <ComboBox
                 MinWidth="200"
@@ -66,31 +62,32 @@
                 ItemsSource="{Binding ViewModel.LanguageSource}"
                 SelectedItem="{Binding ViewModel.LanguageItem}" />
         </ui:CardControl>
-        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon FolderOpen24}">
-            <ui:CardControl.Header>
-                <ui:TextBlock FontTypography="Body" Text="{Binding [SettingsPageAutoOpenOutput], Source={x:Static su:Language.Instance}}" />
-            </ui:CardControl.Header>
-            <ui:ToggleSwitch
-                MinWidth="200"
-                IsChecked="{Binding ViewModel.IsAutoOpenOutput}"
-                OffContent="{Binding [SettingsPageAutoOpenOutputOff], Source={x:Static su:Language.Instance}}"
-                OnContent="{Binding [SettingsPageAutoOpenOutputOn], Source={x:Static su:Language.Instance}}" />
-        </ui:CardControl>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Chat24}">
             <ui:CardControl.Header>
                 <Grid>
-                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingsPageGenChatConfig], Source={x:Static su:Language.Instance}}" />
+                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageGenPhiConfig], Source={x:Static su:Language.Instance}}" />
                 </Grid>
             </ui:CardControl.Header>
             <Button
                 MinWidth="200"
-                Command="{Binding ViewModel.SetGenChatConfigCommand}"
-                Content="{Binding [SettingsPageGenChatConfigSetting], Source={x:Static su:Language.Instance}}" />
+                Command="{Binding ViewModel.SetGenPhiConfigCommand}"
+                Content="{Binding [SettingPageGenPhiConfigSetting], Source={x:Static su:Language.Instance}}" />
+        </ui:CardControl>
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Chat24}">
+            <ui:CardControl.Header>
+                <Grid>
+                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageGenDeepSeekConfig], Source={x:Static su:Language.Instance}}" />
+                </Grid>
+            </ui:CardControl.Header>
+            <Button
+                MinWidth="200"
+                Command="{Binding ViewModel.SetGenDeepSeekConfigCommand}"
+                Content="{Binding [SettingPageGenDeepSeekConfigSetting], Source={x:Static su:Language.Instance}}" />
         </ui:CardControl>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Emoji24}">
             <ui:CardControl.Header>
                 <Grid>
-                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingsPageLicense], Source={x:Static su:Language.Instance}}" />
+                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageLicense], Source={x:Static su:Language.Instance}}" />
                 </Grid>
             </ui:CardControl.Header>
             <Grid MinWidth="200">
@@ -103,19 +100,19 @@
                     Margin="0,0,4,0"
                     HorizontalAlignment="Stretch"
                     Command="{Binding ViewModel.SetLicenseInfoCommand}"
-                    Content="{Binding [SettingsPageLicenseInfo], Source={x:Static su:Language.Instance}}" />
+                    Content="{Binding [SettingPageLicenseInfo], Source={x:Static su:Language.Instance}}" />
                 <Button
                     Grid.Column="1"
                     Margin="4,0,0,0"
                     HorizontalAlignment="Stretch"
                     Command="{Binding ViewModel.SetLicenseOrderCommand}"
-                    Content="{Binding [SettingsPageLicenseOrder], Source={x:Static su:Language.Instance}}" />
+                    Content="{Binding [SettingPageLicenseOrder], Source={x:Static su:Language.Instance}}" />
             </Grid>
         </ui:CardControl>
         <ui:TextBlock
-            Margin="0,24,0,8"
+            Margin="0,8,0,8"
             FontTypography="BodyStrong"
-            Text="{Binding [SettingsPageAbout], Source={x:Static su:Language.Instance}}" />
+            Text="{Binding [SettingPageAbout], Source={x:Static su:Language.Instance}}" />
         <ui:CardExpander
             ContentPadding="0"
             Icon="{ui:ImageIcon '/Apt.App;component/Assets/App.ico',

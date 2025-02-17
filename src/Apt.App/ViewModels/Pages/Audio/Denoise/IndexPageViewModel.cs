@@ -71,14 +71,13 @@ namespace Apt.App.ViewModels.Pages.Audio.Denoise
                 new ComBoBoxItem<string>() {  Text = Language.Instance["AudioDenoiseIndexPageModeStandard"], Value = "Standard" }
             ];
 
-            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["AudioDenoiseHelp"]);
+            AddMessage(MessageType.Success, Language.Instance["AudioDenoiseHelp"]);
 
             _indexService = new IndexService
             {
-                ProgressMax = ProgressBarMaximum,
-                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
-                Progress = async (process) => await AddProcess(process),
-                IsStop = () => !StopEnabled
+                GetStop = () => !StopEnabled,
+                SetProgress = SetProcess,
+                AddMessage = AddMessage
             };
 
             IsInitialized = true;
@@ -98,25 +97,23 @@ namespace Apt.App.ViewModels.Pages.Audio.Denoise
                 {
                     throw new Exception(Language.Instance["AudioDenoiseIndexPageInputEmpty"]);
                 }
+                if (!Directory.Exists(Output))
+                {
+                    throw new Exception(Language.Instance["AudioDenoiseIndexPageOutputEmpty"]);
+                }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["AudioDenoiseIndexPageInputFilesEmpty"]);
                 }
-                if (!Directory.Exists(Output))
-                {
-                    throw new Exception(Language.Instance["AudioDenoiseIndexPageOutputEmpty"]);
-                }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["AudioDenoiseIndexPageOperationCompleted"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["AudioDenoiseIndexPageProcessEnd"]);
 
                 ProgressBarValue = ProgressBarMaximum;
 
                 FileGridSwitch = true;
-
-                if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }
             catch (ActivationException ex)
             {
@@ -125,7 +122,7 @@ namespace Apt.App.ViewModels.Pages.Audio.Denoise
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
+                AddMessage(MessageType.Error, ex.Message);
             }
             finally
             {

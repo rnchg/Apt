@@ -80,7 +80,7 @@
                     Padding="24"
                     VerticalAlignment="Stretch"
                     Command="{Binding ViewModel.CardClickCommand}"
-                    CommandParameter="Gen.Chat.IndexPage"
+                    CommandParameter="Gen.Phi.IndexPage"
                     IsChevronVisible="False">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -94,11 +94,40 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageChatGenChat], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [DashboardPageGenPhi], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
-                                Text="{Binding [DashboardPageChatGenChatDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [DashboardPageGenPhiDescription], Source={x:Static su:Language.Instance}}"
+                                TextWrapping="WrapWithOverflow" />
+                        </StackPanel>
+                    </Grid>
+                </ui:CardAction>
+                <ui:CardAction
+                    Grid.Column="1"
+                    Margin="0,0,8,0"
+                    Padding="24"
+                    VerticalAlignment="Stretch"
+                    Command="{Binding ViewModel.CardClickCommand}"
+                    CommandParameter="Gen.DeepSeek.IndexPage"
+                    IsChevronVisible="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ui:SymbolIcon
+                            Width="64"
+                            FontSize="32"
+                            Symbol="Chat24" />
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <ui:TextBlock
+                                FontTypography="BodyStrong"
+                                Text="{Binding [DashboardPageGenDeepSeek], Source={x:Static su:Language.Instance}}"
+                                TextWrapping="WrapWithOverflow" />
+                            <ui:TextBlock
+                                Appearance="Tertiary"
+                                Text="{Binding [DashboardPageGenDeepSeekDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -654,16 +683,16 @@
                         <ui:SymbolIcon
                             Width="64"
                             FontSize="32"
-                            Symbol="HeadphonesSoundWave24" />
+                            Symbol="MusicNote224" />
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageAudioDenoise], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [DashboardPageAudioVocalSplit], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageAudioDenoiseDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [DashboardPageAudioVocalSplitDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -684,16 +713,16 @@
                         <ui:SymbolIcon
                             Width="64"
                             FontSize="32"
-                            Symbol="MusicNote224" />
+                            Symbol="SoundWaveCircle24" />
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageAudioVocalSplit], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [DashboardPageAudioTTS], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageAudioVocalSplitDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [DashboardPageAudioTTSDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -714,16 +743,46 @@
                         <ui:SymbolIcon
                             Width="64"
                             FontSize="32"
-                            Symbol="SoundWaveCircle24" />
+                            Symbol="ClipboardTextLtr24" />
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageAudioCloneSingle], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [DashboardPageAudioSTT], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageAudioCloneSingleDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [DashboardPageAudioSTTDescription], Source={x:Static su:Language.Instance}}"
+                                TextWrapping="WrapWithOverflow" />
+                        </StackPanel>
+                    </Grid>
+                </ui:CardAction>
+                <ui:CardAction
+                    Grid.Column="3"
+                    Margin="0,0,8,0"
+                    Padding="24"
+                    VerticalAlignment="Stretch"
+                    Command="{Binding ViewModel.CardClickCommand}"
+                    CommandParameter="StayTuned"
+                    IsChevronVisible="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ui:SymbolIcon
+                            Width="64"
+                            FontSize="32"
+                            Symbol="HeadphonesSoundWave24" />
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <ui:TextBlock
+                                FontTypography="BodyStrong"
+                                Text="{Binding [DashboardPageAudioDenoise], Source={x:Static su:Language.Instance}}"
+                                TextWrapping="WrapWithOverflow" />
+                            <ui:TextBlock
+                                Appearance="Tertiary"
+                                Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                Text="{Binding [DashboardPageAudioDenoiseDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>

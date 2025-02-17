@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Windows.Gen.Chat;
+﻿using Apt.App.ViewModels.Windows.Gen.DeepSeek;
 using Apt.Core.Utility;
 
-namespace Apt.App.Views.Windows.Gen.Chat
+namespace Apt.App.Views.Windows.Gen.DeepSeek
 {
     public partial class ConfigWindow
     {
@@ -24,9 +24,9 @@ namespace Apt.App.Views.Windows.Gen.Chat
             IsVisibleChanged += (s, e) =>
             {
                 if (!IsVisible) return;
-                ViewModel.PromptSystem = Current.Config.GenChat.PromptSystem;
-                ViewModel.PromptMaxLength = Current.Config.GenChat.PromptMaxLength;
-                ViewModel.ContextMaxLength = Current.Config.GenChat.ContextMaxLength;
+                ViewModel.PromptSystem = Current.Config.GenDeepSeek.PromptSystem;
+                ViewModel.PromptMaxLength = Current.Config.GenDeepSeek.PromptMaxLength;
+                ViewModel.ContextMaxLength = Current.Config.GenDeepSeek.ContextMaxLength;
             };
         }
     }

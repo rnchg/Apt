@@ -259,8 +259,6 @@ namespace Apt.App.Extensions
             Current.Config.AudioVocalSplit.Output = audioVocalSplitViewModel.Output;
             Current.Config.AudioVocalSplit.Provider = audioVocalSplitViewModel.Provider;
             Current.Config.AudioVocalSplit.Mode = audioVocalSplitViewModel.Mode;
-
-            ProcessHelper.Clear();
         }
     }
 }

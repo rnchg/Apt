@@ -6,7 +6,6 @@ using Apt.Core.Services.Pages.Image.AutoWipe;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
 using Apt.Service.Controls.FileGrid;
-using Apt.Service.Controls.RunMessage;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -77,14 +76,13 @@ namespace Apt.App.ViewModels.Pages.Image.AutoWipe
                 new ComBoBoxItem<string>() {  Text = Language.Instance["ImageAutoWipeIndexPageModeStandard"], Value = "Standard" }
             ];
 
-            CurrentMessage = new MessageModel(MessageType.Info, Language.Instance["ImageAutoWipeHelp"]);
+            AddMessage(MessageType.Success, Language.Instance["ImageAutoWipeHelp"]);
 
-            _indexService = new IndexService
+            _indexService = new IndexService()
             {
-                ProgressMax = ProgressBarMaximum,
-                Message = (type, message) => CurrentMessage = new MessageModel(type, message),
-                Progress = async (process) => await AddProcess(process),
-                IsStop = () => !StopEnabled
+                GetStop = () => !StopEnabled,
+                SetProgress = SetProcess,
+                AddMessage = AddMessage
             };
 
             IsInitialized = true;
@@ -104,30 +102,28 @@ namespace Apt.App.ViewModels.Pages.Image.AutoWipe
                 {
                     throw new Exception(Language.Instance["ImageAutoWipeIndexPageInputEmpty"]);
                 }
+                if (!Directory.Exists(Output))
+                {
+                    throw new Exception(Language.Instance["ImageAutoWipeIndexPageOutputEmpty"]);
+                }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
                     throw new Exception(Language.Instance["ImageAutoWipeIndexPageInputFilesEmpty"]);
                 }
-                if (!Directory.Exists(Output))
-                {
-                    throw new Exception(Language.Instance["ImageAutoWipeIndexPageOutputEmpty"]);
-                }
-                var maskData = GetMaskAction?.Invoke();
+                var maskData = GetMaskAction.Invoke();
                 if (maskData is null)
                 {
                     throw new Exception(Language.Instance["ImageAutoWipeIndexPageInputMaskEmpty"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, maskData, Provider, Mode);
+                await _indexService.Start(Input, Output, inputFiles, Provider, Mode, maskData);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageAutoWipeIndexPageOperationCompleted"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageAutoWipeIndexPageProcessEnd"]);
 
                 ProgressBarValue = ProgressBarMaximum;
 
                 FileGridSwitch = true;
-
-                if (Current.Config.App.IsAutoOpenOutput) SetOpen();
             }
             catch (ActivationException ex)
             {
@@ -136,7 +132,7 @@ namespace Apt.App.ViewModels.Pages.Image.AutoWipe
             catch (Exception ex)
             {
                 SnackbarService.ShowSnackbarError(ex.Message);
-                CurrentMessage = new MessageModel(MessageType.Error, ex.Message);
+                AddMessage(MessageType.Error, ex.Message);
             }
             finally
             {

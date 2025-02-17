@@ -5,6 +5,7 @@ using Apt.App.Views.Pages.App;
 using Apt.App.Views.Windows.App;
 using Apt.Core.Utility;
 using Apt.Service.Extensions;
+using Common.NETCore.Utility;
 using Microsoft.Extensions.Logging;
 
 namespace Apt.App.Services
@@ -20,14 +21,15 @@ namespace Apt.App.Services
         {
             _logger = logger;
             _serviceProvider = serviceProvider;
-            _logger.LogInformation($"[{Current.AssemblyInfo.Name} V {Current.AssemblyInfo.Version}]");
+            _logger.LogInformation($"[{Session.AssemblyName.Name} V {Session.AssemblyName.Version}]");
             _logger.LogInformation($"--------Init--------");
-            Current.ServiceProvider = _serviceProvider;
+            Session.ServiceProvider = _serviceProvider;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
             Current.GetConfig();
+            Language.Instance.Init();
             _serviceProvider.GetConfig();
             _logger.LogInformation($"--------Start--------");
             return HandleActivationAsync();
@@ -59,8 +61,7 @@ namespace Apt.App.Services
             {
                 return;
             }
-            var settingsPageViewModel = _serviceProvider.GetRequiredService<SettingsPageViewModel>();
-            settingsPageViewModel.Language = Current.Config.App.CurrentLanguage;
+            var settingPageViewModel = _serviceProvider.GetRequiredService<SettingPageViewModel>();
             _ = mainWindow.NavigationView.Navigate(typeof(DashboardPage));
             _serviceProvider.ValidateLicense();
         }
