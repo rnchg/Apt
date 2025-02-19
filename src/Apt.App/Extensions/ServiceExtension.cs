@@ -16,14 +16,12 @@ namespace Apt.App.Extensions
             services.AddSingleton<IWindow, MainWindow>();
             services.AddSingleton<MainWindowViewModel>();
 
-            services.AddTransient<Views.Windows.Gen.Phi.ConfigWindow>();
-            services.AddTransient<Views.Windows.Gen.DeepSeek.ConfigWindow>();
+            services.AddTransient<Views.Windows.Gen.Chat.ConfigWindow>();
 
             services.AddSingleton<Views.Pages.App.DashboardPage>();
             services.AddSingleton<Views.Pages.App.InfoPage>();
             services.AddSingleton<Views.Pages.App.SettingPage>();
-            services.AddSingleton<Views.Pages.Gen.Phi.IndexPage>();
-            services.AddSingleton<Views.Pages.Gen.DeepSeek.IndexPage>();
+            services.AddSingleton<Views.Pages.Gen.Chat.IndexPage>();
             services.AddSingleton<Views.Pages.Image.SuperResolution.IndexPage>();
             services.AddSingleton<Views.Pages.Image.AutoWipe.IndexPage>();
             services.AddSingleton<Views.Pages.Image.CartoonComic.IndexPage>();
@@ -43,14 +41,12 @@ namespace Apt.App.Extensions
             services.AddSingleton<Views.Pages.Audio.VocalSplit.IndexPage>();
             services.AddSingleton<Views.Pages.Audio.Denoise.IndexPage>();
 
-            services.AddTransient<ViewModels.Windows.Gen.Phi.ConfigWindowViewModel>();
-            services.AddTransient<ViewModels.Windows.Gen.DeepSeek.ConfigWindowViewModel>();
+            services.AddTransient<ViewModels.Windows.Gen.Chat.ConfigWindowViewModel>();
 
             services.AddSingleton<ViewModels.Pages.App.DashboardPageViewModel>();
             services.AddSingleton<ViewModels.Pages.App.InfoPageViewModel>();
             services.AddSingleton<ViewModels.Pages.App.SettingPageViewModel>();
-            services.AddSingleton<ViewModels.Pages.Gen.Phi.IndexPageViewModel>();
-            services.AddSingleton<ViewModels.Pages.Gen.DeepSeek.IndexPageViewModel>();
+            services.AddSingleton<ViewModels.Pages.Gen.Chat.IndexPageViewModel>();
             services.AddSingleton<ViewModels.Pages.Image.SuperResolution.IndexPageViewModel>();
             services.AddSingleton<ViewModels.Pages.Image.AutoWipe.IndexPageViewModel>();
             services.AddSingleton<ViewModels.Pages.Image.CartoonComic.IndexPageViewModel>();

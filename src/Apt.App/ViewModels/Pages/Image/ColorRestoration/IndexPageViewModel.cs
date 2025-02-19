@@ -5,8 +5,6 @@ using Apt.Core.Models;
 using Apt.Core.Services.Pages.Image.ColorRestoration;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
-using Apt.Service.Controls.FileGrid;
-using Apt.Service.Controls.RunMessage;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -80,7 +78,7 @@ namespace Apt.App.ViewModels.Pages.Image.ColorRestoration
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
 
-        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -123,16 +121,16 @@ namespace Apt.App.ViewModels.Pages.Image.ColorRestoration
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["ImageColorRestorationIndexPageInputEmpty"]);
+                    throw new Exception(Language.Instance["ImageColorRestorationIndexPageInputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["ImageColorRestorationIndexPageOutputEmpty"]);
+                    throw new Exception(Language.Instance["ImageColorRestorationIndexPageOutputError"]);
                 }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["ImageColorRestorationIndexPageInputFilesEmpty"]);
+                    throw new Exception(Language.Instance["ImageColorRestorationIndexPageFileError"]);
                 }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Quality);

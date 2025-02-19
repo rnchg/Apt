@@ -57,7 +57,7 @@ namespace Apt.App.ViewModels.Pages.Image.AutoWipe
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
 
-        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridItemChangedAction(Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -100,16 +100,16 @@ namespace Apt.App.ViewModels.Pages.Image.AutoWipe
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["ImageAutoWipeIndexPageInputEmpty"]);
+                    throw new Exception(Language.Instance["ImageAutoWipeIndexPageInputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["ImageAutoWipeIndexPageOutputEmpty"]);
+                    throw new Exception(Language.Instance["ImageAutoWipeIndexPageOutputError"]);
                 }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["ImageAutoWipeIndexPageInputFilesEmpty"]);
+                    throw new Exception(Language.Instance["ImageAutoWipeIndexPageFileError"]);
                 }
                 var maskData = GetMaskAction.Invoke();
                 if (maskData is null)

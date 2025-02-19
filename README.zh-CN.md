@@ -1,7 +1,7 @@
 | [English](README.en-US.md) | 中文 |
 
 # AI 生产力工具
-免费开源，提升用户生产力，保障隐私和数据安全。提供高效便捷的AI解决方案，包括但不限于：内置本地专属ChatGPT、Phi、DeepSeek，一键批量智能处理图片、视频、音频等。
+免费开源，提升用户生产力，保障隐私和数据安全。提供高效便捷的AI解决方案，包括但不限于：内置本地专属ChatGPT、DeepSeek，一键批量智能处理图片、视频、音频等。
 
 ## 主要特点
 - **免费开源**：免费使用，源代码开放，用户可以自行查阅和修改。
@@ -11,7 +11,7 @@
 - **多语言支持**：支持多语言国际化，满足全球用户需求。
 
 ## 集成AI模型
-集成多种最新AI模型，可以在本地离线环境使用内置专属ChatGPT、Phi、DeepSeek，一键批量智能处理图片、视频、音频等。
+集成多种最新AI模型，可以在本地离线环境使用内置专属ChatGPT、DeepSeek，一键批量智能处理图片、视频、音频等。
 
 ### 对话
 - **Phi**：提供本地离线运行的Phi模型，随时随地畅享智能AI对话体验。
@@ -58,7 +58,7 @@
 ### 开源及下载地址
 - | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [谷歌云盘](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [百度云盘](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) | [腾讯微云](https://share.weiyun.com/vGiBjW8d) |
 - **完整版（Full）**：包含所有功能。
-- **精简版（Lite）**：包含除【ChatGPT、Phi、DeepSeek】之外的所有功能。
+- **精简版（Lite）**：包含除【ChatGPT、DeepSeek】之外的所有功能。
 
 ### 使用说明及技术支持
 - **Email**：[Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)

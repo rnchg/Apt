@@ -42,16 +42,6 @@
                 ItemsSource="{Binding ViewModel.ThemeSource}"
                 SelectedItem="{Binding ViewModel.ThemeItem}" />
         </ui:CardControl>
-        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon AppsList24}">
-            <ui:CardControl.Header>
-                <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageMode], Source={x:Static su:Language.Instance}}" />
-            </ui:CardControl.Header>
-            <ComboBox
-                MinWidth="200"
-                DisplayMemberPath="Text"
-                ItemsSource="{Binding ViewModel.ModeSource}"
-                SelectedItem="{Binding ViewModel.ModeItem}" />
-        </ui:CardControl>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon LocalLanguage24}">
             <ui:CardControl.Header>
                 <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageLanguage], Source={x:Static su:Language.Instance}}" />
@@ -62,27 +52,26 @@
                 ItemsSource="{Binding ViewModel.LanguageSource}"
                 SelectedItem="{Binding ViewModel.LanguageItem}" />
         </ui:CardControl>
-        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Chat24}">
+        <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon AppsList24}">
             <ui:CardControl.Header>
-                <Grid>
-                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageGenPhiConfig], Source={x:Static su:Language.Instance}}" />
-                </Grid>
+                <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageMode], Source={x:Static su:Language.Instance}}" />
             </ui:CardControl.Header>
-            <Button
+            <ComboBox
                 MinWidth="200"
-                Command="{Binding ViewModel.SetGenPhiConfigCommand}"
-                Content="{Binding [SettingPageGenPhiConfigSetting], Source={x:Static su:Language.Instance}}" />
+                DisplayMemberPath="Text"
+                ItemsSource="{Binding ViewModel.ModeSource}"
+                SelectedItem="{Binding ViewModel.ModeItem}" />
         </ui:CardControl>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Chat24}">
             <ui:CardControl.Header>
                 <Grid>
-                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageGenDeepSeekConfig], Source={x:Static su:Language.Instance}}" />
+                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageGenChatConfig], Source={x:Static su:Language.Instance}}" />
                 </Grid>
             </ui:CardControl.Header>
             <Button
                 MinWidth="200"
-                Command="{Binding ViewModel.SetGenDeepSeekConfigCommand}"
-                Content="{Binding [SettingPageGenDeepSeekConfigSetting], Source={x:Static su:Language.Instance}}" />
+                Command="{Binding ViewModel.SetGenChatConfigCommand}"
+                Content="{Binding [SettingPageGenChatConfigSetting], Source={x:Static su:Language.Instance}}" />
         </ui:CardControl>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Emoji24}">
             <ui:CardControl.Header>

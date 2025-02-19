@@ -5,8 +5,6 @@ using Apt.Core.Models;
 using Apt.Core.Services.Pages.Video.CartoonComic;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
-using Apt.Service.Controls.FileGrid;
-using Apt.Service.Controls.RunMessage;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -64,7 +62,7 @@ namespace Apt.App.ViewModels.Pages.Video.CartoonComic
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
 
-        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -118,16 +116,16 @@ namespace Apt.App.ViewModels.Pages.Video.CartoonComic
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["VideoCartoonComicIndexPageInputEmpty"]);
+                    throw new Exception(Language.Instance["VideoCartoonComicIndexPageInputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["VideoCartoonComicIndexPageOutputEmpty"]);
+                    throw new Exception(Language.Instance["VideoCartoonComicIndexPageOutputError"]);
                 }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["VideoCartoonComicIndexPageInputFilesEmpty"]);
+                    throw new Exception(Language.Instance["VideoCartoonComicIndexPageFileError"]);
                 }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Quality);

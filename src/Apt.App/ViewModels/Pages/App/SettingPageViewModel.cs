@@ -10,8 +10,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
-using Wpf.Ui.Controls;
-using Wpf.Ui.Extensions;
 
 namespace Apt.App.ViewModels.Pages.App
 {
@@ -39,11 +37,7 @@ namespace Apt.App.ViewModels.Pages.App
         }
 
         [ObservableProperty]
-        private ObservableCollection<ComBoBoxItem<string>> _languageSource = new(Directory.GetFiles(AppConst.LanguagePath, "*.json").Select(x =>
-        {
-            var name = Path.GetFileNameWithoutExtension(x);
-            return new ComBoBoxItem<string>() { Text = name, Value = name };
-        }));
+        private ObservableCollection<ComBoBoxItem<string>> _languageSource = null!;
 
         [ObservableProperty]
         private ComBoBoxItem<string> _languageItem = null!;
@@ -80,15 +74,9 @@ namespace Apt.App.ViewModels.Pages.App
         }
 
         [RelayCommand]
-        private void SetGenPhiConfig()
+        private void SetGenChatConfig()
         {
-            ServiceProvider.GetRequiredService<WindowsProviderService>().ShowDialog<Views.Windows.Gen.Phi.ConfigWindow>();
-        }
-
-        [RelayCommand]
-        private void SetGenDeepSeekConfig()
-        {
-            ServiceProvider.GetRequiredService<WindowsProviderService>().ShowDialog<Views.Windows.Gen.DeepSeek.ConfigWindow>();
+            ServiceProvider.GetRequiredService<WindowsProviderService>().ShowDialog<Views.Windows.Gen.Chat.ConfigWindow>();
         }
 
         [RelayCommand]
@@ -124,6 +112,11 @@ namespace Apt.App.ViewModels.Pages.App
                 new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeLight"], Value="Light", Item = ApplicationTheme.Light },
                 new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeHighContrast"], Value="HighContrast",  Item = ApplicationTheme.HighContrast }
             ];
+            LanguageSource = [.. Directory.GetFiles(AppConst.LanguagePath, "*.json").Select(x =>
+            {
+                var name = Path.GetFileNameWithoutExtension(x);
+                return new ComBoBoxItem<string>() { Text = name, Value = name };
+            })];
             ModeSource =
             [
                 new ComBoBoxItem<string>() { Text = Core.Utility.Language.Instance["SettingPageModeBalanced"], Value ="Balanced" },

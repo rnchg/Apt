@@ -5,8 +5,6 @@ using Apt.Core.Models;
 using Apt.Core.Services.Pages.Image.SuperResolution;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
-using Apt.Service.Controls.FileGrid;
-using Apt.Service.Controls.RunMessage;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -64,7 +62,7 @@ namespace Apt.App.ViewModels.Pages.Image.SuperResolution
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
 
-        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -112,16 +110,16 @@ namespace Apt.App.ViewModels.Pages.Image.SuperResolution
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["ImageSuperResolutionIndexPageInputEmpty"]);
+                    throw new Exception(Language.Instance["ImageSuperResolutionIndexPageInputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["ImageSuperResolutionIndexPageOutputEmpty"]);
+                    throw new Exception(Language.Instance["ImageSuperResolutionIndexPageOutputError"]);
                 }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["ImageSuperResolutionIndexPageInputFilesEmpty"]);
+                    throw new Exception(Language.Instance["ImageSuperResolutionIndexPageFileError"]);
                 }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Scale);

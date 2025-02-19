@@ -198,17 +198,17 @@
                         OffContent="{Binding [FileGridInput], Source={x:Static su:Language.Instance}}"
                         OnContent="{Binding [FileGridOutput], Source={x:Static su:Language.Instance}}" />
                 </GroupBox.Header>
-                <fg:FileGrid
+                <fg:Grid
                     x:Name="FileGrid"
-                    FileGridItem="{Binding ViewModel.FileGridItem}"
-                    FileGridSource="{Binding ViewModel.FileGridSource}" />
+                    CurrItem="{Binding ViewModel.FileGridItem}"
+                    Items="{Binding ViewModel.FileGridSource}" />
             </GroupBox>
             <GroupBox
                 Grid.Column="1"
                 Padding="0,8,0,0"
                 BorderThickness="0"
                 Header="{Binding [FileView], Source={x:Static su:Language.Instance}}">
-                <fv:MediaView
+                <fv:View
                     x:Name="FileView"
                     MaskVisibility="Collapsed"
                     MediaSource="{Binding ViewModel.FileViewSource}" />
@@ -218,7 +218,7 @@
                 Padding="0,8,0,0"
                 BorderThickness="0"
                 Header="{Binding [RunMessage], Source={x:Static su:Language.Instance}}">
-                <rm:RunMessage x:Name="RunMessage" CurrMessage="{Binding ViewModel.CurrMessage}" />
+                <rm:View x:Name="RunMessage" CurrMessage="{Binding ViewModel.CurrMessage}" />
             </GroupBox>
         </Grid>
     </Grid>

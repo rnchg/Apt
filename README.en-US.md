@@ -1,7 +1,7 @@
 | English | [中文](README.zh-CN.md) |
 
 # AI Productivity Tools
-Free and open source, improve user productivity, and protect privacy and data security. Provide efficient and convenient AI solutions, including but not limited to: built-in local exclusive ChatGPT, Phi, DeepSeek, one-click batch intelligent processing of images, videos, audio, etc.
+Free and open source, improve user productivity, and protect privacy and data security. Provide efficient and convenient AI solutions, including but not limited to: built-in local exclusive ChatGPT, DeepSeek, one-click batch intelligent processing of images, videos, audio, etc.
 
 ## Main Features
 - **Free and open source**: free to use, open source code, users can view and modify it by themselves.
@@ -11,7 +11,7 @@ Free and open source, improve user productivity, and protect privacy and data se
 - **Multi-language support**: support multi-language internationalization to meet the needs of global users.
 
 ## Integrated AI model
-Integrated with a variety of latest AI models, you can use the built-in exclusive ChatGPT, Phi, DeepSeek in the local offline environment, one-click batch intelligent processing of images, videos, audio, etc.
+Integrated with a variety of latest AI models, you can use the built-in exclusive ChatGPT, DeepSeek in the local offline environment, one-click batch intelligent processing of images, videos, audio, etc.
 
 ### Dialogue
 - **Phi**: Provides a local offline Phi model, allowing you to enjoy the intelligent AI dialogue experience anytime, anywhere.
@@ -58,7 +58,7 @@ We will continue to integrate and optimize more AI models to meet the diverse ne
 ### Open source and download address
 - | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [Google Drive](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [Baidu Drive](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) | [Tencent Weiyun](https://share.weiyun.com/vGiBjW8d) |
 - **Full version**: includes all functions.
-- **Lite version**: includes all functions except [ChatGPT, Phi, DeepSeek].
+- **Lite version**: includes all functions except [ChatGPT, DeepSeek].
 
 ### Instructions and technical support
 - **Email**: [Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)

@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Gen.Phi;
+﻿using Apt.App.ViewModels.Pages.Gen.Chat;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Gen.Phi
+namespace Apt.App.Views.Pages.Gen.Chat
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {
@@ -14,15 +14,15 @@ namespace Apt.App.Views.Pages.Gen.Phi
 
             InitializeComponent();
 
-            ViewModel.AddModel += GenView.AddModel;
+            ViewModel.AddModel += ChatView.AddModel;
 
-            ViewModel.SendModel += GenView.SendModel;
+            ViewModel.SendModel += ChatView.SendModel;
 
-            ViewModel.SendAndBuildModel += GenView.SendAndBuildModel;
+            ViewModel.SendAndBuildModel += ChatView.SendAndBuildModel;
 
-            ViewModel.SetGenViewCancel += GenView.SetCancel;
+            ViewModel.SetViewCancel += ChatView.SetCancel;
 
-            ViewModel.SetGenViewClear += GenView.SetClear;
+            ViewModel.SetViewClear += ChatView.SetClear;
 
             Prompt.KeyDown += (s, e) =>
             {

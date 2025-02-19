@@ -38,8 +38,7 @@ namespace Apt.App.ViewModels.Windows.App
                     Icon = new SymbolIcon { Symbol = SymbolRegular.Chat20 },
                     MenuItemsSource = new ObservableCollection<object>()
                     {
-                        new NavigationViewItem(Language.Instance["MainWindowGenPhi"], SymbolRegular.Chat20, typeof(Views.Pages.Gen.Phi.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowGenDeepSeek"], SymbolRegular.Chat20, typeof(Views.Pages.Gen.DeepSeek.IndexPage))
+                        new NavigationViewItem(Language.Instance["MainWindowGenChat"], SymbolRegular.Chat20, typeof(Views.Pages.Gen.Chat.IndexPage))
                     },
                     IsExpanded = true
                 },

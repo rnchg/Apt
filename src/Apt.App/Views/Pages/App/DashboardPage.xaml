@@ -80,7 +80,7 @@
                     Padding="24"
                     VerticalAlignment="Stretch"
                     Command="{Binding ViewModel.CardClickCommand}"
-                    CommandParameter="Gen.Phi.IndexPage"
+                    CommandParameter="Gen.Chat.IndexPage"
                     IsChevronVisible="False">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -94,40 +94,11 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageGenPhi], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [DashboardPageGenChat], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
-                                Text="{Binding [DashboardPageGenPhiDescription], Source={x:Static su:Language.Instance}}"
-                                TextWrapping="WrapWithOverflow" />
-                        </StackPanel>
-                    </Grid>
-                </ui:CardAction>
-                <ui:CardAction
-                    Grid.Column="1"
-                    Margin="0,0,8,0"
-                    Padding="24"
-                    VerticalAlignment="Stretch"
-                    Command="{Binding ViewModel.CardClickCommand}"
-                    CommandParameter="Gen.DeepSeek.IndexPage"
-                    IsChevronVisible="False">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <ui:SymbolIcon
-                            Width="64"
-                            FontSize="32"
-                            Symbol="Chat24" />
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <ui:TextBlock
-                                FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageGenDeepSeek], Source={x:Static su:Language.Instance}}"
-                                TextWrapping="WrapWithOverflow" />
-                            <ui:TextBlock
-                                Appearance="Tertiary"
-                                Text="{Binding [DashboardPageGenDeepSeekDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [DashboardPageGenChatDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>

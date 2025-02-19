@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui;
 
-namespace Apt.App.ViewModels.Windows.Gen.DeepSeek
+namespace Apt.App.ViewModels.Windows.Gen.Chat
 {
     public partial class ConfigWindowViewModel : BaseViewModel
     {
@@ -25,11 +25,11 @@ namespace Apt.App.ViewModels.Windows.Gen.DeepSeek
         [RelayCommand]
         private async Task SetSave()
         {
-            Current.Config.GenDeepSeek.PromptSystem = PromptSystem;
-            Current.Config.GenDeepSeek.PromptMaxLength = PromptMaxLength;
-            Current.Config.GenDeepSeek.ContextMaxLength = ContextMaxLength;
-            ServiceProvider.GetRequiredService<Pages.Gen.DeepSeek.IndexPageViewModel>().PromptMaxLength = Current.Config.GenDeepSeek.PromptMaxLength;
-            await Message.ShowMessageInfo(Language.Instance["GenDeepSeekConfigWindowSetSaveSuccess"]);
+            Current.Config.GenChat.PromptSystem = PromptSystem;
+            Current.Config.GenChat.PromptMaxLength = PromptMaxLength;
+            Current.Config.GenChat.ContextMaxLength = ContextMaxLength;
+            ServiceProvider.GetRequiredService<Pages.Gen.Chat.IndexPageViewModel>().PromptMaxLength = Current.Config.GenChat.PromptMaxLength;
+            await Message.ShowMessageInfo(Language.Instance["GenChatConfigWindowSetSaveSuccess"]);
             CloseAction?.Invoke();
         }
 

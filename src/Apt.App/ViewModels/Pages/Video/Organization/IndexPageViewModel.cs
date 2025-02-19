@@ -4,8 +4,6 @@ using Apt.Core.Exceptions;
 using Apt.Core.Models;
 using Apt.Core.Services.Pages.Video.Organization;
 using Apt.Core.Utility;
-using Apt.Service.Controls.FileGrid;
-using Apt.Service.Controls.RunMessage;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -71,7 +69,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
 
-        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -124,16 +122,16 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["VideoOrganizationIndexPageInputEmpty"]);
+                    throw new Exception(Language.Instance["VideoOrganizationIndexPageInputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["VideoOrganizationIndexPageOutputEmpty"]);
+                    throw new Exception(Language.Instance["VideoOrganizationIndexPageOutputError"]);
                 }
                 var inputFiles = GetInputFiles(Input).Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["VideoOrganizationIndexPageInputFilesEmpty"]);
+                    throw new Exception(Language.Instance["VideoOrganizationIndexPageFileError"]);
                 }
 
                 await _indexService.Start(Input, Output, inputFiles, Client);
@@ -161,7 +159,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
             }
         }
 
-        public new ObservableCollection<FileModel> GetInputFiles(string input, string[]? exts = null)
+        public new ObservableCollection<Service.Controls.FileGrid.Model> GetInputFiles(string input, string[]? exts = null)
         {
             var files = base.GetInputFiles(input, exts).AsEnumerable();
             if (InputSort == "Name")
@@ -197,7 +195,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
                     files = files.OrderByDescending(f => f.Length);
                 }
             }
-            return new ObservableCollection<FileModel>(files);
+            return new ObservableCollection<Service.Controls.FileGrid.Model>(files);
         }
     }
 }

@@ -63,7 +63,7 @@ namespace Apt.App.ViewModels.Pages.Image.CartoonComic
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
 
-        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridItemChangedAction(Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -117,16 +117,16 @@ namespace Apt.App.ViewModels.Pages.Image.CartoonComic
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["ImageCartoonComicIndexPageInputEmpty"]);
+                    throw new Exception(Language.Instance["ImageCartoonComicIndexPageInputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["ImageCartoonComicIndexPageOutputEmpty"]);
+                    throw new Exception(Language.Instance["ImageCartoonComicIndexPageOutputError"]);
                 }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["ImageCartoonComicIndexPageInputFilesEmpty"]);
+                    throw new Exception(Language.Instance["ImageCartoonComicIndexPageFileError"]);
                 }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Quality);

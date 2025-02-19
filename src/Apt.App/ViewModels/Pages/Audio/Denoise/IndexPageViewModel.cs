@@ -5,8 +5,6 @@ using Apt.Core.Models;
 using Apt.Core.Services.Pages.Audio.Denoise;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
-using Apt.Service.Controls.FileGrid;
-using Apt.Service.Controls.RunMessage;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -52,7 +50,7 @@ namespace Apt.App.ViewModels.Pages.Audio.Denoise
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
 
-        public override void OnFileGridItemChangedAction(FileModel? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -95,16 +93,16 @@ namespace Apt.App.ViewModels.Pages.Audio.Denoise
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["AudioDenoiseIndexPageInputEmpty"]);
+                    throw new Exception(Language.Instance["AudioDenoiseIndexPageInputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["AudioDenoiseIndexPageOutputEmpty"]);
+                    throw new Exception(Language.Instance["AudioDenoiseIndexPageOutputError"]);
                 }
                 var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["AudioDenoiseIndexPageInputFilesEmpty"]);
+                    throw new Exception(Language.Instance["AudioDenoiseIndexPageFileError"]);
                 }
 
                 await _indexService.Start(Input, Output, inputFiles, Provider, Mode);
