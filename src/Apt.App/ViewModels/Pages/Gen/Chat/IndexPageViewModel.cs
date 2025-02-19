@@ -175,6 +175,8 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
             catch (ActivationException ex)
             {
                 ServiceProvider.ShowLicense(ex.Message);
+                SetViewCancel.Invoke();
+                Message = string.Empty;
             }
             catch (ProcessStopException)
             {
