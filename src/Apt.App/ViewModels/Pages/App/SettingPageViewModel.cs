@@ -108,9 +108,9 @@ namespace Apt.App.ViewModels.Pages.App
         {
             ThemeSource =
             [
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeDark"], Value="Dark",  Item = ApplicationTheme.Dark },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeSystem"], Value="System",  Item = ApplicationTheme.Dark },
                 new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeLight"], Value="Light", Item = ApplicationTheme.Light },
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeHighContrast"], Value="HighContrast",  Item = ApplicationTheme.HighContrast }
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeDark"], Value="Dark",  Item = ApplicationTheme.Dark },
             ];
             LanguageSource = [.. Directory.GetFiles(AppConst.LanguagePath, "*.json").Select(x =>
             {
@@ -155,7 +155,6 @@ namespace Apt.App.ViewModels.Pages.App
             ServiceProvider.GetRequiredService<Video.FrameInterpolation.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Video.Matting.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Video.Organization.IndexPageViewModel>().InitializeViewModel();
-            ServiceProvider.GetRequiredService<Audio.Denoise.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Audio.VocalSplit.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetConfig();
         }

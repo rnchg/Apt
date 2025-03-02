@@ -57,7 +57,17 @@ namespace Apt.App.ViewModels.Pages.Video.SuperResolution
 
         public override void OnOutputChangedAction(string value) => GetFileGrids(AppConst.VideoExts);
 
-        public override void OnFileGridSwitchChangedAction(bool value) => GetFileGrids(AppConst.VideoExts);
+        public override void OnFileGridInputEnableChangedAction(bool value)
+        {
+            base.OnFileGridInputEnableChangedAction(value);
+            GetFileGrids(AppConst.VideoExts);
+        }
+
+        public override void OnFileGridOutputEnableChangedAction(bool value)
+        {
+            base.OnFileGridOutputEnableChangedAction(value);
+            GetFileGrids(AppConst.VideoExts);
+        }
 
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
@@ -102,11 +112,12 @@ namespace Apt.App.ViewModels.Pages.Video.SuperResolution
         {
             try
             {
+                ProgressBarValue = 0;
                 StartEnabled = false;
                 StopEnabled = true;
-                OpenEnabled = true;
 
-                FileGridSwitch = false;
+                FileGridInputEnable = true;
+                FileGridOutputEnable = false;
 
                 if (!Directory.Exists(Input))
                 {
@@ -126,9 +137,8 @@ namespace Apt.App.ViewModels.Pages.Video.SuperResolution
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoSuperResolutionIndexPageProcessEnd"]);
 
-                ProgressBarValue = ProgressBarMaximum;
-
-                FileGridSwitch = true;
+                FileGridInputEnable = false;
+                FileGridOutputEnable = true;
             }
             catch (ActivationException ex)
             {

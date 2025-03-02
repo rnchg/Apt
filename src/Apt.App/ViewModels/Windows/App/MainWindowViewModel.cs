@@ -66,7 +66,7 @@ namespace Apt.App.ViewModels.Windows.App
                     MenuItemsSource = new ObservableCollection<object>()
                     {
                         new NavigationViewItem(Language.Instance["MainWindowVideoSuperResolution"], SymbolRegular.Video24, typeof(Views.Pages.Video.SuperResolution.IndexPage)),
-                        //new NavigationViewItem(Language.Instance["MainWindowVideoAutoWipe"], SymbolRegular.Video36024, typeof(Views.Pages.Video.AutoWipe.IndexPage)),
+                        new NavigationViewItem(Language.Instance["MainWindowVideoAutoWipe"], SymbolRegular.Video36024, typeof(Views.Pages.Video.AutoWipe.IndexPage)),
                         new NavigationViewItem(Language.Instance["MainWindowVideoCartoonComic"], SymbolRegular.CommunicationPerson24, typeof(Views.Pages.Video.CartoonComic.IndexPage)),
                         new NavigationViewItem(Language.Instance["MainWindowVideoConvert3d"], SymbolRegular.VideoSwitch24, typeof(Views.Pages.Video.Convert3d.IndexPage)),
                         new NavigationViewItem(Language.Instance["MainWindowVideoColorRestoration"], SymbolRegular.VideoPersonSparkle24, typeof(Views.Pages.Video.ColorRestoration.IndexPage)),

@@ -3,56 +3,52 @@
 # AI Productivity Tools
 Free and open source, improve user productivity, and protect privacy and data security. Provide efficient and convenient AI solutions, including but not limited to: built-in local exclusive ChatGPT, DeepSeek, one-click batch intelligent processing of images, videos, audio, etc.
 
-## Main Features
-- **Free and open source**: free to use, open source code, users can view and modify it by themselves.
+## Main features
+- **Free and open source**: free to use, open source code, users can check and modify it by themselves.
 - **Privacy protection**: local deployment, all data is processed locally to ensure user privacy and data security.
-- **Offline use**: no need to connect to the Internet, can run offline, avoid the impact of network restrictions.
-- **No installation and configuration**: no installation and configuration, unzip and start running with one click, convenient and fast.
+- **Offline use**: no need to connect to the Internet, can run offline, avoiding the impact of network restrictions.
+- **No installation and configuration**: no need to install and configure, just unzip and start running with one click, convenient and fast.
 - **Multi-language support**: support multi-language internationalization to meet the needs of global users.
 
-## Integrated AI model
-Integrated with a variety of latest AI models, you can use the built-in exclusive ChatGPT, DeepSeek in the local offline environment, one-click batch intelligent processing of images, videos, audio, etc.
+### Generate dialogue
+- **Generate dialogue**: provide local offline running ChatGPT, DeepSeek and other models, enjoy the intelligent AI dialogue experience anytime, anywhere.
 
-### Dialogue
-- **Phi**: Provides a local offline Phi model, allowing you to enjoy the intelligent AI dialogue experience anytime, anywhere.
-- **DeepSeek**: Provides a local offline DeepSeek model, allowing you to enjoy the intelligent AI dialogue experience anytime, anywhere.
+### Image processing
+- **Lossless image enlargement**: improve image resolution to ensure lossless image quality.
+- **Erase watermark from image**: Erase watermarks, subtitles, and logos from images to restore the original picture.
+- **Cartoon and comics from images**: Convert images to vivid cartoon or comic styles.
+- **Convert images to 3D**: Convert images to realistic 3D scenes.
+- **Color and repair images**: Recolor old photos and give them a new lease of life.
+- **Interpolation and interpolation of images**: Automatically generate interpolation images for images.
+- **Background removal from images**: Easily remove the background of images and export transparent background images.
+- **Face repair from images**: Repair blurred or damaged face images and enhance details.
 
-### Image Processing
-- **Image Lossless Zoom**: Improves image resolution to ensure lossless image quality.
-- **Image Watermark Erase**: Erase watermarks, subtitles, and logos from images to restore the original image.
-- **Image Cartoon Comics**: Convert images to vivid cartoon or comic styles.
-- **Image 3D Conversion**: Convert images to realistic 3D scenes.
-- **Image Coloring and Restoration**: Recolor old photos and give them a new lease of life.
-- **Image Interpolation and Frame Infill**: Automatically generate frame infill images for images.
-- **Image Background Removal**: Easily remove the background of an image and export a transparent background image.
-- **Image Face Repair**: Repair blurred or damaged face images and enhance details.
+### Video processing
+- **Lossless video enlargement**: Increase video resolution and keep the image quality clear.
+- **Erase watermark from video**: Erase watermarks, subtitles, and logos from videos to restore the original picture.
+- **Cartoon and comics from videos**: Convert videos to interesting cartoon or comic styles.
+- **Convert videos to 3D**: Convert videos to immersive 3D effects.
+- **Video color restoration**: Recolor old videos and experience new visual effects.
+- **Video interpolation frame filling**: Increase video frame rate for smoother playback.
+- **Video background removal**: Easily remove video background and replace background conveniently.
+- **Video synthesis and arrangement**: Decrypt, synthesize and arrange downloaded cached video files.
 
-### Video Processing
-- **Lossless Video Zoom**: Increase video resolution and keep the image clear.
-- **Erase watermark from video (under testing)**: Erase watermarks, subtitles, and logos from videos and restore the original image.
-- **Cartoon from video**: Convert videos to fun cartoon or comic styles.
-- **Convert video to 3D**: Convert videos to immersive 3D effects.
-- **Colorize and repair video**: Recolor old videos and experience new visual effects.
-- **Interpolate and fill frames from video**: Increase video frame rate for smoother playback.
-- **Background removal from video**: Easily remove video backgrounds and replace backgrounds.
-- **Video synthesis and organization**: Decrypt, synthesize, and organize downloaded cached video files.
-
-### Audio Processing
-- **Voice separation from audio (under testing)**: Accurately separate the voice and accompaniment in the audio and restore the original accompaniment, voice, etc.
-- **Audio cloning generation (under testing)**: Generates cloned voices based on text content, accurately restoring timbre, emotion, and speech speed.
+### Audio processing
+- **Audio human voice separation (under testing)**: Accurately separate the human voice and accompaniment in the audio, and restore the original accompaniment, human voice, etc.
+- **Audio cloning generation (under testing)**: Generate cloned sounds based on text content, accurately restore timbre, emotion, and speech speed.
 - **Audio to text generation (under testing)**: Intelligent real-time analysis of speech, automatic generation of text content.
-- **Audio noise removal (under testing)**: Intelligently identifies and removes interference noise in audio, restoring clear original sound.
+- **Audio noise removal (under testing)**: Intelligently identify and remove interference noise in the audio, and restore clear original sound.
 
-### Supported platforms
-|Operating system|Status|Notes|
+### Supported Platforms
+|Operating System|Status|Notes|
 |---|---|---|
 |Windows|Released|Windows 10 x64 1709+|
-|Android|Under development||
-|iOS|Under development||
+|Android|Under Development||
+|iOS|Under Development||
 |Mac|Planning||
 |Linux|Planning||
 
-### Future plans
+### Future Plans
 We will continue to integrate and optimize more AI models to meet the diverse needs of users.
 
 ### Open source and download address
@@ -71,8 +67,8 @@ We will continue to integrate and optimize more AI models to meet the diverse ne
 ### Running interface
 Home
 ![Home](.assets/en-US/dashboard.png)
-ChatGPT
-![ChatGPT](.assets/en-US/gen_chat.png)
+Generate dialogue
+![Generate dialogue](.assets/en-US/gen_chat.png)
 Image processing
 ![Image processing](.assets/en-US/image_auto_wipe.png)
 Video processing

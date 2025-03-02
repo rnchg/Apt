@@ -119,12 +119,6 @@ namespace Apt.App.Extensions
             videoOrganizationIndexViewMode.SortRule = Current.Config.VideoOrganization.SortRule;
             videoOrganizationIndexViewMode.Client = Current.Config.VideoOrganization.Client;
 
-            var audioDenoiseViewModel = provider.GetRequiredService<ViewModels.Pages.Audio.Denoise.IndexPageViewModel>();
-            audioDenoiseViewModel.Input = Current.Config.AudioDenoise.Input;
-            audioDenoiseViewModel.Output = Current.Config.AudioDenoise.Output;
-            audioDenoiseViewModel.Provider = Current.Config.AudioDenoise.Provider;
-            audioDenoiseViewModel.Mode = Current.Config.AudioDenoise.Mode;
-
             var audioVocalSplitViewModel = provider.GetRequiredService<ViewModels.Pages.Audio.VocalSplit.IndexPageViewModel>();
             audioVocalSplitViewModel.Input = Current.Config.AudioVocalSplit.Input;
             audioVocalSplitViewModel.Output = Current.Config.AudioVocalSplit.Output;
@@ -246,12 +240,6 @@ namespace Apt.App.Extensions
             Current.Config.VideoOrganization.InputSort = videoOrganizationIndexViewMode.InputSort;
             Current.Config.VideoOrganization.SortRule = videoOrganizationIndexViewMode.SortRule;
             Current.Config.VideoOrganization.Client = videoOrganizationIndexViewMode.Client;
-
-            var audioDenoiseViewModel = provider.GetRequiredService<ViewModels.Pages.Audio.Denoise.IndexPageViewModel>();
-            Current.Config.AudioDenoise.Input = audioDenoiseViewModel.Input;
-            Current.Config.AudioDenoise.Output = audioDenoiseViewModel.Output;
-            Current.Config.AudioDenoise.Provider = audioDenoiseViewModel.Provider;
-            Current.Config.AudioDenoise.Mode = audioDenoiseViewModel.Mode;
 
             var audioVocalSplitViewModel = provider.GetRequiredService<ViewModels.Pages.Audio.VocalSplit.IndexPageViewModel>();
             Current.Config.AudioVocalSplit.Input = audioVocalSplitViewModel.Input;

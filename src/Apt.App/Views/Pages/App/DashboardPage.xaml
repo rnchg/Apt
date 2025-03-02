@@ -414,7 +414,7 @@
                     Padding="24"
                     VerticalAlignment="Stretch"
                     Command="{Binding ViewModel.CardClickCommand}"
-                    CommandParameter="StayTuned"
+                    CommandParameter="Video.AutoWipe.IndexPage"
                     IsChevronVisible="False">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -684,6 +684,36 @@
                         <ui:SymbolIcon
                             Width="64"
                             FontSize="32"
+                            Symbol="HeadphonesSoundWave24" />
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <ui:TextBlock
+                                FontTypography="BodyStrong"
+                                Text="{Binding [DashboardPageAudioDenoise], Source={x:Static su:Language.Instance}}"
+                                TextWrapping="WrapWithOverflow" />
+                            <ui:TextBlock
+                                Appearance="Tertiary"
+                                Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                Text="{Binding [DashboardPageAudioDenoiseDescription], Source={x:Static su:Language.Instance}}"
+                                TextWrapping="WrapWithOverflow" />
+                        </StackPanel>
+                    </Grid>
+                </ui:CardAction>
+                <ui:CardAction
+                    Grid.Column="2"
+                    Margin="0,0,8,0"
+                    Padding="24"
+                    VerticalAlignment="Stretch"
+                    Command="{Binding ViewModel.CardClickCommand}"
+                    CommandParameter="StayTuned"
+                    IsChevronVisible="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ui:SymbolIcon
+                            Width="64"
+                            FontSize="32"
                             Symbol="SoundWaveCircle24" />
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
@@ -699,7 +729,7 @@
                     </Grid>
                 </ui:CardAction>
                 <ui:CardAction
-                    Grid.Column="2"
+                    Grid.Column="3"
                     Margin="0,0,8,0"
                     Padding="24"
                     VerticalAlignment="Stretch"
@@ -724,36 +754,6 @@
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
                                 Text="{Binding [DashboardPageAudioSTTDescription], Source={x:Static su:Language.Instance}}"
-                                TextWrapping="WrapWithOverflow" />
-                        </StackPanel>
-                    </Grid>
-                </ui:CardAction>
-                <ui:CardAction
-                    Grid.Column="3"
-                    Margin="0,0,8,0"
-                    Padding="24"
-                    VerticalAlignment="Stretch"
-                    Command="{Binding ViewModel.CardClickCommand}"
-                    CommandParameter="StayTuned"
-                    IsChevronVisible="False">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <ui:SymbolIcon
-                            Width="64"
-                            FontSize="32"
-                            Symbol="HeadphonesSoundWave24" />
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <ui:TextBlock
-                                FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageAudioDenoise], Source={x:Static su:Language.Instance}}"
-                                TextWrapping="WrapWithOverflow" />
-                            <ui:TextBlock
-                                Appearance="Tertiary"
-                                Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageAudioDenoiseDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>

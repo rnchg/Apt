@@ -158,8 +158,7 @@
                         VerticalAlignment="Center"
                         Appearance="Success"
                         Command="{Binding ViewModel.SetOpenCommand}"
-                        Content="{Binding [VideoMattingIndexPageOpen], Source={x:Static su:Language.Instance}}"
-                        IsEnabled="{Binding ViewModel.OpenEnabled}" />
+                        Content="{Binding [VideoMattingIndexPageOpen], Source={x:Static su:Language.Instance}}" />
                 </Grid>
             </Grid>
         </GroupBox>
@@ -174,10 +173,10 @@
                 Padding="0,8,0,0"
                 BorderThickness="0">
                 <GroupBox.Header>
-                    <ui:ToggleSwitch
-                        IsChecked="{Binding ViewModel.FileGridSwitch}"
-                        OffContent="{Binding [FileGridInput], Source={x:Static su:Language.Instance}}"
-                        OnContent="{Binding [FileGridOutput], Source={x:Static su:Language.Instance}}" />
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton Content="{Binding [FileGridInput], Source={x:Static su:Language.Instance}}" IsChecked="{Binding ViewModel.FileGridInputEnable}" />
+                        <ToggleButton Content="{Binding [FileGridOutput], Source={x:Static su:Language.Instance}}" IsChecked="{Binding ViewModel.FileGridOutputEnable}" />
+                    </StackPanel>
                 </GroupBox.Header>
                 <fg:Grid
                     x:Name="FileGrid"

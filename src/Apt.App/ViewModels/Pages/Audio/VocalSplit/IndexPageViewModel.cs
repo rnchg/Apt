@@ -45,7 +45,17 @@ namespace Apt.App.ViewModels.Pages.Audio.VocalSplit
 
         public override void OnOutputChangedAction(string value) => GetFileGrids(AppConst.AudioExts);
 
-        public override void OnFileGridSwitchChangedAction(bool value) => GetFileGrids(AppConst.AudioExts);
+        public override void OnFileGridInputEnableChangedAction(bool value)
+        {
+            base.OnFileGridInputEnableChangedAction(value);
+            GetFileGrids(AppConst.AudioExts);
+        }
+
+        public override void OnFileGridOutputEnableChangedAction(bool value)
+        {
+            base.OnFileGridOutputEnableChangedAction(value);
+            GetFileGrids(AppConst.AudioExts);
+        }
 
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
@@ -85,11 +95,12 @@ namespace Apt.App.ViewModels.Pages.Audio.VocalSplit
         {
             try
             {
+                ProgressBarValue = 0;
                 StartEnabled = false;
                 StopEnabled = true;
-                OpenEnabled = true;
 
-                FileGridSwitch = false;
+                FileGridInputEnable = true;
+                FileGridOutputEnable = false;
 
                 if (!Directory.Exists(Input))
                 {
@@ -109,9 +120,8 @@ namespace Apt.App.ViewModels.Pages.Audio.VocalSplit
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["AudioVocalSplitIndexPageProcessEnd"]);
 
-                ProgressBarValue = ProgressBarMaximum;
-
-                FileGridSwitch = true;
+                FileGridInputEnable = false;
+                FileGridOutputEnable = true;
             }
             catch (ActivationException ex)
             {

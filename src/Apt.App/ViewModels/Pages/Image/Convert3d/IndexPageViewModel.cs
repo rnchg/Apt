@@ -73,7 +73,17 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
 
         public override void OnOutputChangedAction(string value) => GetFileGrids(AppConst.ImageExts);
 
-        public override void OnFileGridSwitchChangedAction(bool value) => GetFileGrids(AppConst.ImageExts);
+        public override void OnFileGridInputEnableChangedAction(bool value)
+        {
+            base.OnFileGridInputEnableChangedAction(value);
+            GetFileGrids(AppConst.ImageExts);
+        }
+
+        public override void OnFileGridOutputEnableChangedAction(bool value)
+        {
+            base.OnFileGridOutputEnableChangedAction(value);
+            GetFileGrids(AppConst.ImageExts);
+        }
 
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
@@ -132,11 +142,12 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
         {
             try
             {
+                ProgressBarValue = 0;
                 StartEnabled = false;
                 StopEnabled = true;
-                OpenEnabled = true;
 
-                FileGridSwitch = false;
+                FileGridInputEnable = true;
+                FileGridOutputEnable = false;
 
                 if (!Directory.Exists(Input))
                 {
@@ -156,9 +167,8 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageConvert3dIndexPageProcessEnd"]);
 
-                ProgressBarValue = ProgressBarMaximum;
-
-                FileGridSwitch = true;
+                FileGridInputEnable = false;
+                FileGridOutputEnable = true;
             }
             catch (ActivationException ex)
             {

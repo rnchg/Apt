@@ -39,7 +39,6 @@ namespace Apt.App.Extensions
             services.AddSingleton<Views.Pages.Video.Matting.IndexPage>();
             services.AddSingleton<Views.Pages.Video.Organization.IndexPage>();
             services.AddSingleton<Views.Pages.Audio.VocalSplit.IndexPage>();
-            services.AddSingleton<Views.Pages.Audio.Denoise.IndexPage>();
 
             services.AddTransient<ViewModels.Windows.Gen.Chat.ConfigWindowViewModel>();
 
@@ -64,7 +63,6 @@ namespace Apt.App.Extensions
             services.AddSingleton<ViewModels.Pages.Video.Matting.IndexPageViewModel>();
             services.AddSingleton<ViewModels.Pages.Video.Organization.IndexPageViewModel>();
             services.AddSingleton<ViewModels.Pages.Audio.VocalSplit.IndexPageViewModel>();
-            services.AddSingleton<ViewModels.Pages.Audio.Denoise.IndexPageViewModel>();
 
             return services;
         }

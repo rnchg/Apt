@@ -64,7 +64,17 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
 
         public override void OnOutputChangedAction(string value) => GetFileGrids(AppConst.VideoExts);
 
-        public override void OnFileGridSwitchChangedAction(bool value) => GetFileGrids(AppConst.VideoExts);
+        public override void OnFileGridInputEnableChangedAction(bool value)
+        {
+            base.OnFileGridInputEnableChangedAction(value);
+            GetFileGrids(AppConst.VideoExts);
+        }
+
+        public override void OnFileGridOutputEnableChangedAction(bool value)
+        {
+            base.OnFileGridOutputEnableChangedAction(value);
+            GetFileGrids(AppConst.VideoExts);
+        }
 
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
@@ -114,11 +124,12 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
         {
             try
             {
+                ProgressBarValue = 0;
                 StartEnabled = false;
                 StopEnabled = true;
-                OpenEnabled = true;
 
-                //FileGridSwitch = false;
+                FileGridInputEnable = true;
+                FileGridOutputEnable = false;
 
                 if (!Directory.Exists(Input))
                 {
@@ -136,11 +147,10 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
 
                 await _indexService.Start(Input, Output, inputFiles, Client);
 
-                ProgressBarValue = ProgressBarMaximum;
-
-                FileGridSwitch = true;
-
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoOrganizationIndexPageProcessEnd"]);
+
+                FileGridInputEnable = false;
+                FileGridOutputEnable = true;
             }
             catch (ActivationException ex)
             {
