@@ -1,5 +1,7 @@
 | [English](README.en-US.md) | 中文 |
 
+# 已迁移至 https://github.com/rnchg/APA
+
 # AI 生产力工具
 免费开源，提升用户生产力，保障隐私和数据安全。提供高效便捷的AI解决方案，包括但不限于：内置本地专属ChatGPT、DeepSeek，一键批量智能处理图片、视频、音频等。
 

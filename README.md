@@ -1,5 +1,7 @@
 | English | [中文](README.zh-CN.md) |
 
+# Moved to https://github.com/rnchg/APA
+
 # AI Productivity Tools
 Free and open source, improve user productivity, and protect privacy and data security. Provide efficient and convenient AI solutions, including but not limited to: built-in local exclusive ChatGPT, DeepSeek, one-click batch intelligent processing of images, videos, audio, etc.
 
