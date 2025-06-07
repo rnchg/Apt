@@ -772,7 +772,7 @@
                 FontWeight="DemiBold"
                 Text="{Binding [ApplicationSupport], Source={x:Static su:Language.Instance}}" />
             <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <StackPanel>
+                <StackPanel  Orientation="Horizontal">
                     <ui:HyperlinkButton
                         Content="Email: Rnchg@Hotmail.com"
                         NavigateUri="mailto:Rnchg@Hotmail.com"
@@ -785,8 +785,6 @@
                         Content="Gitee: gitee.com/rnchg/apt"
                         NavigateUri="https://gitee.com/rnchg/apt"
                         ToolTip="Gitee: gitee.com/rnchg/apt" />
-                </StackPanel>
-                <StackPanel>
                     <ui:HyperlinkButton
                         Content="Youtube: Light Cloud Wind"
                         NavigateUri="https://www.youtube.com/channel/UCHKH3bLpd8giPyr6x5sKGfw"

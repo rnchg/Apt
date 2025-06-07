@@ -18,7 +18,7 @@ namespace Apt.App.ViewModels.Pages.App
         {
             if (parameter == "StayTuned")
             {
-                SnackbarService.ShowSnackbarInfo(Language.Instance["DashboardPageStayTuned"]);
+                SnackbarService.ShowSnackbarInfo(Language.Instance["DashboardPageStayTuned"], timeout: 60);
                 return;
             }
             _navigationService.Navigate(PageHelper.ToType(parameter, "Apt.App.Views.Pages", Assembly.GetExecutingAssembly()));
