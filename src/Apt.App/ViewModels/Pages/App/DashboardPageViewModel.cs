@@ -1,5 +1,4 @@
-﻿using Apt.Core.Utility;
-using Apt.Service.Extensions;
+﻿using Apt.App.Views.Dialogs;
 using Apt.Service.ViewModels.Base;
 using Common.WindowsDesktop.Helpers;
 using CommunityToolkit.Mvvm.Input;
@@ -12,13 +11,16 @@ namespace Apt.App.ViewModels.Pages.App
         private bool _isInitialized = false;
 
         private INavigationService _navigationService;
+        private IContentDialogService _contentDialogService;
 
         [RelayCommand]
         private void OnCardClick(string parameter)
         {
-            if (parameter == "StayTuned")
+            if (parameter == "Plus")
             {
-                SnackbarService.ShowSnackbarInfo(Language.Instance["DashboardPageStayTuned"], timeout: 60);
+                //SnackbarService.ShowSnackbarInfo(Language.Instance["DashboardPageStayTuned"], timeout: 60);
+                var plusDialog = new PlusDialog(_contentDialogService.GetDialogHost());
+                _ = plusDialog.ShowAsync();
                 return;
             }
             _navigationService.Navigate(PageHelper.ToType(parameter, "Apt.App.Views.Pages", Assembly.GetExecutingAssembly()));
@@ -27,10 +29,12 @@ namespace Apt.App.ViewModels.Pages.App
         public DashboardPageViewModel(
             IServiceProvider serviceProvider,
             ISnackbarService snackbarService,
-            INavigationService navigationService) :
+            INavigationService navigationService,
+            IContentDialogService contentDialogService) :
             base(serviceProvider, snackbarService)
         {
             _navigationService = navigationService;
+            _contentDialogService = contentDialogService;
 
             if (!_isInitialized) InitializeViewModel();
         }

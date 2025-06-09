@@ -37,7 +37,6 @@
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
-                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
@@ -89,39 +88,6 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120" />
                         <ColumnDefinition />
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Margin="6"
-                        VerticalAlignment="Center"
-                        Content="{Binding [VideoOrganizationIndexPageInputSort], Source={x:Static su:Language.Instance}}" />
-                    <ComboBox
-                        Grid.Column="1"
-                        Margin="6"
-                        DisplayMemberPath="Text"
-                        ItemsSource="{Binding ViewModel.InputSortSource}"
-                        SelectedItem="{Binding ViewModel.InputSortItem}"
-                        SelectedValuePath="Value" />
-                    <Label
-                        Grid.Column="2"
-                        Margin="6"
-                        VerticalAlignment="Center"
-                        Content="{Binding [VideoOrganizationIndexPageInputSortRule], Source={x:Static su:Language.Instance}}" />
-                    <ComboBox
-                        Grid.Column="3"
-                        Margin="6"
-                        DisplayMemberPath="Text"
-                        ItemsSource="{Binding ViewModel.SortRuleSource}"
-                        SelectedItem="{Binding ViewModel.SortRuleItem}"
-                        SelectedValuePath="Value" />
-                </Grid>
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition />
                         <ColumnDefinition Width="80" />
                     </Grid.ColumnDefinitions>
                     <Label
@@ -137,7 +103,7 @@
                         SelectedItem="{Binding ViewModel.ClientItem}"
                         SelectedValuePath="Value" />
                 </Grid>
-                <Grid Grid.Row="4">
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120" />
                         <ColumnDefinition />
@@ -160,8 +126,6 @@
                     <ui:Button
                         Grid.Column="2"
                         Margin="6"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
                         Appearance="Info"
                         Command="{Binding ViewModel.SetStartCommand}"
                         Content="{Binding [VideoOrganizationIndexPageStart], Source={x:Static su:Language.Instance}}"
@@ -169,8 +133,6 @@
                     <ui:Button
                         Grid.Column="3"
                         Margin="6"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
                         Appearance="Danger"
                         Command="{Binding ViewModel.SetStopCommand}"
                         Content="{Binding [VideoOrganizationIndexPageStop], Source={x:Static su:Language.Instance}}"
@@ -178,8 +140,6 @@
                     <ui:Button
                         Grid.Column="4"
                         Margin="6"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
                         Appearance="Success"
                         Command="{Binding ViewModel.SetOpenCommand}"
                         Content="{Binding [VideoOrganizationIndexPageOpen], Source={x:Static su:Language.Instance}}" />

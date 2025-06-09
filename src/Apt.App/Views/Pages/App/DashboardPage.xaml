@@ -644,7 +644,7 @@
                     Padding="24"
                     VerticalAlignment="Stretch"
                     Command="{Binding ViewModel.CardClickCommand}"
-                    CommandParameter="StayTuned"
+                    CommandParameter="Plus"
                     IsChevronVisible="False">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -674,7 +674,7 @@
                     Padding="24"
                     VerticalAlignment="Stretch"
                     Command="{Binding ViewModel.CardClickCommand}"
-                    CommandParameter="StayTuned"
+                    CommandParameter="Plus"
                     IsChevronVisible="False">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -704,7 +704,7 @@
                     Padding="24"
                     VerticalAlignment="Stretch"
                     Command="{Binding ViewModel.CardClickCommand}"
-                    CommandParameter="StayTuned"
+                    CommandParameter="Plus"
                     IsChevronVisible="False">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -734,7 +734,7 @@
                     Padding="24"
                     VerticalAlignment="Stretch"
                     Command="{Binding ViewModel.CardClickCommand}"
-                    CommandParameter="StayTuned"
+                    CommandParameter="Plus"
                     IsChevronVisible="False">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -772,7 +772,7 @@
                 FontWeight="DemiBold"
                 Text="{Binding [ApplicationSupport], Source={x:Static su:Language.Instance}}" />
             <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <StackPanel  Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
                     <ui:HyperlinkButton
                         Content="Email: Rnchg@Hotmail.com"
                         NavigateUri="mailto:Rnchg@Hotmail.com"

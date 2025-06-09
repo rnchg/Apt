@@ -143,8 +143,6 @@
                     <ui:Button
                         Grid.Column="2"
                         Margin="6"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
                         Appearance="Info"
                         Command="{Binding ViewModel.SetStartCommand}"
                         Content="{Binding [ImageFaceRestorationIndexPageStart], Source={x:Static su:Language.Instance}}"
@@ -152,8 +150,6 @@
                     <ui:Button
                         Grid.Column="3"
                         Margin="6"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
                         Appearance="Danger"
                         Command="{Binding ViewModel.SetStopCommand}"
                         Content="{Binding [ImageFaceRestorationIndexPageStop], Source={x:Static su:Language.Instance}}"
@@ -161,8 +157,6 @@
                     <ui:Button
                         Grid.Column="4"
                         Margin="6"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
                         Appearance="Success"
                         Command="{Binding ViewModel.SetOpenCommand}"
                         Content="{Binding [ImageFaceRestorationIndexPageOpen], Source={x:Static su:Language.Instance}}" />

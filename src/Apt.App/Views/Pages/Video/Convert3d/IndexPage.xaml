@@ -195,8 +195,6 @@
                     <ui:Button
                         Grid.Column="2"
                         Margin="6"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
                         Appearance="Info"
                         Command="{Binding ViewModel.SetStartCommand}"
                         Content="{Binding [VideoConvert3dIndexPageStart], Source={x:Static su:Language.Instance}}"
@@ -204,8 +202,6 @@
                     <ui:Button
                         Grid.Column="3"
                         Margin="6"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
                         Appearance="Danger"
                         Command="{Binding ViewModel.SetStopCommand}"
                         Content="{Binding [VideoConvert3dIndexPageStop], Source={x:Static su:Language.Instance}}"
@@ -213,8 +209,6 @@
                     <ui:Button
                         Grid.Column="4"
                         Margin="6"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
                         Appearance="Success"
                         Command="{Binding ViewModel.SetOpenCommand}"
                         Content="{Binding [VideoConvert3dIndexPageOpen], Source={x:Static su:Language.Instance}}" />

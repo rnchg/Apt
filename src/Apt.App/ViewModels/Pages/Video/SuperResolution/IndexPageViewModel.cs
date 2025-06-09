@@ -53,20 +53,20 @@ namespace Apt.App.ViewModels.Pages.Video.SuperResolution
             set => ScaleItem = ScaleSource.First(e => e.Value == value);
         }
 
-        public override void OnInputChangedAction(string value) => GetFileGrids(AppConst.VideoExts);
+        public override void OnInputChangedAction(string value) => GetFileGrids();
 
-        public override void OnOutputChangedAction(string value) => GetFileGrids(AppConst.VideoExts);
+        public override void OnOutputChangedAction(string value) => GetFileGrids();
 
         public override void OnFileGridInputEnableChangedAction(bool value)
         {
             base.OnFileGridInputEnableChangedAction(value);
-            GetFileGrids(AppConst.VideoExts);
+            if (value) GetFileGrids();
         }
 
         public override void OnFileGridOutputEnableChangedAction(bool value)
         {
             base.OnFileGridOutputEnableChangedAction(value);
-            GetFileGrids(AppConst.VideoExts);
+            if (value) GetFileGrids();
         }
 
         [ObservableProperty]
@@ -84,6 +84,9 @@ namespace Apt.App.ViewModels.Pages.Video.SuperResolution
 
         public override void InitializeViewModel()
         {
+            InputExts = AppConst.VideoExts;
+            OutputExts = AppConst.VideoExts;
+
             ProviderSource = Adapter.CpuAndGpu;
 
             ModeSource =

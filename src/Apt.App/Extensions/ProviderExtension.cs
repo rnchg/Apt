@@ -115,15 +115,7 @@ namespace Apt.App.Extensions
             var videoOrganizationIndexViewMode = provider.GetRequiredService<ViewModels.Pages.Video.Organization.IndexPageViewModel>();
             videoOrganizationIndexViewMode.Input = Current.Config.VideoOrganization.Input;
             videoOrganizationIndexViewMode.Output = Current.Config.VideoOrganization.Output;
-            videoOrganizationIndexViewMode.InputSort = Current.Config.VideoOrganization.InputSort;
-            videoOrganizationIndexViewMode.SortRule = Current.Config.VideoOrganization.SortRule;
             videoOrganizationIndexViewMode.Client = Current.Config.VideoOrganization.Client;
-
-            var audioVocalSplitViewModel = provider.GetRequiredService<ViewModels.Pages.Audio.VocalSplit.IndexPageViewModel>();
-            audioVocalSplitViewModel.Input = Current.Config.AudioVocalSplit.Input;
-            audioVocalSplitViewModel.Output = Current.Config.AudioVocalSplit.Output;
-            audioVocalSplitViewModel.Provider = Current.Config.AudioVocalSplit.Provider;
-            audioVocalSplitViewModel.Mode = Current.Config.AudioVocalSplit.Mode;
         }
 
         public static void SetConfig(this IServiceProvider provider)
@@ -237,15 +229,7 @@ namespace Apt.App.Extensions
             var videoOrganizationIndexViewMode = provider.GetRequiredService<ViewModels.Pages.Video.Organization.IndexPageViewModel>();
             Current.Config.VideoOrganization.Input = videoOrganizationIndexViewMode.Input;
             Current.Config.VideoOrganization.Output = videoOrganizationIndexViewMode.Output;
-            Current.Config.VideoOrganization.InputSort = videoOrganizationIndexViewMode.InputSort;
-            Current.Config.VideoOrganization.SortRule = videoOrganizationIndexViewMode.SortRule;
             Current.Config.VideoOrganization.Client = videoOrganizationIndexViewMode.Client;
-
-            var audioVocalSplitViewModel = provider.GetRequiredService<ViewModels.Pages.Audio.VocalSplit.IndexPageViewModel>();
-            Current.Config.AudioVocalSplit.Input = audioVocalSplitViewModel.Input;
-            Current.Config.AudioVocalSplit.Output = audioVocalSplitViewModel.Output;
-            Current.Config.AudioVocalSplit.Provider = audioVocalSplitViewModel.Provider;
-            Current.Config.AudioVocalSplit.Mode = audioVocalSplitViewModel.Mode;
         }
     }
 }

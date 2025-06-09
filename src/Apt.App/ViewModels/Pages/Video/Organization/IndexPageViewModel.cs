@@ -17,38 +17,6 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
         private IndexService _indexService = null!;
 
         [ObservableProperty]
-        private ObservableCollection<ComBoBoxItem<string>> _inputSortSource = [];
-
-        [ObservableProperty]
-        private ComBoBoxItem<string> _inputSortItem = null!;
-
-        partial void OnInputSortItemChanged(ComBoBoxItem<string> value) => OnInputSortItemChangedAction(value);
-
-        public virtual void OnInputSortItemChangedAction(ComBoBoxItem<string> value) { }
-
-        public string InputSort
-        {
-            get => InputSortItem.Value;
-            set => InputSortItem = InputSortSource.First(e => e.Value == value);
-        }
-
-        [ObservableProperty]
-        private ObservableCollection<ComBoBoxItem<string>> _sortRuleSource = [];
-
-        [ObservableProperty]
-        private ComBoBoxItem<string> _sortRuleItem = null!;
-
-        partial void OnSortRuleItemChanged(ComBoBoxItem<string> value) => OnSortRuleItemChangedAction(value);
-
-        public virtual void OnSortRuleItemChangedAction(ComBoBoxItem<string> value) { }
-
-        public string SortRule
-        {
-            get => SortRuleItem.Value;
-            set => SortRuleItem = SortRuleSource.First(e => e.Value == value);
-        }
-
-        [ObservableProperty]
         private ObservableCollection<ComBoBoxItem<string>> _clientSource = [];
 
         [ObservableProperty]
@@ -60,20 +28,20 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
             set => ClientItem = ClientSource.First(e => e.Value == value);
         }
 
-        public override void OnInputChangedAction(string value) => GetFileGrids(AppConst.VideoExts);
+        public override void OnInputChangedAction(string value) => GetFileGrids();
 
-        public override void OnOutputChangedAction(string value) => GetFileGrids(AppConst.VideoExts);
+        public override void OnOutputChangedAction(string value) => GetFileGrids();
 
         public override void OnFileGridInputEnableChangedAction(bool value)
         {
             base.OnFileGridInputEnableChangedAction(value);
-            GetFileGrids(AppConst.VideoExts);
+            if (value) GetFileGrids();
         }
 
         public override void OnFileGridOutputEnableChangedAction(bool value)
         {
             base.OnFileGridOutputEnableChangedAction(value);
-            GetFileGrids(AppConst.VideoExts);
+            if (value) GetFileGrids();
         }
 
         [ObservableProperty]
@@ -91,17 +59,9 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
 
         public override void InitializeViewModel()
         {
-            InputSortSource =
-            [
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageInputSortName"], Value = "Name" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageInputSortLastWriteTime"], Value = "LastWriteTime" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageInputSortLength"], Value = "Length" }
-            ];
-            SortRuleSource =
-            [
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageInputSortRuleAsc"], Value = "Asc" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageInputSortRuleDesc"], Value = "Desc" }
-            ];
+            InputExts = [".videoinfo", ".json"];
+            OutputExts = AppConst.VideoExts;
+
             ClientSource =
             [
                 new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageClientBilibiliWindows"], Value = "Windows" },
@@ -139,6 +99,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
                 {
                     throw new Exception(Language.Instance["VideoOrganizationIndexPageOutputError"]);
                 }
+                //var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 var inputFiles = GetInputFiles(Input).Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
@@ -172,39 +133,6 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
         public new ObservableCollection<Service.Controls.FileGrid.Model> GetInputFiles(string input, string[]? exts = null)
         {
             var files = base.GetInputFiles(input, exts).AsEnumerable();
-            if (InputSort == "Name")
-            {
-                if (SortRule == "Asc")
-                {
-                    files = files.OrderBy(f => f.Name);
-                }
-                if (SortRule == "Desc")
-                {
-                    files = files.OrderByDescending(f => f.Name);
-                }
-            }
-            if (InputSort == "LastWriteTime")
-            {
-                if (SortRule == "Asc")
-                {
-                    files = files.OrderBy(f => f.LastWriteTime);
-                }
-                if (SortRule == "Desc")
-                {
-                    files = files.OrderByDescending(f => f.LastWriteTime);
-                }
-            }
-            if (InputSort == "Length")
-            {
-                if (SortRule == "Asc")
-                {
-                    files = files.OrderBy(f => f.Length);
-                }
-                if (SortRule == "Desc")
-                {
-                    files = files.OrderByDescending(f => f.Length);
-                }
-            }
             return new ObservableCollection<Service.Controls.FileGrid.Model>(files);
         }
     }

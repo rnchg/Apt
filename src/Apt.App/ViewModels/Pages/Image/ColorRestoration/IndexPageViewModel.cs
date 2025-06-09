@@ -69,20 +69,20 @@ namespace Apt.App.ViewModels.Pages.Image.ColorRestoration
             set => QualityItem = QualitySource.First(e => e.Value == value);
         }
 
-        public override void OnInputChangedAction(string value) => GetFileGrids(AppConst.ImageExts);
+        public override void OnInputChangedAction(string value) => GetFileGrids();
 
-        public override void OnOutputChangedAction(string value) => GetFileGrids(AppConst.ImageExts);
+        public override void OnOutputChangedAction(string value) => GetFileGrids();
 
         public override void OnFileGridInputEnableChangedAction(bool value)
         {
             base.OnFileGridInputEnableChangedAction(value);
-            GetFileGrids(AppConst.ImageExts);
+            if (value) GetFileGrids();
         }
 
         public override void OnFileGridOutputEnableChangedAction(bool value)
         {
             base.OnFileGridOutputEnableChangedAction(value);
-            GetFileGrids(AppConst.ImageExts);
+            if (value) GetFileGrids();
         }
 
         [ObservableProperty]
@@ -100,6 +100,9 @@ namespace Apt.App.ViewModels.Pages.Image.ColorRestoration
 
         public override void InitializeViewModel()
         {
+            InputExts = AppConst.ImageExts;
+            OutputExts = AppConst.ImageExts;
+
             ProviderSource = Adapter.CpuAndGpu;
 
             ModeSource =
