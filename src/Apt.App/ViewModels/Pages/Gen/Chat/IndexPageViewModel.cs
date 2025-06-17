@@ -45,7 +45,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         private int _promptMaxLength = Current.Config.GenChat.PromptMaxLength;
         partial void OnPromptMaxLengthChanged(int value)
         {
-            MessageLength = $"{Language.Instance["GenChatIndexPageMessage"]} [ {Message.Length}/{value} ]";
+            MessageLength = $"[ {Message.Length}/{value} ]";
         }
 
         [ObservableProperty]
@@ -59,7 +59,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
         partial void OnMessageChanged(string value)
         {
-            MessageLength = $"{Language.Instance["GenChatIndexPageMessage"]} [ {value.Length}/{PromptMaxLength} ]";
+            MessageLength = $"[ {value.Length}/{PromptMaxLength} ]";
         }
 
         [ObservableProperty]
@@ -129,17 +129,11 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         {
             try
             {
-                if (_appSettings.App.Pack == "Full")
-                {
-                    MessageInfo = Language.Instance["GenChatIndexPageModelInitWait"];
-                    await Task.Run(_indexService.Init);
-                    MessageEnabled = true;
-                    MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
-                }
-                else
-                {
-                    MessageInfo = Language.Instance["GenChatIndexPageLite"];
-                }
+                MessageLength = $"[ {Message.Length}/{PromptMaxLength} ]";
+                MessageInfo = Language.Instance["GenChatIndexPageModelInitWait"];
+                await Task.Run(_indexService.Init);
+                MessageEnabled = true;
+                MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
             }
             catch (Exception ex)
             {

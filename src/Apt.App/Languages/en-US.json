@@ -177,7 +177,6 @@
   "GenChatIndexPageModelProcessWait": "Processing model, please wait...",
   "GenChatIndexPageModelError": "Model error",
   "GenChatIndexPageModelInitFailed": "Failed to load model",
-  "GenChatIndexPageLite": "This function module cannot be used in the Lite version",
   "GenChatIndexPageHistoryCountNot2": "The history record requires at least one round of conversation",
   "GenChatIndexPageHistoryLast1NotAssistant": "The last entry in the history is not Assistant",
   "GenChatIndexPageHistoryLast2NotUser": "The second to last entry in the history record is not a User",

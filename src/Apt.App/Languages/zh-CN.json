@@ -177,7 +177,6 @@
   "GenChatIndexPageModelProcessWait": "正在处理模型，请稍等…",
   "GenChatIndexPageModelError": "模型错误",
   "GenChatIndexPageModelInitFailed": "加载模型失败",
-  "GenChatIndexPageLite": "精简版无法使用本功能模块",
   "GenChatIndexPageHistoryCountNot2": "历史记录至少需要一轮对话",
   "GenChatIndexPageHistoryLast1NotAssistant": "历史记录倒数第一条不是Assistant",
   "GenChatIndexPageHistoryLast2NotUser": "历史记录倒数第二条不是User",

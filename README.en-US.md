@@ -62,8 +62,6 @@ We will continue to integrate and optimize more AI models to meet the diverse ne
 ### Open source and download address
 
 - | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [Google Drive](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [Baidu Drive](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) | [Tencent Weiyun](https://share.weiyun.com/vGiBjW8d) |
-- **Full version**: includes all functions.
-- **Lite version**: includes all functions except [Generate Chat].
 
 ### Instructions and technical support
 

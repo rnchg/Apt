@@ -62,8 +62,6 @@
 ### 开源及下载地址
 
 - | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [谷歌云盘](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [百度云盘](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) | [腾讯微云](https://share.weiyun.com/vGiBjW8d) |
-- **完整版（Full）**：包含所有功能。
-- **精简版（Lite）**：包含除【生成对话】之外的所有功能。
 
 ### 使用说明及技术支持
 
