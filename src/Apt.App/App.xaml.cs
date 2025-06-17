@@ -53,7 +53,7 @@ namespace Apt.App
             var processes = System.Diagnostics.Process.GetProcessesByName(processName);
             if (processes.Length > 1)
             {
-                DialogHelper.ShowErrorDialog("The program is running and cannot be restarted !");
+                DialogHelper.ShowErrorDialog("The program is running and cannot be restarted.");
                 Environment.Exit(1);
             }
         }

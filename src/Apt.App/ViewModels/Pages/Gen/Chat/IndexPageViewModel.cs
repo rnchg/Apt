@@ -45,21 +45,21 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         private int _promptMaxLength = Current.Config.GenChat.PromptMaxLength;
         partial void OnPromptMaxLengthChanged(int value)
         {
-            MessageHeader = $"{Language.Instance["GenChatIndexPageMessage"]} [ {Message.Length}/{value} ]";
+            MessageLength = $"{Language.Instance["GenChatIndexPageMessage"]} [ {Message.Length}/{value} ]";
         }
 
         [ObservableProperty]
-        private string _messageHeader = null!;
+        private string _messageInfo = null!;
 
         [ObservableProperty]
-        private string _placeholder = null!;
+        private string _messageLength = null!;
 
         [ObservableProperty]
         private string _message = string.Empty;
 
         partial void OnMessageChanged(string value)
         {
-            MessageHeader = $"{Language.Instance["GenChatIndexPageMessage"]} [ {value.Length}/{PromptMaxLength} ]";
+            MessageLength = $"{Language.Instance["GenChatIndexPageMessage"]} [ {value.Length}/{PromptMaxLength} ]";
         }
 
         [ObservableProperty]
@@ -79,7 +79,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         {
             _cancellationTokenSource?.Cancel();
             SetViewCancel.Invoke();
-            Placeholder = Language.Instance["GenChatIndexPageInputPrompt"];
+            MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
         }
 
         [RelayCommand]
@@ -131,19 +131,19 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
             {
                 if (_appSettings.App.Pack == "Full")
                 {
-                    Placeholder = Language.Instance["GenChatIndexPageModelInitWait"];
+                    MessageInfo = Language.Instance["GenChatIndexPageModelInitWait"];
                     await Task.Run(_indexService.Init);
                     MessageEnabled = true;
-                    Placeholder = Language.Instance["GenChatIndexPageInputPrompt"];
+                    MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
                 }
                 else
                 {
-                    Placeholder = Language.Instance["GenChatIndexPageLite"];
+                    MessageInfo = Language.Instance["GenChatIndexPageLite"];
                 }
             }
             catch (Exception ex)
             {
-                Placeholder = Language.Instance["GenChatIndexPageModelInitFailed"];
+                MessageInfo = Language.Instance["GenChatIndexPageModelInitFailed"];
                 SnackbarService.ShowSnackbarError(ex.Message);
             }
         }
@@ -158,7 +158,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
                 SendEnabled = false;
 
-                Placeholder = Language.Instance["GenChatIndexPageModelProcessWait"];
+                MessageInfo = Language.Instance["GenChatIndexPageModelProcessWait"];
 
                 var prompt = string.Empty;
 
@@ -170,7 +170,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
                 await Task.Run(() => _indexService.Start(prompt, _cancellationTokenSource.Token));
 
-                Placeholder = Language.Instance["GenChatIndexPageInputPrompt"];
+                MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
             }
             catch (ActivationException ex)
             {

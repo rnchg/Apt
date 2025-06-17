@@ -35,19 +35,48 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
         public override void OnFileGridInputEnableChangedAction(bool value)
         {
             base.OnFileGridInputEnableChangedAction(value);
-            if (value) GetFileGrids();
+            if (value)
+            {
+                GetFileGrids();
+                TextViewVisibility = Visibility.Visible;
+                VideoViewVisibility = Visibility.Collapsed;
+            }
         }
 
         public override void OnFileGridOutputEnableChangedAction(bool value)
         {
             base.OnFileGridOutputEnableChangedAction(value);
-            if (value) GetFileGrids();
+            if (value)
+            {
+                GetFileGrids();
+                TextViewVisibility = Visibility.Collapsed;
+                VideoViewVisibility = Visibility.Visible;
+            }
         }
 
         [ObservableProperty]
         private Uri? _fileViewSource = null!;
 
-        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        [ObservableProperty]
+        private string? _textViewSource = null!;
+
+        [ObservableProperty]
+        private Visibility _textViewVisibility = Visibility.Visible;
+
+        [ObservableProperty]
+        private Visibility _videoViewVisibility = Visibility.Collapsed;
+
+        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value)
+        {
+            if (FileGridInputEnable && value?.FullName is not null)
+            {
+                TextViewSource = File.ReadAllText(value.FullName);
+            }
+            if (FileGridOutputEnable && value?.FullName is not null)
+            {
+                FileViewSource = Source.FileToUri(value.FullName);
+            }
+        }
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,

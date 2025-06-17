@@ -12,6 +12,7 @@
     d:DesignWidth="750"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    CloseButtonAppearance="Danger"
     CloseButtonText="{Binding [DashboardPagePlusDialogClose], Source={x:Static su:Language.Instance}}"
     DialogMaxWidth="800"
     mc:Ignorable="d">
@@ -24,7 +25,7 @@
         <StackPanel>
             <TextBlock
                 Margin="0,20"
-                FontSize="36"
+                FontSize="24"
                 Text="{Binding [DashboardPagePlusDialogContent1], Source={x:Static su:Language.Instance}}"
                 TextWrapping="WrapWithOverflow" />
             <TextBlock

@@ -19,7 +19,7 @@ namespace Apt.App.Views.Pages.Video.AutoWipe
                 if (!IsVisible) FileView.Pause();
             };
 
-            ViewModel.GetMaskAction += FileView.GetMask;
+            ViewModel.GetMaskAction += FileView.GetVideoMask;
 
             ViewModel.ClearMaskAction += FileView.ClearMask;
         }

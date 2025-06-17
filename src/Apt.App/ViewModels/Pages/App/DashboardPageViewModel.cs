@@ -14,13 +14,11 @@ namespace Apt.App.ViewModels.Pages.App
         private IContentDialogService _contentDialogService;
 
         [RelayCommand]
-        private void OnCardClick(string parameter)
+        private async Task OnCardClick(string parameter)
         {
             if (parameter == "Plus")
             {
-                //SnackbarService.ShowSnackbarInfo(Language.Instance["DashboardPageStayTuned"], timeout: 60);
-                var plusDialog = new PlusDialog(_contentDialogService.GetDialogHost());
-                _ = plusDialog.ShowAsync();
+                await new PlusDialog(_contentDialogService.GetDialogHost()).ShowAsync();
                 return;
             }
             _navigationService.Navigate(PageHelper.ToType(parameter, "Apt.App.Views.Pages", Assembly.GetExecutingAssembly()));

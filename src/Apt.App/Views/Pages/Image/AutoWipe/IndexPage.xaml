@@ -192,9 +192,9 @@
                 Header="{Binding [FileView], Source={x:Static su:Language.Instance}}">
                 <fv:View
                     x:Name="FileView"
-                    MediaControlVisibility="Collapsed"
-                    MediaProgressVisibility="Collapsed"
-                    MediaSource="{Binding ViewModel.FileViewSource}" />
+                    ImageSource="{Binding ViewModel.FileViewSource}"
+                    ImageVisibility="Visible"
+                    MaskVisibility="Visible" />
             </GroupBox>
             <GroupBox
                 Grid.Column="2"

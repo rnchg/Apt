@@ -14,7 +14,7 @@ namespace Apt.App.Views.Pages.Image.AutoWipe
 
             InitializeComponent();
 
-            ViewModel.GetMaskAction += FileView.GetMask;
+            ViewModel.GetMaskAction += FileView.GetImageMask;
             ViewModel.ClearMaskAction += FileView.ClearMask;
         }
     }

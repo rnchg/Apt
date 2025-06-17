@@ -37,63 +37,77 @@
         <GroupBox
             Grid.Row="1"
             Padding="10"
-            BorderThickness="0"
-            Header="{Binding ViewModel.MessageHeader}">
-            <Grid
-                Grid.Row="0"
-                MaxHeight="480"
-                IsEnabled="{Binding ViewModel.MessageEnabled}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <ui:TextBox
-                    x:Name="Prompt"
-                    Grid.Column="0"
-                    AcceptsReturn="True"
-                    MaxLength="{Binding ViewModel.PromptMaxLength}"
-                    PlaceholderText="{Binding ViewModel.Placeholder}"
-                    Text="{Binding ViewModel.Message, UpdateSourceTrigger=PropertyChanged}"
-                    TextWrapping="Wrap"
-                    VerticalScrollBarVisibility="Visible" />
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
+            BorderThickness="0">
+            <Grid MaxHeight="480" IsEnabled="{Binding ViewModel.MessageEnabled}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="0,0,0,6">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <ui:Button
-                        Grid.Row="0"
+                    <StackPanel
                         Grid.Column="0"
-                        Margin="6"
-                        Appearance="Info"
-                        Command="{Binding ViewModel.SetSendCommand}"
-                        Content="{Binding [GenChatIndexPageSend], Source={x:Static su:Language.Instance}}"
-                        IsEnabled="{Binding ViewModel.SendEnabled}" />
-                    <ui:Button
-                        Grid.Row="0"
+                        HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                        <TextBlock Text="{Binding ViewModel.MessageInfo}" />
+                    </StackPanel>
+                    <StackPanel
                         Grid.Column="1"
-                        Margin="6"
-                        Appearance="Caution"
-                        Command="{Binding ViewModel.SetCancelCommand}"
-                        Content="{Binding [GenChatIndexPageCancel], Source={x:Static su:Language.Instance}}" />
-                    <ui:Button
-                        Grid.Row="1"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <TextBlock Text="{Binding ViewModel.MessageLength}" />
+                    </StackPanel>
+                </Grid>
+                <ui:TextBox
+                    x:Name="Prompt"
+                    Grid.Row="1"
+                    AcceptsReturn="True"
+                    MaxLength="{Binding ViewModel.PromptMaxLength}"
+                    Text="{Binding ViewModel.Message, UpdateSourceTrigger=PropertyChanged}"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Visible" />
+                <Grid Grid.Row="2" Margin="0,6,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel
                         Grid.Column="0"
-                        Margin="6"
-                        Appearance="Success"
-                        Command="{Binding ViewModel.SetResetCommand}"
-                        Content="{Binding [GenChatIndexPageReset], Source={x:Static su:Language.Instance}}" />
-                    <ui:Button
-                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                        <ui:Button Margin="0,0,6,0" Content="{Binding [GenChatIndexPageImage], Source={x:Static su:Language.Instance}}" />
+                        <ui:Button Margin="0,0,6,0" Content="{Binding [GenChatIndexPageVideo], Source={x:Static su:Language.Instance}}" />
+                        <ui:Button Content="{Binding [GenChatIndexPageAudio], Source={x:Static su:Language.Instance}}" />
+                    </StackPanel>
+                    <StackPanel
                         Grid.Column="1"
-                        Margin="6"
-                        Appearance="Danger"
-                        Command="{Binding ViewModel.SetConfigCommand}"
-                        Content="{Binding [GenChatIndexPageConfig], Source={x:Static su:Language.Instance}}" />
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+                        <ui:Button
+                            Margin="0,0,6,0"
+                            Appearance="Danger"
+                            Command="{Binding ViewModel.SetConfigCommand}"
+                            Content="{Binding [GenChatIndexPageConfig], Source={x:Static su:Language.Instance}}" />
+                        <ui:Button
+                            Margin="0,0,6,0"
+                            Appearance="Success"
+                            Command="{Binding ViewModel.SetResetCommand}"
+                            Content="{Binding [GenChatIndexPageReset], Source={x:Static su:Language.Instance}}" />
+                        <ui:Button
+                            Margin="0,0,6,0"
+                            Appearance="Caution"
+                            Command="{Binding ViewModel.SetCancelCommand}"
+                            Content="{Binding [GenChatIndexPageCancel], Source={x:Static su:Language.Instance}}" />
+                        <ui:Button
+                            Appearance="Info"
+                            Command="{Binding ViewModel.SetSendCommand}"
+                            Content="{Binding [GenChatIndexPageSend], Source={x:Static su:Language.Instance}}"
+                            IsEnabled="{Binding ViewModel.SendEnabled}" />
+                    </StackPanel>
                 </Grid>
             </Grid>
         </GroupBox>

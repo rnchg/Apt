@@ -190,7 +190,11 @@
                 Padding="0,8,0,0"
                 BorderThickness="0"
                 Header="{Binding [FileView], Source={x:Static su:Language.Instance}}">
-                <fv:View x:Name="FileView" MediaSource="{Binding ViewModel.FileViewSource}" />
+                <fv:View
+                    x:Name="FileView"
+                    MaskVisibility="Visible"
+                    VideoSource="{Binding ViewModel.FileViewSource}"
+                    VideoVisibility="Visible" />
             </GroupBox>
             <GroupBox
                 Grid.Column="2"
