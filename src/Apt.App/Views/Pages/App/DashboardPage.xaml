@@ -644,7 +644,7 @@
                     Padding="24"
                     VerticalAlignment="Stretch"
                     Command="{Binding ViewModel.CardClickCommand}"
-                    CommandParameter="Plus"
+                    CommandParameter="Audio.VocalSplit.IndexPage"
                     IsChevronVisible="False">
                     <Grid>
                         <Grid.ColumnDefinitions>

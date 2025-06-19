@@ -4,11 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:fg="clr-namespace:Apt.Service.Controls.FileGrid;assembly=Apt.Service"
+    xmlns:fm="clr-namespace:Apt.Service.Controls.FileMessage;assembly=Apt.Service"
     xmlns:fv="clr-namespace:Apt.Service.Controls.FileView;assembly=Apt.Service"
     xmlns:local="clr-namespace:Apt.App.Views.Pages.Video.ColorRestoration"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:Apt.App.ViewModels.Pages.Video.ColorRestoration"
-    xmlns:rm="clr-namespace:Apt.Service.Controls.RunMessage;assembly=Apt.Service"
     xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     d:DataContext="{d:DesignInstance local:IndexPage,
@@ -217,8 +217,8 @@
                 Grid.Column="2"
                 Padding="0,8,0,0"
                 BorderThickness="0"
-                Header="{Binding [RunMessage], Source={x:Static su:Language.Instance}}">
-                <rm:View x:Name="RunMessage" CurrMessage="{Binding ViewModel.CurrMessage}" />
+                Header="{Binding [FileMessage], Source={x:Static su:Language.Instance}}">
+                <fm:View x:Name="FileMessage" CurrMessage="{Binding ViewModel.CurrMessage}" />
             </GroupBox>
         </Grid>
     </Grid>

@@ -116,6 +116,12 @@ namespace Apt.App.Extensions
             videoOrganizationIndexViewMode.Input = Current.Config.VideoOrganization.Input;
             videoOrganizationIndexViewMode.Output = Current.Config.VideoOrganization.Output;
             videoOrganizationIndexViewMode.Client = Current.Config.VideoOrganization.Client;
+
+            var audioVocalSplitViewModel = provider.GetRequiredService<ViewModels.Pages.Audio.VocalSplit.IndexPageViewModel>();
+            audioVocalSplitViewModel.Input = Current.Config.AudioVocalSplit.Input;
+            audioVocalSplitViewModel.Output = Current.Config.AudioVocalSplit.Output;
+            audioVocalSplitViewModel.Provider = Current.Config.AudioVocalSplit.Provider;
+            audioVocalSplitViewModel.Mode = Current.Config.AudioVocalSplit.Mode;
         }
 
         public static void SetConfig(this IServiceProvider provider)
@@ -230,6 +236,12 @@ namespace Apt.App.Extensions
             Current.Config.VideoOrganization.Input = videoOrganizationIndexViewMode.Input;
             Current.Config.VideoOrganization.Output = videoOrganizationIndexViewMode.Output;
             Current.Config.VideoOrganization.Client = videoOrganizationIndexViewMode.Client;
+
+            var audioVocalSplitViewModel = provider.GetRequiredService<ViewModels.Pages.Audio.VocalSplit.IndexPageViewModel>();
+            Current.Config.AudioVocalSplit.Input = audioVocalSplitViewModel.Input;
+            Current.Config.AudioVocalSplit.Output = audioVocalSplitViewModel.Output;
+            Current.Config.AudioVocalSplit.Provider = audioVocalSplitViewModel.Provider;
+            Current.Config.AudioVocalSplit.Mode = audioVocalSplitViewModel.Mode;
         }
     }
 }

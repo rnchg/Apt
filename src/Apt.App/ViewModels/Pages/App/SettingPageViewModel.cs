@@ -155,6 +155,7 @@ namespace Apt.App.ViewModels.Pages.App
             ServiceProvider.GetRequiredService<Video.FrameInterpolation.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Video.Matting.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Video.Organization.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Audio.VocalSplit.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetConfig();
         }
     }
