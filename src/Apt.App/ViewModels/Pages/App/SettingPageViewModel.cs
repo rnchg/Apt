@@ -44,8 +44,8 @@ namespace Apt.App.ViewModels.Pages.App
 
         public string Language
         {
-            get => LanguageItem.Value.ToString();
-            set => LanguageItem = LanguageSource.First(e => e.Value.ToString() == value);
+            get => LanguageItem.Value;
+            set => LanguageItem = LanguageSource.FirstOrDefault(e => e.Value == (value.StartsWith("zh") ? "zh-CN" : "en-US")) ?? LanguageSource.First();
         }
 
         partial void OnLanguageItemChanged(ComBoBoxItem<string> value)
@@ -63,8 +63,8 @@ namespace Apt.App.ViewModels.Pages.App
 
         public string Mode
         {
-            get => ModeItem.Value.ToString();
-            set => ModeItem = ModeSource.First(e => e.Value.ToString() == value);
+            get => ModeItem.Value;
+            set => ModeItem = ModeSource.First(e => e.Value == value);
         }
 
         partial void OnModeItemChanged(ComBoBoxItem<string> value)
