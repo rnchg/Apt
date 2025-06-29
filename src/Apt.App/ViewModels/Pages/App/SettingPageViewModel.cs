@@ -45,7 +45,7 @@ namespace Apt.App.ViewModels.Pages.App
         public string Language
         {
             get => LanguageItem.Value;
-            set => LanguageItem = LanguageSource.FirstOrDefault(e => e.Value == (value.StartsWith("zh") ? "zh-CN" : "en-US")) ?? LanguageSource.First();
+            set => LanguageItem = LanguageSource.FirstOrDefault(e => e.Value == value) ?? LanguageSource.First();
         }
 
         partial void OnLanguageItemChanged(ComBoBoxItem<string> value)
@@ -156,6 +156,7 @@ namespace Apt.App.ViewModels.Pages.App
             ServiceProvider.GetRequiredService<Video.Matting.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Video.Organization.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetRequiredService<Audio.VocalSplit.IndexPageViewModel>().InitializeViewModel();
+            ServiceProvider.GetRequiredService<Audio.Denoise.IndexPageViewModel>().InitializeViewModel();
             ServiceProvider.GetConfig();
         }
     }

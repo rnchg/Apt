@@ -122,6 +122,12 @@ namespace Apt.App.Extensions
             audioVocalSplitViewModel.Output = Current.Config.AudioVocalSplit.Output;
             audioVocalSplitViewModel.Provider = Current.Config.AudioVocalSplit.Provider;
             audioVocalSplitViewModel.Mode = Current.Config.AudioVocalSplit.Mode;
+
+            var audioDenoiseViewModel = provider.GetRequiredService<ViewModels.Pages.Audio.Denoise.IndexPageViewModel>();
+            audioDenoiseViewModel.Input = Current.Config.AudioDenoise.Input;
+            audioDenoiseViewModel.Output = Current.Config.AudioDenoise.Output;
+            audioDenoiseViewModel.Provider = Current.Config.AudioDenoise.Provider;
+            audioDenoiseViewModel.Mode = Current.Config.AudioDenoise.Mode;
         }
 
         public static void SetConfig(this IServiceProvider provider)
@@ -242,6 +248,12 @@ namespace Apt.App.Extensions
             Current.Config.AudioVocalSplit.Output = audioVocalSplitViewModel.Output;
             Current.Config.AudioVocalSplit.Provider = audioVocalSplitViewModel.Provider;
             Current.Config.AudioVocalSplit.Mode = audioVocalSplitViewModel.Mode;
+
+            var audioDenoiseViewModel = provider.GetRequiredService<ViewModels.Pages.Audio.Denoise.IndexPageViewModel>();
+            Current.Config.AudioDenoise.Input = audioDenoiseViewModel.Input;
+            Current.Config.AudioDenoise.Output = audioDenoiseViewModel.Output;
+            Current.Config.AudioDenoise.Provider = audioDenoiseViewModel.Provider;
+            Current.Config.AudioDenoise.Mode = audioDenoiseViewModel.Mode;
         }
     }
 }

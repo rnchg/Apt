@@ -83,7 +83,7 @@ namespace Apt.App.ViewModels.Windows.App
                     MenuItemsSource = new ObservableCollection<object>()
                     {
                         new NavigationViewItem(Language.Instance["MainWindowAudioVocalSplit"], SymbolRegular.MusicNote224, typeof(Views.Pages.Audio.VocalSplit.IndexPage)),
-                        //new NavigationViewItem(Language.Instance["MainWindowAudioDenoise"], SymbolRegular.HeadphonesSoundWave24, typeof(Views.Pages.Audio.VocalSplit.IndexPage)),
+                        new NavigationViewItem(Language.Instance["MainWindowAudioDenoise"], SymbolRegular.HeadphonesSoundWave24, typeof(Views.Pages.Audio.Denoise.IndexPage)),
                         //new NavigationViewItem(Language.Instance["MainWindowAudioTTS"], SymbolRegular.SoundWaveCircle24, typeof(Views.Pages.Audio.VocalSplit.IndexPage)),
                         //new NavigationViewItem(Language.Instance["MainWindowAudioSTT"], SymbolRegular.ClipboardTextLtr24, typeof(Views.Pages.Audio.VocalSplit.IndexPage)),
                     },
