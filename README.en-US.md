@@ -41,7 +41,7 @@ Free and open source, improve user productivity, and protect privacy and data se
 ### Audio processing
 
 - **Audio Vocal Split**: Accurately separate the human voice and accompaniment in the audio, and restore the original accompaniment, human voice, etc.
-- **Audio Denoise (under testing)**: Intelligently identify and remove interference noise in the audio, and restore clear original sound.
+- **Audio Denoise**: Intelligently identify and remove interference noise in the audio, and restore clear original sound.
 - **Audio Text to Speech (under testing)**: Generate cloned sounds based on text content, accurately restore timbre, emotion, and speech speed.
 - **Audio Speech to Text (under testing)**: Intelligent real-time analysis of speech, automatic generation of text content.
 
