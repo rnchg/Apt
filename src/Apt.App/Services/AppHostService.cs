@@ -1,5 +1,4 @@
 ﻿using Apt.App.Extensions;
-using Apt.App.Interfaces;
 using Apt.App.ViewModels.Pages.App;
 using Apt.App.Views.Pages.App;
 using Apt.App.Views.Windows.App;
@@ -7,13 +6,15 @@ using Apt.Core.Utility;
 using Apt.Service.Extensions;
 using Common.NETCore.Utility;
 using Microsoft.Extensions.Logging;
+using Wpf.Ui;
 
 namespace Apt.App.Services
 {
-    public class AppHostService : IHostedService
+    public class AppHostService : IHostedService, IAsyncDisposable
     {
         private readonly ILogger<AppHostService> _logger;
         private readonly IServiceProvider _serviceProvider;
+        private INavigationWindow? _navigationWindow;
 
         public AppHostService(
             ILogger<AppHostService> logger,
@@ -26,44 +27,42 @@ namespace Apt.App.Services
             Session.ServiceProvider = _serviceProvider;
         }
 
-        public Task StartAsync(CancellationToken cancellationToken)
+        public async Task StartAsync(CancellationToken cancellationToken)
         {
             Current.GetConfig();
             Language.Instance.Init();
             _serviceProvider.GetConfig();
             _logger.LogInformation($"--------Start--------");
-            return HandleActivationAsync();
+            await HandleActivationAsync();
         }
 
-        public Task StopAsync(CancellationToken cancellationToken)
+        public async Task StopAsync(CancellationToken cancellationToken)
         {
             _serviceProvider.SetConfig();
             Current.SetConfig();
             _logger.LogInformation($"--------Stop--------");
-            return Task.CompletedTask;
+            await Task.CompletedTask;
         }
 
-        private Task HandleActivationAsync()
+        public async ValueTask DisposeAsync()
         {
-            if (Application.Current.Windows.OfType<MainWindow>().Any())
-            {
-                return Task.CompletedTask;
-            }
-            var mainWindow = _serviceProvider.GetRequiredService<IWindow>();
-            mainWindow.Loaded += OnMainWindowLoaded;
-            mainWindow?.Show();
-            return Task.CompletedTask;
+            _logger.LogInformation($"--------Dispose--------");
+            await ValueTask.CompletedTask;
         }
 
-        private void OnMainWindowLoaded(object sender, RoutedEventArgs e)
+        private async Task HandleActivationAsync()
         {
-            if (sender is not MainWindow mainWindow)
+            await Task.CompletedTask;
+            if (!Application.Current.Windows.OfType<MainWindow>().Any())
             {
-                return;
+                _navigationWindow = (_serviceProvider.GetService(typeof(INavigationWindow)) as INavigationWindow)!;
+                _navigationWindow!.ShowWindow();
+
+                _ = _navigationWindow.Navigate(typeof(DashboardPage));
+                _ = _serviceProvider.GetRequiredService<SettingPageViewModel>();
+                _ = _serviceProvider.ValidateLicense();
             }
-            var settingPageViewModel = _serviceProvider.GetRequiredService<SettingPageViewModel>();
-            _ = mainWindow.NavigationView.Navigate(typeof(DashboardPage));
-            _serviceProvider.ValidateLicense();
+            await Task.CompletedTask;
         }
     }
 }

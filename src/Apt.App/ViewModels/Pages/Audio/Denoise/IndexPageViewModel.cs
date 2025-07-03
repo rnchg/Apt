@@ -121,7 +121,7 @@ namespace Apt.App.ViewModels.Pages.Audio.Denoise
                     throw new Exception(Language.Instance["AudioDenoiseIndexPageFileError"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Provider, Mode);
+                await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["AudioDenoiseIndexPageProcessEnd"]);
 

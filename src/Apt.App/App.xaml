@@ -15,7 +15,6 @@
                 <ui:ControlsDictionary />
                 <ResourceDictionary Source="pack://application:,,,/Apt.Service;component/Resources/Default.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <sc:NullImageConverter x:Key="NullImageConverter" />
             <sc:VersionConverter x:Key="VersionConverter" />
         </ResourceDictionary>
     </Application.Resources>

@@ -131,7 +131,7 @@ namespace Apt.App.ViewModels.Pages.Image.AutoWipe
                     throw new Exception(Language.Instance["ImageAutoWipeIndexPageInputMaskEmpty"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Provider, Mode, maskData);
+                await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, maskData);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageAutoWipeIndexPageProcessEnd"]);
 

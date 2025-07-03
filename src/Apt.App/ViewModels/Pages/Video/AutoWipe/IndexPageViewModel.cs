@@ -130,7 +130,7 @@ namespace Apt.App.ViewModels.Pages.Video.AutoWipe
                     throw new Exception(Language.Instance["VideoAutoWipeIndexPageInputMaskEmpty"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Provider, Mode, maskData);
+                await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, maskData);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoAutoWipeIndexPageProcessEnd"]);
 

@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}}"
+    Title="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}, Mode=OneWay}"
     Width="1280"
     Height="720"
     MinWidth="960"
@@ -18,43 +18,30 @@
     d:DesignWidth="960"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    Closing="FluentWindow_Closing"
     ExtendsContentIntoTitleBar="True"
-    SizeChanged="MainWindow_OnSizeChanged"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     WindowBackdropType="Mica"
     WindowCornerPreference="Default"
     WindowStartupLocation="CenterScreen"
     WindowState="Maximized"
     mc:Ignorable="d">
+
     <ui:FluentWindow.InputBindings>
         <KeyBinding
             Key="F"
             Command="{Binding ElementName=AutoSuggestBox, Path=FocusCommand}"
             Modifiers="Control" />
     </ui:FluentWindow.InputBindings>
+
     <Grid>
         <ui:NavigationView
             x:Name="NavigationView"
-            Padding="20,10,20,10"
-            BreadcrumbBar="{Binding ElementName=BreadcrumbBar}"
-            EnableDebugMessages="False"
-            FooterMenuItemsSource="{Binding ViewModel.FooterMenuItems}"
-            FrameMargin="0"
-            IsBackButtonVisible="Visible"
-            IsPaneToggleVisible="True"
-            MenuItemsSource="{Binding ViewModel.MenuItems}"
+            Padding="16,8,16,8"
+            FooterMenuItemsSource="{Binding ViewModel.FooterMenuItems, Mode=OneWay}"
+            MenuItemsSource="{Binding ViewModel.MenuItems, Mode=OneWay}"
             OpenPaneLength="240"
-            PaneClosed="NavigationView_OnPaneClosed"
             PaneDisplayMode="Left"
-            PaneOpened="NavigationView_OnPaneOpened"
-            SelectionChanged="OnNavigationSelectionChanged"
-            TitleBar="{Binding ElementName=TitleBar}"
-            Transition="FadeInWithSlide">
-            <!--<ui:NavigationView.Header>
-                <StackPanel Margin="42,32,42,20">
-                    <ui:BreadcrumbBar x:Name="BreadcrumbBar" />
-                </StackPanel>
-            </ui:NavigationView.Header>-->
+            TitleBar="{Binding ElementName=TitleBar}">
             <ui:NavigationView.AutoSuggestBox>
                 <ui:AutoSuggestBox x:Name="AutoSuggestBox" PlaceholderText="{Binding [MainWindowSearch], Source={x:Static su:Language.Instance}}">
                     <ui:AutoSuggestBox.Icon>
@@ -64,20 +51,21 @@
                     </ui:AutoSuggestBox.Icon>
                 </ui:AutoSuggestBox>
             </ui:NavigationView.AutoSuggestBox>
-            <ui:NavigationView.ContentOverlay>
-                <Grid>
-                    <ui:SnackbarPresenter x:Name="SnackbarPresenter" />
-                </Grid>
-            </ui:NavigationView.ContentOverlay>
+            <ui:NavigationView.Header>
+                <StackPanel Margin="32,16,32,16">
+                    <ui:BreadcrumbBar x:Name="BreadcrumbBar" />
+                </StackPanel>
+            </ui:NavigationView.Header>
         </ui:NavigationView>
-        <ContentPresenter x:Name="RootContentDialog" Grid.Row="0" />
-        <ui:TitleBar
-            x:Name="TitleBar"
-            Title="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}}"
-            Grid.Row="0">
+
+        <ui:TitleBar x:Name="TitleBar" Title="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}, Mode=OneWay}">
             <ui:TitleBar.Icon>
-                <ui:ImageIcon Source="/Apt.App;component/Assets/App.ico" />
+                <ui:ImageIcon Source="pack://application:,,,/Assets/App.ico" />
             </ui:TitleBar.Icon>
         </ui:TitleBar>
+
+        <ContentPresenter x:Name="ContentPresenter" />
+
+        <ui:SnackbarPresenter x:Name="SnackbarPresenter" />
     </Grid>
 </ui:FluentWindow>

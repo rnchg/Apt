@@ -166,7 +166,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
                     throw new Exception(Language.Instance["ImageConvert3dIndexPageFileError"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Format, Shift, PopOut, CrossEye);
+                await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Format, Shift, PopOut, CrossEye);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageConvert3dIndexPageProcessEnd"]);
 

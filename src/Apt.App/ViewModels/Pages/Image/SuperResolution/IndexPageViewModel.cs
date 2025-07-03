@@ -136,7 +136,7 @@ namespace Apt.App.ViewModels.Pages.Image.SuperResolution
                     throw new Exception(Language.Instance["ImageSuperResolutionIndexPageFileError"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Scale);
+                await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Scale);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageSuperResolutionIndexPageProcessEnd"]);
 

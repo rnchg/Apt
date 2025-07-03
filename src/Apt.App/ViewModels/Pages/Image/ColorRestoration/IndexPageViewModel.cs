@@ -147,7 +147,7 @@ namespace Apt.App.ViewModels.Pages.Image.ColorRestoration
                     throw new Exception(Language.Instance["ImageColorRestorationIndexPageFileError"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Quality);
+                await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Quality);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageColorRestorationIndexPageProcessEnd"]);
 

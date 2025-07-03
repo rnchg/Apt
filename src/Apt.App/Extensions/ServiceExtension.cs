@@ -1,7 +1,7 @@
-﻿using Apt.App.Interfaces;
-using Apt.App.Services;
+﻿using Apt.App.Services;
 using Apt.App.ViewModels.Windows.App;
 using Apt.App.Views.Windows.App;
+using Wpf.Ui;
 
 namespace Apt.App.Extensions
 {
@@ -13,7 +13,7 @@ namespace Apt.App.Extensions
 
             services.AddHostedService<AppHostService>();
 
-            services.AddSingleton<IWindow, MainWindow>();
+            services.AddSingleton<INavigationWindow, MainWindow>();
             services.AddSingleton<MainWindowViewModel>();
 
             services.AddTransient<Views.Windows.Gen.Chat.ConfigWindow>();

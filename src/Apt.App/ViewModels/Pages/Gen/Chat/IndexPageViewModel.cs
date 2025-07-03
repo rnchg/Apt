@@ -131,7 +131,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
             {
                 MessageLength = $"[ {Message.Length}/{PromptMaxLength} ]";
                 MessageInfo = Language.Instance["GenChatIndexPageModelInitWait"];
-                await Task.Run(_indexService.Init);
+                await _indexService.InitAsync();
                 MessageEnabled = true;
                 MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
             }
@@ -162,7 +162,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
                 _cancellationTokenSource = new CancellationTokenSource();
 
-                await Task.Run(() => _indexService.Start(prompt, _cancellationTokenSource.Token));
+                await _indexService.StartAsync(prompt, _cancellationTokenSource.Token);
 
                 MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
             }

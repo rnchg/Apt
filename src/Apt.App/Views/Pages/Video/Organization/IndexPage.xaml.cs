@@ -18,6 +18,9 @@ namespace Apt.App.Views.Pages.Video.Organization
             {
                 if (!IsVisible) FileView.Pause();
             };
+
+            ViewModel.TextLoadAction += FileView.TextInfo;
+            ViewModel.VideoLoadAction += FileView.VideoInfo;
         }
     }
 }

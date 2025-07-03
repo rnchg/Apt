@@ -8,7 +8,6 @@
     xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="DashboardPage"
-    Margin="0,32,0,0"
     d:DataContext="{d:DesignInstance local:DashboardPage,
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="640"
@@ -26,15 +25,16 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Border
             Grid.Row="0"
             Height="200"
+            Margin="0,0,0,16"
             CornerRadius="8">
             <Border.Background>
                 <ImageBrush
-                    ImageSource="/Apt.App;component/Assets/Dashboard.jpg"
+                    ImageSource="pack://application:,,,/Assets/Dashboard.jpg"
                     RenderOptions.BitmapScalingMode="HighQuality"
                     Stretch="UniformToFill" />
             </Border.Background>
@@ -63,7 +63,7 @@
                 </Grid>
             </Border>
         </Border>
-        <Grid Grid.Row="1" Margin="0,16,0,0">
+        <Grid Grid.Row="1" Margin="0,0,0,16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
@@ -105,7 +105,7 @@
                 </ui:CardAction>
             </Grid>
         </Grid>
-        <Grid Grid.Row="2" Margin="0,16,0,0">
+        <Grid Grid.Row="2" Margin="0,0,0,16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -366,7 +366,7 @@
                 </ui:CardAction>
             </Grid>
         </Grid>
-        <Grid Grid.Row="3" Margin="0,16,0,0">
+        <Grid Grid.Row="3" Margin="0,0,0,16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -627,7 +627,7 @@
                 </ui:CardAction>
             </Grid>
         </Grid>
-        <Grid Grid.Row="4" Margin="0,16,0,0">
+        <Grid Grid.Row="4" Margin="0,0,0,16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
@@ -760,7 +760,7 @@
                 </ui:CardAction>
             </Grid>
         </Grid>
-        <Grid Grid.Row="5" Margin="0,16,0,0">
+        <Grid Grid.Row="5" Margin="0,0,0,16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

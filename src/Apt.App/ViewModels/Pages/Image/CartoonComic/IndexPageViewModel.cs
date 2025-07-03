@@ -143,7 +143,7 @@ namespace Apt.App.ViewModels.Pages.Image.CartoonComic
                     throw new Exception(Language.Instance["ImageCartoonComicIndexPageFileError"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Quality);
+                await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Quality);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageCartoonComicIndexPageProcessEnd"]);
 

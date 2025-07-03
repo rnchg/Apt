@@ -17,6 +17,12 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
         private IndexService _indexService = null!;
 
         [ObservableProperty]
+        private Action _textLoadAction = null!;
+
+        [ObservableProperty]
+        private Action _videoLoadAction = null!;
+
+        [ObservableProperty]
         private ObservableCollection<ComBoBoxItem<string>> _clientSource = [];
 
         [ObservableProperty]
@@ -71,10 +77,12 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
             if (FileGridInputEnable && value?.FullName is not null)
             {
                 TextViewSource = File.ReadAllText(value.FullName);
+                TextLoadAction?.Invoke();
             }
             if (FileGridOutputEnable && value?.FullName is not null)
             {
                 FileViewSource = Source.FileToUri(value.FullName);
+                VideoLoadAction?.Invoke();
             }
         }
 
@@ -135,7 +143,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
                     throw new Exception(Language.Instance["VideoOrganizationIndexPageFileError"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Client);
+                await _indexService.StartAsync(Input, Output, inputFiles, Client);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoOrganizationIndexPageProcessEnd"]);
 

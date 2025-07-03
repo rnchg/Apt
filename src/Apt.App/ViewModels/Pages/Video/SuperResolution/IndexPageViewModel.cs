@@ -136,7 +136,7 @@ namespace Apt.App.ViewModels.Pages.Video.SuperResolution
                     throw new Exception(Language.Instance["VideoSuperResolutionIndexPageFileError"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Scale);
+                await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Scale);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoSuperResolutionIndexPageProcessEnd"]);
 

@@ -167,7 +167,7 @@ namespace Apt.App.ViewModels.Pages.Video.Convert3d
                     throw new Exception(Language.Instance["VideoConvert3dIndexPageFileError"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Format, Shift, PopOut, CrossEye);
+                await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Format, Shift, PopOut, CrossEye);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoConvert3dIndexPageProcessEnd"]);
 

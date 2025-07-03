@@ -1,84 +1,63 @@
-﻿using Apt.App.Interfaces;
-using Apt.App.Views.Pages.App;
-using Apt.Service.Utility;
+﻿using Apt.Service.Utility;
+using System.ComponentModel;
 using Wpf.Ui;
+using Wpf.Ui.Abstractions;
 using Wpf.Ui.Controls;
 
 namespace Apt.App.Views.Windows.App
 {
-    public partial class MainWindow : IWindow
+    public partial class MainWindow : INavigationWindow
     {
         public ViewModels.Windows.App.MainWindowViewModel ViewModel { get; }
 
         public MainWindow(
             ViewModels.Windows.App.MainWindowViewModel viewModel,
             INavigationService navigationService,
-            IServiceProvider serviceProvider,
-            ISnackbarService snackbarService,
-            IContentDialogService contentDialogService)
+            IContentDialogService contentDialogService,
+            ISnackbarService snackbarService)
         {
-            Wpf.Ui.Appearance.SystemThemeWatcher.Watch(this);
-
             ViewModel = viewModel;
             DataContext = this;
 
+            Wpf.Ui.Appearance.SystemThemeWatcher.Watch(this);
+
             InitializeComponent();
 
-            snackbarService.SetSnackbarPresenter(SnackbarPresenter);
             navigationService.SetNavigationControl(NavigationView);
-            contentDialogService.SetDialogHost(RootContentDialog);
+            contentDialogService.SetDialogHost(ContentPresenter);
+            snackbarService.SetSnackbarPresenter(SnackbarPresenter);
         }
 
-        private bool _isUserClosedPane;
+        public INavigationView GetNavigation() => NavigationView;
 
-        private bool _isPaneOpenedOrClosedFromCode;
+        public bool Navigate(Type pageType) => NavigationView.Navigate(pageType);
 
-        private void OnNavigationSelectionChanged(object sender, RoutedEventArgs e)
+        public void SetPageService(INavigationViewPageProvider navigationViewPageProvider) => NavigationView.SetPageProviderService(navigationViewPageProvider);
+
+        public void ShowWindow() => Show();
+
+        public void CloseWindow() => Close();
+
+        protected override async void OnClosing(CancelEventArgs e)
         {
-            if (sender is not NavigationView navigationView)
-            {
-                return;
-            }
-            NavigationView.SetCurrentValue(
-                NavigationView.HeaderVisibilityProperty,
-                navigationView.SelectedItem?.TargetPageType != typeof(DashboardPage)
-                    ? Visibility.Visible
-                    : Visibility.Collapsed
-            );
-        }
-
-        private void MainWindow_OnSizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if (_isUserClosedPane)
-            {
-                return;
-            }
-            _isPaneOpenedOrClosedFromCode = true;
-            NavigationView.SetCurrentValue(NavigationView.IsPaneOpenProperty, e.NewSize.Width > 1200);
-            _isPaneOpenedOrClosedFromCode = false;
-        }
-
-        private void NavigationView_OnPaneOpened(NavigationView sender, RoutedEventArgs args)
-        {
-            if (_isPaneOpenedOrClosedFromCode)
-            {
-                return;
-            }
-            _isUserClosedPane = false;
-        }
-
-        private void NavigationView_OnPaneClosed(NavigationView sender, RoutedEventArgs args)
-        {
-            if (_isPaneOpenedOrClosedFromCode)
-            {
-                return;
-            }
-            _isUserClosedPane = true;
-        }
-
-        private async void FluentWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
+            base.OnClosing(e);
             await Message.ShowMessageConfirm(Core.Utility.Language.Instance["MainWindowExitConfirm"], cancel: () => e.Cancel = true);
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Application.Current.Shutdown();
+        }
+
+        INavigationView INavigationWindow.GetNavigation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetServiceProvider(IServiceProvider serviceProvider)
+        {
+            throw new NotImplementedException();
         }
     }
 }

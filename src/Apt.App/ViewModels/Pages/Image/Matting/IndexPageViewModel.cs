@@ -119,7 +119,7 @@ namespace Apt.App.ViewModels.Pages.Image.Matting
                     throw new Exception(Language.Instance["ImageMattingIndexPageFileError"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Provider, Mode);
+                await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageMattingIndexPageProcessEnd"]);
 

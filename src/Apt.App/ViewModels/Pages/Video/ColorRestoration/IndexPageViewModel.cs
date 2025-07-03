@@ -147,7 +147,7 @@ namespace Apt.App.ViewModels.Pages.Video.ColorRestoration
                     throw new Exception(Language.Instance["VideoColorRestorationIndexPageFileError"]);
                 }
 
-                await _indexService.Start(Input, Output, inputFiles, Provider, Mode, Quality);
+                await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Quality);
 
                 SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoColorRestorationIndexPageProcessEnd"]);
 
