@@ -26,7 +26,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
         public string Provider
         {
             get => ProviderItem.Value;
-            set => ProviderItem = ProviderSource.First(e => e.Value == value);
+            set => ProviderItem = ProviderSource.FirstOrDefault(e => e.Value == value) ?? ProviderSource.First();
         }
 
         [ObservableProperty]
@@ -38,7 +38,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
         public string Mode
         {
             get => ModeItem.Value;
-            set => ModeItem = ModeSource.First(e => e.Value == value);
+            set => ModeItem = ModeSource.FirstOrDefault(e => e.Value == value) ?? ModeSource.First();
         }
 
         [ObservableProperty]
@@ -49,7 +49,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
         public string Format
         {
             get => FormatItem.Value;
-            set => FormatItem = FormatSource.First(e => e.Value == value);
+            set => FormatItem = FormatSource.FirstOrDefault(e => e.Value == value) ?? FormatSource.First();
         }
 
         [ObservableProperty]
@@ -60,7 +60,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
         public int Shift
         {
             get => ShiftItem.Value;
-            set => ShiftItem = ShiftSource.First(e => e.Value == value);
+            set => ShiftItem = ShiftSource.FirstOrDefault(e => e.Value == value) ?? ShiftSource.First();
         }
 
         [ObservableProperty]
@@ -103,7 +103,7 @@ namespace Apt.App.ViewModels.Pages.Image.Convert3d
             InputExts = AppConst.ImageExts;
             OutputExts = AppConst.ImageExts;
 
-            ProviderSource = Adapter.CpuAndGpu;
+            ProviderSource = Adapter.CpuAndDml;
 
             ModeSource =
             [

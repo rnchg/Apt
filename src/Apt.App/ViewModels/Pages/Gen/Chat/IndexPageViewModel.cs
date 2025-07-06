@@ -2,14 +2,17 @@
 using Apt.App.Views.Windows.Gen.Chat;
 using Apt.Core.Consts;
 using Apt.Core.Exceptions;
+using Apt.Core.Models;
 using Apt.Core.Services.Pages.Gen.Chat;
 using Apt.Core.Utility;
+using Apt.Service.Adapters.Windows;
 using Apt.Service.Controls.ChatView;
 using Apt.Service.Extensions;
 using Apt.Service.Services;
 using Apt.Service.ViewModels.Base;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Services.Pages.Gen.Chat;
 using Wpf.Ui;
 
 namespace Apt.App.ViewModels.Pages.Gen.Chat
@@ -22,22 +25,32 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
         private bool _isInitialized = false;
 
-        private Model _assistant = null!;
+        [ObservableProperty]
+        private ObservableCollection<ComBoBoxItem<string>> _providerSource = [];
 
         [ObservableProperty]
-        private Func<Model, bool> _addModel = null!;
+        private ComBoBoxItem<string> _providerItem = null!;
+
+        public string Provider
+        {
+            get => ProviderItem.Value;
+            set => ProviderItem = ProviderSource.FirstOrDefault(e => e.Value == value) ?? ProviderSource.First();
+        }
 
         [ObservableProperty]
-        private Func<Model, bool> _sendModel = null!;
+        private bool _think = false;
 
         [ObservableProperty]
-        private Func<Model, (string, Model)> _sendAndBuildModel = null!;
+        private Func<string, bool, (List<ChatModel>, Model?, Model?)> _sendAndBuildModel = null!;
 
         [ObservableProperty]
-        private Action _setViewCancel = null!;
+        private Action<string, bool, Model?, Model?> _receiveMessage = null!;
 
         [ObservableProperty]
-        private Action _setViewClear = null!;
+        private Action _cancelMessage = null!;
+
+        [ObservableProperty]
+        private Action _resetMessage = null!;
 
         private CancellationTokenSource _cancellationTokenSource = null!;
 
@@ -78,7 +91,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         private void SetCancel()
         {
             _cancellationTokenSource?.Cancel();
-            SetViewCancel.Invoke();
+            CancelMessage.Invoke();
             MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
         }
 
@@ -86,7 +99,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         private void SetReset()
         {
             SetCancel();
-            SetViewClear.Invoke();
+            ResetMessage.Invoke();
         }
 
         [RelayCommand]
@@ -113,12 +126,11 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
         private void InitializeViewModel()
         {
+            ProviderSource = Adapter.CpuAndDml;
+
             Models.Add(new Model() { Type = GenConst.Chat.TypeSystem, Text = Language.Instance["GenChatHelp"] });
 
-            _indexService = new IndexService()
-            {
-                SetSequence = (sequence) => _assistant.Text += sequence
-            };
+            _indexService = new IndexService();
 
             _ = Init();
 
@@ -154,22 +166,22 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
                 MessageInfo = Language.Instance["GenChatIndexPageModelProcessWait"];
 
-                var prompt = string.Empty;
-
-                (prompt, _assistant) = SendAndBuildModel.Invoke(new Model() { Type = GenConst.Chat.TypeUser, Text = Message });
+                var (prompts, _thinkMessage, _assistantMessage) = SendAndBuildModel.Invoke(Message, Think);
 
                 Message = string.Empty;
 
                 _cancellationTokenSource = new CancellationTokenSource();
 
-                await _indexService.StartAsync(prompt, _cancellationTokenSource.Token);
+                _indexService.ReceiveMessage = (e) => ReceiveMessage(e, Think, _thinkMessage, _assistantMessage);
+
+                await _indexService.StartAsync(prompts, Think, Provider, _cancellationTokenSource.Token);
 
                 MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
             }
             catch (ActivationException ex)
             {
                 ServiceProvider.ShowLicense(ex.Message);
-                SetViewCancel.Invoke();
+                CancelMessage.Invoke();
                 Message = string.Empty;
             }
             catch (ProcessStopException)

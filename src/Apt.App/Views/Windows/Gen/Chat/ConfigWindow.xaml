@@ -58,7 +58,7 @@
                 <ui:NumberBox
                     Grid.Row="0"
                     MaxDecimalPlaces="0"
-                    Maximum="65535"
+                    Maximum="32768"
                     Minimum="1"
                     Value="{Binding ViewModel.PromptMaxLength, UpdateSourceTrigger=PropertyChanged}" />
             </GroupBox>

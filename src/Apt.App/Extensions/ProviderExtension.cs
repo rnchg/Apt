@@ -6,6 +6,10 @@ namespace Apt.App.Extensions
     {
         public static void GetConfig(this IServiceProvider provider)
         {
+            var genChatViewModel = provider.GetRequiredService<ViewModels.Pages.Gen.Chat.IndexPageViewModel>();
+            genChatViewModel.Provider = Current.Config.GenChat.Provider;
+            genChatViewModel.Think = Current.Config.GenChat.Think;
+
             var imageSuperResolutionViewModel = provider.GetRequiredService<ViewModels.Pages.Image.SuperResolution.IndexPageViewModel>();
             imageSuperResolutionViewModel.Input = Current.Config.ImageSuperResolution.Input;
             imageSuperResolutionViewModel.Output = Current.Config.ImageSuperResolution.Output;
@@ -132,6 +136,10 @@ namespace Apt.App.Extensions
 
         public static void SetConfig(this IServiceProvider provider)
         {
+            var genChatViewModel = provider.GetRequiredService<ViewModels.Pages.Gen.Chat.IndexPageViewModel>();
+            Current.Config.GenChat.Provider = genChatViewModel.Provider;
+            Current.Config.GenChat.Think = genChatViewModel.Think;
+
             var imageSuperResolutionViewModel = provider.GetRequiredService<ViewModels.Pages.Image.SuperResolution.IndexPageViewModel>();
             Current.Config.ImageSuperResolution.Input = imageSuperResolutionViewModel.Input;
             Current.Config.ImageSuperResolution.Output = imageSuperResolutionViewModel.Output;

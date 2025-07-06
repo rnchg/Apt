@@ -31,7 +31,7 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
         public string Client
         {
             get => ClientItem.Value;
-            set => ClientItem = ClientSource.First(e => e.Value == value);
+            set => ClientItem = ClientSource.FirstOrDefault(e => e.Value == value) ?? ClientSource.First();
         }
 
         public override void OnInputChangedAction(string value) => GetFileGrids();

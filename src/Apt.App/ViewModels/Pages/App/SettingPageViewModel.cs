@@ -26,7 +26,7 @@ namespace Apt.App.ViewModels.Pages.App
         public string Theme
         {
             get => ThemeItem.Value;
-            set => ThemeItem = ThemeSource.First(e => e.Value == value);
+            set => ThemeItem = ThemeSource.FirstOrDefault(e => e.Value == value) ?? ThemeSource.First();
         }
 
         partial void OnThemeItemChanged(ComBoBoxItem<string, ApplicationTheme> value)
@@ -64,7 +64,7 @@ namespace Apt.App.ViewModels.Pages.App
         public string Mode
         {
             get => ModeItem.Value;
-            set => ModeItem = ModeSource.First(e => e.Value == value);
+            set => ModeItem = ModeSource.FirstOrDefault(e => e.Value == value) ?? ModeSource.First();
         }
 
         partial void OnModeItemChanged(ComBoBoxItem<string> value)

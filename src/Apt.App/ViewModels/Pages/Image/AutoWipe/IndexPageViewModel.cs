@@ -33,7 +33,7 @@ namespace Apt.App.ViewModels.Pages.Image.AutoWipe
         public string Provider
         {
             get => ProviderItem.Value;
-            set => ProviderItem = ProviderSource.First(e => e.Value == value);
+            set => ProviderItem = ProviderSource.FirstOrDefault(e => e.Value == value) ?? ProviderSource.First();
         }
 
         [ObservableProperty]
@@ -45,7 +45,7 @@ namespace Apt.App.ViewModels.Pages.Image.AutoWipe
         public string Mode
         {
             get => ModeItem.Value;
-            set => ModeItem = ModeSource.First(e => e.Value == value);
+            set => ModeItem = ModeSource.FirstOrDefault(e => e.Value == value) ?? ModeSource.First();
         }
 
         public override void OnInputChangedAction(string value) => GetFileGrids();
@@ -82,7 +82,7 @@ namespace Apt.App.ViewModels.Pages.Image.AutoWipe
             InputExts = AppConst.ImageExts;
             OutputExts = AppConst.ImageExts;
 
-            ProviderSource = Adapter.CpuAndGpu;
+            ProviderSource = Adapter.CpuAndDml;
 
             ModeSource =
             [

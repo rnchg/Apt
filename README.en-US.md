@@ -2,7 +2,7 @@
 
 # AI Productivity Tools
 
-Free and open source, improve user productivity, and protect privacy and data security. Provide efficient and convenient AI solutions, including but not limited to: built-in local exclusive ChatGPT, DeepSeek, one-click batch intelligent processing of images, videos, audio, etc.
+Free and open source, improve user productivity, protect privacy and data security. Provide efficient and convenient AI solutions, including but not limited to: built-in local exclusive ChatGPT, DeepSeek, Phi, Qwen and other models, one-click batch intelligent processing of pictures, videos, audio, etc.
 
 ## Main features
 
@@ -14,7 +14,7 @@ Free and open source, improve user productivity, and protect privacy and data se
 
 ### Generate Chat
 
-- **Generate Chat**: provide local offline running ChatGPT, DeepSeek and other models, enjoy the intelligent AI dialogue experience anytime, anywhere.
+- **Generate Chat**: Provides local offline models such as ChatGPT, DeepSeek, Phi, Qwen, etc., allowing you to enjoy the intelligent AI conversation experience anytime and anywhere.
 
 ### Image processing
 

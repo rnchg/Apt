@@ -26,7 +26,7 @@ namespace Apt.App.ViewModels.Pages.Video.CartoonComic
         public string Provider
         {
             get => ProviderItem.Value;
-            set => ProviderItem = ProviderSource.First(e => e.Value == value);
+            set => ProviderItem = ProviderSource.FirstOrDefault(e => e.Value == value) ?? ProviderSource.First();
         }
 
         [ObservableProperty]
@@ -38,7 +38,7 @@ namespace Apt.App.ViewModels.Pages.Video.CartoonComic
         public string Mode
         {
             get => ModeItem.Value;
-            set => ModeItem = ModeSource.First(e => e.Value == value);
+            set => ModeItem = ModeSource.FirstOrDefault(e => e.Value == value) ?? ModeSource.First();
         }
 
         [ObservableProperty]
@@ -50,7 +50,7 @@ namespace Apt.App.ViewModels.Pages.Video.CartoonComic
         public string Quality
         {
             get => QualityItem.Value;
-            set => QualityItem = QualitySource.First(e => e.Value == value);
+            set => QualityItem = QualitySource.FirstOrDefault(e => e.Value == value) ?? QualitySource.First();
         }
 
         public override void OnInputChangedAction(string value) => GetFileGrids();
@@ -87,7 +87,7 @@ namespace Apt.App.ViewModels.Pages.Video.CartoonComic
             InputExts = AppConst.VideoExts;
             OutputExts = AppConst.VideoExts;
 
-            ProviderSource = Adapter.CpuAndGpu;
+            ProviderSource = Adapter.CpuAndDml;
 
             ModeSource =
             [
