@@ -25,6 +25,8 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
         private bool _isInitialized = false;
 
+        private bool _isInit = false;
+
         [ObservableProperty]
         private ObservableCollection<ComBoBoxItem<string>> _providerSource = [];
 
@@ -121,7 +123,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
         public override void OnNavigatedTo()
         {
-            if (!_isInitialized) InitializeViewModel();
+            if (!_isInit) _ = Init();
         }
 
         private void InitializeViewModel()
@@ -131,8 +133,6 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
             Models.Add(new Model() { Type = GenConst.Chat.TypeSystem, Text = Language.Instance["GenChatHelp"] });
 
             _indexService = new IndexService();
-
-            _ = Init();
 
             _isInitialized = true;
         }
@@ -146,11 +146,13 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
                 await _indexService.InitAsync();
                 MessageEnabled = true;
                 MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
+                _isInit = true;
             }
             catch (Exception ex)
             {
                 MessageInfo = Language.Instance["GenChatIndexPageModelInitFailed"];
                 SnackbarService.ShowSnackbarError(ex.Message);
+                _isInit = false;
             }
         }
 
