@@ -6,6 +6,7 @@ using Apt.Core.Services.Pages.Image.CartoonComic;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
 using Apt.Service.Controls.FileGrid;
+using Apt.Service.Enums;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -54,26 +55,16 @@ namespace Apt.App.ViewModels.Pages.Image.CartoonComic
             set => QualityItem = QualitySource.FirstOrDefault(e => e.Value == value) ?? QualitySource.First();
         }
 
+        [ObservableProperty]
+        private Uri? _fileViewItem = null!;
+
         public override void OnInputChangedAction(string value) => GetFileGrids();
 
         public override void OnOutputChangedAction(string value) => GetFileGrids();
 
-        public override void OnFileGridInputEnableChangedAction(bool value)
-        {
-            base.OnFileGridInputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
+        public override void OnFileGridSwitchItemChangedAction(FileSwitch value) => GetFileGrids();
 
-        public override void OnFileGridOutputEnableChangedAction(bool value)
-        {
-            base.OnFileGridOutputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
-
-        [ObservableProperty]
-        private Uri? _fileViewSource = null!;
-
-        public override void OnFileGridItemChangedAction(Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridTableItemChangedAction(Model? value) => FileViewItem = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -92,21 +83,23 @@ namespace Apt.App.ViewModels.Pages.Image.CartoonComic
 
             ModeSource =
             [
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageCartoonComicIndexPageModeHayao"], Value = "Hayao" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageCartoonComicIndexPageModeCute"], Value = "Cute" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageCartoonComicIndexPageModeJPFace"], Value = "JPFace" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageCartoonComicIndexPageModeShinkai"], Value = "Shinkai" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageCartoonComicIndexPageModeSketch"], Value = "Sketch" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.ModeHayao"], Value = "Hayao" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.ModeCute"], Value = "Cute" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.ModeJPFace"], Value = "JPFace" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.ModeShinkai"], Value = "Shinkai" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.ModeSketch"], Value = "Sketch" }
             ];
             QualitySource =
             [
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageCartoonComicIndexPageQualityAuto"], Value = "Auto" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageCartoonComicIndexPageQualityHigh"], Value = "High" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageCartoonComicIndexPageQualityMedium"], Value = "Medium" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["ImageCartoonComicIndexPageQualityLow"], Value = "Low" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.QualityAuto"], Value = "Auto" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.QualityHigh"], Value = "High" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.QualityMedium"], Value = "Medium" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.QualityLow"], Value = "Low" }
             ];
 
-            AddMessage(MessageType.Success, Language.Instance["ImageCartoonComicHelp"]);
+            FileGridSwitchItem = FileSwitch.Input;
+
+            AddMessage(MessageType.Success, Language.Instance["Image.CartoonComic.Help"]);
 
             _indexService = new IndexService
             {
@@ -126,29 +119,27 @@ namespace Apt.App.ViewModels.Pages.Image.CartoonComic
                 StartEnabled = false;
                 StopEnabled = true;
 
-                FileGridInputEnable = true;
-                FileGridOutputEnable = false;
+                FileGridSwitchItem = FileSwitch.Input;
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["ImageCartoonComicIndexPageInputError"]);
+                    throw new Exception(Language.Instance["Image.CartoonComic.InputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["ImageCartoonComicIndexPageOutputError"]);
+                    throw new Exception(Language.Instance["Image.CartoonComic.OutputError"]);
                 }
-                var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
+                var inputFiles = FileGridTableList.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["ImageCartoonComicIndexPageFileError"]);
+                    throw new Exception(Language.Instance["Image.CartoonComic.FileError"]);
                 }
 
                 await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Quality);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageCartoonComicIndexPageProcessEnd"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["Image.CartoonComic.ProcessEnd"]);
 
-                FileGridInputEnable = false;
-                FileGridOutputEnable = true;
+                FileGridSwitchItem = FileSwitch.Output;
             }
             catch (ActivationException ex)
             {

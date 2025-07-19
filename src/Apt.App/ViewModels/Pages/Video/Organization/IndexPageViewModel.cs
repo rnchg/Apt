@@ -4,6 +4,7 @@ using Apt.Core.Exceptions;
 using Apt.Core.Models;
 using Apt.Core.Services.Pages.Video.Organization;
 using Apt.Core.Utility;
+using Apt.Service.Enums;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -38,33 +39,26 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
 
         public override void OnOutputChangedAction(string value) => GetFileGrids();
 
-        public override void OnFileGridInputEnableChangedAction(bool value)
+        public override void OnFileGridSwitchItemChangedAction(FileSwitch value)
         {
-            base.OnFileGridInputEnableChangedAction(value);
-            if (value)
+            GetFileGrids();
+            if (value == FileSwitch.Input)
             {
-                GetFileGrids();
                 TextViewVisibility = Visibility.Visible;
                 VideoViewVisibility = Visibility.Collapsed;
             }
-        }
-
-        public override void OnFileGridOutputEnableChangedAction(bool value)
-        {
-            base.OnFileGridOutputEnableChangedAction(value);
-            if (value)
+            else if (value == FileSwitch.Output)
             {
-                GetFileGrids();
-                TextViewVisibility = Visibility.Collapsed;
                 VideoViewVisibility = Visibility.Visible;
+                TextViewVisibility = Visibility.Collapsed;
             }
         }
 
         [ObservableProperty]
-        private Uri? _fileViewSource = null!;
+        private string? _textViewItem = null!;
 
         [ObservableProperty]
-        private string? _textViewSource = null!;
+        private Uri? _videoViewItem = null!;
 
         [ObservableProperty]
         private Visibility _textViewVisibility = Visibility.Visible;
@@ -72,16 +66,16 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
         [ObservableProperty]
         private Visibility _videoViewVisibility = Visibility.Collapsed;
 
-        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value)
+        public override void OnFileGridTableItemChangedAction(Service.Controls.FileGrid.Model? value)
         {
-            if (FileGridInputEnable && value?.FullName is not null)
+            if (FileGridSwitchItem == FileSwitch.Input && value?.FullName is not null)
             {
-                TextViewSource = File.ReadAllText(value.FullName);
+                TextViewItem = File.ReadAllText(value.FullName);
                 TextLoadAction?.Invoke();
             }
-            if (FileGridOutputEnable && value?.FullName is not null)
+            if (FileGridSwitchItem == FileSwitch.Output && value?.FullName is not null)
             {
-                FileViewSource = Source.FileToUri(value.FullName);
+                VideoViewItem = Source.FileToUri(value.FullName);
                 VideoLoadAction?.Invoke();
             }
         }
@@ -101,11 +95,13 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
 
             ClientSource =
             [
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageClientBilibiliWindows"], Value = "Windows" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoOrganizationIndexPageClientBilibiliAndroid"], Value = "Android" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["Video.Organization.ClientBilibiliWindows"], Value = "Windows" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["Video.Organization.ClientBilibiliAndroid"], Value = "Android" }
             ];
 
-            AddMessage(MessageType.Success, Language.Instance["VideoOrganizationHelp"]);
+            FileGridSwitchItem = FileSwitch.Input;
+
+            AddMessage(MessageType.Success, Language.Instance["Video.Organization.Help"]);
 
             _indexService = new IndexService
             {
@@ -125,30 +121,28 @@ namespace Apt.App.ViewModels.Pages.Video.Organization
                 StartEnabled = false;
                 StopEnabled = true;
 
-                FileGridInputEnable = true;
-                FileGridOutputEnable = false;
+                FileGridSwitchItem = FileSwitch.Input;
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["VideoOrganizationIndexPageInputError"]);
+                    throw new Exception(Language.Instance["Video.Organization.InputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["VideoOrganizationIndexPageOutputError"]);
+                    throw new Exception(Language.Instance["Video.Organization.OutputError"]);
                 }
                 //var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
                 var inputFiles = GetInputFiles(Input).Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["VideoOrganizationIndexPageFileError"]);
+                    throw new Exception(Language.Instance["Video.Organization.FileError"]);
                 }
 
                 await _indexService.StartAsync(Input, Output, inputFiles, Client);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoOrganizationIndexPageProcessEnd"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["Video.Organization.ProcessEnd"]);
 
-                FileGridInputEnable = false;
-                FileGridOutputEnable = true;
+                FileGridSwitchItem = FileSwitch.Output;
             }
             catch (ActivationException ex)
             {

@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}, Mode=OneWay}"
+    Title="{Binding [Application.Title], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}, Mode=OneWay}"
     Width="1280"
     Height="720"
     MinWidth="960"
@@ -43,7 +43,7 @@
             PaneDisplayMode="Left"
             TitleBar="{Binding ElementName=TitleBar}">
             <ui:NavigationView.AutoSuggestBox>
-                <ui:AutoSuggestBox x:Name="AutoSuggestBox" PlaceholderText="{Binding [MainWindowSearch], Source={x:Static su:Language.Instance}}">
+                <ui:AutoSuggestBox x:Name="AutoSuggestBox" PlaceholderText="{Binding [Route.Search], Source={x:Static su:Language.Instance}}">
                     <ui:AutoSuggestBox.Icon>
                         <ui:IconSourceElement>
                             <ui:SymbolIconSource Symbol="Search24" />
@@ -58,7 +58,7 @@
             </ui:NavigationView.Header>
         </ui:NavigationView>
 
-        <ui:TitleBar x:Name="TitleBar" Title="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}, Mode=OneWay}">
+        <ui:TitleBar x:Name="TitleBar" Title="{Binding [Application.Title], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}, Mode=OneWay}">
             <ui:TitleBar.Icon>
                 <ui:ImageIcon Source="pack://application:,,,/Assets/App.ico" />
             </ui:TitleBar.Icon>

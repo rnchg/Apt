@@ -5,6 +5,7 @@ using Apt.Core.Models;
 using Apt.Core.Services.Pages.Video.ColorRestoration;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
+using Apt.Service.Enums;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -48,9 +49,9 @@ namespace Apt.App.ViewModels.Pages.Video.ColorRestoration
             {
                 QualitySource =
                 [
-                    new ComBoBoxItem<string>() {  Text = Language.Instance["VideoColorRestorationIndexPageQualityHigh"], Value = "High" },
-                    new ComBoBoxItem<string>() {  Text = Language.Instance["VideoColorRestorationIndexPageQualityMedium"], Value = "Medium" },
-                    new ComBoBoxItem<string>() {  Text = Language.Instance["VideoColorRestorationIndexPageQualityLow"], Value = "Low" }
+                    new ComBoBoxItem<string>() {  Text = Language.Instance["Video.ColorRestoration.QualityHigh"], Value = "High" },
+                    new ComBoBoxItem<string>() {  Text = Language.Instance["Video.ColorRestoration.QualityMedium"], Value = "Medium" },
+                    new ComBoBoxItem<string>() {  Text = Language.Instance["Video.ColorRestoration.QualityLow"], Value = "Low" }
                 ];
                 Quality = "Medium";
                 return;
@@ -69,26 +70,16 @@ namespace Apt.App.ViewModels.Pages.Video.ColorRestoration
             set => QualityItem = QualitySource.FirstOrDefault(e => e.Value == value) ?? QualitySource.First();
         }
 
+        [ObservableProperty]
+        private Uri? _fileViewItem = null!;
+
         public override void OnInputChangedAction(string value) => GetFileGrids();
 
         public override void OnOutputChangedAction(string value) => GetFileGrids();
 
-        public override void OnFileGridInputEnableChangedAction(bool value)
-        {
-            base.OnFileGridInputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
+        public override void OnFileGridSwitchItemChangedAction(FileSwitch value) => GetFileGrids();
 
-        public override void OnFileGridOutputEnableChangedAction(bool value)
-        {
-            base.OnFileGridOutputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
-
-        [ObservableProperty]
-        private Uri? _fileViewSource = null!;
-
-        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridTableItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewItem = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -107,10 +98,12 @@ namespace Apt.App.ViewModels.Pages.Video.ColorRestoration
 
             ModeSource =
             [
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoColorRestorationIndexPageModeStandard"], Value = "Standard" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Video.ColorRestoration.ModeStandard"], Value = "Standard" }
             ];
 
-            AddMessage(MessageType.Success, Language.Instance["VideoColorRestorationHelp"]);
+            FileGridSwitchItem = FileSwitch.Input;
+
+            AddMessage(MessageType.Success, Language.Instance["Video.ColorRestoration.Help"]);
 
             _indexService = new IndexService
             {
@@ -130,29 +123,27 @@ namespace Apt.App.ViewModels.Pages.Video.ColorRestoration
                 StartEnabled = false;
                 StopEnabled = true;
 
-                FileGridInputEnable = true;
-                FileGridOutputEnable = false;
+                FileGridSwitchItem = FileSwitch.Input;
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["VideoColorRestorationIndexPageInputError"]);
+                    throw new Exception(Language.Instance["Video.ColorRestoration.InputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["VideoColorRestorationIndexPageOutputError"]);
+                    throw new Exception(Language.Instance["Video.ColorRestoration.OutputError"]);
                 }
-                var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
+                var inputFiles = FileGridTableList.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["VideoColorRestorationIndexPageFileError"]);
+                    throw new Exception(Language.Instance["Video.ColorRestoration.FileError"]);
                 }
 
                 await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Quality);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoColorRestorationIndexPageProcessEnd"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["Video.ColorRestoration.ProcessEnd"]);
 
-                FileGridInputEnable = false;
-                FileGridOutputEnable = true;
+                FileGridSwitchItem = FileSwitch.Output;
             }
             catch (ActivationException ex)
             {

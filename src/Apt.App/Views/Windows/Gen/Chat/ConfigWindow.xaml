@@ -29,7 +29,7 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ui:TitleBar Title="{Binding [GenChatConfigWindowConfig], Source={x:Static su:Language.Instance}}" Grid.Row="0" />
+        <ui:TitleBar Title="{Binding [Gen.Chat.ConfigTitle], Source={x:Static su:Language.Instance}}" Grid.Row="0" />
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -41,7 +41,7 @@
                 Margin="4"
                 Padding="0,10"
                 BorderThickness="0"
-                Header="{Binding [GenChatConfigWindowPromptSystem], Source={x:Static su:Language.Instance}}">
+                Header="{Binding [Gen.Chat.ConfigPromptSystem], Source={x:Static su:Language.Instance}}">
                 <TextBox
                     Grid.Row="0"
                     AcceptsReturn="True"
@@ -54,7 +54,7 @@
                 Margin="4"
                 Padding="0,10"
                 BorderThickness="0"
-                Header="{Binding [GenChatConfigWindowPromptMaxLength], Source={x:Static su:Language.Instance}}">
+                Header="{Binding [Gen.Chat.ConfigPromptMaxLength], Source={x:Static su:Language.Instance}}">
                 <ui:NumberBox
                     Grid.Row="0"
                     MaxDecimalPlaces="0"
@@ -67,7 +67,7 @@
                 Margin="4"
                 Padding="0,10"
                 BorderThickness="0"
-                Header="{Binding [GenChatConfigWindowContextMaxLength], Source={x:Static su:Language.Instance}}">
+                Header="{Binding [Gen.Chat.ConfigContextMaxLength], Source={x:Static su:Language.Instance}}">
                 <ui:NumberBox
                     Grid.Row="0"
                     MaxDecimalPlaces="0"
@@ -84,12 +84,12 @@
                 Margin="8"
                 Appearance="Info"
                 Command="{Binding ViewModel.SetSaveCommand}"
-                Content="{Binding [GenChatConfigWindowSetSave], Source={x:Static su:Language.Instance}}" />
+                Content="{Binding [Gen.Chat.ConfigSave], Source={x:Static su:Language.Instance}}" />
             <ui:Button
                 Margin="8"
                 Appearance="Danger"
                 Command="{Binding ViewModel.SetCloseCommand}"
-                Content="{Binding [GenChatConfigWindowSetClose], Source={x:Static su:Language.Instance}}" />
+                Content="{Binding [Gen.Chat.ConfigClose], Source={x:Static su:Language.Instance}}" />
         </StackPanel>
     </Grid>
 </ui:FluentWindow>

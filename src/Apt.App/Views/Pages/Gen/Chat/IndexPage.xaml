@@ -21,102 +21,97 @@
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <GroupBox
+        <cv:View
+            x:Name="ChatView"
             Grid.Row="0"
-            Padding="10"
-            BorderThickness="0"
-            Header="{Binding [GenChatIndexPageHistory], Source={x:Static su:Language.Instance}}">
-            <cv:View
-                x:Name="ChatView"
-                Margin="0,8,0,0"
-                Items="{Binding ViewModel.Models}" />
-        </GroupBox>
-        <GroupBox
+            ChatList="{Binding ViewModel.ChatList}" />
+        <Grid
             Grid.Row="1"
-            Padding="10"
-            BorderThickness="0">
-            <Grid MaxHeight="480" IsEnabled="{Binding ViewModel.MessageEnabled}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Margin="0,0,0,6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <StackPanel
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        Orientation="Horizontal">
-                        <TextBlock Text="{Binding ViewModel.MessageInfo}" />
-                    </StackPanel>
-                    <StackPanel
-                        Grid.Column="1"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal">
-                        <TextBlock Text="{Binding ViewModel.MessageLength}" />
-                    </StackPanel>
-                </Grid>
-                <ui:TextBox
-                    x:Name="Prompt"
-                    Grid.Row="1"
-                    AcceptsReturn="True"
-                    MaxLength="{Binding ViewModel.PromptMaxLength}"
-                    Text="{Binding ViewModel.Message, UpdateSourceTrigger=PropertyChanged}"
-                    TextWrapping="Wrap"
-                    VerticalScrollBarVisibility="Visible" />
-                <Grid Grid.Row="2" Margin="0,6,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <StackPanel
-                        Grid.Column="0"
-                        HorizontalAlignment="Left"
-                        Orientation="Horizontal">
-                        <ComboBox
-                            Width="500"
-                            DisplayMemberPath="Text"
-                            ItemsSource="{Binding ViewModel.ProviderSource}"
-                            SelectedItem="{Binding ViewModel.ProviderItem}" />
-                    </StackPanel>
-                    <StackPanel
-                        Grid.Column="1"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal">
-                        <ui:Button Margin="0,0,6,0" Content="{Binding [GenChatIndexPageImage], Source={x:Static su:Language.Instance}}" />
-                        <ui:Button Margin="0,0,6,0" Content="{Binding [GenChatIndexPageVideo], Source={x:Static su:Language.Instance}}" />
-                        <ui:Button Margin="0,0,6,0" Content="{Binding [GenChatIndexPageAudio], Source={x:Static su:Language.Instance}}" />
-                        <ui:Button
-                            Margin="0,0,6,0"
-                            Appearance="Danger"
-                            Command="{Binding ViewModel.SetConfigCommand}"
-                            Content="{Binding [GenChatIndexPageConfig], Source={x:Static su:Language.Instance}}" />
-                        <ui:Button
-                            Margin="0,0,6,0"
-                            Appearance="Success"
-                            Command="{Binding ViewModel.SetResetCommand}"
-                            Content="{Binding [GenChatIndexPageReset], Source={x:Static su:Language.Instance}}" />
-                        <ui:Button
-                            Margin="0,0,6,0"
-                            Appearance="Caution"
-                            Command="{Binding ViewModel.SetCancelCommand}"
-                            Content="{Binding [GenChatIndexPageCancel], Source={x:Static su:Language.Instance}}" />
-                        <ui:Button
-                            Margin="0,0,6,0"
-                            Appearance="Info"
-                            Command="{Binding ViewModel.SetSendCommand}"
-                            Content="{Binding [GenChatIndexPageSend], Source={x:Static su:Language.Instance}}"
-                            IsEnabled="{Binding ViewModel.SendEnabled}" />
-                        <CheckBox Content="{Binding [GenChatIndexPageThink], Source={x:Static su:Language.Instance}}" IsChecked="{Binding ViewModel.Think}" />
-                    </StackPanel>
-                </Grid>
+            Margin="8"
+            IsEnabled="{Binding ViewModel.MessageEnabled}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="0,0,0,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    Orientation="Horizontal">
+                    <TextBlock Text="{Binding ViewModel.MessageInfo}" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <TextBlock Text="{Binding ViewModel.MessageLength}" />
+                </StackPanel>
             </Grid>
-        </GroupBox>
+            <ui:TextBox
+                x:Name="Prompt"
+                Grid.Row="1"
+                AcceptsReturn="True"
+                MaxLength="{Binding ViewModel.PromptMaxLength}"
+                Text="{Binding ViewModel.Message, UpdateSourceTrigger=PropertyChanged}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Visible" />
+            <Grid Grid.Row="2" Margin="0,6,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    Orientation="Horizontal">
+                    <ComboBox
+                        Width="500"
+                        DisplayMemberPath="Text"
+                        ItemsSource="{Binding ViewModel.ProviderSource}"
+                        SelectedItem="{Binding ViewModel.ProviderItem}" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <ui:Button Margin="0,0,6,0" Content="{Binding [Gen.Chat.Image], Source={x:Static su:Language.Instance}}" />
+                    <ui:Button Margin="0,0,6,0" Content="{Binding [Gen.Chat.Video], Source={x:Static su:Language.Instance}}" />
+                    <ui:Button Margin="0,0,6,0" Content="{Binding [Gen.Chat.Audio], Source={x:Static su:Language.Instance}}" />
+                    <ui:Button
+                        Margin="0,0,6,0"
+                        Appearance="Danger"
+                        Command="{Binding ViewModel.SetConfigCommand}"
+                        Content="{Binding [Gen.Chat.Config], Source={x:Static su:Language.Instance}}" />
+                    <ui:Button
+                        Margin="0,0,6,0"
+                        Appearance="Success"
+                        Command="{Binding ViewModel.SetResetCommand}"
+                        Content="{Binding [Gen.Chat.Reset], Source={x:Static su:Language.Instance}}" />
+                    <ui:Button
+                        Margin="0,0,6,0"
+                        Appearance="Caution"
+                        Command="{Binding ViewModel.SetCancelCommand}"
+                        Content="{Binding [Gen.Chat.Cancel], Source={x:Static su:Language.Instance}}" />
+                    <ui:Button
+                        Margin="0,0,6,0"
+                        Appearance="Info"
+                        Command="{Binding ViewModel.SetSendCommand}"
+                        Content="{Binding [Gen.Chat.Send], Source={x:Static su:Language.Instance}}"
+                        IsEnabled="{Binding ViewModel.SendEnabled}" />
+                    <CheckBox
+                        Content="{Binding [Gen.Chat.Think], Source={x:Static su:Language.Instance}}"
+                        IsChecked="{Binding ViewModel.Think}"
+                        IsEnabled="{Binding ViewModel.SendEnabled}" />
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

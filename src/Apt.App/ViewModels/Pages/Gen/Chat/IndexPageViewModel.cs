@@ -84,7 +84,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         private bool _sendEnabled = true;
 
         [ObservableProperty]
-        private ObservableCollection<Model> _models = [];
+        private ObservableCollection<Model> _chatList = [];
 
         [RelayCommand]
         private void SetSend() => _ = Send();
@@ -94,7 +94,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         {
             _cancellationTokenSource?.Cancel();
             CancelMessage.Invoke();
-            MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
+            MessageInfo = Language.Instance["Gen.Chat.InputPrompt"];
         }
 
         [RelayCommand]
@@ -130,7 +130,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
         {
             ProviderSource = Adapter.CpuAndDml;
 
-            Models.Add(new Model() { Type = GenConst.Chat.TypeSystem, Text = Language.Instance["GenChatHelp"] });
+            ChatList.Add(new Model() { Type = GenConst.Chat.TypeSystem, Text = Language.Instance["Gen.Chat.Help"] });
 
             _indexService = new IndexService();
 
@@ -142,15 +142,15 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
             try
             {
                 MessageLength = $"[ {Message.Length}/{PromptMaxLength} ]";
-                MessageInfo = Language.Instance["GenChatIndexPageModelInitWait"];
+                MessageInfo = Language.Instance["Gen.Chat.ModelInitWait"];
                 await _indexService.InitAsync();
                 MessageEnabled = true;
-                MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
+                MessageInfo = Language.Instance["Gen.Chat.InputPrompt"];
                 _isInit = true;
             }
             catch (Exception ex)
             {
-                MessageInfo = Language.Instance["GenChatIndexPageModelInitFailed"];
+                MessageInfo = Language.Instance["Gen.Chat.ModelInitFailed"];
                 SnackbarService.ShowSnackbarError(ex.Message);
                 _isInit = false;
             }
@@ -166,7 +166,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
                 SendEnabled = false;
 
-                MessageInfo = Language.Instance["GenChatIndexPageModelProcessWait"];
+                MessageInfo = Language.Instance["Gen.Chat.ModelProcessWait"];
 
                 var (prompts, _thinkMessage, _assistantMessage) = SendAndBuildModel.Invoke(Message, Think);
 
@@ -178,7 +178,7 @@ namespace Apt.App.ViewModels.Pages.Gen.Chat
 
                 await _indexService.StartAsync(prompts, Think, Provider, _cancellationTokenSource.Token);
 
-                MessageInfo = Language.Instance["GenChatIndexPageInputPrompt"];
+                MessageInfo = Language.Instance["Gen.Chat.InputPrompt"];
             }
             catch (ActivationException ex)
             {

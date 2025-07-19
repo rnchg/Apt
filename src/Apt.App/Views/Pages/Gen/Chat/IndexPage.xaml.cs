@@ -14,13 +14,13 @@ namespace Apt.App.Views.Pages.Gen.Chat
 
             InitializeComponent();
 
-            ViewModel.SendAndBuildModel = ChatView.SendAndBuildModel;
+            ViewModel.SendAndBuildModel = ChatView.SendAndBuildChat;
 
-            ViewModel.CancelMessage = ChatView.CancelMessage;
+            ViewModel.CancelMessage = ChatView.CancelChat;
 
-            ViewModel.ResetMessage = ChatView.ResetMessage;
+            ViewModel.ResetMessage = ChatView.ResetChat;
 
-            ViewModel.ReceiveMessage = ChatView.ReceiveMessage;
+            ViewModel.ReceiveMessage = ChatView.ReceiveChat;
 
             Prompt.KeyDown += (s, e) =>
             {

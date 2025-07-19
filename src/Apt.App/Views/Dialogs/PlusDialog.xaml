@@ -7,13 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:su="clr-namespace:Apt.Core.Utility;assembly=Apt.Core"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="{Binding [DashboardPagePlusDialogTitle], Source={x:Static su:Language.Instance}}"
+    Title="{Binding [Plus.Title], Source={x:Static su:Language.Instance}}"
     d:DesignHeight="1000"
     d:DesignWidth="750"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     CloseButtonAppearance="Danger"
-    CloseButtonText="{Binding [DashboardPagePlusDialogClose], Source={x:Static su:Language.Instance}}"
+    CloseButtonText="{Binding [Plus.Close], Source={x:Static su:Language.Instance}}"
     DialogMaxWidth="800"
     mc:Ignorable="d">
 
@@ -26,17 +26,17 @@
             <TextBlock
                 Margin="0,20"
                 FontSize="24"
-                Text="{Binding [DashboardPagePlusDialogContent1], Source={x:Static su:Language.Instance}}"
+                Text="{Binding [Plus.Content1], Source={x:Static su:Language.Instance}}"
                 TextWrapping="WrapWithOverflow" />
             <TextBlock
                 Margin="0,20"
                 FontSize="16"
-                Text="{Binding [DashboardPagePlusDialogContent2], Source={x:Static su:Language.Instance}}"
+                Text="{Binding [Plus.Content2], Source={x:Static su:Language.Instance}}"
                 TextWrapping="WrapWithOverflow" />
             <TextBlock
                 Margin="0,20"
                 FontSize="24"
-                Text="{Binding [DashboardPagePlusDialogContent3], Source={x:Static su:Language.Instance}}"
+                Text="{Binding [Plus.Content3], Source={x:Static su:Language.Instance}}"
                 TextWrapping="WrapWithOverflow" />
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -45,7 +45,7 @@
                 </Grid.ColumnDefinitions>
                 <ui:HyperlinkButton
                     Grid.Column="0"
-                    Content="{Binding [DashboardPagePlusDialogContent4], Source={x:Static su:Language.Instance}}"
+                    Content="{Binding [Plus.Content4], Source={x:Static su:Language.Instance}}"
                     NavigateUri="https://github.com/rnchg/APA/releases/latest" />
                 <ui:HyperlinkButton
                     Grid.Column="1"
@@ -59,7 +59,7 @@
                 </Grid.ColumnDefinitions>
                 <ui:HyperlinkButton
                     Grid.Column="0"
-                    Content="{Binding [DashboardPagePlusDialogContent5], Source={x:Static su:Language.Instance}}"
+                    Content="{Binding [Plus.Content5], Source={x:Static su:Language.Instance}}"
                     NavigateUri="https://gitee.com/rnchg/APA/releases/latest" />
                 <ui:HyperlinkButton
                     Grid.Column="1"
@@ -73,7 +73,7 @@
                 </Grid.ColumnDefinitions>
                 <ui:HyperlinkButton
                     Grid.Column="0"
-                    Content="{Binding [DashboardPagePlusDialogContent6], Source={x:Static su:Language.Instance}}"
+                    Content="{Binding [Plus.Content6], Source={x:Static su:Language.Instance}}"
                     NavigateUri="https://drive.google.com/drive/folders/1WgallXe2G0jo0fKyFYWFnWJLuksqSqWb" />
                 <ui:HyperlinkButton
                     Grid.Column="1"
@@ -87,7 +87,7 @@
                 </Grid.ColumnDefinitions>
                 <ui:HyperlinkButton
                     Grid.Column="0"
-                    Content="{Binding [DashboardPagePlusDialogContent7], Source={x:Static su:Language.Instance}}"
+                    Content="{Binding [Plus.Content7], Source={x:Static su:Language.Instance}}"
                     NavigateUri="https://pan.baidu.com/s/1k-IBphtLJuXQBSbp2b2Bew?pwd=1234" />
                 <ui:HyperlinkButton
                     Grid.Column="1"
@@ -101,7 +101,7 @@
                 </Grid.ColumnDefinitions>
                 <ui:HyperlinkButton
                     Grid.Column="0"
-                    Content="{Binding [DashboardPagePlusDialogContent8], Source={x:Static su:Language.Instance}}"
+                    Content="{Binding [Plus.Content8], Source={x:Static su:Language.Instance}}"
                     NavigateUri="https://share.weiyun.com/iyKCgmZL" />
                 <ui:HyperlinkButton
                     Grid.Column="1"

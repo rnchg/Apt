@@ -5,6 +5,7 @@ using Apt.Core.Models;
 using Apt.Core.Services.Pages.Video.Convert3d;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
+using Apt.Service.Enums;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -70,26 +71,16 @@ namespace Apt.App.ViewModels.Pages.Video.Convert3d
         [ObservableProperty]
         private bool _crossEye;
 
+        [ObservableProperty]
+        private Uri? _fileViewItem = null!;
+
         public override void OnInputChangedAction(string value) => GetFileGrids();
 
         public override void OnOutputChangedAction(string value) => GetFileGrids();
 
-        public override void OnFileGridInputEnableChangedAction(bool value)
-        {
-            base.OnFileGridInputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
+        public override void OnFileGridSwitchItemChangedAction(FileSwitch value) => GetFileGrids();
 
-        public override void OnFileGridOutputEnableChangedAction(bool value)
-        {
-            base.OnFileGridOutputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
-
-        [ObservableProperty]
-        private Uri? _fileViewSource = null!;
-
-        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridTableItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewItem = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -108,29 +99,31 @@ namespace Apt.App.ViewModels.Pages.Video.Convert3d
 
             ModeSource =
             [
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageModeStandard"], Value = "Standard" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Video.Convert3d.ModeStandard"], Value = "Standard" }
             ];
             FormatSource =
             [
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageFormatHalfSbs"], Value = "HalfSbs" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageFormatSbs"], Value = "Sbs" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageFormatAnaglyph"], Value = "Anaglyph" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoConvert3dIndexPageFormatDepth"], Value = "Depth" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Video.Convert3d.FormatHalfSbs"], Value = "HalfSbs" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Video.Convert3d.FormatSbs"], Value = "Sbs" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Video.Convert3d.FormatAnaglyph"], Value = "Anaglyph" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Video.Convert3d.FormatDepth"], Value = "Depth" }
             ];
             ShiftSource =
             [
-                new ComBoBoxItem<int>() {  Text = Language.Instance["VideoConvert3dIndexPageShift10"], Value = 10 },
-                new ComBoBoxItem<int>() {  Text = Language.Instance["VideoConvert3dIndexPageShift20"], Value = 20 },
-                new ComBoBoxItem<int>() {  Text = Language.Instance["VideoConvert3dIndexPageShift30"], Value = 30 },
-                new ComBoBoxItem<int>() {  Text = Language.Instance["VideoConvert3dIndexPageShift50"], Value = 50 },
-                new ComBoBoxItem<int>() {  Text = Language.Instance["VideoConvert3dIndexPageShift100"], Value = 100 },
-                new ComBoBoxItem<int>() {  Text = Language.Instance["VideoConvert3dIndexPageShift200"], Value = 200 },
-                new ComBoBoxItem<int>() {  Text = Language.Instance["VideoConvert3dIndexPageShift300"], Value = 300 },
-                new ComBoBoxItem<int>() {  Text = Language.Instance["VideoConvert3dIndexPageShift500"], Value = 500 },
-                new ComBoBoxItem<int>() {  Text = Language.Instance["VideoConvert3dIndexPageShift1000"], Value = 1000 }
+                new ComBoBoxItem<int>() {  Text = Language.Instance["Video.Convert3d.Shift10"], Value = 10 },
+                new ComBoBoxItem<int>() {  Text = Language.Instance["Video.Convert3d.Shift20"], Value = 20 },
+                new ComBoBoxItem<int>() {  Text = Language.Instance["Video.Convert3d.Shift30"], Value = 30 },
+                new ComBoBoxItem<int>() {  Text = Language.Instance["Video.Convert3d.Shift50"], Value = 50 },
+                new ComBoBoxItem<int>() {  Text = Language.Instance["Video.Convert3d.Shift100"], Value = 100 },
+                new ComBoBoxItem<int>() {  Text = Language.Instance["Video.Convert3d.Shift200"], Value = 200 },
+                new ComBoBoxItem<int>() {  Text = Language.Instance["Video.Convert3d.Shift300"], Value = 300 },
+                new ComBoBoxItem<int>() {  Text = Language.Instance["Video.Convert3d.Shift500"], Value = 500 },
+                new ComBoBoxItem<int>() {  Text = Language.Instance["Video.Convert3d.Shift1000"], Value = 1000 }
             ];
 
-            AddMessage(MessageType.Success, Language.Instance["VideoConvert3dHelp"]);
+            FileGridSwitchItem = FileSwitch.Input;
+
+            AddMessage(MessageType.Success, Language.Instance["Video.Convert3d.Help"]);
 
             _indexService = new IndexService
             {
@@ -150,29 +143,27 @@ namespace Apt.App.ViewModels.Pages.Video.Convert3d
                 StartEnabled = false;
                 StopEnabled = true;
 
-                FileGridInputEnable = true;
-                FileGridOutputEnable = false;
+                FileGridSwitchItem = FileSwitch.Input;
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["VideoConvert3dIndexPageInputError"]);
+                    throw new Exception(Language.Instance["Video.Convert3d.InputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["VideoConvert3dIndexPageOutputError"]);
+                    throw new Exception(Language.Instance["Video.Convert3d.OutputError"]);
                 }
-                var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
+                var inputFiles = FileGridTableList.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["VideoConvert3dIndexPageFileError"]);
+                    throw new Exception(Language.Instance["Video.Convert3d.FileError"]);
                 }
 
                 await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Format, Shift, PopOut, CrossEye);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoConvert3dIndexPageProcessEnd"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["Video.Convert3d.ProcessEnd"]);
 
-                FileGridInputEnable = false;
-                FileGridOutputEnable = true;
+                FileGridSwitchItem = FileSwitch.Output;
             }
             catch (ActivationException ex)
             {

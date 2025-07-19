@@ -22,7 +22,7 @@
             FontSize="48"
             FontStyle="Normal"
             FontTypography="BodyStrong"
-            Text="{Binding [InfoPageMessage], Source={x:Static su:Language.Instance}}"
+            Text="{Binding [MessageReserve], Source={x:Static su:Language.Instance}}"
             TextWrapping="WrapWithOverflow" />
     </Grid>
 </Page>

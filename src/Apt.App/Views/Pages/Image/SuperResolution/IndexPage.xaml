@@ -25,202 +25,176 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <GroupBox
-            Grid.Row="0"
-            Margin="0,0,0,8"
-            Padding="0,8,0,0"
-            BorderThickness="0"
-            Header="{Binding [ImageSuperResolutionIndexPageSetting], Source={x:Static su:Language.Instance}}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Margin="6"
-                        VerticalAlignment="Center"
-                        Content="{Binding [ImageSuperResolutionIndexPageInputFolder], Source={x:Static su:Language.Instance}}" />
-                    <TextBox
-                        Grid.Column="1"
-                        Margin="6"
-                        Text="{Binding ViewModel.Input}" />
-                    <Button
-                        Grid.Column="2"
-                        Margin="6"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Command="{Binding ViewModel.SetInputCommand}"
-                        Content="{Binding [ImageSuperResolutionIndexPageInputSelect], Source={x:Static su:Language.Instance}}" />
-                </Grid>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Margin="6"
-                        VerticalAlignment="Center"
-                        Content="{Binding [ImageSuperResolutionIndexPageOutputFolder], Source={x:Static su:Language.Instance}}" />
-                    <TextBox
-                        Grid.Column="1"
-                        Margin="6"
-                        Text="{Binding ViewModel.Output}" />
-                    <Button
-                        Grid.Column="2"
-                        Margin="6"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Command="{Binding ViewModel.SetOutputCommand}"
-                        Content="{Binding [ImageSuperResolutionIndexPageOutputSelect], Source={x:Static su:Language.Instance}}" />
-                </Grid>
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Margin="6"
-                        VerticalAlignment="Center"
-                        Content="{Binding [ImageSuperResolutionIndexPageProvider], Source={x:Static su:Language.Instance}}" />
-                    <ComboBox
-                        Grid.Column="1"
-                        Margin="6"
-                        DisplayMemberPath="Text"
-                        ItemsSource="{Binding ViewModel.ProviderSource}"
-                        SelectedItem="{Binding ViewModel.ProviderItem}" />
-                </Grid>
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Margin="6"
-                        VerticalAlignment="Center"
-                        Content="{Binding [ImageSuperResolutionIndexPageMode], Source={x:Static su:Language.Instance}}" />
-                    <ComboBox
-                        Grid.Column="1"
-                        Margin="6"
-                        DisplayMemberPath="Text"
-                        ItemsSource="{Binding ViewModel.ModeSource}"
-                        SelectedItem="{Binding ViewModel.ModeItem}" />
-                </Grid>
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Margin="6"
-                        VerticalAlignment="Center"
-                        Content="{Binding [ImageSuperResolutionIndexPageScale], Source={x:Static su:Language.Instance}}" />
-                    <ComboBox
-                        Grid.Column="1"
-                        Margin="6"
-                        DisplayMemberPath="Text"
-                        ItemsSource="{Binding ViewModel.ScaleSource}"
-                        SelectedItem="{Binding ViewModel.ScaleItem}" />
-                </Grid>
-                <Grid Grid.Row="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="80" />
-                        <ColumnDefinition Width="80" />
-                        <ColumnDefinition Width="80" />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Margin="6"
-                        VerticalAlignment="Center"
-                        Content="{Binding [ImageSuperResolutionIndexPageProgress], Source={x:Static su:Language.Instance}}" />
-                    <Grid Grid.Column="1" Margin="6">
-                        <ProgressBar Maximum="{Binding ViewModel.ProgressBarMaximum}" Value="{Binding ViewModel.ProgressBarValue}" />
-                        <TextBlock
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Text="{Binding ViewModel.ProgressBarText}" />
-                    </Grid>
-                    <ui:Button
-                        Grid.Column="2"
-                        Margin="6"
-                        Appearance="Info"
-                        Command="{Binding ViewModel.SetStartCommand}"
-                        Content="{Binding [ImageSuperResolutionIndexPageStart], Source={x:Static su:Language.Instance}}"
-                        IsEnabled="{Binding ViewModel.StartEnabled}" />
-                    <ui:Button
-                        Grid.Column="3"
-                        Margin="6"
-                        Appearance="Danger"
-                        Command="{Binding ViewModel.SetStopCommand}"
-                        Content="{Binding [ImageSuperResolutionIndexPageStop], Source={x:Static su:Language.Instance}}"
-                        IsEnabled="{Binding ViewModel.StopEnabled}" />
-                    <ui:Button
-                        Grid.Column="4"
-                        Margin="6"
-                        Appearance="Success"
-                        Command="{Binding ViewModel.SetOpenCommand}"
-                        Content="{Binding [ImageSuperResolutionIndexPageOpen], Source={x:Static su:Language.Instance}}" />
-                </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Margin="6"
+                    VerticalAlignment="Center"
+                    Content="{Binding [Image.SuperResolution.InputFolder], Source={x:Static su:Language.Instance}}" />
+                <TextBox
+                    Grid.Column="1"
+                    Margin="6"
+                    Text="{Binding ViewModel.Input}" />
+                <ui:Button
+                    Grid.Column="2"
+                    Margin="6"
+                    Appearance="Info"
+                    Command="{Binding ViewModel.SetInputCommand}"
+                    Content="{Binding [Image.SuperResolution.InputSelect], Source={x:Static su:Language.Instance}}" />
             </Grid>
-        </GroupBox>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Margin="6"
+                    VerticalAlignment="Center"
+                    Content="{Binding [Image.SuperResolution.OutputFolder], Source={x:Static su:Language.Instance}}" />
+                <TextBox
+                    Grid.Column="1"
+                    Margin="6"
+                    Text="{Binding ViewModel.Output}" />
+                <ui:Button
+                    Grid.Column="2"
+                    Margin="6"
+                    Appearance="Info"
+                    Command="{Binding ViewModel.SetOutputCommand}"
+                    Content="{Binding [Image.SuperResolution.OutputSelect], Source={x:Static su:Language.Instance}}" />
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Margin="6"
+                    VerticalAlignment="Center"
+                    Content="{Binding [Image.SuperResolution.Provider], Source={x:Static su:Language.Instance}}" />
+                <ComboBox
+                    Grid.Column="1"
+                    Margin="6"
+                    DisplayMemberPath="Text"
+                    ItemsSource="{Binding ViewModel.ProviderSource}"
+                    SelectedItem="{Binding ViewModel.ProviderItem}" />
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Margin="6"
+                    VerticalAlignment="Center"
+                    Content="{Binding [Image.SuperResolution.Mode], Source={x:Static su:Language.Instance}}" />
+                <ComboBox
+                    Grid.Column="1"
+                    Margin="6"
+                    DisplayMemberPath="Text"
+                    ItemsSource="{Binding ViewModel.ModeSource}"
+                    SelectedItem="{Binding ViewModel.ModeItem}" />
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Margin="6"
+                    VerticalAlignment="Center"
+                    Content="{Binding [Image.SuperResolution.Scale], Source={x:Static su:Language.Instance}}" />
+                <ComboBox
+                    Grid.Column="1"
+                    Margin="6"
+                    DisplayMemberPath="Text"
+                    ItemsSource="{Binding ViewModel.ScaleSource}"
+                    SelectedItem="{Binding ViewModel.ScaleItem}" />
+            </Grid>
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Margin="6"
+                    VerticalAlignment="Center"
+                    Content="{Binding [Image.SuperResolution.Progress], Source={x:Static su:Language.Instance}}" />
+                <Grid Grid.Column="1" Margin="6">
+                    <ProgressBar Maximum="{Binding ViewModel.ProgressBarMaximum}" Value="{Binding ViewModel.ProgressBarValue}" />
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="{Binding ViewModel.ProgressBarText}" />
+                </Grid>
+                <ui:Button
+                    Grid.Column="2"
+                    Margin="6"
+                    Appearance="Info"
+                    Command="{Binding ViewModel.SetStartCommand}"
+                    Content="{Binding [Image.SuperResolution.Start], Source={x:Static su:Language.Instance}}"
+                    IsEnabled="{Binding ViewModel.StartEnabled}" />
+                <ui:Button
+                    Grid.Column="3"
+                    Margin="6"
+                    Appearance="Danger"
+                    Command="{Binding ViewModel.SetStopCommand}"
+                    Content="{Binding [Image.SuperResolution.Stop], Source={x:Static su:Language.Instance}}"
+                    IsEnabled="{Binding ViewModel.StopEnabled}" />
+                <ui:Button
+                    Grid.Column="4"
+                    Margin="6"
+                    Appearance="Success"
+                    Command="{Binding ViewModel.SetOpenCommand}"
+                    Content="{Binding [Image.SuperResolution.Open], Source={x:Static su:Language.Instance}}" />
+            </Grid>
+        </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <GroupBox
+            <fg:Grid
+                x:Name="FileGrid"
                 Grid.Column="0"
-                Padding="0,8,0,0"
-                BorderThickness="0">
-                <GroupBox.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <ToggleButton Content="{Binding [FileGridInput], Source={x:Static su:Language.Instance}}" IsChecked="{Binding ViewModel.FileGridInputEnable}" />
-                        <ToggleButton Content="{Binding [FileGridOutput], Source={x:Static su:Language.Instance}}" IsChecked="{Binding ViewModel.FileGridOutputEnable}" />
-                    </StackPanel>
-                </GroupBox.Header>
-                <fg:Grid
-                    x:Name="FileGrid"
-                    CurrItem="{Binding ViewModel.FileGridItem}"
-                    Items="{Binding ViewModel.FileGridSource}" />
-            </GroupBox>
-            <GroupBox
+                SwitchItem="{Binding ViewModel.FileGridSwitchItem}"
+                TableItem="{Binding ViewModel.FileGridTableItem}"
+                TableList="{Binding ViewModel.FileGridTableList}" />
+            <fv:View
+                x:Name="FileView"
                 Grid.Column="1"
-                Padding="0,8,0,0"
-                BorderThickness="0"
-                Header="{Binding [FileView], Source={x:Static su:Language.Instance}}">
-                <fv:View
-                    x:Name="FileView"
-                    ImageSource="{Binding ViewModel.FileViewSource}"
-                    ImageVisibility="Visible" />
-            </GroupBox>
-            <GroupBox
+                ImageItem="{Binding ViewModel.FileViewItem}"
+                ImageVisibility="Visible" />
+            <fm:View
+                x:Name="FileMessage"
                 Grid.Column="2"
-                Padding="0,8,0,0"
-                BorderThickness="0"
-                Header="{Binding [FileMessage], Source={x:Static su:Language.Instance}}">
-                <fm:View x:Name="FileMessage" CurrMessage="{Binding ViewModel.CurrMessage}" />
-            </GroupBox>
+                MessageItem="{Binding ViewModel.MessageItem}" />
         </Grid>
     </Grid>
 </Page>

@@ -5,6 +5,7 @@ using Apt.Core.Models;
 using Apt.Core.Services.Pages.Audio.Denoise;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
+using Apt.Service.Enums;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -41,26 +42,16 @@ namespace Apt.App.ViewModels.Pages.Audio.Denoise
             set => ModeItem = ModeSource.FirstOrDefault(e => e.Value == value) ?? ModeSource.First();
         }
 
+        [ObservableProperty]
+        private Uri? _fileViewItem = null!;
+
         public override void OnInputChangedAction(string value) => GetFileGrids();
 
         public override void OnOutputChangedAction(string value) => GetFileGrids();
 
-        public override void OnFileGridInputEnableChangedAction(bool value)
-        {
-            base.OnFileGridInputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
+        public override void OnFileGridSwitchItemChangedAction(FileSwitch value) => GetFileGrids();
 
-        public override void OnFileGridOutputEnableChangedAction(bool value)
-        {
-            base.OnFileGridOutputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
-
-        [ObservableProperty]
-        private Uri? _fileViewSource = null!;
-
-        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridTableItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewItem = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -79,12 +70,12 @@ namespace Apt.App.ViewModels.Pages.Audio.Denoise
 
             ModeSource =
             [
-                new ComBoBoxItem<string>() {  Text = Language.Instance["AudioDenoiseIndexPageModeStandard"], Value = "Standard" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["AudioDenoiseIndexPageModeQuality"], Value = "Quality" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["AudioDenoiseIndexPageModeKaraoke"], Value = "Karaoke" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Audio.Denoise.ModeStandard"], Value = "Standard" },
             ];
 
-            AddMessage(MessageType.Success, Language.Instance["AudioDenoiseHelp"]);
+            FileGridSwitchItem = FileSwitch.Input;
+
+            AddMessage(MessageType.Success, Language.Instance["Audio.Denoise.Help"]);
 
             _indexService = new IndexService
             {
@@ -104,29 +95,27 @@ namespace Apt.App.ViewModels.Pages.Audio.Denoise
                 StartEnabled = false;
                 StopEnabled = true;
 
-                FileGridInputEnable = true;
-                FileGridOutputEnable = false;
+                FileGridSwitchItem = FileSwitch.Input;
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["AudioDenoiseIndexPageInputError"]);
+                    throw new Exception(Language.Instance["Audio.Denoise.InputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["AudioDenoiseIndexPageOutputError"]);
+                    throw new Exception(Language.Instance["Audio.Denoise.OutputError"]);
                 }
-                var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
+                var inputFiles = FileGridTableList.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["AudioDenoiseIndexPageFileError"]);
+                    throw new Exception(Language.Instance["Audio.Denoise.FileError"]);
                 }
 
                 await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["AudioDenoiseIndexPageProcessEnd"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["Audio.Denoise.ProcessEnd"]);
 
-                FileGridInputEnable = false;
-                FileGridOutputEnable = true;
+                FileGridSwitchItem = FileSwitch.Output;
             }
             catch (ActivationException ex)
             {

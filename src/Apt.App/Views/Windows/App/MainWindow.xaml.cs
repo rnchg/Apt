@@ -41,7 +41,7 @@ namespace Apt.App.Views.Windows.App
         protected override async void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
-            await Message.ShowMessageConfirm(Core.Utility.Language.Instance["MainWindowExitConfirm"], cancel: () => e.Cancel = true);
+            await Message.ShowMessageConfirm(Core.Utility.Language.Instance["Application.ExitConfirm"], cancel: () => e.Cancel = true);
         }
 
         protected override void OnClosed(EventArgs e)

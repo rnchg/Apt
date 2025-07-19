@@ -7,7 +7,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Apt.App</AssemblyName>
-		<Version>2.9.12</Version>
+		<Version>2.9.13</Version>
 		<PlatformTarget>x64</PlatformTarget>
 		<ApplicationIcon>Assets\App.ico</ApplicationIcon>
 		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
@@ -16,7 +16,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Apt.Service" Version="2.9.12" />
+		<PackageReference Include="Apt.Service" Version="2.9.13" />
 		<PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
 		<PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />

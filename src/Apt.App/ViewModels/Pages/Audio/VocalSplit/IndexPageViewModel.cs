@@ -5,6 +5,7 @@ using Apt.Core.Models;
 using Apt.Core.Services.Pages.Audio.VocalSplit;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
+using Apt.Service.Enums;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -41,26 +42,16 @@ namespace Apt.App.ViewModels.Pages.Audio.VocalSplit
             set => ModeItem = ModeSource.FirstOrDefault(e => e.Value == value) ?? ModeSource.First();
         }
 
+        [ObservableProperty]
+        private Uri? _fileViewItem = null!;
+
         public override void OnInputChangedAction(string value) => GetFileGrids();
 
         public override void OnOutputChangedAction(string value) => GetFileGrids();
 
-        public override void OnFileGridInputEnableChangedAction(bool value)
-        {
-            base.OnFileGridInputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
+        public override void OnFileGridSwitchItemChangedAction(FileSwitch value) => GetFileGrids();
 
-        public override void OnFileGridOutputEnableChangedAction(bool value)
-        {
-            base.OnFileGridOutputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
-
-        [ObservableProperty]
-        private Uri? _fileViewSource = null!;
-
-        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridTableItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewItem = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -79,12 +70,14 @@ namespace Apt.App.ViewModels.Pages.Audio.VocalSplit
 
             ModeSource =
             [
-                new ComBoBoxItem<string>() {  Text = Language.Instance["AudioVocalSplitIndexPageModeStandard"], Value = "Standard" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["AudioVocalSplitIndexPageModeQuality"], Value = "Quality" },
-                new ComBoBoxItem<string>() {  Text = Language.Instance["AudioVocalSplitIndexPageModeKaraoke"], Value = "Karaoke" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Audio.VocalSplit.ModeStandard"], Value = "Standard" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Audio.VocalSplit.ModeQuality"], Value = "Quality" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Audio.VocalSplit.ModeKaraoke"], Value = "Karaoke" }
             ];
 
-            AddMessage(MessageType.Success, Language.Instance["AudioVocalSplitHelp"]);
+            FileGridSwitchItem = FileSwitch.Input;
+
+            AddMessage(MessageType.Success, Language.Instance["Audio.VocalSplit.Help"]);
 
             _indexService = new IndexService
             {
@@ -104,29 +97,27 @@ namespace Apt.App.ViewModels.Pages.Audio.VocalSplit
                 StartEnabled = false;
                 StopEnabled = true;
 
-                FileGridInputEnable = true;
-                FileGridOutputEnable = false;
+                FileGridSwitchItem = FileSwitch.Input;
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["AudioVocalSplitIndexPageInputError"]);
+                    throw new Exception(Language.Instance["Audio.VocalSplit.InputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["AudioVocalSplitIndexPageOutputError"]);
+                    throw new Exception(Language.Instance["Audio.VocalSplit.OutputError"]);
                 }
-                var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
+                var inputFiles = FileGridTableList.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["AudioVocalSplitIndexPageFileError"]);
+                    throw new Exception(Language.Instance["Audio.VocalSplit.FileError"]);
                 }
 
                 await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["AudioVocalSplitIndexPageProcessEnd"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["Audio.VocalSplit.ProcessEnd"]);
 
-                FileGridInputEnable = false;
-                FileGridOutputEnable = true;
+                FileGridSwitchItem = FileSwitch.Output;
             }
             catch (ActivationException ex)
             {

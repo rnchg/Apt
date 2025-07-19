@@ -5,6 +5,7 @@ using Apt.Core.Models;
 using Apt.Core.Services.Pages.Image.FrameInterpolation;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
+using Apt.Service.Enums;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -53,26 +54,16 @@ namespace Apt.App.ViewModels.Pages.Image.FrameInterpolation
             set => ScaleItem = ScaleSource.FirstOrDefault(e => e.Value == value) ?? ScaleSource.First();
         }
 
+        [ObservableProperty]
+        private Uri? _fileViewItem = null!;
+
         public override void OnInputChangedAction(string value) => GetFileGrids();
 
         public override void OnOutputChangedAction(string value) => GetFileGrids();
 
-        public override void OnFileGridInputEnableChangedAction(bool value)
-        {
-            base.OnFileGridInputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
+        public override void OnFileGridSwitchItemChangedAction(FileSwitch value) => GetFileGrids();
 
-        public override void OnFileGridOutputEnableChangedAction(bool value)
-        {
-            base.OnFileGridOutputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
-
-        [ObservableProperty]
-        private Uri? _fileViewSource = null!;
-
-        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridTableItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewItem = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -91,16 +82,18 @@ namespace Apt.App.ViewModels.Pages.Image.FrameInterpolation
 
             ModeSource =
             [
-                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageModeStandard"], Value = "Standard" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["Image.FrameInterpolation.ModeStandard"], Value = "Standard" }
             ];
             ScaleSource =
             [
-                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX2"], Value = "X2" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX4"], Value = "X4" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["ImageFrameInterpolationIndexPageScaleX8"], Value = "X8" }
+                new ComBoBoxItem<string>() { Text = Language.Instance["Image.FrameInterpolation.ScaleX2"], Value = "X2" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["Image.FrameInterpolation.ScaleX4"], Value = "X4" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["Image.FrameInterpolation.ScaleX8"], Value = "X8" }
             ];
 
-            AddMessage(MessageType.Success, Language.Instance["ImageFrameInterpolationHelp"]);
+            FileGridSwitchItem = FileSwitch.Input;
+
+            AddMessage(MessageType.Success, Language.Instance["Image.FrameInterpolation.Help"]);
 
             _indexService = new IndexService
             {
@@ -120,29 +113,27 @@ namespace Apt.App.ViewModels.Pages.Image.FrameInterpolation
                 StartEnabled = false;
                 StopEnabled = true;
 
-                FileGridInputEnable = true;
-                FileGridOutputEnable = false;
+                FileGridSwitchItem = FileSwitch.Input;
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["ImageFrameInterpolationIndexPageInputError"]);
+                    throw new Exception(Language.Instance["Image.FrameInterpolation.InputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["ImageFrameInterpolationIndexPageOutputError"]);
+                    throw new Exception(Language.Instance["Image.FrameInterpolation.OutputError"]);
                 }
-                var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
+                var inputFiles = FileGridTableList.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["ImageFrameInterpolationIndexPageFileError"]);
+                    throw new Exception(Language.Instance["Image.FrameInterpolation.FileError"]);
                 }
 
                 await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Scale);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["ImageFrameInterpolationIndexPageProcessEnd"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["Image.FrameInterpolation.ProcessEnd"]);
 
-                FileGridInputEnable = false;
-                FileGridOutputEnable = true;
+                FileGridSwitchItem = FileSwitch.Output;
             }
             catch (ActivationException ex)
             {

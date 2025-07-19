@@ -54,11 +54,11 @@
                         <ui:TextBlock
                             FontTypography="Title"
                             Foreground="#FFFFFF"
-                            Text="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}}" />
+                            Text="{Binding [Application.Title], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}}" />
                         <ui:TextBlock
                             FontTypography="BodyStrong"
                             Foreground="#B7FFFFFF"
-                            Text="{Binding [ApplicationDescription], Source={x:Static su:Language.Instance}}" />
+                            Text="{Binding [Application.Description], Source={x:Static su:Language.Instance}}" />
                     </StackPanel>
                 </Grid>
             </Border>
@@ -94,11 +94,11 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageGenChat], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.GenChat], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
-                                Text="{Binding [DashboardPageGenChatDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.GenChatDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -137,11 +137,11 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageImageSuperResolution], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageSuperResolution], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
-                                Text="{Binding [DashboardPageImageSuperResolutionDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageSuperResolutionDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -166,12 +166,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageImageAutoWipe], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageAutoWipe], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageImageAutoWipeDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageAutoWipeDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -196,12 +196,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageImageCartoonComic], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageCartoonComic], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageImageCartoonComicDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageCartoonComicDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -226,12 +226,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageImageConvert3d], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageConvert3d], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageImageConvert3dDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageConvert3dDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -264,12 +264,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageImageColorRestoration], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageColorRestoration], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageImageColorRestorationDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageColorRestorationDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -294,12 +294,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageImageFrameInterpolation], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageFrameInterpolation], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageImageFrameInterpolationDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageFrameInterpolationDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -324,12 +324,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageImageMatting], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageMatting], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageImageMattingDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageMattingDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -354,12 +354,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageImageFaceRestoration], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageFaceRestoration], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageImageFaceRestorationDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.ImageFaceRestorationDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -398,12 +398,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageVideoSuperResolution], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoSuperResolution], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageVideoSuperResolutionDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoSuperResolutionDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -428,12 +428,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageVideoAutoWipe], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoAutoWipe], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageVideoAutoWipeDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoAutoWipeDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -458,12 +458,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageVideoCartoonComic], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoCartoonComic], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageVideoCartoonComicDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoCartoonComicDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -488,12 +488,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageVideoConvert3d], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoConvert3d], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageVideoConvert3dDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoConvert3dDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -526,12 +526,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageVideoColorRestoration], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoColorRestoration], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageVideoColorRestorationDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoColorRestorationDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -556,12 +556,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageVideoFrameInterpolation], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoFrameInterpolation], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageVideoFrameInterpolationDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoFrameInterpolationDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -586,12 +586,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageVideoMatting], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoMatting], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageVideoMattingDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoMattingDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -616,11 +616,11 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageVideoOrganization], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoOrganization], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
-                                Text="{Binding [DashboardPageVideoOrganizationDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.VideoOrganizationDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -658,12 +658,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageAudioVocalSplit], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.AudioVocalSplit], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageAudioVocalSplitDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.AudioVocalSplitDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -688,12 +688,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageAudioDenoise], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.AudioDenoise], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageAudioDenoiseDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.AudioDenoiseDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -718,12 +718,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageAudioTTS], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.AudioTTS], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageAudioTTSDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.AudioTTSDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -748,12 +748,12 @@
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <ui:TextBlock
                                 FontTypography="BodyStrong"
-                                Text="{Binding [DashboardPageAudioSTT], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.AudioSTT], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                             <ui:TextBlock
                                 Appearance="Tertiary"
                                 Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                Text="{Binding [DashboardPageAudioSTTDescription], Source={x:Static su:Language.Instance}}"
+                                Text="{Binding [Dashboard.AudioSTTDescription], Source={x:Static su:Language.Instance}}"
                                 TextWrapping="WrapWithOverflow" />
                         </StackPanel>
                     </Grid>
@@ -770,7 +770,7 @@
                 Margin="0,0,0,8"
                 FontSize="20"
                 FontWeight="DemiBold"
-                Text="{Binding [ApplicationSupport], Source={x:Static su:Language.Instance}}" />
+                Text="{Binding [Application.Support], Source={x:Static su:Language.Instance}}" />
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <StackPanel Orientation="Horizontal">
                     <ui:HyperlinkButton

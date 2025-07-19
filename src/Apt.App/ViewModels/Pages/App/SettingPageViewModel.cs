@@ -108,9 +108,9 @@ namespace Apt.App.ViewModels.Pages.App
         {
             ThemeSource =
             [
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeSystem"], Value="System",  Item = ApplicationTheme.Dark },
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeLight"], Value="Light", Item = ApplicationTheme.Light },
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["SettingPageThemeDark"], Value="Dark",  Item = ApplicationTheme.Dark },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["Setting.ThemeSystem"], Value="System",  Item = ApplicationTheme.Dark },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["Setting.ThemeLight"], Value="Light", Item = ApplicationTheme.Light },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["Setting.ThemeDark"], Value="Dark",  Item = ApplicationTheme.Dark },
             ];
             LanguageSource = [.. Directory.GetFiles(AppConst.LanguagePath, "*.json").Select(x =>
             {
@@ -119,8 +119,8 @@ namespace Apt.App.ViewModels.Pages.App
             })];
             ModeSource =
             [
-                new ComBoBoxItem<string>() { Text = Core.Utility.Language.Instance["SettingPageModeBalanced"], Value ="Balanced" },
-                new ComBoBoxItem<string>() { Text = Core.Utility.Language.Instance["SettingPageModePerformance"], Value = "Performance" }
+                new ComBoBoxItem<string>() { Text = Core.Utility.Language.Instance["Setting.ModeBalanced"], Value ="Balanced" },
+                new ComBoBoxItem<string>() { Text = Core.Utility.Language.Instance["Setting.ModePerformance"], Value = "Performance" }
             ];
 
             Theme = Current.Config.Setting.Theme;

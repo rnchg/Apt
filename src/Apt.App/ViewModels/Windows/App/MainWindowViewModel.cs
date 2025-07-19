@@ -28,64 +28,64 @@ namespace Apt.App.ViewModels.Windows.App
             [
                 new NavigationViewItem()
                 {
-                    Content = Language.Instance["MainWindowHome"],
+                    Content = Language.Instance["Route.Dashboard"],
                     Icon = new SymbolIcon { Symbol = SymbolRegular.Home20 },
                     TargetPageType = typeof(Views.Pages.App.DashboardPage)
                 },
                 new NavigationViewItem()
                 {
-                    Content = Language.Instance["MainWindowGen"],
+                    Content = Language.Instance["Route.Gen"],
                     Icon = new SymbolIcon { Symbol = SymbolRegular.Chat20 },
                     MenuItemsSource = new ObservableCollection<object>()
                     {
-                        new NavigationViewItem(Language.Instance["MainWindowGenChat"], SymbolRegular.Chat20, typeof(Views.Pages.Gen.Chat.IndexPage))
+                        new NavigationViewItem(Language.Instance["Route.GenChat"], SymbolRegular.Chat20, typeof(Views.Pages.Gen.Chat.IndexPage))
                     },
                     IsExpanded = true
                 },
                 new NavigationViewItem()
                 {
-                    Content = Language.Instance["MainWindowImage"],
+                    Content = Language.Instance["Route.Image"],
                     Icon = new SymbolIcon { Symbol = SymbolRegular.Image24 },
                     MenuItemsSource = new ObservableCollection<object>()
                     {
-                        new NavigationViewItem(Language.Instance["MainWindowImageSuperResolution"], SymbolRegular.Image24, typeof(Views.Pages.Image.SuperResolution.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowImageAutoWipe"], SymbolRegular.Video36024, typeof(Views.Pages.Image.AutoWipe.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowImageCartoonComic"], SymbolRegular.CommunicationPerson24, typeof(Views.Pages.Image.CartoonComic.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowImageConvert3d"], SymbolRegular.VideoSwitch24, typeof(Views.Pages.Image.Convert3d.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowImageColorRestoration"], SymbolRegular.VideoPersonSparkle24, typeof(Views.Pages.Image.ColorRestoration.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowImageFrameInterpolation"], SymbolRegular.VideoClipMultiple24, typeof(Views.Pages.Image.FrameInterpolation.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowImageMatting"], SymbolRegular.ImageMultiple24, typeof(Views.Pages.Image.Matting.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowImageFaceRestoration"], SymbolRegular.VideoPersonStar24, typeof(Views.Pages.Image.FaceRestoration.IndexPage))
+                        new NavigationViewItem(Language.Instance["Route.ImageSuperResolution"], SymbolRegular.Image24, typeof(Views.Pages.Image.SuperResolution.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.ImageAutoWipe"], SymbolRegular.Video36024, typeof(Views.Pages.Image.AutoWipe.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.ImageCartoonComic"], SymbolRegular.CommunicationPerson24, typeof(Views.Pages.Image.CartoonComic.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.ImageConvert3d"], SymbolRegular.VideoSwitch24, typeof(Views.Pages.Image.Convert3d.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.ImageColorRestoration"], SymbolRegular.VideoPersonSparkle24, typeof(Views.Pages.Image.ColorRestoration.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.ImageFrameInterpolation"], SymbolRegular.VideoClipMultiple24, typeof(Views.Pages.Image.FrameInterpolation.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.ImageMatting"], SymbolRegular.ImageMultiple24, typeof(Views.Pages.Image.Matting.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.ImageFaceRestoration"], SymbolRegular.VideoPersonStar24, typeof(Views.Pages.Image.FaceRestoration.IndexPage))
                     },
                     IsExpanded = true
                 },
                 new NavigationViewItem()
                 {
-                    Content = Language.Instance["MainWindowVideo"],
+                    Content = Language.Instance["Route.Video"],
                     Icon = new SymbolIcon { Symbol = SymbolRegular.VideoClip24 },
                     MenuItemsSource = new ObservableCollection<object>()
                     {
-                        new NavigationViewItem(Language.Instance["MainWindowVideoSuperResolution"], SymbolRegular.Video24, typeof(Views.Pages.Video.SuperResolution.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowVideoAutoWipe"], SymbolRegular.Video36024, typeof(Views.Pages.Video.AutoWipe.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowVideoCartoonComic"], SymbolRegular.CommunicationPerson24, typeof(Views.Pages.Video.CartoonComic.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowVideoConvert3d"], SymbolRegular.VideoSwitch24, typeof(Views.Pages.Video.Convert3d.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowVideoColorRestoration"], SymbolRegular.VideoPersonSparkle24, typeof(Views.Pages.Video.ColorRestoration.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowVideoFrameInterpolation"], SymbolRegular.VideoClipMultiple24, typeof(Views.Pages.Video.FrameInterpolation.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowVideoMatting"], SymbolRegular.ImageMultiple24, typeof(Views.Pages.Video.Matting.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowVideoOrganization"], SymbolRegular.VideoClip24, typeof(Views.Pages.Video.Organization.IndexPage))
+                        new NavigationViewItem(Language.Instance["Route.VideoSuperResolution"], SymbolRegular.Video24, typeof(Views.Pages.Video.SuperResolution.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.VideoAutoWipe"], SymbolRegular.Video36024, typeof(Views.Pages.Video.AutoWipe.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.VideoCartoonComic"], SymbolRegular.CommunicationPerson24, typeof(Views.Pages.Video.CartoonComic.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.VideoConvert3d"], SymbolRegular.VideoSwitch24, typeof(Views.Pages.Video.Convert3d.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.VideoColorRestoration"], SymbolRegular.VideoPersonSparkle24, typeof(Views.Pages.Video.ColorRestoration.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.VideoFrameInterpolation"], SymbolRegular.VideoClipMultiple24, typeof(Views.Pages.Video.FrameInterpolation.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.VideoMatting"], SymbolRegular.ImageMultiple24, typeof(Views.Pages.Video.Matting.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.VideoOrganization"], SymbolRegular.VideoClip24, typeof(Views.Pages.Video.Organization.IndexPage))
                     },
                     IsExpanded = true
                 },
                 new NavigationViewItem()
                 {
-                    Content = Language.Instance["MainWindowAudio"],
+                    Content = Language.Instance["Route.Audio"],
                     Icon = new SymbolIcon { Symbol = SymbolRegular.HeadphonesSoundWave24 },
                     MenuItemsSource = new ObservableCollection<object>()
                     {
-                        new NavigationViewItem(Language.Instance["MainWindowAudioVocalSplit"], SymbolRegular.MusicNote224, typeof(Views.Pages.Audio.VocalSplit.IndexPage)),
-                        new NavigationViewItem(Language.Instance["MainWindowAudioDenoise"], SymbolRegular.HeadphonesSoundWave24, typeof(Views.Pages.Audio.Denoise.IndexPage)),
-                        //new NavigationViewItem(Language.Instance["MainWindowAudioTTS"], SymbolRegular.SoundWaveCircle24, typeof(Views.Pages.Audio.VocalSplit.IndexPage)),
-                        //new NavigationViewItem(Language.Instance["MainWindowAudioSTT"], SymbolRegular.ClipboardTextLtr24, typeof(Views.Pages.Audio.VocalSplit.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.AudioVocalSplit"], SymbolRegular.MusicNote224, typeof(Views.Pages.Audio.VocalSplit.IndexPage)),
+                        new NavigationViewItem(Language.Instance["Route.AudioDenoise"], SymbolRegular.HeadphonesSoundWave24, typeof(Views.Pages.Audio.Denoise.IndexPage)),
+                        //new NavigationViewItem(Language.Instance["Route.AudioTTS"], SymbolRegular.SoundWaveCircle24, typeof(Views.Pages.Audio.VocalSplit.IndexPage)),
+                        //new NavigationViewItem(Language.Instance["Route.AudioSTT"], SymbolRegular.ClipboardTextLtr24, typeof(Views.Pages.Audio.VocalSplit.IndexPage)),
                     },
                     IsExpanded = true
                 }
@@ -94,7 +94,7 @@ namespace Apt.App.ViewModels.Windows.App
             [
                 new NavigationViewItem()
                 {
-                    Content = Language.Instance["MainWindowSetting"],
+                    Content = Language.Instance["Route.Setting"],
                     Icon = new SymbolIcon { Symbol = SymbolRegular.Settings20 },
                     TargetPageType = typeof(Views.Pages.App.SettingPage)
                 }

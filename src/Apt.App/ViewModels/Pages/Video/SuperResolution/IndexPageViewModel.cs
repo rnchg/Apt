@@ -5,6 +5,7 @@ using Apt.Core.Models;
 using Apt.Core.Services.Pages.Video.SuperResolution;
 using Apt.Core.Utility;
 using Apt.Service.Adapters.Windows;
+using Apt.Service.Enums;
 using Apt.Service.Extensions;
 using Apt.Service.Utility;
 using Apt.Service.ViewModels.Base;
@@ -53,26 +54,16 @@ namespace Apt.App.ViewModels.Pages.Video.SuperResolution
             set => ScaleItem = ScaleSource.FirstOrDefault(e => e.Value == value) ?? ScaleSource.First();
         }
 
+        [ObservableProperty]
+        private Uri? _fileViewItem = null!;
+
         public override void OnInputChangedAction(string value) => GetFileGrids();
 
         public override void OnOutputChangedAction(string value) => GetFileGrids();
 
-        public override void OnFileGridInputEnableChangedAction(bool value)
-        {
-            base.OnFileGridInputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
+        public override void OnFileGridSwitchItemChangedAction(FileSwitch value) => GetFileGrids();
 
-        public override void OnFileGridOutputEnableChangedAction(bool value)
-        {
-            base.OnFileGridOutputEnableChangedAction(value);
-            if (value) GetFileGrids();
-        }
-
-        [ObservableProperty]
-        private Uri? _fileViewSource = null!;
-
-        public override void OnFileGridItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewSource = Source.FileToUri(value?.FullName);
+        public override void OnFileGridTableItemChangedAction(Service.Controls.FileGrid.Model? value) => FileViewItem = Source.FileToUri(value?.FullName);
 
         public IndexPageViewModel(
             IServiceProvider serviceProvider,
@@ -91,15 +82,17 @@ namespace Apt.App.ViewModels.Pages.Video.SuperResolution
 
             ModeSource =
             [
-                new ComBoBoxItem<string>() {  Text = Language.Instance["VideoSuperResolutionIndexPageModeStandard"], Value = "Standard" }
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Video.SuperResolution.ModeStandard"], Value = "Standard" }
             ];
             ScaleSource =
             [
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageScaleX2"], Value = "X2" },
-                new ComBoBoxItem<string>() { Text = Language.Instance["VideoSuperResolutionIndexPageScaleX4"], Value = "X4" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["Video.SuperResolution.ScaleX2"], Value = "X2" },
+                new ComBoBoxItem<string>() { Text = Language.Instance["Video.SuperResolution.ScaleX4"], Value = "X4" },
             ];
 
-            AddMessage(MessageType.Success, Language.Instance["VideoSuperResolutionHelp"]);
+            FileGridSwitchItem = FileSwitch.Input;
+
+            AddMessage(MessageType.Success, Language.Instance["Video.SuperResolution.Help"]);
 
             _indexService = new IndexService
             {
@@ -119,29 +112,27 @@ namespace Apt.App.ViewModels.Pages.Video.SuperResolution
                 StartEnabled = false;
                 StopEnabled = true;
 
-                FileGridInputEnable = true;
-                FileGridOutputEnable = false;
+                FileGridSwitchItem = FileSwitch.Input;
 
                 if (!Directory.Exists(Input))
                 {
-                    throw new Exception(Language.Instance["VideoSuperResolutionIndexPageInputError"]);
+                    throw new Exception(Language.Instance["Video.SuperResolution.InputError"]);
                 }
                 if (!Directory.Exists(Output))
                 {
-                    throw new Exception(Language.Instance["VideoSuperResolutionIndexPageOutputError"]);
+                    throw new Exception(Language.Instance["Video.SuperResolution.OutputError"]);
                 }
-                var inputFiles = FileGridSource.Select(e => e.FullName).ToArray();
+                var inputFiles = FileGridTableList.Select(e => e.FullName).ToArray();
                 if (inputFiles.Length == 0)
                 {
-                    throw new Exception(Language.Instance["VideoSuperResolutionIndexPageFileError"]);
+                    throw new Exception(Language.Instance["Video.SuperResolution.FileError"]);
                 }
 
                 await _indexService.StartAsync(Input, Output, inputFiles, Provider, Mode, Scale);
 
-                SnackbarService.ShowSnackbarSuccess(Language.Instance["VideoSuperResolutionIndexPageProcessEnd"]);
+                SnackbarService.ShowSnackbarSuccess(Language.Instance["Video.SuperResolution.ProcessEnd"]);
 
-                FileGridInputEnable = false;
-                FileGridOutputEnable = true;
+                FileGridSwitchItem = FileSwitch.Output;
             }
             catch (ActivationException ex)
             {

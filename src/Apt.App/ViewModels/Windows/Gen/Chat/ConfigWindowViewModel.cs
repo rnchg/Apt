@@ -29,7 +29,7 @@ namespace Apt.App.ViewModels.Windows.Gen.Chat
             Current.Config.GenChat.PromptMaxLength = PromptMaxLength;
             Current.Config.GenChat.ContextMaxLength = ContextMaxLength;
             ServiceProvider.GetRequiredService<Pages.Gen.Chat.IndexPageViewModel>().PromptMaxLength = Current.Config.GenChat.PromptMaxLength;
-            await Message.ShowMessageInfo(Language.Instance["GenChatConfigWindowSetSaveSuccess"]);
+            await Message.ShowMessageInfo(Language.Instance["Gen.Chat.ConfigSaveSuccess"]);
             CloseAction?.Invoke();
         }
 

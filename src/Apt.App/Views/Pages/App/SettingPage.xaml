@@ -22,7 +22,7 @@
         <ui:TextBlock
             Margin="0,0,0,8"
             FontTypography="BodyStrong"
-            Text="{Binding [SettingPageOptions], Source={x:Static su:Language.Instance}}" />
+            Text="{Binding [Setting.Title], Source={x:Static su:Language.Instance}}" />
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Color24}">
             <ui:CardControl.Header>
                 <Grid>
@@ -33,7 +33,7 @@
                     <ui:TextBlock
                         Grid.Row="0"
                         FontTypography="Body"
-                        Text="{Binding [SettingPageTheme], Source={x:Static su:Language.Instance}}" />
+                        Text="{Binding [Setting.Theme], Source={x:Static su:Language.Instance}}" />
                 </Grid>
             </ui:CardControl.Header>
             <ComboBox
@@ -44,7 +44,7 @@
         </ui:CardControl>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon LocalLanguage24}">
             <ui:CardControl.Header>
-                <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageLanguage], Source={x:Static su:Language.Instance}}" />
+                <ui:TextBlock FontTypography="Body" Text="{Binding [Setting.Language], Source={x:Static su:Language.Instance}}" />
             </ui:CardControl.Header>
             <ComboBox
                 MinWidth="200"
@@ -54,7 +54,7 @@
         </ui:CardControl>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon AppsList24}">
             <ui:CardControl.Header>
-                <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageMode], Source={x:Static su:Language.Instance}}" />
+                <ui:TextBlock FontTypography="Body" Text="{Binding [Setting.Mode], Source={x:Static su:Language.Instance}}" />
             </ui:CardControl.Header>
             <ComboBox
                 MinWidth="200"
@@ -65,18 +65,18 @@
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Chat24}">
             <ui:CardControl.Header>
                 <Grid>
-                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageGenChatConfig], Source={x:Static su:Language.Instance}}" />
+                    <ui:TextBlock FontTypography="Body" Text="{Binding [Setting.GenChat], Source={x:Static su:Language.Instance}}" />
                 </Grid>
             </ui:CardControl.Header>
             <Button
                 MinWidth="200"
                 Command="{Binding ViewModel.SetGenChatConfigCommand}"
-                Content="{Binding [SettingPageGenChatConfigSetting], Source={x:Static su:Language.Instance}}" />
+                Content="{Binding [Setting.GenChatConfig], Source={x:Static su:Language.Instance}}" />
         </ui:CardControl>
         <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Emoji24}">
             <ui:CardControl.Header>
                 <Grid>
-                    <ui:TextBlock FontTypography="Body" Text="{Binding [SettingPageLicense], Source={x:Static su:Language.Instance}}" />
+                    <ui:TextBlock FontTypography="Body" Text="{Binding [Setting.License], Source={x:Static su:Language.Instance}}" />
                 </Grid>
             </ui:CardControl.Header>
             <Grid MinWidth="200">
@@ -89,19 +89,19 @@
                     Margin="0,0,4,0"
                     HorizontalAlignment="Stretch"
                     Command="{Binding ViewModel.SetLicenseInfoCommand}"
-                    Content="{Binding [SettingPageLicenseInfo], Source={x:Static su:Language.Instance}}" />
+                    Content="{Binding [Setting.LicenseInfo], Source={x:Static su:Language.Instance}}" />
                 <Button
                     Grid.Column="1"
                     Margin="4,0,0,0"
                     HorizontalAlignment="Stretch"
                     Command="{Binding ViewModel.SetLicenseOrderCommand}"
-                    Content="{Binding [SettingPageLicenseOrder], Source={x:Static su:Language.Instance}}" />
+                    Content="{Binding [Setting.LicenseOrder], Source={x:Static su:Language.Instance}}" />
             </Grid>
         </ui:CardControl>
         <ui:TextBlock
             Margin="0,8,0,8"
             FontTypography="BodyStrong"
-            Text="{Binding [SettingPageAbout], Source={x:Static su:Language.Instance}}" />
+            Text="{Binding [Setting.About], Source={x:Static su:Language.Instance}}" />
         <ui:CardExpander
             ContentPadding="0"
             Icon="{ui:ImageIcon '/Apt.App;component/Assets/App.ico',
@@ -123,13 +123,13 @@
                         Grid.Column="0"
                         FontSize="20"
                         FontTypography="Body"
-                        Text="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}}" />
+                        Text="{Binding [Application.Title], Source={x:Static su:Language.Instance}}" />
                     <ui:TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
                         FontSize="12"
                         Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                        Text="{Binding [ApplicationDescription], Source={x:Static su:Language.Instance}}" />
+                        Text="{Binding [Application.Description], Source={x:Static su:Language.Instance}}" />
                     <TextBlock
                         Grid.Row="0"
                         Grid.RowSpan="2"
@@ -137,7 +137,7 @@
                         Margin="0,0,16,0"
                         VerticalAlignment="Center"
                         Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                        Text="{Binding [ApplicationTitle], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}}" />
+                        Text="{Binding [Application.Title], Source={x:Static su:Language.Instance}, Converter={StaticResource VersionConverter}}" />
                 </Grid>
             </ui:CardExpander.Header>
             <StackPanel>
