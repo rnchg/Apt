@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Audio.Denoise;
+﻿using APT.App.ViewModels.Pages.Audio.Denoise;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Audio.Denoise
+namespace APT.App.Views.Pages.Audio.Denoise
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

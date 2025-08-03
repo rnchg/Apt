@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Video.FrameInterpolation;
+﻿using APT.App.ViewModels.Pages.Video.FrameInterpolation;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Video.FrameInterpolation
+namespace APT.App.Views.Pages.Video.FrameInterpolation
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

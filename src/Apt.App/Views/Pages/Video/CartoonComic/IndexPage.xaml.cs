@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Video.CartoonComic;
+﻿using APT.App.ViewModels.Pages.Video.CartoonComic;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Video.CartoonComic
+namespace APT.App.Views.Pages.Video.CartoonComic
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

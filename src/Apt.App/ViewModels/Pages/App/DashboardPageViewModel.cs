@@ -1,10 +1,10 @@
-﻿using Apt.App.Views.Dialogs;
-using Apt.Service.ViewModels.Base;
+﻿using APT.App.Views.Dialogs;
+using APT.Service.ViewModels.Base;
 using Common.WindowsDesktop.Helpers;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui;
 
-namespace Apt.App.ViewModels.Pages.App
+namespace APT.App.ViewModels.Pages.App
 {
     public partial class DashboardPageViewModel : BaseViewModel
     {
@@ -21,7 +21,7 @@ namespace Apt.App.ViewModels.Pages.App
                 await new PlusDialog(_contentDialogService.GetDialogHost()).ShowAsync();
                 return;
             }
-            _navigationService.Navigate(PageHelper.ToType(parameter, "Apt.App.Views.Pages", Assembly.GetExecutingAssembly()));
+            _navigationService.Navigate(PageHelper.ToType(parameter, "APT.App.Views.Pages", Assembly.GetExecutingAssembly()));
         }
 
         public DashboardPageViewModel(

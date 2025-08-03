@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Video.Matting;
+﻿using APT.App.ViewModels.Pages.Video.Matting;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Video.Matting
+namespace APT.App.Views.Pages.Video.Matting
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

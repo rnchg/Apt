@@ -1,21 +1,21 @@
-﻿using Apt.App.Models;
-using Apt.App.Views.Windows.Gen.Chat;
-using Apt.Core.Consts;
-using Apt.Core.Exceptions;
-using Apt.Core.Models;
-using Apt.Core.Services.Pages.Gen.Chat;
-using Apt.Core.Utility;
-using Apt.Service.Adapters.Windows;
-using Apt.Service.Controls.ChatView;
-using Apt.Service.Extensions;
-using Apt.Service.Services;
-using Apt.Service.ViewModels.Base;
+﻿using APT.App.Models;
+using APT.App.Views.Windows.Gen.Chat;
+using APT.Core.Consts;
+using APT.Core.Exceptions;
+using APT.Core.Models;
+using APT.Core.Services.Pages.Gen.Chat;
+using APT.Core.Utility;
+using APT.Service.Adapters.Windows;
+using APT.Service.Controls.ChatView;
+using APT.Service.Extensions;
+using APT.Service.Services;
+using APT.Service.ViewModels.Base;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Services.Pages.Gen.Chat;
 using Wpf.Ui;
 
-namespace Apt.App.ViewModels.Pages.Gen.Chat
+namespace APT.App.ViewModels.Pages.Gen.Chat
 {
     public partial class IndexPageViewModel : BaseViewModel
     {

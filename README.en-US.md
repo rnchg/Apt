@@ -61,13 +61,13 @@ We will continue to integrate and optimize more AI models to meet the diverse ne
 
 ### Open source and download address
 
-- | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [Google Drive](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [Baidu Drive](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) | [Tencent Weiyun](https://share.weiyun.com/vGiBjW8d) |
+- | [Github](https://github.com/rnchg/APT/releases/latest) | [Gitee](https://gitee.com/rnchg/APT/releases/latest) | [Google Drive](https://drive.google.com/drive/folders/1o-SxxA2oAKjQkh-X83TN_zHjHIvOBe0V?usp=sharing) | [Baidu Drive](https://pan.baidu.com/s/1I_DwtX15492z6B6ZHDhJ-Q?pwd=1234) | [Tencent Weiyun](https://share.weiyun.com/vGiBjW8d) |
 
 ### Instructions and technical support
 
 - **Email**: [Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
-- **Github**: [github.com/rnchg/Apt](https://github.com/rnchg/Apt)
-- **Gitee**: [gitee.com/rnchg/apt](https://gitee.com/rnchg/apt)
+- **Github**: [github.com/rnchg/APT](https://github.com/rnchg/APT)
+- **Gitee**: [gitee.com/rnchg/APT](https://gitee.com/rnchg/APT)
 - **Youtube**: [Light Cloud Wind](https://www.youtube.com/channel/UCHKH3bLpd8giPyr6x5sKGfw)
 - **Bilibili**: [风轻云也净](https://space.bilibili.com/478375442)
 - **QQ**: 6085398

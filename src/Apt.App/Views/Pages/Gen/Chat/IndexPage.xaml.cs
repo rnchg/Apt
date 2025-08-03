@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Gen.Chat;
+﻿using APT.App.ViewModels.Pages.Gen.Chat;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Gen.Chat
+namespace APT.App.Views.Pages.Gen.Chat
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

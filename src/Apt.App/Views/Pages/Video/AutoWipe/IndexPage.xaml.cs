@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Video.AutoWipe;
+﻿using APT.App.ViewModels.Pages.Video.AutoWipe;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Video.AutoWipe
+namespace APT.App.Views.Pages.Video.AutoWipe
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

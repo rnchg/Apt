@@ -1,10 +1,10 @@
-﻿using Apt.Service.Utility;
+﻿using APT.Service.Utility;
 using System.ComponentModel;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
 using Wpf.Ui.Controls;
 
-namespace Apt.App.Views.Windows.App
+namespace APT.App.Views.Windows.App
 {
     public partial class MainWindow : INavigationWindow
     {

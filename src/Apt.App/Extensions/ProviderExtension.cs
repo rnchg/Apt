@@ -1,6 +1,6 @@
-﻿using Apt.Core.Utility;
+﻿using APT.Core.Utility;
 
-namespace Apt.App.Extensions
+namespace APT.App.Extensions
 {
     public static class ProviderExtension
     {

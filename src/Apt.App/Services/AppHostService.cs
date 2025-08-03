@@ -1,14 +1,14 @@
-﻿using Apt.App.Extensions;
-using Apt.App.ViewModels.Pages.App;
-using Apt.App.Views.Pages.App;
-using Apt.App.Views.Windows.App;
-using Apt.Core.Utility;
-using Apt.Service.Extensions;
+﻿using APT.App.Extensions;
+using APT.App.ViewModels.Pages.App;
+using APT.App.Views.Pages.App;
+using APT.App.Views.Windows.App;
+using APT.Core.Utility;
+using APT.Service.Extensions;
 using Common.NETCore.Utility;
 using Microsoft.Extensions.Logging;
 using Wpf.Ui;
 
-namespace Apt.App.Services
+namespace APT.App.Services
 {
     public class AppHostService : IHostedService, IAsyncDisposable
     {

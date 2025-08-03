@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Audio.VocalSplit;
+﻿using APT.App.ViewModels.Pages.Audio.VocalSplit;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Audio.VocalSplit
+namespace APT.App.Views.Pages.Audio.VocalSplit
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

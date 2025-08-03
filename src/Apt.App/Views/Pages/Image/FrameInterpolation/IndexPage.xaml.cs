@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Image.FrameInterpolation;
+﻿using APT.App.ViewModels.Pages.Image.FrameInterpolation;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Image.FrameInterpolation
+namespace APT.App.Views.Pages.Image.FrameInterpolation
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

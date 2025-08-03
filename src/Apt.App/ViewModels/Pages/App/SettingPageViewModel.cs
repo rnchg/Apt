@@ -1,17 +1,17 @@
-﻿using Apt.App.Extensions;
-using Apt.App.ViewModels.Windows.App;
-using Apt.Core.Consts;
-using Apt.Core.Models;
-using Apt.Core.Utility;
-using Apt.Service.Services;
-using Apt.Service.ViewModels.Base;
-using Apt.Service.Views.Windows.License;
+﻿using APT.App.Extensions;
+using APT.App.ViewModels.Windows.App;
+using APT.Core.Consts;
+using APT.Core.Models;
+using APT.Core.Utility;
+using APT.Service.Services;
+using APT.Service.ViewModels.Base;
+using APT.Service.Views.Windows.License;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
 
-namespace Apt.App.ViewModels.Pages.App
+namespace APT.App.ViewModels.Pages.App
 {
     public partial class SettingPageViewModel : BaseViewModel
     {

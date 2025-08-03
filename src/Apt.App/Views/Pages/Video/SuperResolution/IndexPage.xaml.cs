@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Video.SuperResolution;
+﻿using APT.App.ViewModels.Pages.Video.SuperResolution;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Video.SuperResolution
+namespace APT.App.Views.Pages.Video.SuperResolution
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

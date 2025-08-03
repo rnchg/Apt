@@ -1,6 +1,6 @@
 ﻿using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.App
+namespace APT.App.Views.Pages.App
 {
     public partial class InfoPage : INavigableView<ViewModels.Pages.App.InfoPageViewModel>
     {

@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Image.ColorRestoration;
+﻿using APT.App.ViewModels.Pages.Image.ColorRestoration;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Image.ColorRestoration
+namespace APT.App.Views.Pages.Image.ColorRestoration
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

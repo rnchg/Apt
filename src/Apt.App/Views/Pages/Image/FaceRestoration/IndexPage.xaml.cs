@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Image.FaceRestoration;
+﻿using APT.App.ViewModels.Pages.Image.FaceRestoration;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Image.FaceRestoration
+namespace APT.App.Views.Pages.Image.FaceRestoration
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

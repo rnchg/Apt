@@ -1,7 +1,7 @@
-﻿using Apt.Service.ViewModels.Base;
+﻿using APT.Service.ViewModels.Base;
 using Wpf.Ui;
 
-namespace Apt.App.ViewModels.Pages.App
+namespace APT.App.ViewModels.Pages.App
 {
     public partial class InfoPageViewModel : BaseViewModel
     {

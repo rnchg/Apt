@@ -1,11 +1,11 @@
-﻿using Apt.Core.Utility;
-using Apt.Service.Utility;
-using Apt.Service.ViewModels.Base;
+﻿using APT.Core.Utility;
+using APT.Service.Utility;
+using APT.Service.ViewModels.Base;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui;
 
-namespace Apt.App.ViewModels.Windows.Gen.Chat
+namespace APT.App.ViewModels.Windows.Gen.Chat
 {
     public partial class ConfigWindowViewModel : BaseViewModel
     {

@@ -1,9 +1,9 @@
-﻿using Apt.App.Services;
-using Apt.App.ViewModels.Windows.App;
-using Apt.App.Views.Windows.App;
+﻿using APT.App.Services;
+using APT.App.ViewModels.Windows.App;
+using APT.App.Views.Windows.App;
 using Wpf.Ui;
 
-namespace Apt.App.Extensions
+namespace APT.App.Extensions
 {
     public static class ServiceExtension
     {

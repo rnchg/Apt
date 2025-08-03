@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Image.AutoWipe;
+﻿using APT.App.ViewModels.Pages.Image.AutoWipe;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Image.AutoWipe
+namespace APT.App.Views.Pages.Image.AutoWipe
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

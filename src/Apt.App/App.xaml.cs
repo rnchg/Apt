@@ -1,12 +1,12 @@
-﻿using Apt.App.Extensions;
-using Apt.App.Models;
-using Apt.Core.Utility;
-using Apt.Service.Helpers;
+﻿using APT.App.Extensions;
+using APT.App.Models;
+using APT.Core.Utility;
+using APT.Service.Helpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog;
 
-namespace Apt.App
+namespace APT.App
 {
     public partial class App : Application
     {

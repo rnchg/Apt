@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Windows.Gen.Chat;
-using Apt.Core.Utility;
+﻿using APT.App.ViewModels.Windows.Gen.Chat;
+using APT.Core.Utility;
 
-namespace Apt.App.Views.Windows.Gen.Chat
+namespace APT.App.Views.Windows.Gen.Chat
 {
     public partial class ConfigWindow
     {

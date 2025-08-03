@@ -1,4 +1,4 @@
-﻿namespace Apt.App.Models
+﻿namespace APT.App.Models
 {
     public class AppSettings
     {

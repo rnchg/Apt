@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Image.Matting;
+﻿using APT.App.ViewModels.Pages.Image.Matting;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Image.Matting
+namespace APT.App.Views.Pages.Image.Matting
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

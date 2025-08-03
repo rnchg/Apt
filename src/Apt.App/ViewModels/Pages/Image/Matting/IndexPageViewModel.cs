@@ -1,18 +1,18 @@
-﻿using Apt.Core.Consts;
-using Apt.Core.Enums;
-using Apt.Core.Exceptions;
-using Apt.Core.Models;
-using Apt.Core.Services.Pages.Image.Matting;
-using Apt.Core.Utility;
-using Apt.Service.Adapters.Windows;
-using Apt.Service.Enums;
-using Apt.Service.Extensions;
-using Apt.Service.Utility;
-using Apt.Service.ViewModels.Base;
+﻿using APT.Core.Consts;
+using APT.Core.Enums;
+using APT.Core.Exceptions;
+using APT.Core.Models;
+using APT.Core.Services.Pages.Image.Matting;
+using APT.Core.Utility;
+using APT.Service.Adapters.Windows;
+using APT.Service.Enums;
+using APT.Service.Extensions;
+using APT.Service.Utility;
+using APT.Service.ViewModels.Base;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Wpf.Ui;
 
-namespace Apt.App.ViewModels.Pages.Image.Matting
+namespace APT.App.ViewModels.Pages.Image.Matting
 {
     public partial class IndexPageViewModel : CommonViewModel
     {

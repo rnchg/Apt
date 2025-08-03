@@ -1,10 +1,10 @@
-﻿using Apt.Core.Utility;
-using Apt.Service.ViewModels.Base;
+﻿using APT.Core.Utility;
+using APT.Service.ViewModels.Base;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Wpf.Ui;
 using Wpf.Ui.Controls;
 
-namespace Apt.App.ViewModels.Windows.App
+namespace APT.App.ViewModels.Windows.App
 {
     public partial class MainWindowViewModel : BaseViewModel
     {

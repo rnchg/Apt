@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Video.Organization;
+﻿using APT.App.ViewModels.Pages.Video.Organization;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Video.Organization
+namespace APT.App.Views.Pages.Video.Organization
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {

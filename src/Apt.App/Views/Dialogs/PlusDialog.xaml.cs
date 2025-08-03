@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using Wpf.Ui.Controls;
 
-namespace Apt.App.Views.Dialogs
+namespace APT.App.Views.Dialogs
 {
     public partial class PlusDialog : ContentDialog
     {

@@ -1,7 +1,7 @@
-﻿using Apt.App.ViewModels.Pages.Video.Convert3d;
+﻿using APT.App.ViewModels.Pages.Video.Convert3d;
 using Wpf.Ui.Abstractions.Controls;
 
-namespace Apt.App.Views.Pages.Video.Convert3d
+namespace APT.App.Views.Pages.Video.Convert3d
 {
     public partial class IndexPage : INavigableView<IndexPageViewModel>
     {
