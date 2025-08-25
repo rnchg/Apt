@@ -1,7 +1,6 @@
 ﻿using APT.Core.Consts;
 using APT.Core.Enums;
 using APT.Core.Exceptions;
-using APT.Core.Models;
 using APT.Core.Services.Pages.Image.ColorRestoration;
 using APT.Core.Utility;
 using APT.Service.Adapters.Windows;
@@ -9,6 +8,7 @@ using APT.Service.Enums;
 using APT.Service.Extensions;
 using APT.Service.Utility;
 using APT.Service.ViewModels.Base;
+using Common.WindowsDesktop.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Wpf.Ui;
 

@@ -2,7 +2,6 @@
 using APT.App.Views.Windows.Gen.Chat;
 using APT.Core.Consts;
 using APT.Core.Exceptions;
-using APT.Core.Models;
 using APT.Core.Services.Pages.Gen.Chat;
 using APT.Core.Utility;
 using APT.Service.Adapters.Windows;
@@ -10,6 +9,7 @@ using APT.Service.Controls.ChatView;
 using APT.Service.Extensions;
 using APT.Service.Services;
 using APT.Service.ViewModels.Base;
+using Common.WindowsDesktop.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Services.Pages.Gen.Chat;

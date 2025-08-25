@@ -301,6 +301,7 @@
       "ModeHayao": "Hayao",
       "ModeCute": "Cute",
       "ModeJPFace": "JPFace",
+      "ModeGhibli": "Ghibli",
       "ModeShinkai": "Shinkai",
       "ModeSketch": "Sketch",
       "Quality": "Quality",
@@ -325,7 +326,7 @@
       "ProcessEnd": "Process end",
       "ProcessError": "Process error",
       "ProcessAuthError": "Process auth error",
-      "Help": "Image Cartoon Comics: One-click batch image cartoon comics... Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProcessing platform: Select the processing platform ( CPU/GPU)\nProcessing mode: Select the processing mode (Hayao Miyazaki/Cute/ Japanese comic face /Makoto Shinkai/Sketch)\nProcessing quality: Select the processing quality (Auto/High (1024)/Medium (512)/Low (256))"
+      "Help": "Image Cartoon Comics: One-click batch image cartoon comics... Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Select the processing mode (Hayao/Cute/JPFace/Ghibli/Shinkai/Sketch)\nProcessing quality: Select the processing quality (Auto/High (1024)/Medium (512)/Low (256))"
     },
     "Convert3d": {
       "InputFolder": "Input folder",
@@ -556,6 +557,7 @@
       "ModeHayao": "Hayao",
       "ModeCute": "Cute",
       "ModeJPFace": "JPFace",
+      "ModeGhibli": "Ghibli",
       "ModeShinkai": "Shinkai",
       "ModeSketch": "Sketch",
       "Quality": "Quality",
@@ -580,7 +582,7 @@
       "ProcessEnd": "Process end",
       "ProcessError": "Process error",
       "ProcessAuthError": "Process auth error",
-      "Help": "Video Cartoon Comics: One-click batch video cartoon comics... Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProcessing platform: Select the processing platform ( CPU/GPU)\nProcessing mode: Select the processing mode (Hayao Miyazaki/Cute/ Japanese comic face /Makoto Shinkai/Sketch)\nProcessing quality: Select the processing quality (Auto/High (1024)/Medium (512)/Low (256))"
+      "Help": "Video Cartoon Comics: One-click batch video cartoon comics... Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Select the processing mode (Hayao/Cute/JPFace/Ghibli/Shinkai/Sketch)\nProcessing quality: Select the processing quality (Auto/High (1024)/Medium (512)/Low (256))"
     },
     "Convert3d": {
       "InputFolder": "Input folder",

@@ -1,7 +1,6 @@
 ﻿using APT.Core.Consts;
 using APT.Core.Enums;
 using APT.Core.Exceptions;
-using APT.Core.Models;
 using APT.Core.Services.Pages.Image.CartoonComic;
 using APT.Core.Utility;
 using APT.Service.Adapters.Windows;
@@ -10,6 +9,7 @@ using APT.Service.Enums;
 using APT.Service.Extensions;
 using APT.Service.Utility;
 using APT.Service.ViewModels.Base;
+using Common.WindowsDesktop.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Wpf.Ui;
 
@@ -86,6 +86,7 @@ namespace APT.App.ViewModels.Pages.Image.CartoonComic
                 new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.ModeHayao"], Value = "Hayao" },
                 new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.ModeCute"], Value = "Cute" },
                 new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.ModeJPFace"], Value = "JPFace" },
+                new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.ModeGhibli"], Value = "Ghibli" },
                 new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.ModeShinkai"], Value = "Shinkai" },
                 new ComBoBoxItem<string>() {  Text = Language.Instance["Image.CartoonComic.ModeSketch"], Value = "Sketch" }
             ];

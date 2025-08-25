@@ -1,11 +1,11 @@
 ﻿using APT.App.Extensions;
 using APT.App.ViewModels.Windows.App;
 using APT.Core.Consts;
-using APT.Core.Models;
 using APT.Core.Utility;
 using APT.Service.Services;
 using APT.Service.ViewModels.Base;
 using APT.Service.Views.Windows.License;
+using Common.WindowsDesktop.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui;
@@ -31,9 +31,9 @@ namespace APT.App.ViewModels.Pages.App
 
         partial void OnThemeItemChanged(ComBoBoxItem<string, ApplicationTheme> value)
         {
-            if (value?.Item is null) return;
+            if (value?.Data is null) return;
             Current.Config.Setting.Theme = Theme;
-            ApplicationThemeManager.Apply(value.Item);
+            ApplicationThemeManager.Apply(value.Data);
         }
 
         [ObservableProperty]
@@ -108,9 +108,9 @@ namespace APT.App.ViewModels.Pages.App
         {
             ThemeSource =
             [
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["Setting.ThemeSystem"], Value="System",  Item = ApplicationTheme.Dark },
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["Setting.ThemeLight"], Value="Light", Item = ApplicationTheme.Light },
-                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["Setting.ThemeDark"], Value="Dark",  Item = ApplicationTheme.Dark },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["Setting.ThemeSystem"], Value="System",  Data = ApplicationTheme.Dark },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["Setting.ThemeLight"], Value="Light", Data = ApplicationTheme.Light },
+                new ComBoBoxItem<string,ApplicationTheme>() { Text = Core.Utility.Language.Instance["Setting.ThemeDark"], Value="Dark",  Data = ApplicationTheme.Dark },
             ];
             LanguageSource = [.. Directory.GetFiles(AppConst.LanguagePath, "*.json").Select(x =>
             {
